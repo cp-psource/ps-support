@@ -1,0 +1,204 @@
+#support-attachments-list {
+	margin:0;
+}
+
+#support-attachments-list li {
+	padding-bottom:10px;
+}
+#support-attachments-list li:last-child {
+	border-bottom: 1px solid #BABABA;
+	margin-bottom: 10px;
+}
+
+
+.ticket-priority-0:before {
+	color:gray;
+}
+.ticket-priority-1:before {
+	color:green;
+}
+.ticket-priority-2:before {
+	color:#7272EF;
+}
+.ticket-priority-3:before {
+	color:#DA7126;
+}
+.ticket-priority-4:before {
+	color:#D00000;
+}
+
+.row-actions .open-ticket {
+	color:#006505;
+}
+.row-actions .close-ticket {
+	color:#d98500;
+}
+
+#support-tickets .dashicons-before:before {
+	font-size: 16px;
+	line-height: 1.2;
+}
+
+table.ticketshistory .support-system-reply-subject {
+	margin-top:0;
+}
+
+table.ticketshistory th.column-poster {
+	width:200px;
+}
+
+table.ticketshistory th.column-message {
+	width:65%;
+}
+
+table.ticketshistory th.column-date {
+	width:15%;
+}
+table.ticketshistory th.column-create_faq {
+	width:10%;
+}
+
+table.ticketshistory .ticket-acttachments-wrap {
+	background: #EBEBEB; 
+	padding: 0 15px; 
+	margin-top: 20px; 
+	display: inline-block; 
+	margin-bottom: 20px; 
+	border:1px solid #DADADA; 
+	border-radius:3px
+}
+
+.support-system-add-reply-subtitle {
+	margin-top:0;
+}
+
+.support-system-error {
+	margin-top: 50px;
+	border-left: 4px solid #7C110C;
+	background: #dd3d36;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	padding: 1px 12px;
+	color: white;
+}
+
+.support-attachments button:before {
+	content: "\f502";
+	font-family: 'dashicons';
+}
+
+.wp-core-ui .support-attachments button {
+	color: #FFF;
+	border-color: #407138;
+	background: #529348;
+	-webkit-box-shadow: inset 0 1px 0 #5CA351,0 1px 0 rgba(0,0,0,.08);
+	box-shadow: inset 0 1px 0 #5CA351,0 1px 0 rgba(0,0,0,.08);
+}
+
+.wp-core-ui .support-attachments button:hover {
+	background: #5DA152;
+	border-color: #374434;
+	color:white;
+}
+
+.wp-core-ui .support-attachments button:active,
+.wp-core-ui .support-attachments button:focus {
+	background: #5DA152;
+	border-color: #407138;
+	color:white;
+}
+
+.support-attachments .remove-file:before {
+	content: "\f335";
+	font-family: 'dashicons';
+	vertical-align: middle;
+}
+
+.wp-core-ui .remove-file {
+	margin-left:1em;
+	color: #FFF;
+	border-color: #992727;
+	background: #B53737;
+	-webkit-box-shadow: inset 0 1px 0 #DD4343,0 1px 0 rgba(0,0,0,.08);
+	box-shadow: inset 0 1px 0 #DD4343,0 1px 0 rgba(0,0,0,.08);
+}
+
+.wp-core-ui .remove-file:hover {
+	background: #C03A3A;
+	border-color: #5E1717;
+	color: white;
+}
+
+.wp-core-ui .remove-file:active,
+.wp-core-ui .remove-file:focus {
+	background: #C03A3A;
+	border-color: #5E1717;
+	color: white;
+}
+
+
+ul.ticket-fields li {
+	float:left;
+	width:30%;
+	margin-right:25px;
+	margin-bottom:15px;
+}
+
+#poststuff ul.ticket-fields h3.ticket-field-label {
+	padding-left:0;
+	padding-bottom:0;
+}
+
+ul.ticket-fields .ticket-field-value {
+	margin-left:10px;
+}
+#support-system-ticket-update .inside {
+	padding:0;
+}
+#support-system-ticket-update .inside .ticket-update-fields {
+	padding:0 12px 12px;
+}
+
+#support-system-ticket-update .inside .ticket-update-fields .ticket-field-label {
+	font-weight: bold;
+}
+#support-system-ticket-update .inside .ticket-update-fields .ticket-field-value {
+	margin-top:0;
+	margin-bottom:20px;	
+}
+#support-system-ticket-update #ticket-closed .ticket-field-label,
+#support-system-ticket-update #ticket-closed .ticket-field-value {
+	display:inline-block;
+	margin-bottom:15px;
+}
+#support-system-ticket-update #ticket-closed .ticket-field-value input {
+	margin-top:15px;
+}
+#support-system-ticket-update #ticket-closed .ticket-field-label {
+	width:88%;
+	float:right;
+}
+#support-system-ticket-update #ticket-closed .ticket-field-value {
+	width:10%;
+	float:left;
+}
+#submit-ticket-details {
+	float:right;
+}
+#support-system-ticket-history .inside {
+	padding:0;
+	margin:0;
+}
+#support-system-ticket-history td.poster {
+	width:10%;
+}
+#support-system-ticket-history td.message {
+	width:70%;
+}
+#edit-ticket-form {
+	padding:17px;
+}
+
+#edit-ticket-form-errors {
+	padding-top: 40px;
+}

@@ -1,0 +1,343 @@
+@charset "UTF-8";
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+$namespace: "support-system";
+@import "compass/css3";
+@import "compass/utilities";
+@import "settings";
+  
+$reply-background:#f7f7f7;
+$reply-staff-background: darken( $reply-background, 1.5 );
+
+// Make sure the charset is set appropriately
+
+
+// Behold, here are all the Foundation components.
+#support-system {
+  @import "foundation/components/grid";
+  @import "foundation/components/accordion";
+  @import "foundation/components/alert-boxes";
+  @import "foundation/components/block-grid";
+  @import "foundation/components/breadcrumbs";
+  @import "foundation/components/button-groups";
+  @import "foundation/components/buttons";
+  @import "foundation/components/clearing";
+  //@import "foundation/components/dropdown";
+  //@import "foundation/components/dropdown-buttons";
+  //@import "foundation/components/flex-video";
+  //@import "foundation/components/forms";
+  //@import "foundation/components/icon-bar";
+  @import "foundation/components/inline-lists";
+  //@import "foundation/components/joyride";
+  //@import "foundation/components/keystrokes";
+  @import "foundation/components/labels";
+  //@import "foundation/components/magellan";
+  //@import "foundation/components/orbit"; 
+  @import "foundation/components/pagination";
+  @import "foundation/components/panels";
+  //@import "foundation/components/pricing-tables";
+  //@import "foundation/components/progress-bars";
+  //@import "foundation/components/range-slider";
+  //@import "foundation/components/reveal";
+  //@import "foundation/components/side-nav";
+  //@import "foundation/components/split-buttons";
+  //@import "foundation/components/sub-nav";
+  @import "foundation/components/switches";
+  //@import "foundation/components/tables";
+  //@import "foundation/components/tabs";
+  //@import "foundation/components/thumbs";
+  //@import "foundation/components/tooltips";
+  //@import "foundation/components/top-bar";
+  //@import "foundation/components/type";
+  //@import "foundation/components/offcanvas";
+  @import "foundation/components/visibility";
+
+  @import "_type"; 
+}
+
+body #support-system {
+  font-size:$base-font-size;
+}
+
+
+body #support-system {
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.5;
+  position: relative;
+  cursor: auto;
+}
+
+/** Tickets Index **/
+#support-system .support-system-tickets-list {
+  margin-left:0;
+}
+
+#support-system h2.support-system-ticket-title {
+  margin-top:0;
+  line-height: 1em;
+  a {
+    text-decoration:none;
+    border-bottom:none;
+  }
+}
+
+#support-system a {
+  border-bottom: none;
+}
+
+#support-system ul.support-system-ticket-meta li {
+  white-space: nowrap;
+  float:none;
+  display: inline-block;
+  font-size:$paragraph-font-size - 0.2;
+}
+
+#support-system li.support-system-ticket-content p:last-child {
+  margin-bottom: 1em;
+}
+#support-system .support-system-byauthor {
+  text-transform: uppercase;
+}
+
+#support-system .support-system-tag {
+  padding: 3px 4px;
+  border:1px solid $iron;
+  color:$steel;
+}
+
+#support-system-tickets ul.support-system-ticket {
+  margin-bottom:35px;
+  border-bottom:1px solid $iron;
+  list-style:none;
+  margin-left:0;
+}
+
+#support-system-single-ticket .support-system-ticket ul {
+  list-style:none;  
+}
+#support-system-single-ticket .support-system-ticket ul {
+
+}
+
+/** Single ticket **/
+#support-system-single-ticket .support-system-ticket-author-data {
+  width:150px;
+}
+
+
+#support-system #support-system-single-ticket .support-system-ticket-meta {
+  border-bottom:1px solid #DDD;
+  padding-bottom: 15px;
+  margin-bottom:15px;
+}
+
+#support-system-single-ticket .support-system-ticket-meta li:first-child {
+  margin-left:0;
+}
+
+#support-system-single-ticket h1.support-system-ticket-title {
+  margin-bottom:60px; 
+}
+
+
+#support-system-single-ticket .support-system-ticket-reply-wrap {
+  background:$reply-background;
+  border: 1px solid darken( $reply-background, 10% );
+  margin-bottom:2rem;
+  padding-top:1rem;
+  padding-left:1rem;
+  padding-right:1rem;
+}
+
+#support-system .support-system-reply-header > div {
+  float:left;
+}
+#support-system .support-system-reply-poster {
+  margin-left:1.5rem;
+}
+
+#support-system p.support-system-reply-date {
+  margin-top:1rem;
+  font-size:12px
+}
+
+
+
+/** Others **/
+#support-system input[type="submit"] {
+  background-repeat:none !important;
+  background-image:none !important;
+}
+
+/** Badges **/
+.support-system-ticket-title .label {
+  vertical-align: middle;
+}
+
+#support-system .wp-editor-container button,
+#support-system .wp-editor-container .button {
+  border:none;
+}
+
+/** Reply Form **/
+#support-system .wp-editor-container button,
+#support-system .wp-editor-container .button {
+  border:none;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  margin:0;
+  position: static;
+  padding: 2px 3px;
+  font-size: 14px;
+  background-color: transparent;
+  color:#333;
+}
+
+#support-system .wp-editor-wrap {
+  border:1px solid #C8C8C8;
+}
+
+#support-system .support-system-reply-attachments,
+#support-system .support-system-ticket-attachments {
+  background:darken( $reply-background, 3% );
+  border: 1px solid darken( $reply-background, 10% );
+  padding:15px 20px;
+  margin-bottom:15px;
+
+  h5 {
+    font-size: 13px;
+  }
+
+  ul {
+    margin-bottom:0;
+    list-style: circle;
+  }
+}
+
+#support-system #support-attachments-list {
+  border-top:1px solid $iron;
+  list-style:none;
+  margin-left:0;
+  padding-top: 15px;
+}
+
+#support-system select[name="ticket-cat"] {
+  vertical-align:top;
+}
+
+#support-system {
+  @import "foundation/components/alert-boxes";
+
+  .support-system-alert {
+    @include alert;
+    &.warning { @include alert-style($warning-color); }
+    &.alert { @include alert-style($alert-color); }
+    &.info { @include alert-style($info-color); }
+  }
+}
+
+#support-system img.avatar {
+  margin-top:0;
+}
+
+#support-system {
+  @import "forms";
+}
+
+#support-system .support-system-reply-staff .support-system-ticket-reply-wrap {
+  background:$reply-staff-background;
+  border-color:darken( $reply-staff-background, 20% );
+}
+
+#support-system .support-system-reply-poster .label {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+#support-system .support-system-widget {
+  padding-left:0;
+  padding-right:0;
+  padding-bottom:0;
+
+
+  ul {
+    margin-left:0;
+    margin-bottom:0;
+    li {
+      list-style:none;
+      border-top:1px solid $panel-border-color;
+    }
+    li:last-child {
+      border-bottom:none;
+    }
+  }
+
+  h2, li {
+    padding: $panel-padding;
+  }
+
+  p {
+    padding-left: $panel-padding;
+    padding-right: $panel-padding;
+    margin-bottom:0;
+  }
+
+  #close-ticket {
+    margin-bottom: 0;
+  }
+
+  form {
+    margin-bottom:0;
+  }
+}
+
+/** FAQS */
+#support-system .support-system-faq-answer {
+  margin-top:30px;
+}
+
+meta.foundation-data-attribute-namespace {
+  font-family: false; 
+}
+
+#support-system .accordion .accordion-navigation {
+  border:1px solid darken( $accordion-navigation-bg-color, 10% );
+  margin-top:7px;
+}
+
+#support-system .content {
+  background: lighten( $accordion-navigation-bg-color, 0% );
+}
+
+#support-system .accordion .support-system-faq-title {
+  float:left;
+  width:80%;
+}
+
+#support-system .accordion .support-system-handldiv {
+  float:right;
+  background: url( "../images/fi-plus.svg" ) no-repeat center center transparent;
+  width:19%;
+  height:26px;
+  background-size: 18px 18px;
+  margin-top:$header-top-margin;
+}
+
+#support-system .accordion .active .support-system-handldiv {
+  background: url( "../images/fi-minus.svg" ) no-repeat center center transparent;
+  background-size: 18px 18px;
+}
+
+#support-system .support-system-spinner {
+  background: url(../images/spinner.gif) 0 0/20px 20px no-repeat;
+  -webkit-background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  margin: 2px 5px 0;
+  vertical-align: middle;
+  display: none;
+}
