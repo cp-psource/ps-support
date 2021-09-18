@@ -24,7 +24,7 @@ Der mitgelieferte Texteditor eignet sich perfekt für einfaches Styling und Date
 
 == Screenshots ==
 
-screenshot-1.png
+1. Bringt Dir ein Support-System
 
 == ChangeLog ==
 

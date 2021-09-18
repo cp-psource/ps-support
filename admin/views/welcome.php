@@ -8,7 +8,7 @@
 	<div class="wp-badge support-system-badge"><div class="badge-version"><?php printf( __( 'Version %s', PSOURCE_SUPPORT_LANG_DOMAIN ), psource_support_get_version() ); ?></div></div>
 
 	<p>
-		<a href="<?php echo $settings_url; ?>" class="button button-primary"><?php _e( 'Settings', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></a>
+		<a href="<?php echo $settings_url; ?>" class="button button-primary"><?php _e( 'Einstellungen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></a>
 		<a href="https://n3rds.work/piestingtal-source-project/ps-support-system/" class="docs button button-secondary"><?php _e( 'Mehr Info', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></a>
 	</p>
 	
