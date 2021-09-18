@@ -1,6 +1,6 @@
 <?php
 
-class Incsub_Support_Shortcodes {
+class PSource_Support_Shortcodes {
 
 	public $shortcodes = array();
 
@@ -17,9 +17,9 @@ class Incsub_Support_Shortcodes {
 		include_once( 'shortcodes/class-shortcode-faqs.php' );
 
 		$this->shortcodes = apply_filters( 'support_system_shortccodes', array(
-			'support-system-tickets-index' => 'Incsub_Support_Tickets_Index_Shortcode',
-			'support-system-submit-ticket-form' => 'Incsub_Support_Submit_Ticket_Form_Shortcode',
-			'support-system-faqs' => 'Incsub_Support_FAQs_Shortcode'
+			'support-system-tickets-index' => 'PSource_Support_Tickets_Index_Shortcode',
+			'support-system-submit-ticket-form' => 'PSource_Support_Submit_Ticket_Form_Shortcode',
+			'support-system-faqs' => 'PSource_Support_FAQs_Shortcode'
 		) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
@@ -34,12 +34,12 @@ class Incsub_Support_Shortcodes {
 		if ( ! is_user_logged_in() || is_admin() )
 			return;
 
-		if ( incsub_support_is_single_ticket() && incsub_support_current_user_can( 'update_ticket' ) ) {
+		if ( psource_support_is_single_ticket() && psource_support_current_user_can( 'update_ticket' ) ) {
 			$wp_admin_bar->add_menu(
 				array(
 					'id' => 'support-system-edit-ticket',
-					'title' => __( 'Ticket bearbeiten', INCSUB_SUPPORT_LANG_DOMAIN ),
-					'href' => incsub_support_get_edit_ticket_admin_url( incsub_support_get_the_ticket_id() )
+					'title' => __( 'Ticket bearbeiten', PSOURCE_SUPPORT_LANG_DOMAIN ),
+					'href' => psource_support_get_edit_ticket_admin_url( psource_support_get_the_ticket_id() )
 				)
 			);
 		}
@@ -54,16 +54,16 @@ class Incsub_Support_Shortcodes {
 		 */
 		$stylesheet = apply_filters( 'support_system_front_stylesheet', false );
 		if ( $stylesheet )
-			wp_register_style( 'support-system', $stylesheet, array(), INCSUB_SUPPORT_PLUGIN_VERSION );
+			wp_register_style( 'support-system', $stylesheet, array(), PSOURCE_SUPPORT_PLUGIN_VERSION );
 
-		wp_register_style( 'support-system-adminbar', INCSUB_SUPPORT_ASSETS_URL . 'css/admin-bar.css', array(), INCSUB_SUPPORT_PLUGIN_VERSION );
+		wp_register_style( 'support-system-adminbar', PSOURCE_SUPPORT_ASSETS_URL . 'css/admin-bar.css', array(), PSOURCE_SUPPORT_PLUGIN_VERSION );
 	}
 
 	public function register_scripts() {
-		incsub_support_register_main_script();
-		wp_register_script( 'support-system-init', INCSUB_SUPPORT_PLUGIN_URL . 'assets/js/support-system-init.js', array( 'support-system' ), INCSUB_SUPPORT_PLUGIN_VERSION, true );
+		psource_support_register_main_script();
+		wp_register_script( 'support-system-init', PSOURCE_SUPPORT_PLUGIN_URL . 'assets/js/support-system-init.js', array( 'support-system' ), PSOURCE_SUPPORT_PLUGIN_VERSION, true );
 
-		$allowed_mimes = incsub_support_get_allowed_mime_types();
+		$allowed_mimes = psource_support_get_allowed_mime_types();
 		$allowed_mimes = array_keys( $allowed_mimes );
 
 		$allowed_mimes = array_map( array( $this, '_allowed_mimes' ), $allowed_mimes );
@@ -71,10 +71,10 @@ class Incsub_Support_Shortcodes {
 		$allowed_mimes = '*.' . implode( ', *.', $allowed_mimes );
 
 		$l10n = array(
-			'button_text' => __( 'Dateien hinzufügen...', INCSUB_SUPPORT_LANG_DOMAIN ),
-			'remove_file_title' => __( 'Datei löschen', INCSUB_SUPPORT_LANG_DOMAIN ),
-			'remove_link_text' => __( 'Datei löschen', INCSUB_SUPPORT_LANG_DOMAIN ),
-			'desc' => '<p>(' . sprintf( __( 'Zulässige Dateitypen: %s', INCSUB_SUPPORT_LANG_DOMAIN ), $allowed_mimes ) . ')</p>'
+			'button_text' => __( 'Dateien hinzufügen...', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			'remove_file_title' => __( 'Datei löschen', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			'remove_link_text' => __( 'Datei löschen', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			'desc' => '<p>(' . sprintf( __( 'Zulässige Dateitypen: %s', PSOURCE_SUPPORT_LANG_DOMAIN ), $allowed_mimes ) . ')</p>'
 		);
 		
 		wp_localize_script( 'support-system-init', 'support_system_i18n', $l10n );
@@ -122,21 +122,21 @@ class Incsub_Support_Shortcodes {
 	}
 
 	public function add_shortcode_tinymce_plugin( $plugins ) {
-		$plugins['incsub_support_shortcodes'] = INCSUB_SUPPORT_PLUGIN_URL . 'admin/assets/js/editor-shortcodes.js';
+		$plugins['psource_support_shortcodes'] = PSOURCE_SUPPORT_PLUGIN_URL . 'admin/assets/js/editor-shortcodes.js';
 		return $plugins;
 	}
 
 	public function register_shortcode_button( $buttons ) {
-		array_push( $buttons, '|', 'incsub_support_shortcodes' );
+		array_push( $buttons, '|', 'psource_support_shortcodes' );
 		return $buttons;
 	}
 
 	public function enqueue_editor_admin_scripts() {
-		wp_enqueue_style( 'incsub-support-shortcodes', INCSUB_SUPPORT_PLUGIN_URL . 'admin/assets/css/editor-shortcodes.css' );
+		wp_enqueue_style( 'psource-support-shortcodes', PSOURCE_SUPPORT_PLUGIN_URL . 'admin/assets/css/editor-shortcodes.css' );
 	}
 
 	public function add_tinymce_i18n( $i18n ) {
-		$i18n['support_system_shortcodes'] = INCSUB_SUPPORT_PLUGIN_DIR . '/admin/inc/tinymce-shortcodes-i18n.php';
+		$i18n['support_system_shortcodes'] = PSOURCE_SUPPORT_PLUGIN_DIR . '/admin/inc/tinymce-shortcodes-i18n.php';
 
 		return $i18n;
 	}

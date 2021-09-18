@@ -13,7 +13,7 @@
 		<?php wp_nonce_field( 'update-ticket-details-' . $ticket->ticket_id ); ?>
 		<input type="hidden" name="ticket_id" value="<?php echo $ticket->ticket_id; ?>">
 		<div id="major-publishing-actions">
-			<?php submit_button( __( 'Änderungen speichern', INCSUB_SUPPORT_LANG_DOMAIN ),  'primary', 'submit-ticket-details', false ); ?>
+			<?php submit_button( __( 'Änderungen speichern', PSOURCE_SUPPORT_LANG_DOMAIN ),  'primary', 'submit-ticket-details', false ); ?>
 			<div class="clear"></div>
 		</div>
 	</form>

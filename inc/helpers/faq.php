@@ -1,6 +1,6 @@
 <?php 
 
-function incsub_support_sanitize_faq_fields( $faq ) {
+function psource_support_sanitize_faq_fields( $faq ) {
 	$int_fields = array( 'faq_id', 'site_id', 'cat_id', 'help_views', 'help_count', 'help_yes', 
 		'help_no' );
 
@@ -19,18 +19,18 @@ function incsub_support_sanitize_faq_fields( $faq ) {
 /**
  * Get a single FAQ element
  * 
- * @param  int|Object $faq The FAQ ID or a Incsub_Support_FAQ class object
- * @return Object Incsub_Support_FAQ class object
+ * @param  int|Object $faq The FAQ ID or a PSource_Support_FAQ class object
+ * @return Object PSource_Support_FAQ class object
  */
-function incsub_support_get_faq( $faq ) {
-	$faq = Incsub_Support_FAQ::get_instance( $faq );
+function psource_support_get_faq( $faq ) {
+	$faq = PSource_Support_FAQ::get_instance( $faq );
 
 	$faq = apply_filters( 'support_system_get_faq', $faq );
 
 	return $faq;
 }
 
-function incsub_support_get_faqs( $args = array() ) {
+function psource_support_get_faqs( $args = array() ) {
 	global $wpdb, $current_site;
 
 	$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
@@ -81,7 +81,7 @@ function incsub_support_get_faqs( $args = array() ) {
 
 	$where = implode( ' AND ', $where );
 
-	$faqs_table = incsub_support()->model->faq_table;
+	$faqs_table = psource_support()->model->faq_table;
 
 	$faqs = array();
 	if ( $count ) {
@@ -92,7 +92,7 @@ function incsub_support_get_faqs( $args = array() ) {
 	else {
 		$query = "SELECT * FROM $faqs_table WHERE $where $order_query $limit";
 		$results = $wpdb->get_results( $query );
-		$faqs = array_map( 'incsub_support_get_faq', $results );
+		$faqs = array_map( 'psource_support_get_faq', $results );
 	}
 
 	$faqs = apply_filters( 'support_system_get_faqs', $faqs, $args );
@@ -101,11 +101,11 @@ function incsub_support_get_faqs( $args = array() ) {
 	
 }
 
-function incsub_support_get_faqs_count( $args = array() ) {
+function psource_support_get_faqs_count( $args = array() ) {
 	$args['count'] = true;
 	$args['per_page'] = -1;
 
-	$count = incsub_support_get_faqs( $args );
+	$count = psource_support_get_faqs( $args );
 
 	return $count;
 }
@@ -123,14 +123,14 @@ function incsub_support_get_faqs_count( $args = array() ) {
  * }
  * @return mixed the new FAQ ID, WP_Error otherwise
  */
-function incsub_support_insert_faq( $args = array() ) {
+function psource_support_insert_faq( $args = array() ) {
 	global $wpdb, $current_site;
 
 	$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
 
 	$defaults = array(
 		'site_id' => $current_site_id,
-		'cat_id' => incsub_support_get_default_faq_category()->cat_id,
+		'cat_id' => psource_support_get_default_faq_category()->cat_id,
 		'question' => '',
 		'answer' => '',
 	);
@@ -150,16 +150,16 @@ function incsub_support_insert_faq( $args = array() ) {
 	$insert_wildcards[] = '%d'; 
 
 	// CATEGORY
-	$category = incsub_support_get_faq_category( absint( $args['cat_id'] ) );
+	$category = psource_support_get_faq_category( absint( $args['cat_id'] ) );
 	if ( ! $category )
-		return new WP_Error( 'wrong_category', __( 'Die Kategorie existiert nicht.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'wrong_category', __( 'Die Kategorie existiert nicht.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 	$insert['cat_id'] = $category->cat_id;
 	$insert_wildcards[] = '%d'; 
 
 	// QUESTION
 	$question = strip_tags( wp_unslash( $args['question'] ) );
 	if ( empty( $question ) )
-		return new WP_Error( 'empty_question', __( 'Der FAQ-Titel darf nicht leer sein.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_question', __( 'Der FAQ-Titel darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 
 	$insert['question'] = $question; 
 	$insert_wildcards[] = '%s'; 
@@ -167,12 +167,12 @@ function incsub_support_insert_faq( $args = array() ) {
 	// ANSWER
 	$answer = wp_kses_post( wp_unslash( $args['answer'] ) );
 	if ( empty( $answer ) )
-		return new WP_Error( 'empty_answer', __( 'Die FAQ-Antwort darf nicht leer sein.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_answer', __( 'Die FAQ-Antwort darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 
 	$insert['answer'] = $answer; 
 	$insert_wildcards[] = '%s'; 
 
-	$table = incsub_support()->model->faq_table;
+	$table = psource_support()->model->faq_table;
 	$wpdb->insert(
 		$table,
 		$insert,
@@ -182,9 +182,9 @@ function incsub_support_insert_faq( $args = array() ) {
 	$faq_id = $wpdb->insert_id;
 
 	if ( ! $faq_id )
-		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des FAQ-Elements. Bitte versuche es später erneut.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des FAQ-Elements. Bitte versuche es später erneut.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 
-	incsub_support_clean_faq_category_cache( $category );
+	psource_support_clean_faq_category_cache( $category );
 
 	do_action( 'support_system_insert_faq', $faq_id, $args );
 
@@ -192,10 +192,10 @@ function incsub_support_insert_faq( $args = array() ) {
 
 }
 
-function incsub_support_update_faq( $faq_id, $args ) {
+function psource_support_update_faq( $faq_id, $args ) {
 	global $wpdb;
 
-	$faq = incsub_support_get_faq( $faq_id );
+	$faq = psource_support_get_faq( $faq_id );
 	if ( ! $faq )
 		return false;
 
@@ -214,7 +214,7 @@ function incsub_support_update_faq( $faq_id, $args ) {
 	if ( empty( $update ) )
 		return false;
 	
-	$faqs_table = incsub_support()->model->faq_table;
+	$faqs_table = psource_support()->model->faq_table;
 
 	$result = $wpdb->update(
 		$faqs_table,
@@ -227,11 +227,11 @@ function incsub_support_update_faq( $faq_id, $args ) {
 	if ( ! $result )
 		return false;
 
-	incsub_support_clean_faq_cache( $faq_id );
+	psource_support_clean_faq_cache( $faq_id );
 	if ( array_key_exists( 'cat_id', $update ) ) {
 		// Clean the old and new ctaegories cache
-		incsub_support_clean_faq_category_cache( $update['cat_id'] );
-		incsub_support_clean_faq_category_cache( $faq->cat_id );
+		psource_support_clean_faq_category_cache( $update['cat_id'] );
+		psource_support_clean_faq_category_cache( $faq->cat_id );
 	}
 
 	$old_faq = $faq;
@@ -240,15 +240,15 @@ function incsub_support_update_faq( $faq_id, $args ) {
 	return true;
 }
 
-function incsub_support_vote_faq( $faq_id, $vote ) {
-	if ( ! $faq = incsub_support_get_faq( $faq_id ) )
+function psource_support_vote_faq( $faq_id, $vote ) {
+	if ( ! $faq = psource_support_get_faq( $faq_id ) )
 		return false;
 
 	$set_field = $vote ? 'help_yes' : 'help_no';
 
 	$field_value = $faq->$set_field + 1;
 
-	return incsub_support_update_faq( $faq->faq_id, array( $set_field => $field_value ) );
+	return psource_support_update_faq( $faq->faq_id, array( $set_field => $field_value ) );
 }
 
 /**
@@ -257,15 +257,15 @@ function incsub_support_vote_faq( $faq_id, $vote ) {
  * @param  int $faq_id
  * @return Boolean
  */
-function incsub_support_delete_faq( $faq_id ) {
+function psource_support_delete_faq( $faq_id ) {
     global $wpdb;
 
-    $faq = incsub_support_get_faq( $faq_id );
+    $faq = psource_support_get_faq( $faq_id );
 
     if ( ! $faq )
         return false;
 
-    $faqs_table = incsub_support()->model->faq_table;
+    $faqs_table = psource_support()->model->faq_table;
 
     $wpdb->query( 
         $wpdb->prepare( 
@@ -279,16 +279,16 @@ function incsub_support_delete_faq( $faq_id ) {
     $old_faq = $faq;
     do_action( 'support_system_delete_faq', $faq_id, $old_faq );
 
-    incsub_support_clean_faq_cache( $faq_id );
-    incsub_support_clean_faq_category_cache( $faq->cat_id );
+    psource_support_clean_faq_cache( $faq_id );
+    psource_support_clean_faq_category_cache( $faq->cat_id );
 
     return true;
 }
 
 
-function incsub_support_clean_faq_cache( $faq ) {
+function psource_support_clean_faq_cache( $faq ) {
 
-	$faq = incsub_support_get_faq( $faq );
+	$faq = psource_support_get_faq( $faq );
 	if ( empty( $faq ) )
 		return;
 

@@ -1,25 +1,25 @@
 <?php
 
-class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu {
+class PSource_Support_Network_Ticket_Categories extends PSource_Support_Admin_Menu {
 
 	public function add_menu() {
 		parent::add_submenu_page(
 			'ticket-manager',
-			__( 'Ticketkategorien', INCSUB_SUPPORT_LANG_DOMAIN ),
-			__( 'Ticketkategorien', INCSUB_SUPPORT_LANG_DOMAIN ), 
+			__( 'Ticketkategorien', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			__( 'Ticketkategorien', PSOURCE_SUPPORT_LANG_DOMAIN ), 
 			is_multisite() ? 'manage_network' : 'manage_options'
 		);
 
 		if ( isset( $_GET['action'] ) && isset( $_GET['category'] ) && 'edit' === $_GET['action'] ) {
-			if ( $ticket_category = incsub_support_get_ticket_category( absint( $_GET['category'] ) ) )
+			if ( $ticket_category = psource_support_get_ticket_category( absint( $_GET['category'] ) ) )
 				add_filter( 'support_system_admin_page_title', array( $this, 'set_edit_category_page_title' ) );
 		}
 
 	}
 
 	public function set_edit_category_page_title( $title ) {
-		$ticket_category = incsub_support_get_ticket_category( absint( $_GET['category'] ) );
-		return '<h2>' . sprintf( _x( 'Bearbeite %s', 'Bearbeite den Titel des Ticketkategorie-Menüs', INCSUB_SUPPORT_LANG_DOMAIN ), $ticket_category->cat_name ) . '</h2>';
+		$ticket_category = psource_support_get_ticket_category( absint( $_GET['category'] ) );
+		return '<h2>' . sprintf( _x( 'Bearbeite %s', 'Bearbeite den Titel des Ticketkategorie-Menüs', PSOURCE_SUPPORT_LANG_DOMAIN ), $ticket_category->cat_name ) . '</h2>';
 	}
 
 	public function on_load() {
@@ -30,18 +30,18 @@ class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu
 			$add = isset( $_POST['submit-new-ticket-category'] );
 			
 			if ( $edit ) {
-				if ( ! incsub_support_current_user_can( 'update_ticket_category' ) )
+				if ( ! psource_support_current_user_can( 'update_ticket_category' ) )
 					return;
 
 				// Editing a category ?
 				$ticket_category_id = absint( $_POST['ticket_cat_id'] );
-				$ticket_category = incsub_support_get_ticket_category( $ticket_category_id );
+				$ticket_category = psource_support_get_ticket_category( $ticket_category_id );
 				if ( ! $ticket_category )
 					return;
 				check_admin_referer( 'edit-ticket-category-' . $ticket_category->cat_id );
 			}
 			elseif ( $add ) {
-				if ( ! incsub_support_current_user_can( 'insert_ticket_category' ) )
+				if ( ! psource_support_current_user_can( 'insert_ticket_category' ) )
 					return;
 				
 				check_admin_referer( 'add-ticket-category' );
@@ -52,7 +52,7 @@ class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu
 
 			$cat_name = trim( $_POST['cat_name'] );
 			if ( empty(  $cat_name ) )
-				add_settings_error( 'support_system_submit_category', 'empty-category-name', __( 'Der Kategoriename darf nicht leer sein', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_category', 'empty-category-name', __( 'Der Kategoriename darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			else
 				$category_name = $_POST['cat_name'];
 
@@ -62,13 +62,13 @@ class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu
 
 			if ( ! get_settings_errors( 'support_system_submit_category' ) ) {
 				if ( $add ) {
-					incsub_support_insert_ticket_category( $category_name, $user_id );
+					psource_support_insert_ticket_category( $category_name, $user_id );
 					$redirect = add_query_arg( 'added', 'true', $this->get_menu_url() );
 					wp_redirect( $redirect );
 					exit();
 				}
 				elseif ( $edit ) {
-					incsub_support_update_ticket_category( $ticket_category->cat_id, array( 'cat_name' => $category_name, 'user_id' => $user_id ) );
+					psource_support_update_ticket_category( $ticket_category->cat_id, array( 'cat_name' => $category_name, 'user_id' => $user_id ) );
 					$redirect = add_query_arg( 
 						array( 
 							'updated' => 'true',
@@ -86,9 +86,9 @@ class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu
 
 	public function render_inner_page() {
 		if ( isset( $_GET['category'] ) && $_GET['action'] == 'edit' ) {
-			$ticket_category = incsub_support_get_ticket_category( absint( $_GET['category'] ) );
+			$ticket_category = psource_support_get_ticket_category( absint( $_GET['category'] ) );
 			if ( ! $ticket_category )
-				wp_die( __( 'Die Kategorie existiert nicht', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Die Kategorie existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 
 			$category_name = $ticket_category->cat_name;
 			if ( ! empty( $_POST['cat_name'] ) && trim( $_POST['cat_name'] ) )
@@ -102,9 +102,9 @@ class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu
 			if ( isset( $_POST['super-admins'] ) )
 				$user = $_POST['super-admins'];
 
-			$super_admins_dropdown = incsub_support_super_admins_dropdown( 
+			$super_admins_dropdown = psource_support_super_admins_dropdown( 
 				array( 
-					'show_empty' => __( 'Keine', INCSUB_SUPPORT_LANG_DOMAIN ) ,
+					'show_empty' => __( 'Keine', PSOURCE_SUPPORT_LANG_DOMAIN ) ,
 					'echo' => false,
 					'selected' => $user
 				) 
@@ -117,7 +117,7 @@ class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu
 		}
 		else {
 			include_once( 'inc/class-table-ticket-categories.php' );
-			$cats_table = new Incsub_Support_Ticket_Categories_Table();
+			$cats_table = new PSource_Support_Ticket_Categories_Table();
 			$cats_table->prepare_items();
 
 			$category_name = '';
@@ -128,9 +128,9 @@ class Incsub_Support_Network_Ticket_Categories extends Incsub_Support_Admin_Menu
 			if ( isset( $_POST['super-admins'] ) )
 				$user = $_POST['super-admins'];
 
-			$super_admins_dropdown = incsub_support_super_admins_dropdown( 
+			$super_admins_dropdown = psource_support_super_admins_dropdown( 
 				array( 
-					'show_empty' => __( 'Keine', INCSUB_SUPPORT_LANG_DOMAIN ) ,
+					'show_empty' => __( 'Keine', PSOURCE_SUPPORT_LANG_DOMAIN ) ,
 					'echo' => false,
 					'selected' => $user
 				) 

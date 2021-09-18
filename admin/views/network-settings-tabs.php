@@ -6,5 +6,5 @@
 </h2>
 
 <?php if ( $updated ): ?>
-	<div class="updated"><p><?php _e( 'Einstellungen aktualisiert', INCSUB_SUPPORT_LANG_DOMAIN ); ?></p></div>
+	<div class="updated"><p><?php _e( 'Einstellungen aktualisiert', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></p></div>
 <?php endif; ?>

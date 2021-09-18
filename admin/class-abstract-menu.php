@@ -1,6 +1,6 @@
 <?php
 
-abstract class Incsub_Support_Admin_Menu {
+abstract class PSource_Support_Admin_Menu {
 
 	// Menu slug
 	public $slug;

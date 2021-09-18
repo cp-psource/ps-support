@@ -1,6 +1,6 @@
 <?php
 
-function incsub_support_sanitize_ticket_category_fields( $cat ) {
+function psource_support_sanitize_ticket_category_fields( $cat ) {
 	$int_fields = array( 'cat_id', 'user_id', 'site_id' );
 
 	foreach ( get_object_vars( $cat ) as $name => $value ) {
@@ -15,13 +15,13 @@ function incsub_support_sanitize_ticket_category_fields( $cat ) {
 	return $cat;
 }
 
-function incsub_support_get_ticket_category( $cat ) {
-	$cat = Incsub_Support_Ticket_Category::get_instance( $cat );
+function psource_support_get_ticket_category( $cat ) {
+	$cat = PSource_Support_Ticket_Category::get_instance( $cat );
 	$cat = apply_filters( 'support_system_get_ticket_category', $cat );
 	return $cat;
 }
 
-function incsub_support_get_ticket_categories( $args = array() ) {
+function psource_support_get_ticket_categories( $args = array() ) {
 	global $wpdb, $current_site;
 
 	$defaults = array(
@@ -36,7 +36,7 @@ function incsub_support_get_ticket_categories( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args );
 
-	$table = incsub_support()->model->tickets_cats_table;
+	$table = psource_support()->model->tickets_cats_table;
 	$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
 
 	// WHERE
@@ -70,7 +70,7 @@ function incsub_support_get_ticket_categories( $args = array() ) {
 	else {
 		$query = "SELECT cat_id, cat_name, defcat, user_id FROM $table $where $order $limit";
 		$_cats = $wpdb->get_results( $query );
-		$cats = array_map( 'incsub_support_get_ticket_category', $_cats );
+		$cats = array_map( 'psource_support_get_ticket_category', $_cats );
 		
 		if ( empty( $cats ) )
 			$cats = array();
@@ -81,17 +81,17 @@ function incsub_support_get_ticket_categories( $args = array() ) {
 	return $cats;
 }
 
-function incsub_support_get_ticket_categories_count( $args = array() ) {
+function psource_support_get_ticket_categories_count( $args = array() ) {
 	$args['count'] = true;
 	$args['per_page'] = -1;
-	return incsub_support_get_ticket_categories( $args );
+	return psource_support_get_ticket_categories( $args );
 }
 
-function incsub_support_ticket_categories_dropdown( $args = array() ) {
+function psource_support_ticket_categories_dropdown( $args = array() ) {
 	$defaults = array(
 		'name' => 'ticket-cat',
 		'id' => false,
-		'show_empty' => __( '-- Wähle eine Kategorie --', INCSUB_SUPPORT_LANG_DOMAIN ),
+		'show_empty' => __( '-- Wähle eine Kategorie --', PSOURCE_SUPPORT_LANG_DOMAIN ),
 		'selected' => '',
 		'class' => '',
 		'echo' => true
@@ -106,7 +106,7 @@ function incsub_support_ticket_categories_dropdown( $args = array() ) {
 	if ( ! $echo )
 		ob_start();
 
-	$cats = incsub_support_get_ticket_categories();
+	$cats = psource_support_get_ticket_categories();
 
 	?>
 		<select class="<?php echo esc_attr( $class ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>">
@@ -125,12 +125,12 @@ function incsub_support_ticket_categories_dropdown( $args = array() ) {
 		return ob_get_clean();
 }
 
-function incsub_support_insert_ticket_category( $name, $user_id = false ) {
+function psource_support_insert_ticket_category( $name, $user_id = false ) {
 	global $wpdb, $current_site;
 
 	$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
 
-	$tickets_cats_table = incsub_support()->model->tickets_cats_table;
+	$tickets_cats_table = psource_support()->model->tickets_cats_table;
 
 	$user_id = $user_id === false ? get_current_user_id() : absint( $user_id );
 	
@@ -138,7 +138,7 @@ function incsub_support_insert_ticket_category( $name, $user_id = false ) {
 	if ( empty( $name ) )
 		return false;
 
-	$ticket_category = incsub_support_get_ticket_category( $name );
+	$ticket_category = psource_support_get_ticket_category( $name );
 	if ( $ticket_category )
 		return false;
 
@@ -162,12 +162,12 @@ function incsub_support_insert_ticket_category( $name, $user_id = false ) {
 	return $cat_id;
 }
 
-function incsub_support_update_ticket_category( $ticket_category_id, $args = array() ) {
+function psource_support_update_ticket_category( $ticket_category_id, $args = array() ) {
 	global $wpdb, $current_site;
 
-	$tickets_cats_table = incsub_support()->model->tickets_cats_table;
+	$tickets_cats_table = psource_support()->model->tickets_cats_table;
 
-	$ticket_category = incsub_support_get_ticket_category( $ticket_category_id );
+	$ticket_category = psource_support_get_ticket_category( $ticket_category_id );
 	if ( ! $ticket_category )
 		return false;
 
@@ -194,7 +194,7 @@ function incsub_support_update_ticket_category( $ticket_category_id, $args = arr
 	$update_wildcards[] = '%d';
 
 	if ( $defcat )
-		incsub_support_set_default_ticket_category( $ticket_category_id );
+		psource_support_set_default_ticket_category( $ticket_category_id );
 	
 
 	$result = $wpdb->update(
@@ -208,7 +208,7 @@ function incsub_support_update_ticket_category( $ticket_category_id, $args = arr
 	if ( ! $result )
 		return false;
 
-	incsub_support_clean_ticket_category_cache( $ticket_category_id );
+	psource_support_clean_ticket_category_cache( $ticket_category_id );
 
 	$old_ticket_category = $ticket_category;
 	do_action( 'support_system_update_ticket_category', $ticket_category_id, $args, $old_ticket_category );
@@ -216,13 +216,13 @@ function incsub_support_update_ticket_category( $ticket_category_id, $args = arr
 	return true;
 }
 
-function incsub_support_get_default_ticket_category() {
+function psource_support_get_default_ticket_category() {
 	$default_category = wp_cache_get( 'support_system_default_ticket_category', 'support_system_ticket_categories' );
 
 	if ( $default_category )
 		return $default_category;
 
-	$results = incsub_support_get_ticket_categories( array( 'per_page' => 1, 'defcat' => 1 ) );
+	$results = psource_support_get_ticket_categories( array( 'per_page' => 1, 'defcat' => 1 ) );
 
 	if ( isset( $results[0] ) ) {
 		wp_cache_set( 'support_system_default_ticket_category', $results[0], 'support_system_ticket_categories' );
@@ -234,16 +234,16 @@ function incsub_support_get_default_ticket_category() {
 	return false;
 }
 
-function incsub_support_set_default_ticket_category( $ticket_category_id ) {
+function psource_support_set_default_ticket_category( $ticket_category_id ) {
 	global $wpdb;
 
-	$tickets_cats_table = incsub_support()->model->tickets_cats_table;
+	$tickets_cats_table = psource_support()->model->tickets_cats_table;
 
-	$ticket_category = incsub_support_get_ticket_category( $ticket_category_id );
+	$ticket_category = psource_support_get_ticket_category( $ticket_category_id );
 	if ( ! $ticket_category )
 		return false;
 
-	$default_category = incsub_support_get_default_ticket_category();
+	$default_category = psource_support_get_default_ticket_category();
 	if ( $default_category )
 		$wpdb->query( "UPDATE $tickets_cats_table SET defcat = 1" ); // enum type field!!
 
@@ -256,8 +256,8 @@ function incsub_support_set_default_ticket_category( $ticket_category_id ) {
 	);
 
 	wp_cache_delete( 'support_system_default_ticket_category', 'support_system_ticket_categories' );
-	incsub_support_clean_ticket_category_cache( $ticket_category_id );
-	incsub_support_clean_ticket_category_cache( $default_category->cat_id );
+	psource_support_clean_ticket_category_cache( $ticket_category_id );
+	psource_support_clean_ticket_category_cache( $default_category->cat_id );
 
 	if ( ! $result )
 		return false;
@@ -266,12 +266,12 @@ function incsub_support_set_default_ticket_category( $ticket_category_id ) {
 
 }
 
-function incsub_support_delete_ticket_category( $ticket_category_id ) {
+function psource_support_delete_ticket_category( $ticket_category_id ) {
 	global $wpdb;
 
-	$tickets_cats_table = incsub_support()->model->tickets_cats_table;
+	$tickets_cats_table = psource_support()->model->tickets_cats_table;
 
-	$ticket_category = incsub_support_get_ticket_category( $ticket_category_id );
+	$ticket_category = psource_support_get_ticket_category( $ticket_category_id );
 	if ( ! $ticket_category )
 		return false;
 
@@ -279,9 +279,9 @@ function incsub_support_delete_ticket_category( $ticket_category_id ) {
 	if ( $ticket_category->defcat )
 		return false;
 
-	$default_category = incsub_support_get_default_ticket_category();
+	$default_category = psource_support_get_default_ticket_category();
 
-	$category_tickets = incsub_support_get_tickets(
+	$category_tickets = psource_support_get_tickets(
 		array(
 			'per_page' => -1,
 			'category' => $ticket_category_id
@@ -289,12 +289,12 @@ function incsub_support_delete_ticket_category( $ticket_category_id ) {
 	);
 	if ( $category_tickets && $default_category ) {
 		foreach ( $category_tickets as $ticket )
-			incsub_support_update_ticket( $ticket->ticket_id, array( 'cat_id' => $default_category->cat_id ) );
+			psource_support_update_ticket( $ticket->ticket_id, array( 'cat_id' => $default_category->cat_id ) );
 	}
 
 	$wpdb->query( $wpdb->prepare( "DELETE FROM $tickets_cats_table WHERE cat_id = %d", $ticket_category_id ) );
 
-	incsub_support_clean_ticket_category_cache( $ticket_category_id );
+	psource_support_clean_ticket_category_cache( $ticket_category_id );
 
 	$old_ticket_category = $ticket_category;
 	do_action( 'support_system_delete_ticket_category', $ticket_category_id, $old_ticket_category );
@@ -302,8 +302,8 @@ function incsub_support_delete_ticket_category( $ticket_category_id ) {
 	return true;
 }
 
-function incsub_support_clean_ticket_category_cache( $ticket_category ) {
-	$ticket_category = incsub_support_get_ticket_category( $ticket_category );
+function psource_support_clean_ticket_category_cache( $ticket_category ) {
+	$ticket_category = psource_support_get_ticket_category( $ticket_category );
 
 	if ( empty( $ticket_category ) )
 		return;

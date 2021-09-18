@@ -1,6 +1,6 @@
 <?php
 
-class Incsub_Support_Ticket_Category {
+class PSource_Support_Ticket_Category {
 
 	public $cat_id = 0;
 	public $cat_name = '';
@@ -12,7 +12,7 @@ class Incsub_Support_Ticket_Category {
 
 		if ( is_object( $ticket_category ) ) {
 			$cat = new self( $ticket_category );
-			$cat = incsub_support_sanitize_ticket_category_fields( $cat );
+			$cat = psource_support_sanitize_ticket_category_fields( $cat );
 			return $cat;
 		}
 
@@ -21,7 +21,7 @@ class Incsub_Support_Ticket_Category {
 			if ( ! $cat_id )
 				return false;
 			
-			$table = incsub_support()->model->tickets_cats_table;
+			$table = psource_support()->model->tickets_cats_table;
 			$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
 
 			$_cat = wp_cache_get( $cat_id, 'support_system_ticket_categories' );
@@ -47,7 +47,7 @@ class Incsub_Support_Ticket_Category {
 		else {
 			// Looking for name
 			
-			$table = incsub_support()->model->tickets_cats_table;
+			$table = psource_support()->model->tickets_cats_table;
 			$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
 			
 			$_cat = $wpdb->get_row( 
@@ -71,7 +71,7 @@ class Incsub_Support_Ticket_Category {
 
 		$_cat = new self( $_cat );
 
-		$_cat = incsub_support_sanitize_ticket_category_fields( $_cat );
+		$_cat = psource_support_sanitize_ticket_category_fields( $_cat );
 
 		return $_cat;
 
@@ -93,7 +93,7 @@ class Incsub_Support_Ticket_Category {
 	public function get_tickets_count() {
 		global $wpdb;
 
-		$table = incsub_support()->model->tickets_table;
+		$table = psource_support()->model->tickets_table;
 
 		$counts = wp_cache_get( $this->cat_id, 'support_system_ticket_categories_counts' );
 		if ( false === $counts ) {

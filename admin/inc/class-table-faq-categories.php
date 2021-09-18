@@ -3,14 +3,14 @@
 if(!class_exists('WP_List_Table'))
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 
-class Incsub_Support_FAQ_Categories_Table extends WP_List_Table {
+class PSource_Support_FAQ_Categories_Table extends WP_List_Table {
 
     private $data;
 
 	function __construct(){
         parent::__construct( array(
-            'singular'  => __( 'Kategorie', INCSUB_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'Kategorien', INCSUB_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ),  
+            'plural'    => __( 'Kategorien', PSOURCE_SUPPORT_LANG_DOMAIN ), 
             'ajax'      => false        
         ) );
         
@@ -29,9 +29,9 @@ class Incsub_Support_FAQ_Categories_Table extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />',
-            'id'        => __( 'ID', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'name'      => __( 'Name', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'faqs'      => __( 'FAQs', INCSUB_SUPPORT_LANG_DOMAIN )
+            'id'        => __( 'ID', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'name'      => __( 'Name', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'faqs'      => __( 'FAQs', PSOURCE_SUPPORT_LANG_DOMAIN )
         );
         return $columns;
     }
@@ -87,26 +87,26 @@ class Incsub_Support_FAQ_Categories_Table extends WP_List_Table {
         );
 
         $actions = array(
-            'edit' => sprintf( __( '<a href="%s">Bearbeiten</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $edit_link )   
+            'edit' => sprintf( __( '<a href="%s">Bearbeiten</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $edit_link )   
         );
 
         if ( $item->defcat ) {
-            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', INCSUB_SUPPORT_LANG_DOMAIN ) ) . '">' . $item->cat_name . '</a> <strong>' . __( '[Standardkategorie]', INCSUB_SUPPORT_LANG_DOMAIN ) . '</strong>'  . $this->row_actions($actions);
+            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', PSOURCE_SUPPORT_LANG_DOMAIN ) ) . '">' . $item->cat_name . '</a> <strong>' . __( '[Standardkategorie]', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</strong>'  . $this->row_actions($actions);
         }
         else {
             $more_actions = array( 
-                'delete'    => sprintf( __( '<a href="%s">DLöschen</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $delete_link ),
-                'set_default' => sprintf( __( '<a href="%s">Als Standard einstellen</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $set_default_link )      
+                'delete'    => sprintf( __( '<a href="%s">DLöschen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $delete_link ),
+                'set_default' => sprintf( __( '<a href="%s">Als Standard einstellen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $set_default_link )      
             );
             $actions = array_merge( $actions, $more_actions );
-            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', INCSUB_SUPPORT_LANG_DOMAIN ) ) . '">' . $item->cat_name . '</a>' . $this->row_actions($actions);
+            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', PSOURCE_SUPPORT_LANG_DOMAIN ) ) . '">' . $item->cat_name . '</a>' . $this->row_actions($actions);
         }
     }
 
 
     function get_bulk_actions() {
         $actions = array(
-            'delete'    => __( 'Löschen', INCSUB_SUPPORT_LANG_DOMAIN )
+            'delete'    => __( 'Löschen', PSOURCE_SUPPORT_LANG_DOMAIN )
         );
         return $actions;
     }
@@ -120,10 +120,10 @@ class Incsub_Support_FAQ_Categories_Table extends WP_List_Table {
                 $categories = array_map( 'absint', $_REQUEST['category'] );
 
             foreach ( $categories as $cat_id )
-                incsub_support_delete_faq_category( $cat_id );
+                psource_support_delete_faq_category( $cat_id );
         }
         if ( 'set_default' === $this->current_action() ) {
-            incsub_support_set_default_faq_category( absint( $_GET['category'] ) );
+            psource_support_set_default_faq_category( absint( $_GET['category'] ) );
         }
     }
 
@@ -152,8 +152,8 @@ class Incsub_Support_FAQ_Categories_Table extends WP_List_Table {
             'per_page' => $per_page,
             'page' => $current_page
         );
-        $this->items = incsub_support_get_faq_categories( $args );
-        $total_items = incsub_support_get_faq_categories_count( $args );
+        $this->items = psource_support_get_faq_categories( $args );
+        $total_items = psource_support_get_faq_categories_count( $args );
 
         $this->set_pagination_args( array(
             'total_items' => $total_items,                

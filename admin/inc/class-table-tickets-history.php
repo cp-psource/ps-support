@@ -4,15 +4,15 @@ if(!class_exists('WP_List_Table')){
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class Incsub_Support_Tickets_History_Table extends WP_List_Table {
+class PSource_Support_Tickets_History_Table extends WP_List_Table {
 
     private $ticket_id;
 
 	function __construct( $args = array() ){
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => __( 'Ticket Verlauf', INCSUB_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'Tickets Verläufe', INCSUB_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'Ticket Verlauf', PSOURCE_SUPPORT_LANG_DOMAIN ),  
+            'plural'    => __( 'Tickets Verläufe', PSOURCE_SUPPORT_LANG_DOMAIN ), 
             'ajax'      => false        
         ) );
         
@@ -34,11 +34,11 @@ class Incsub_Support_Tickets_History_Table extends WP_List_Table {
 
     function get_columns(){
         $columns = array(
-            'poster'        => __( 'Autor', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'message'       => __( 'Ticket Nachricht/Antwort', INCSUB_SUPPORT_LANG_DOMAIN ),
+            'poster'        => __( 'Autor', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'message'       => __( 'Ticket Nachricht/Antwort', PSOURCE_SUPPORT_LANG_DOMAIN ),
         );
 
-        if ( incsub_support_current_user_can( 'insert_faq' ) ) {
+        if ( psource_support_current_user_can( 'insert_faq' ) ) {
             $columns['create_faq'] = '';
         }
 
@@ -69,7 +69,7 @@ class Incsub_Support_Tickets_History_Table extends WP_List_Table {
     function column_poster( $item ) {
         $poster = get_userdata( $item->get_poster_id() );
         if ( ! $poster )
-            return __( 'Unbekannter Benutzer', INCSUB_SUPPORT_LANG_DOMAIN );
+            return __( 'Unbekannter Benutzer', PSOURCE_SUPPORT_LANG_DOMAIN );
 
         if ( function_exists( "get_avatar" ) )
             $avatar = get_avatar( $poster->ID, 32 );
@@ -84,8 +84,8 @@ class Incsub_Support_Tickets_History_Table extends WP_List_Table {
         $link = add_query_arg( 'rid', absint( $item->message_id ), $link );
         $link = wp_nonce_url( $link, 'create-faq-from-ticket-' . $this->ticket_id . '-' . $item->message_id );
         ?>
-            <a title="<?php _e( 'Erstelle aus dieser Antwort eine FAQ', INCSUB_SUPPORT_LANG_DOMAIN ); ?>"
-                href="<?php echo $link; ?>"><?php _e( 'Erstelle eine FAQ', INCSUB_SUPPORT_LANG_DOMAIN ); ?></a>
+            <a title="<?php _e( 'Erstelle aus dieser Antwort eine FAQ', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>"
+                href="<?php echo $link; ?>"><?php _e( 'Erstelle eine FAQ', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></a>
 
         <?php
         return ob_get_clean();
@@ -94,17 +94,17 @@ class Incsub_Support_Tickets_History_Table extends WP_List_Table {
     function column_message( $item ) {
         ob_start();
         ?>
-            <div class="submitted-on"><?php printf( _x( 'Gesendet am %s', 'Antwort am Datum gesendet', INCSUB_SUPPORT_LANG_DOMAIN ), incsub_support_get_translated_date( $item->message_date ) ); ?></div>
+            <div class="submitted-on"><?php printf( _x( 'Gesendet am %s', 'Antwort am Datum gesendet', PSOURCE_SUPPORT_LANG_DOMAIN ), psource_support_get_translated_date( $item->message_date ) ); ?></div>
             <?php if ( $item->is_main_reply ): ?>
                 <h3 class="support-system-reply-subject"><?php echo $item->subject; ?></h3>
             <?php endif; ?>
             <p><?php echo $item->message; ?></p>
             <?php if ( ! empty( $item->attachments ) ): ?>
                 <div class="ticket-acttachments-wrap">
-                    <h4><?php _e( 'Anhänge', INCSUB_SUPPORT_LANG_DOMAIN ); ?></h4>
+                    <h4><?php _e( 'Anhänge', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h4>
                     <ul class="ticket-acttachments" >
                         <?php foreach ( $item->attachments as $attachment ): ?>
-                            <li class="ticket-attachment-item"><a href="<?php echo $attachment; ?>" title="<?php _e( 'Download Datei', INCSUB_SUPPORT_LANG_DOMAIN ); ?>"><?php echo basename( $attachment ); ?></a></li>
+                            <li class="ticket-attachment-item"><a href="<?php echo $attachment; ?>" title="<?php _e( 'Download Datei', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>"><?php echo basename( $attachment ); ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -125,7 +125,7 @@ class Incsub_Support_Tickets_History_Table extends WP_List_Table {
         	$sortable
         );
 
-        $this->items = incsub_support_get_ticket_replies( $this->ticket_id );
+        $this->items = psource_support_get_ticket_replies( $this->ticket_id );
 
         $total_items = count( $this->items );
         $per_page = $total_items;

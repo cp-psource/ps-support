@@ -1,7 +1,7 @@
 <?php
 
 
-class Incsub_Support_FAQ {
+class PSource_Support_FAQ {
 
 	public $faq_id = 0;
 
@@ -28,7 +28,7 @@ class Incsub_Support_FAQ {
 
 		if ( is_object( $faq_id ) ) {
 			$_faq = new self( $faq_id );
-			$_faq = incsub_support_sanitize_faq_fields( $_faq );
+			$_faq = psource_support_sanitize_faq_fields( $_faq );
 			return $_faq;
 		}
 
@@ -36,7 +36,7 @@ class Incsub_Support_FAQ {
 		if ( ! $faq_id )
 			return false;
 		
-		$faq_table = incsub_support()->model->faq_table;
+		$faq_table = psource_support()->model->faq_table;
 
 		$_faq = wp_cache_get( $faq_id, 'support_system_faqs' );
 		$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
@@ -64,7 +64,7 @@ class Incsub_Support_FAQ {
 
 		$_faq = new self( $_faq );
 
-		$_faq = incsub_support_sanitize_faq_fields( $_faq );
+		$_faq = psource_support_sanitize_faq_fields( $_faq );
 
 		return $_faq;
 
@@ -78,7 +78,7 @@ class Incsub_Support_FAQ {
 		}
 
 		if ( $this->cat_id )
-			$this->category = incsub_support_get_faq_category( $this->cat_id );
+			$this->category = psource_support_get_faq_category( $this->cat_id );
 	}
 
 	public function get_category_name() {

@@ -1,14 +1,14 @@
 <?php
 
-class Incsub_Support_Admin_FAQ_Menu extends Incsub_Support_Admin_Menu {
+class PSource_Support_Admin_FAQ_Menu extends PSource_Support_Admin_Menu {
 	public function __construct( $slug, $network = false ) {
 		parent::__construct( $slug, $network );
 	}
 
 	public function add_menu() {
 
-		$menu_title = __( 'FAQ', INCSUB_SUPPORT_LANG_DOMAIN );
-		$page_title = __( 'Häufig gestellte Fragen', INCSUB_SUPPORT_LANG_DOMAIN );
+		$menu_title = __( 'FAQ', PSOURCE_SUPPORT_LANG_DOMAIN );
+		$page_title = __( 'Häufig gestellte Fragen', PSOURCE_SUPPORT_LANG_DOMAIN );
 		
 		/**
 		 * Filters the FAQ menu position
@@ -45,21 +45,21 @@ class Incsub_Support_Admin_FAQ_Menu extends Incsub_Support_Admin_Menu {
 	}
 
 	public function enqueue_scripts( $hook ) {
-		incsub_support_enqueue_main_script();
+		psource_support_enqueue_main_script();
 	}
 
 	public function enqueue_styles( $hook ) {
-		wp_enqueue_style( 'mu-support-faq-css', INCSUB_SUPPORT_PLUGIN_URL . 'admin/assets/css/support-admin-faqs-menu.css', array( ), '20130402' );
+		wp_enqueue_style( 'mu-support-faq-css', PSOURCE_SUPPORT_PLUGIN_URL . 'admin/assets/css/support-admin-faqs-menu.css', array( ), '20130402' );
 	}
 
 
 	public function render_inner_page() {
-		$faq_categories = incsub_support_get_faq_categories();
+		$faq_categories = psource_support_get_faq_categories();
 
 		if ( isset( $_POST['submit-faq-search'] ) && check_admin_referer( 'faq_search' ) ) {
 			$new_faq_categories = array();
 			foreach ( $faq_categories as $key => $item ) {
-				$answers = incsub_support_get_faqs( array( 's' => $_POST['faq-s'], 'per_page' => -1, 'category' => $item->cat_id ) );
+				$answers = psource_support_get_faqs( array( 's' => $_POST['faq-s'], 'per_page' => -1, 'category' => $item->cat_id ) );
 				if ( count( $answers ) > 0 ) {
 					$the_faq = $item;
 	            	$the_faq->answers = $answers;
@@ -73,8 +73,8 @@ class Incsub_Support_Admin_FAQ_Menu extends Incsub_Support_Admin_Menu {
 		}
 		else {
 	    	foreach ( $faq_categories as $key => $item ) {
-	            $faq_categories[ $key ]->faqs = incsub_support_count_faqs_on_category( $item->cat_id );
-	            $faq_categories[ $key ]->answers = incsub_support_get_faqs( array( 'category' => $item->cat_id ) );
+	            $faq_categories[ $key ]->faqs = psource_support_count_faqs_on_category( $item->cat_id );
+	            $faq_categories[ $key ]->answers = psource_support_get_faqs( array( 'category' => $item->cat_id ) );
 	        }
 	    }		    
 

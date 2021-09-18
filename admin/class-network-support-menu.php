@@ -1,6 +1,6 @@
 <?php
 
-class Incsub_Support_Network_Support_Menu extends Incsub_Support_Parent_Support_Menu {
+class PSource_Support_Network_Support_Menu extends PSource_Support_Parent_Support_Menu {
 
 	public function __construct( $slug, $network = false ) {
 		parent::__construct( $slug, $network );
@@ -12,15 +12,15 @@ class Incsub_Support_Network_Support_Menu extends Incsub_Support_Parent_Support_
 
 
 	public function add_menu() {
-		$unviewed_tickets = incsub_support_get_tickets_count( array( 'view_by_superadmin' => 0 ) );
+		$unviewed_tickets = psource_support_get_tickets_count( array( 'view_by_superadmin' => 0 ) );
 		
-		$menu_title = __( 'Support', INCSUB_SUPPORT_LANG_DOMAIN );
+		$menu_title = __( 'Support', PSOURCE_SUPPORT_LANG_DOMAIN );
 		if ( $unviewed_tickets ) {
-			$warning_title = __( '%d nicht angesehene Tickets', INCSUB_SUPPORT_LANG_DOMAIN );
+			$warning_title = __( '%d nicht angesehene Tickets', PSOURCE_SUPPORT_LANG_DOMAIN );
 			$menu_title .= " <span class='update-plugins count-$unviewed_tickets' title='$warning_title'><span class='update-count'>" . number_format_i18n( $unviewed_tickets ) . "</span></span>";	
 		}
 		parent::add_menu_page(
-			__( 'Support Ticket Management System', INCSUB_SUPPORT_LANG_DOMAIN ),
+			__( 'Support Ticket Management System', PSOURCE_SUPPORT_LANG_DOMAIN ),
 			$menu_title, 
 			is_multisite() ? 'manage_network' : 'manage_options',
 			'dashicons-sos'

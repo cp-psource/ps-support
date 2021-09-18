@@ -7,7 +7,7 @@
  * @param string $date The date
  * @return string Date
  */
-function incsub_support_get_translated_date( $date, $human_read = false ) {
+function psource_support_get_translated_date( $date, $human_read = false ) {
 	// get the date from gmt date in Y-m-d H:i:s
 	$date_in_gmt = get_date_from_gmt($date);
 
@@ -26,15 +26,15 @@ function incsub_support_get_translated_date( $date, $human_read = false ) {
 	return $transl_date;
 }
 
-function incsub_support_get_model() {
+function psource_support_get_model() {
 	return MU_Support_System_Model::get_instance();
 }
 
-function incsub_support_priority_dropdown( $args = array() ) {
+function psource_support_priority_dropdown( $args = array() ) {
 	$defaults = array(
 		'name' => 'ticket-priority',
 		'id' => false,
-		'show_empty' => __( '-- Priorität wählen --', INCSUB_SUPPORT_LANG_DOMAIN ),
+		'show_empty' => __( '-- Priorität wählen --', PSOURCE_SUPPORT_LANG_DOMAIN ),
 		'selected' => null,
 		'echo' => true
 	);
@@ -48,7 +48,7 @@ function incsub_support_priority_dropdown( $args = array() ) {
 	if ( ! $echo )
 		ob_start();
 
-	$plugin_class = incsub_support();
+	$plugin_class = psource_support();
 	$priorities = $plugin_class::$ticket_priority;
 	?>
 		<select name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>">
@@ -67,18 +67,18 @@ function incsub_support_priority_dropdown( $args = array() ) {
 		return ob_get_clean();
 }
 
-function incsub_support_super_admins_dropdown( $args = array() ) {
+function psource_support_super_admins_dropdown( $args = array() ) {
 	$defaults = array(
 		'name' => 'super-admins',
 		'id' => false,
-		'show_empty' => __( 'Select a staff', INCSUB_SUPPORT_LANG_DOMAIN ),
+		'show_empty' => __( 'Select a staff', PSOURCE_SUPPORT_LANG_DOMAIN ),
 		'selected' => null,
 		'echo' => true,
 		'value' => 'username' // Or integer
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$plugin = incsub_support();
+	$plugin = psource_support();
 	$super_admins = MU_Support_System::get_super_admins();
 
 	extract( $args );
@@ -106,7 +106,7 @@ function incsub_support_super_admins_dropdown( $args = array() ) {
 		return ob_get_clean();
 }
 
-function incsub_support_get_errors( $setting ) {
+function psource_support_get_errors( $setting ) {
 	global $support_system_errors;
 
 	if ( ! count( $support_system_errors ) )
@@ -124,7 +124,7 @@ function incsub_support_get_errors( $setting ) {
 	return $support_system_errors;
 }
 
-function incsub_support_add_error( $setting, $code, $message ) {
+function psource_support_add_error( $setting, $code, $message ) {
 	global $support_system_errors;
 
 	$support_system_errors[] = array(
@@ -134,17 +134,17 @@ function incsub_support_add_error( $setting, $code, $message ) {
 	);
 }
 
-function incsub_support_get_version() {
-	return INCSUB_SUPPORT_PLUGIN_VERSION;
+function psource_support_get_version() {
+	return PSOURCE_SUPPORT_PLUGIN_VERSION;
 }
 
 
-function incsub_support_register_main_script() {
+function psource_support_register_main_script() {
 	$suffix = '.min';
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
 		$suffix = '';
 
-	wp_register_script( 'support-system', INCSUB_SUPPORT_PLUGIN_URL . 'assets/js/support-system' . $suffix . '.js', array( 'jquery' ), incsub_support_get_version(), true );
+	wp_register_script( 'support-system', PSOURCE_SUPPORT_PLUGIN_URL . 'assets/js/support-system' . $suffix . '.js', array( 'jquery' ), psource_support_get_version(), true );
 
 	$l10n = array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' )
@@ -152,20 +152,20 @@ function incsub_support_register_main_script() {
 	wp_localize_script( 'support-system', 'support_system_strings', $l10n );
 }
 
-function incsub_support_enqueue_main_script() {
+function psource_support_enqueue_main_script() {
 	if ( ! wp_script_is( 'support-system', 'registered' ) )
-		incsub_support_register_main_script();
+		psource_support_register_main_script();
 
 	wp_enqueue_script( 'support-system' );
 
 }
 
-function incsub_support_enqueue_foundation_scripts( $in_footer = true ) {
+function psource_support_enqueue_foundation_scripts( $in_footer = true ) {
 	$suffix = '.min';
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
 		$suffix = '';
 
-	wp_enqueue_script( 'support-system-foundation-js', INCSUB_SUPPORT_PLUGIN_URL . 'assets/js/foundation' . $suffix . '.js', array( 'jquery' ), incsub_support_get_version(), $in_footer );
+	wp_enqueue_script( 'support-system-foundation-js', PSOURCE_SUPPORT_PLUGIN_URL . 'assets/js/foundation' . $suffix . '.js', array( 'jquery' ), psource_support_get_version(), $in_footer );
 }
 
 
@@ -174,9 +174,9 @@ function incsub_support_enqueue_foundation_scripts( $in_footer = true ) {
  *
  * @param $classname The class name of the integrator
  */
-function incsub_support_add_integrator( $classname ) {
+function psource_support_add_integrator( $classname ) {
 	if ( class_exists( $classname ) ) {
-		$plugin = incsub_support();
+		$plugin = psource_support();
 		$r = new ReflectionClass( $classname );
 		$plugin->add_integrator( $r->newInstance() );
 	}

@@ -5,14 +5,14 @@ if(!class_exists('WP_List_Table')){
 }
 
 
-class Incsub_Support_Tickets_Table extends WP_List_Table {
+class PSource_Support_Tickets_Table extends WP_List_Table {
 
     function __construct( $args = array() ){
 
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => __( 'Ticket', INCSUB_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'Tickets', INCSUB_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'Ticket', PSOURCE_SUPPORT_LANG_DOMAIN ),  
+            'plural'    => __( 'Tickets', PSOURCE_SUPPORT_LANG_DOMAIN ), 
             'ajax'      => false        
         ) );
 
@@ -33,7 +33,7 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
     }
 
     function column_priority( $item ) {
-        $priority_name = incsub_support_get_ticket_priority_name( (int)$item->ticket_priority );
+        $priority_name = psource_support_get_ticket_priority_name( (int)$item->ticket_priority );
         $class = 'dashicons-before dashicons-marker ticket-priority-' . $item->ticket_priority;
         return '<span class="' . $class . '"> ' . $priority_name . '</span>';
     }
@@ -47,7 +47,7 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
     }
 
     function column_status( $item ) {
-        $status_name = incsub_support_get_ticket_status_name( (int)$item->ticket_status );
+        $status_name = psource_support_get_ticket_status_name( (int)$item->ticket_status );
         $class = 'dashicons-before ';
 
         switch ( $item->ticket_status ) {
@@ -59,14 +59,14 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
             case 5: { $class .= 'dashicons-no'; break; }
         } 
 
-        $plugin = incsub_support();
+        $plugin = psource_support();
         $plugin::$ticket_status = array(
-                0   =>  __( 'Neu', INCSUB_SUPPORT_LANG_DOMAIN ),
-                1   =>  __( 'In Bearbeitung', INCSUB_SUPPORT_LANG_DOMAIN ),
-                2   =>  __( 'Warten auf die Antwort des Benutzers', INCSUB_SUPPORT_LANG_DOMAIN ),
-                3   =>  __( 'Warten auf Antwort des Admin', INCSUB_SUPPORT_LANG_DOMAIN ),
-                4   =>  __( 'Stockt', INCSUB_SUPPORT_LANG_DOMAIN ),
-                5   =>  __( 'Geschlossen', INCSUB_SUPPORT_LANG_DOMAIN )
+                0   =>  __( 'Neu', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                1   =>  __( 'In Bearbeitung', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                2   =>  __( 'Warten auf die Antwort des Benutzers', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                3   =>  __( 'Warten auf Antwort des Admin', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                4   =>  __( 'Stockt', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                5   =>  __( 'Geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN )
             );
 
 
@@ -108,15 +108,15 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
         );
 
         $actions = array(
-            'edit'    => sprintf( __( '<a href="%s">Bearbeiten</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $link ),
-            'delete'    => sprintf( __( '<a href="%s">Ticket löschen</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $delete_link )
+            'edit'    => sprintf( __( '<a href="%s">Bearbeiten</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $link ),
+            'delete'    => sprintf( __( '<a href="%s">Ticket löschen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $delete_link )
         );
 
-        if ( incsub_support_current_user_can( 'open_ticket', $item->ticket_id ) )
-            $actions['open'] = sprintf( __( '<a href="%s" class="open-ticket">Öffne Ticket</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $open_link );
+        if ( psource_support_current_user_can( 'open_ticket', $item->ticket_id ) )
+            $actions['open'] = sprintf( __( '<a href="%s" class="open-ticket">Öffne Ticket</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $open_link );
 
-        if ( incsub_support_current_user_can( 'close_ticket', $item->ticket_id ) )
-            $actions['close'] = sprintf( __( '<a href="%s" class="close-ticket">Ticket schließen</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $close_link );
+        if ( psource_support_current_user_can( 'close_ticket', $item->ticket_id ) )
+            $actions['close'] = sprintf( __( '<a href="%s" class="close-ticket">Ticket schließen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $close_link );
 
         $status = $this->_args['status'];
 
@@ -134,7 +134,7 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
 
         }
 
-        if ( ! incsub_support_current_user_can( 'delete_ticket' ) && isset( $actions['delete'] ) )
+        if ( ! psource_support_current_user_can( 'delete_ticket' ) && isset( $actions['delete'] ) )
             unset( $actions['delete'] );
 
         $actions = apply_filters( 'support_system_tickets_actions', $actions, $item );        
@@ -145,7 +145,7 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
 
     function column_submitted( $item ) {
 
-        $value = __( 'Unknown', INCSUB_SUPPORT_LANG_DOMAIN );
+        $value = __( 'Unknown', PSOURCE_SUPPORT_LANG_DOMAIN );
 
         if ( is_multisite() ) {
             $blog_details = get_blog_details( array( 'blog_id' => (int)$item->blog_id ) );
@@ -163,7 +163,7 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
     }
 
     function column_updated( $item ) {
-        return incsub_support_get_translated_date( $item->ticket_updated ); 
+        return psource_support_get_translated_date( $item->ticket_updated ); 
     }
 
     function column_replies( $item ) {
@@ -174,15 +174,15 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />',
-            'id'        => __( 'Ticket ID', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'subject'   => __( 'Betreff', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'status'    => __( 'Status', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'priority'  => __( 'Priorität', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'category'  => __( 'Kategorie', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'staff'     => __( 'Mitarbeiter', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'submitted' => __( 'Eingereicht von', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'replies' => __( 'Antwort Nr.', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'updated'   => __( 'Letzte Aktualisierung (GMT)', INCSUB_SUPPORT_LANG_DOMAIN )
+            'id'        => __( 'Ticket ID', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'subject'   => __( 'Betreff', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'status'    => __( 'Status', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'priority'  => __( 'Priorität', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'category'  => __( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'staff'     => __( 'Mitarbeiter', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'submitted' => __( 'Eingereicht von', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'replies' => __( 'Antwort Nr.', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'updated'   => __( 'Letzte Aktualisierung (GMT)', PSOURCE_SUPPORT_LANG_DOMAIN )
         );
 
         if ( ! $this->get_bulk_actions() )
@@ -208,20 +208,20 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
         if ( 'top' == $which) {
 
             $cat_filter_args = array(
-                'show_empty' => __( 'Alle Kategorien anzeigen', INCSUB_SUPPORT_LANG_DOMAIN ),
+                'show_empty' => __( 'Alle Kategorien anzeigen', PSOURCE_SUPPORT_LANG_DOMAIN ),
                 'selected' => isset( $_GET['category'] ) ? absint( $_GET['category'] ) : false
             );
 
             $priority_filter_args = array(
-                'show_empty' => __( 'Alle Prioritäten', INCSUB_SUPPORT_LANG_DOMAIN ),
+                'show_empty' => __( 'Alle Prioritäten', PSOURCE_SUPPORT_LANG_DOMAIN ),
                 'selected' => isset( $_GET['priority'] ) ? absint( $_GET['priority'] ) : null
             );
 
             ?>
                 <div class="alignleft actions">
-                    <?php incsub_support_ticket_categories_dropdown( $cat_filter_args ); ?>
-                    <?php incsub_support_priority_dropdown( $priority_filter_args ); ?>
-                    <input type="submit" name="filter_action" id="ticket-query-submit" class="button" value="<?php echo esc_attr( 'Filter', INCSUB_SUPPORT_LANG_DOMAIN ); ?>">     
+                    <?php psource_support_ticket_categories_dropdown( $cat_filter_args ); ?>
+                    <?php psource_support_priority_dropdown( $priority_filter_args ); ?>
+                    <input type="submit" name="filter_action" id="ticket-query-submit" class="button" value="<?php echo esc_attr( 'Filter', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>">     
                 </div>
         <?php
            
@@ -233,14 +233,14 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
     function get_bulk_actions() {
         $actions = array();
 
-        if ( incsub_support_current_user_can( 'delete_ticket' ) )
-            $actions['delete'] = __( 'Löschen', INCSUB_SUPPORT_LANG_DOMAIN );
+        if ( psource_support_current_user_can( 'delete_ticket' ) )
+            $actions['delete'] = __( 'Löschen', PSOURCE_SUPPORT_LANG_DOMAIN );
 
-        if ( incsub_support_current_user_can( 'open_ticket' ) )
-            $actions['open'] = __( 'Öffnen', INCSUB_SUPPORT_LANG_DOMAIN );
+        if ( psource_support_current_user_can( 'open_ticket' ) )
+            $actions['open'] = __( 'Öffnen', PSOURCE_SUPPORT_LANG_DOMAIN );
 
-        if ( incsub_support_current_user_can( 'close_ticket' ) )
-            $actions['close'] = __( 'Schließen', INCSUB_SUPPORT_LANG_DOMAIN );
+        if ( psource_support_current_user_can( 'close_ticket' ) )
+            $actions['close'] = __( 'Schließen', PSOURCE_SUPPORT_LANG_DOMAIN );
 
         if ( 'archive' == $this->_args['status'] ) {
             unset( $actions['close'] );
@@ -260,19 +260,19 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
 
     function process_bulk_action() {
         
-        if( 'delete' === $this->current_action() && incsub_support_current_user_can( 'delete_ticket' ) ) {
+        if( 'delete' === $this->current_action() && psource_support_current_user_can( 'delete_ticket' ) ) {
 
             if ( isset( $_POST['ticket'] ) && is_array( $_POST['ticket'] ) ) {
                 foreach ( $_POST['ticket'] as $ticket_id ) {
-                    if ( incsub_support_is_ticket_closed( $ticket_id ) ) {
-                        incsub_support_delete_ticket( absint( $ticket_id ) );
+                    if ( psource_support_is_ticket_closed( $ticket_id ) ) {
+                        psource_support_delete_ticket( absint( $ticket_id ) );
                     }
                 }
             }
             elseif ( isset( $_GET['tid'] ) && is_numeric( $_GET['tid'] ) ) {
-                $ticket = incsub_support_get_ticket( $_GET['tid'] );
+                $ticket = psource_support_get_ticket( $_GET['tid'] );
                 if ( $ticket )
-                    incsub_support_delete_ticket( $ticket->ticket_id );
+                    psource_support_delete_ticket( $ticket->ticket_id );
             }
 
         }
@@ -287,8 +287,8 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
 
             $ids = array_map( 'absint', $ids );
             foreach ( $ids as $id ) {
-                if ( incsub_support_current_user_can( 'open_ticket', $id ) )
-                    incsub_support_restore_ticket_previous_status( $id );
+                if ( psource_support_current_user_can( 'open_ticket', $id ) )
+                    psource_support_restore_ticket_previous_status( $id );
             }
         }
 
@@ -301,8 +301,8 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
 
             $ids = array_map( 'absint', $ids );
             foreach ( $ids as $id ) {
-                if ( incsub_support_current_user_can( 'close_ticket', $id ) )
-                    incsub_support_close_ticket( $id );
+                if ( psource_support_current_user_can( 'close_ticket', $id ) )
+                    psource_support_close_ticket( $id );
             }
         }
 
@@ -314,7 +314,7 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
         $row_class = ( $row_class == '' ? ' class="alternate"' : '' );
 
         $background = '';
-        if ( ! $item->view_by_superadmin && incsub_support_current_user_can( 'manage_options' ) )
+        if ( ! $item->view_by_superadmin && psource_support_current_user_can( 'manage_options' ) )
             $background .= 'style="background-color:#e8f3b9" ';
 
         echo '<tr ' . $background . $row_class . '>';
@@ -364,12 +364,12 @@ class Incsub_Support_Tickets_Table extends WP_List_Table {
         /**
          * Filters the query arguments in Tickets table
          *
-         * @param Array $args Query arguments that will  be passed to incsub_support_get_tickets function
+         * @param Array $args Query arguments that will  be passed to psource_support_get_tickets function
          */
         $args = apply_filters( 'support_system_tickets_table_query_args', $args );
 
-        $this->items = incsub_support_get_tickets( $args );
-        $total_items = incsub_support_get_tickets_count( $args );
+        $this->items = psource_support_get_tickets( $args );
+        $total_items = psource_support_get_tickets_count( $args );
 
         $this->set_pagination_args( array(
             'total_items' => $total_items,                

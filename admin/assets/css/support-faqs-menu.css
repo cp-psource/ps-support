@@ -1,33 +1,32 @@
-.incsub-support-meter { 
-    height:15px;
+.psource-support-meter {
+    height: 15px;
     position: relative;
     background: #555;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    width:40%;
+    width: 40%;
     text-align: center;
-    color:white;
+    color: white;
     font-weight: bold;
     line-height: 15px;
     font-size: 11px;
 }
 
-.incsub-support-meter > span {
+.psource-support-meter>span {
     display: block;
     height: 100%;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    
     position: relative;
     overflow: hidden;
 }
 
-.incsub-support-meter > span.incsub-support-meter-yes {
+.psource-support-meter>span.psource-support-meter-yes {
     background-color: #2B9647;
 }
 
-.incsub-support-meter > span.incsub-support-meter-no {
+.psource-support-meter>span.psource-support-meter-no {
     background-color: #C73A28;
 }

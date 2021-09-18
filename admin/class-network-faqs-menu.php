@@ -1,6 +1,6 @@
 <?php
 
-class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
+class PSource_Support_Network_FAQ_Menu extends PSource_Support_Admin_Menu {
 
 	public function __construct( $slug, $network = false ) {
 		parent::__construct( $slug, $network );
@@ -15,8 +15,8 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 	public function add_menu() {		
 		parent::add_submenu_page(
 			'ticket-manager',
-			__( 'FAQ Manager', INCSUB_SUPPORT_LANG_DOMAIN ),
-			__( 'FAQ Manager', INCSUB_SUPPORT_LANG_DOMAIN ), 
+			__( 'FAQ Manager', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			__( 'FAQ Manager', PSOURCE_SUPPORT_LANG_DOMAIN ), 
 			is_multisite() ? 'manage_network' : 'manage_options'
 		);
 
@@ -30,7 +30,7 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 
 		add_filter( 'support_system_faqs_table_menu_url', array( $this, 'get_menu_url' ) );
 
-		if ( ! isset( $_GET['action'] ) && incsub_support_current_user_can( 'insert_faq' ) )
+		if ( ! isset( $_GET['action'] ) && psource_support_current_user_can( 'insert_faq' ) )
 			add_filter( 'support_system_admin_page_title', array( $this, 'add_new_faq_link' ) );
 
 		if ( isset( $_GET['action'] ) && isset( $_GET['fid'] ) && 'edit' === $_GET['action'] )
@@ -43,20 +43,20 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 	}
 
 	public function enqueue_styles() {
-		wp_enqueue_style( 'mu-support-faq-css', INCSUB_SUPPORT_PLUGIN_URL . 'admin/assets/css/support-faqs-menu.css', array(), '20130402' );
+		wp_enqueue_style( 'mu-support-faq-css', PSOURCE_SUPPORT_PLUGIN_URL . 'admin/assets/css/support-faqs-menu.css', array(), '20130402' );
 	}
 
 	public function add_new_faq_title( $title ) {
-		return '<h2>' . esc_html( __( 'Neue FAQ hinzufügen', INCSUB_SUPPORT_LANG_DOMAIN ) ) . '</h2>';
+		return '<h2>' . esc_html( __( 'Neue FAQ hinzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ) ) . '</h2>';
 	}
 
 	public function add_new_faq_link( $title ) {
 		$add_new_link = add_query_arg( 'action', 'add', $this->get_menu_url() );
-		return '<h2>'. $this->get_menu_title() . ' <a href="' . esc_url( $add_new_link ) . '" class="add-new-h2">' . esc_html__( 'Neue FAQ hinzufügen', INCSUB_SUPPORT_LANG_DOMAIN ) . '</a></h2>';
+		return '<h2>'. $this->get_menu_title() . ' <a href="' . esc_url( $add_new_link ) . '" class="add-new-h2">' . esc_html__( 'Neue FAQ hinzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a></h2>';
 	}
 
 	public function save_screen_options( $status, $option, $value ) {
-		if ( 'incsub_support_faqs_per_page' == $option ) 
+		if ( 'psource_support_faqs_per_page' == $option ) 
 			return $value;
 
 		return $status;
@@ -67,17 +67,17 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 		$action = isset( $_GET['action'] ) ? $_GET['action'] : false;
 
 		if ( 'edit' == $action && isset( $_GET['fid'] ) ) {
-			$faq = incsub_support_get_faq( $_GET['fid'] );
+			$faq = psource_support_get_faq( $_GET['fid'] );
 			if ( ! $faq )
-				wp_die( __( 'Die FAQ existiert nicht', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Die FAQ existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			
-			if ( isset( $_POST['category'] ) && $selected_category = incsub_support_get_faq_category( absint( $_POST['category'] ) ) )
+			if ( isset( $_POST['category'] ) && $selected_category = psource_support_get_faq_category( absint( $_POST['category'] ) ) )
 				$category = $selected_category;
 			else
 				$category = $faq->cat_id;
 
 			// Categories dropdown
-			$categories_dropdown = incsub_support_faq_categories_dropdown(
+			$categories_dropdown = psource_support_faq_categories_dropdown(
 				array( 
 					'show_empty' => false,
 					'echo' => false,
@@ -104,15 +104,15 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 
 		}
 		else if ( 'add' == $action ) {
-			if ( isset( $_POST['category'] ) && $selected_category = incsub_support_get_faq_category( absint( $_POST['category'] ) ) ) {
+			if ( isset( $_POST['category'] ) && $selected_category = psource_support_get_faq_category( absint( $_POST['category'] ) ) ) {
 				$category = $selected_category;
 			}
 			else {
-				$category = incsub_support_get_default_faq_category();
+				$category = psource_support_get_default_faq_category();
 			}
 
 			// Categories dropdown
-			$categories_dropdown = incsub_support_faq_categories_dropdown(
+			$categories_dropdown = psource_support_faq_categories_dropdown(
 				array( 
 					'show_empty' => false,
 					'echo' => false,
@@ -126,7 +126,7 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 				$question = stripslashes_deep( $_POST['question'] );
 			}
 			elseif( ! empty( $_REQUEST['tid'] ) ) {
-				$ticket = incsub_support_get_ticket( $_REQUEST['tid'] );
+				$ticket = psource_support_get_ticket( $_REQUEST['tid'] );
 				if ( $ticket )
 					$question = $ticket->title;
 			}
@@ -136,7 +136,7 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 				$answer = stripslashes_deep( $_POST['answer'] );
 			}
 			elseif ( ! empty( $_REQUEST['rid'] ) ) {
-				$reply = incsub_support_get_ticket_reply( $_REQUEST['rid'] );
+				$reply = psource_support_get_ticket_reply( $_REQUEST['rid'] );
 				if ( $reply )
 					$answer = $reply->message;
 			}
@@ -149,7 +149,7 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 		else {
 			include_once( 'inc/class-table-faqs.php' );
 
-			$table = new Incsub_Support_FAQS_Table();
+			$table = new PSource_Support_FAQS_Table();
 			$table->prepare_items();
 
 			include_once( 'views/network-faqs.php' );
@@ -159,7 +159,7 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 
 	public function on_load() {
 		// Add screen options
-		add_screen_option( 'per_page', array( 'label' => __( 'FAQs pro Seite', INCSUB_SUPPORT_LANG_DOMAIN ), 'default' => 20, 'option' => 'incsub_support_faqs_per_page' ) );
+		add_screen_option( 'per_page', array( 'label' => __( 'FAQs pro Seite', PSOURCE_SUPPORT_LANG_DOMAIN ), 'default' => 20, 'option' => 'psource_support_faqs_per_page' ) );
 
 		// Check filtering
 		if ( isset( $_POST['filter_action'] ) || ! empty( $_POST['s'] ) ) {
@@ -198,26 +198,26 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 			$args = array();
 
 			if ( empty( $_POST['answer'] ) )
-				add_settings_error( 'support_system_submit_new_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			else
 				$args['answer'] = wpautop( stripslashes_deep( $_POST['answer'] ) );
 
 			$question = strip_tags( stripslashes_deep( $_POST['question'] ) );
 			if ( empty( $question ) )
-				add_settings_error( 'support_system_submit_new_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			else
 				$args['question'] = $question;
 
-			$category = incsub_support_get_faq_category( absint( $_POST['category'] ) );
+			$category = psource_support_get_faq_category( absint( $_POST['category'] ) );
 			if ( ! $category ) {
-				add_settings_error( 'support_system_submit_new_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			}
 			else {
 				$args['cat_id'] = $category->cat_id;
 			}
 
 			if ( ! get_settings_errors( 'support_system_submit_new_faq' ) ) {
-				$result = incsub_support_insert_faq( $args );
+				$result = psource_support_insert_faq( $args );
 				if ( is_wp_error( $result ) ) {
 					add_settings_error( 'support_system_submit_new_faq', 'insert_error', $result->get_error_message() );
 				}
@@ -235,26 +235,26 @@ class Incsub_Support_Network_FAQ_Menu extends Incsub_Support_Admin_Menu {
 			$args = array();
 
 			if ( empty( $_POST['answer'] ) )
-				add_settings_error( 'support_system_submit_edit_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_edit_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			else
 				$args['answer'] = wpautop( stripslashes_deep( $_POST['answer'] ) );
 
 			$question = strip_tags( stripslashes_deep( $_POST['question'] ) );
 			if ( empty( $question ) )
-				add_settings_error( 'support_system_submit_edit_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_edit_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			else
 				$args['question'] = $question;
 
-			$category = incsub_support_get_faq_category( absint( $_POST['category'] ) );
+			$category = psource_support_get_faq_category( absint( $_POST['category'] ) );
 			if ( ! $category ) {
-				add_settings_error( 'support_system_submit_edit_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_edit_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 			}
 			else {
 				$args['cat_id'] = $category->cat_id;
 			}
 
 			if ( ! get_settings_errors( 'support_system_submit_edit_faq' ) ) {
-				$result = incsub_support_update_faq( $faq_id, $args );
+				$result = psource_support_update_faq( $faq_id, $args );
 				if ( is_wp_error( $result ) ) {
 					add_settings_error( 'support_system_submit_edit_faq', 'insert_error', $result->get_error_message() );
 				}

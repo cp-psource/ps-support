@@ -1,7 +1,7 @@
 <?php
 
 
-class Incsub_Support_Ticket {
+class PSource_Support_Ticket {
 
 	public $ticket_id;
 
@@ -46,7 +46,7 @@ class Incsub_Support_Ticket {
 
 		if ( is_object( $ticket_id ) ) {
 			$_ticket = new self( $ticket_id );
-			$_ticket = incsub_support_sanitize_ticket_fields( $_ticket );
+			$_ticket = psource_support_sanitize_ticket_fields( $_ticket );
 			return $_ticket;
 		}
 
@@ -54,7 +54,7 @@ class Incsub_Support_Ticket {
 		if ( ! $ticket_id )
 			return false;
 		
-		$tickets_table = incsub_support()->model->tickets_table;
+		$tickets_table = psource_support()->model->tickets_table;
 
 		$_ticket = wp_cache_get( $ticket_id, 'support_system_tickets' );
 
@@ -80,7 +80,7 @@ class Incsub_Support_Ticket {
 
 		$_ticket = new self( $_ticket );
 
-		$_ticket = incsub_support_sanitize_ticket_fields( $_ticket );
+		$_ticket = psource_support_sanitize_ticket_fields( $_ticket );
 
 		return $_ticket;
 
@@ -92,7 +92,7 @@ class Incsub_Support_Ticket {
 		}
 
 		if ( $this->cat_id )
-			$this->category = incsub_support_get_ticket_category( $this->cat_id );
+			$this->category = psource_support_get_ticket_category( $this->cat_id );
 	}
 
 	public function __get( $name ) {
@@ -138,7 +138,7 @@ class Incsub_Support_Ticket {
 	}
 
 	public function get_replies() {
-		$this->replies = incsub_support_get_ticket_replies( $this->ticket_id );
+		$this->replies = psource_support_get_ticket_replies( $this->ticket_id );
 
 		return $this->replies;
 	}
@@ -147,7 +147,7 @@ class Incsub_Support_Ticket {
 		$user = get_userdata( $this->admin_id );
 
 		if ( ! $user )
-			return __( 'Noch nicht zugewiesen', INCSUB_SUPPORT_LANG_DOMAIN );
+			return __( 'Noch nicht zugewiesen', PSOURCE_SUPPORT_LANG_DOMAIN );
 
 		return $user->display_name;
 	}
@@ -156,7 +156,7 @@ class Incsub_Support_Ticket {
 		$user = get_userdata( $this->admin_id );		
 
 		if ( ! $user )
-			return __( 'Noch nicht zugewiesen', INCSUB_SUPPORT_LANG_DOMAIN );
+			return __( 'Noch nicht zugewiesen', PSOURCE_SUPPORT_LANG_DOMAIN );
 
 		return $user->user_login;
 	}
@@ -166,7 +166,7 @@ class Incsub_Support_Ticket {
 		$user = get_userdata( $this->user_id );
 
 		if ( ! $user )
-			return __( 'Benutzer nicht gefunden', INCSUB_SUPPORT_LANG_DOMAIN );
+			return __( 'Benutzer nicht gefunden', PSOURCE_SUPPORT_LANG_DOMAIN );
 
 		return $user->display_name;
 	}

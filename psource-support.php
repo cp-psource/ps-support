@@ -1,19 +1,18 @@
 <?php
 /*
 Plugin Name: PS Support System
-Plugin URI: https://n3rds.work/wiki/piestingtal-source-wiki/ps-support-system-plugin/
+Plugin URI: https://n3rds.work/piestingtal_source/ps-support-system-plugin/
 Description: Richte auf jeder WordPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
-Author: WMS N3rds@Work
-WDP ID: 36
+Author: DerN3rd (WMS N@W)
 Network: true
-Version: 2.2.0.0
+Version: 2.2.1
 License: GPLv2
 Author URI: https://n3rds.work
-Text Domain: incsub-support
+Text Domain: psource-support
 */
 
 /*
-Copyright 2018-2020 WMS N3rds@Work (https://n3rds.work)
+Copyright 2018-2021 WMS N3rds@Work (https://n3rds.work)
 Author DerN3rd
 
 This program is free software; you can redistribute it and/or modify
@@ -32,22 +31,29 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 Foundation 5 License: See license-foundation.txt
 */
 
-define( 'INCSUB_SUPPORT_PLUGIN_VERSION', '2.2.0.0' );
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-support', 
+	__FILE__, 
+	'ps-support' 
+);
 
-if ( ! defined( 'INCSUB_SUPPORT_LANG_DOMAIN' ) )
-	define('INCSUB_SUPPORT_LANG_DOMAIN', 'incsub-support');
+define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.1' );
 
-define( 'INCSUB_SUPPORT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'INCSUB_SUPPORT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'PSOURCE_SUPPORT_LANG_DOMAIN' ) )
+	define('PSOURCE_SUPPORT_LANG_DOMAIN', 'psource-support');
 
-define( 'INCSUB_SUPPORT_ASSETS_URL', INCSUB_SUPPORT_PLUGIN_URL . 'assets/' );
+define( 'PSOURCE_SUPPORT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'PSOURCE_SUPPORT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
+define( 'PSOURCE_SUPPORT_ASSETS_URL', PSOURCE_SUPPORT_PLUGIN_URL . 'assets/' );
 
 if ( ! class_exists( 'MU_Support_System') ) {
 
 	class MU_Support_System {
 
 		// Current version of the plugin
-		public static $version = INCSUB_SUPPORT_PLUGIN_VERSION;
+		public static $version = PSOURCE_SUPPORT_PLUGIN_VERSION;
 
 		// Sets of valid values like status, or privacy options
 		public static $ticket_status;
@@ -55,7 +61,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 		public static $responsibilities;
 		public static $privacy;
 		public static $fetch_imap;
-		public static $incsub_support_imap_ssl;
+		public static $psource_support_imap_ssl;
 
 		// Plugin settings
 		public $settings = array();
@@ -108,7 +114,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 			register_deactivation_hook( __FILE__, array( &$this, 'deactivate' ) );
 
 			// Is this an upgrade?
-			add_action( 'init', 'incsub_support_check_for_upgrades' );
+			add_action( 'init', 'psource_support_check_for_upgrades' );
 
 			add_action( 'plugins_loaded', array( &$this, 'load_text_domain' ), 100 );
 
@@ -121,29 +127,29 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 		public function init_plugin() {
 
-			$this->model = incsub_support_get_model();
-			$this->settings = new Incsub_Support_Settings();
-			$this->query = new Incsub_Support_Query();
+			$this->model = psource_support_get_model();
+			$this->settings = new PSource_Support_Settings();
+			$this->query = new PSource_Support_Query();
 
 			if ( is_admin() )
-				$this->admin = new Incsub_Support_Admin();
+				$this->admin = new PSource_Support_Admin();
 
 			// Setting properties
 			self::$ticket_status = array(
-				0	=>	__( 'Neu', INCSUB_SUPPORT_LANG_DOMAIN ),
-				1	=>	__( 'In Bearbeitung', INCSUB_SUPPORT_LANG_DOMAIN ),
-				2	=>	__( 'Warten auf die Antwort des Benutzers', INCSUB_SUPPORT_LANG_DOMAIN ),
-				3	=>	__( 'Warten auf Admin, um zu antworten', INCSUB_SUPPORT_LANG_DOMAIN ),
-				4	=>	__( 'Eingestellt', INCSUB_SUPPORT_LANG_DOMAIN ),
-				5	=>	__( 'Geschlossen', INCSUB_SUPPORT_LANG_DOMAIN )
+				0	=>	__( 'Neu', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				1	=>	__( 'In Bearbeitung', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				2	=>	__( 'Warten auf die Antwort des Benutzers', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				3	=>	__( 'Warten auf Admin, um zu antworten', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				4	=>	__( 'Eingestellt', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				5	=>	__( 'Geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN )
 			);
 
 			self::$ticket_priority = array(
-				0	=>	__( 'Niedrig', INCSUB_SUPPORT_LANG_DOMAIN ),
-				1	=>	__( 'Normal', INCSUB_SUPPORT_LANG_DOMAIN ),
-				2	=>	__( 'Hoch', INCSUB_SUPPORT_LANG_DOMAIN ),
-				3	=>	__( 'Eilt', INCSUB_SUPPORT_LANG_DOMAIN ),
-				4	=>	__( 'Dringend', INCSUB_SUPPORT_LANG_DOMAIN )
+				0	=>	__( 'Niedrig', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				1	=>	__( 'Normal', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				2	=>	__( 'Hoch', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				3	=>	__( 'Eilt', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				4	=>	__( 'Dringend', PSOURCE_SUPPORT_LANG_DOMAIN )
 			);
 
 			self::$responsibilities = array(
@@ -154,21 +160,21 @@ if ( ! class_exists( 'MU_Support_System') ) {
 			);
 
 			self::$privacy = array(
-				'all' => is_multisite() ? __( 'Erlaube allen Benutzern, alle Tickets auf einer Seite zu sehen', INCSUB_SUPPORT_LANG_DOMAIN ) : __( 'Allen Benutzern erlauben, alle Tickets zu sehen', INCSUB_SUPPORT_LANG_DOMAIN ),
-				'requestor' => __( 'Erlaube nur Ticketerstellern, ihre eigenen Tickets zu sehen', INCSUB_SUPPORT_LANG_DOMAIN )
+				'all' => is_multisite() ? __( 'Erlaube allen Benutzern, alle Tickets auf einer Seite zu sehen', PSOURCE_SUPPORT_LANG_DOMAIN ) : __( 'Allen Benutzern erlauben, alle Tickets zu sehen', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				'requestor' => __( 'Erlaube nur Ticketerstellern, ihre eigenen Tickets zu sehen', PSOURCE_SUPPORT_LANG_DOMAIN )
 			);
 
 
-			if ( ( is_multisite() && $this->settings->get( 'incsub_support_blog_id' ) == get_current_blog_id() ) || ! is_multisite() )
-				$this->shortcodes = new Incsub_Support_Shortcodes();
+			if ( ( is_multisite() && $this->settings->get( 'psource_support_blog_id' ) == get_current_blog_id() ) || ! is_multisite() )
+				$this->shortcodes = new PSource_Support_Shortcodes();
 		}
 
 		public function load_text_domain() {
 
-			$locale = apply_filters( 'plugin_locale', get_locale(), INCSUB_SUPPORT_LANG_DOMAIN );
+			$locale = apply_filters( 'plugin_locale', get_locale(), PSOURCE_SUPPORT_LANG_DOMAIN );
 
-			load_textdomain( INCSUB_SUPPORT_LANG_DOMAIN, WP_LANG_DIR . '/' . INCSUB_SUPPORT_LANG_DOMAIN . '/' . INCSUB_SUPPORT_LANG_DOMAIN . '-' . $locale . '.mo' );
-			load_plugin_textdomain( INCSUB_SUPPORT_LANG_DOMAIN, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+			load_textdomain( PSOURCE_SUPPORT_LANG_DOMAIN, WP_LANG_DIR . '/' . PSOURCE_SUPPORT_LANG_DOMAIN . '/' . PSOURCE_SUPPORT_LANG_DOMAIN . '-' . $locale . '.mo' );
+			load_plugin_textdomain( PSOURCE_SUPPORT_LANG_DOMAIN, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		}
 
@@ -180,40 +186,40 @@ if ( ! class_exists( 'MU_Support_System') ) {
 		 */
 		private function includes() {
 			// Model
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'model/model.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'model/model.php');
 
 			if ( is_admin() ) {
-				require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'admin/class-incsub-support-admin.php' );
+				require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'admin/class-psource-support-admin.php' );
 			}
 
 			// Classes
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-ticket.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-ticket-category.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-ticket-reply.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-shortcodes.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-query.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-faq.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-faq-category.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/classes/class-settings.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-ticket.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-ticket-category.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-ticket-reply.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-shortcodes.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-query.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-faq.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-faq-category.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/classes/class-settings.php');
 
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/general.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/ticket.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/ticket-category.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/ticket-reply.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/template.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/settings.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/capabilities.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/faq.php');
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/helpers/faq-category.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/general.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/ticket.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/ticket-category.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/ticket-reply.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/template.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/settings.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/capabilities.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/faq.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/helpers/faq-category.php');
 
 			// Integration
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/integration/pro-sites.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/integration/pro-sites.php');
 
 			// Mail templates
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/mail-contents.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/mail-contents.php');
 
 			// Upgrades
-			require_once( INCSUB_SUPPORT_PLUGIN_DIR . 'inc/upgrades.php');
+			require_once( PSOURCE_SUPPORT_PLUGIN_DIR . 'inc/upgrades.php');
 		}
 
 		/**
@@ -222,15 +228,15 @@ if ( ! class_exists( 'MU_Support_System') ) {
 		 * @since 1.8
 		 */
 		public function activate() {
-			$model = incsub_support_get_model();
+			$model = psource_support_get_model();
 			$model->create_tables();
 
-			$settings = new Incsub_Support_Settings();
+			$settings = new PSource_Support_Settings();
 
-			update_site_option( 'incsub_support_version', self::$version );
-			update_site_option( 'incsub_support_settings', $settings->get_all() );
+			update_site_option( 'psource_support_version', self::$version );
+			update_site_option( 'psource_support_settings', $settings->get_all() );
 
-			set_transient( 'incsub_support_welcome', true );
+			set_transient( 'psource_support_welcome', true );
 		}
 
 		/**
@@ -239,8 +245,8 @@ if ( ! class_exists( 'MU_Support_System') ) {
 		 * @since 1.8
 		 */
 		public function deactivate() {
-			//delete_site_option( 'incsub_support_version' );
-			//delete_site_option( 'incsub_support_settings' );
+			//delete_site_option( 'psource_support_version' );
+			//delete_site_option( 'psource_support_settings' );
 		}
 
 
@@ -268,26 +274,26 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 					$admin_ticket_menu_allowed = false;
 					// Tickets allowed?
-					foreach ( $this->settings->get( 'incsub_support_tickets_role' ) as $ticket_role ) {
+					foreach ( $this->settings->get( 'psource_support_tickets_role' ) as $ticket_role ) {
 						if ( $user_role == $ticket_role ) {
 							$admin_ticket_menu_allowed = true;
 							break;
 						}
 					}
 
-					if ( (boolean)$this->settings->get( 'incsub_allow_only_pro_sites' ) && $admin_ticket_menu_allowed )
-						$admin_ticket_menu_allowed = function_exists( 'is_pro_site' ) && is_pro_site( get_current_blog_id(), absint( $this->settings->get( 'incsub_pro_sites_level' ) ) );
+					if ( (boolean)$this->settings->get( 'psource_allow_only_pro_sites' ) && $admin_ticket_menu_allowed )
+						$admin_ticket_menu_allowed = function_exists( 'is_pro_site' ) && is_pro_site( get_current_blog_id(), absint( $this->settings->get( 'psource_pro_sites_level' ) ) );
 
 					// FAQs allowed?
 					$admin_faq_menu_allowed = false;
-					foreach ( $this->settings->get( 'incsub_support_faqs_role' ) as $faq_role ) {
+					foreach ( $this->settings->get( 'psource_support_faqs_role' ) as $faq_role ) {
 						if ( $user_role == $faq_role ) {
 							$admin_faq_menu_allowed = true;
 							break;
 						}
 					}
-					if ( $this->settings->get( 'incsub_allow_only_pro_sites_faq' ) && $admin_faq_menu_allowed )
-						$admin_faq_menu_allowed = function_exists( 'is_pro_site' ) && is_pro_site( get_current_blog_id(), absint( $this->settings->get( 'incsub_pro_sites_faq_level' ) ) );
+					if ( $this->settings->get( 'psource_allow_only_pro_sites_faq' ) && $admin_faq_menu_allowed )
+						$admin_faq_menu_allowed = function_exists( 'is_pro_site' ) && is_pro_site( get_current_blog_id(), absint( $this->settings->get( 'psource_pro_sites_faq_level' ) ) );
 
 					// If is not a Pro site we will not create the menu
 					if ( $admin_ticket_menu_allowed ) {
@@ -319,7 +325,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 					// Tickets allowed?
 					$admin_ticket_menu_allowed = false;
-					foreach ( $this->settings->get( 'incsub_support_tickets_role' ) as $ticket_role ) {
+					foreach ( $this->settings->get( 'psource_support_tickets_role' ) as $ticket_role ) {
 						if ( $user_role == $ticket_role ) {
 							$admin_ticket_menu_allowed = true;
 							break;
@@ -334,7 +340,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 					// FAQs allowed?
 					$admin_faq_menu_allowed = false;
-					foreach ( $this->settings->get( 'incsub_support_faqs_role' ) as $faq_role ) {
+					foreach ( $this->settings->get( 'psource_support_faqs_role' ) as $faq_role ) {
 						if ( $user_role == $faq_role ) {
 							$admin_faq_menu_allowed = true;
 							break;
@@ -375,7 +381,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 			foreach ( $just_roles as $key => $role ) {
 				$support_roles[ $key ] = translate_user_role( $role['name'] );
 			}
-			$support_roles['support-guest'] = __( 'Besucher', INCSUB_SUPPORT_LANG_DOMAIN );
+			$support_roles['support-guest'] = __( 'Besucher', PSOURCE_SUPPORT_LANG_DOMAIN );
 			return $support_roles;
 
 		}
@@ -407,11 +413,11 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 			}
 
-			return apply_filters( 'incsub_support_get_super_admins', $super_admins );
+			return apply_filters( 'psource_support_get_super_admins', $super_admins );
 		}
 
 		public static function get_main_admin_email() {
-			$administrator = incsub_support_get_setting( 'incsub_support_main_super_admin' );
+			$administrator = psource_support_get_setting( 'psource_support_main_super_admin' );
 			$super_admins = MU_Support_System::get_super_admins();
 			$admin_login = $super_admins[ $administrator ];
 			$admin_user = get_user_by( 'login', $admin_login );
@@ -419,7 +425,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 		}
 
 		public static function get_main_admin_details() {
-			$administrator = incsub_support_get_setting( 'incsub_support_main_super_admin' );
+			$administrator = psource_support_get_setting( 'psource_support_main_super_admin' );
 			$super_admins = MU_Support_System::get_super_admins();
 			$admin_login = $super_admins[ $administrator ];
 			$admin_user = get_user_by( 'login', $admin_login );
@@ -434,7 +440,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 }
 
-function incsub_support() {
+function psource_support() {
 	return MU_Support_System::get_instance();
 }
 
@@ -442,12 +448,6 @@ function incsub_support() {
 add_action( 'plugins_loaded', 'support_system_init' );
 function support_system_init() {
 	global $mu_support_system;
-	$mu_support_system = incsub_support();
+	$mu_support_system = psource_support();
 }
 
-require 'inc/plugin-update-checker/plugin-update-checker.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-support', 
-	__FILE__, 
-	'ps-support' 
-);

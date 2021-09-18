@@ -5,14 +5,14 @@ if(!class_exists('WP_List_Table')){
 }
 
 
-class Incsub_Support_FAQS_Table extends WP_List_Table {
+class PSource_Support_FAQS_Table extends WP_List_Table {
 
     function __construct( $args = array() ){
 
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => __( 'FAQ', INCSUB_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'FAQs', INCSUB_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'FAQ', PSOURCE_SUPPORT_LANG_DOMAIN ),  
+            'plural'    => __( 'FAQs', PSOURCE_SUPPORT_LANG_DOMAIN ), 
             'ajax'      => false        
         ) );
         
@@ -53,8 +53,8 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
 
         
         $actions = array(
-            'edit'     => sprintf( __( '<a href="%s">FAQ bearbeiten</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $link ),
-            'delete'    => sprintf( __( '<a href="%s">FAQ löschen</a>', INCSUB_SUPPORT_LANG_DOMAIN ), $delete_link ),
+            'edit'     => sprintf( __( '<a href="%s">FAQ bearbeiten</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $link ),
+            'delete'    => sprintf( __( '<a href="%s">FAQ löschen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $delete_link ),
         );
 
         /**
@@ -87,19 +87,19 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
 
         $class = '';
         if ( $value >= 80 )
-            $class = 'incsub-support-meter-high';
+            $class = 'psource-support-meter-high';
         elseif ( $value < 80 && $value >= 40 )
-            $class = 'incsub-support-meter-mid';
+            $class = 'psource-support-meter-mid';
         else
-            $class = 'incsub-support-meter-low';
+            $class = 'psource-support-meter-low';
 
         ob_start();
         ?>
-        <div class="incsub-support-meter">
+        <div class="psource-support-meter">
             <?php if ( ! $value ): ?>
                 0 %
             <?php else: ?>
-                <span class="incsub-support-meter-yes" style="width: <?php echo $value; ?>%"><?php echo $value; ?> %</span>
+                <span class="psource-support-meter-yes" style="width: <?php echo $value; ?>%"><?php echo $value; ?> %</span>
             <?php endif; ?>
         </div>
         <?php
@@ -115,19 +115,19 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
 
         $class = '';
         if ( $value >= 80 )
-            $class = 'incsub-support-meter-low';
+            $class = 'psource-support-meter-low';
         elseif ( $value < 80 && $value >= 40 )
-            $class = 'incsub-support-meter-mid';
+            $class = 'psource-support-meter-mid';
         else
-            $class = 'incsub-support-meter-high';
+            $class = 'psource-support-meter-high';
 
         ob_start();
         ?>
-        <div class="incsub-support-meter">
+        <div class="psource-support-meter">
             <?php if ( ! $value ): ?>
                 0 %
             <?php else: ?>
-                <span class="incsub-support-meter-no" style="width: <?php echo $value; ?>%"><?php echo $value; ?> %</span>
+                <span class="psource-support-meter-no" style="width: <?php echo $value; ?>%"><?php echo $value; ?> %</span>
             <?php endif; ?>
         </div>
         <?php return ob_get_clean();
@@ -137,11 +137,11 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />',
-            'faq_id'            => __( 'Frage ID', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'question'      => __( 'Frage', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'category'      => __( 'Kategorie', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'helpful'       => __( 'Denken ist hilfreich', INCSUB_SUPPORT_LANG_DOMAIN ),
-            'no_helpful'    => __( 'Denken ist nicht hilfreich', INCSUB_SUPPORT_LANG_DOMAIN )
+            'faq_id'            => __( 'Frage ID', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'question'      => __( 'Frage', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'category'      => __( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'helpful'       => __( 'Denken ist hilfreich', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'no_helpful'    => __( 'Denken ist nicht hilfreich', PSOURCE_SUPPORT_LANG_DOMAIN )
         );
         return $columns;
     }
@@ -150,15 +150,15 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
         if ( 'top' == $which) {
 
             $cat_filter_args = array(
-                'show_empty' => __( 'Alle Kategorien anzeigen', INCSUB_SUPPORT_LANG_DOMAIN ),
+                'show_empty' => __( 'Alle Kategorien anzeigen', PSOURCE_SUPPORT_LANG_DOMAIN ),
                 'selected' => isset( $_GET['category'] ) ? absint( $_GET['category'] ) : false
             );
 
 
             ?>
                 <div class="alignleft actions">
-                    <?php incsub_support_faq_categories_dropdown( $cat_filter_args ); ?>
-                    <input type="submit" name="filter_action" id="faq-query-submit" class="button" value="<?php echo esc_attr( 'Filter', INCSUB_SUPPORT_LANG_DOMAIN ); ?>">     
+                    <?php psource_support_faq_categories_dropdown( $cat_filter_args ); ?>
+                    <input type="submit" name="filter_action" id="faq-query-submit" class="button" value="<?php echo esc_attr( 'Filter', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>">     
                 </div>
         <?php
            
@@ -169,10 +169,10 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
 
     function get_bulk_actions() {
         $actions = array(
-            'delete'    => __( 'Löschen', INCSUB_SUPPORT_LANG_DOMAIN ),
+            'delete'    => __( 'Löschen', PSOURCE_SUPPORT_LANG_DOMAIN ),
         );
 
-        if ( ! incsub_support_current_user_can( 'delete_faq' ) ) {
+        if ( ! psource_support_current_user_can( 'delete_faq' ) ) {
             unset( $actions['delete'] );
         }
 
@@ -190,17 +190,17 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
     }
 
     function process_bulk_action() {
-        if( 'delete' === $this->current_action() && incsub_support_current_user_can( 'delete_faq' ) ) {
+        if( 'delete' === $this->current_action() && psource_support_current_user_can( 'delete_faq' ) ) {
 
             if ( isset( $_POST['faq'] ) && is_array( $_POST['faq'] ) ) {
                 foreach ( $_POST['faq'] as $faq ) {
-                    incsub_support_delete_faq( $faq );
+                    psource_support_delete_faq( $faq );
                 }
             }
             elseif ( isset( $_GET['fid'] ) && is_numeric( $_GET['fid'] ) ) {
-                $faq = incsub_support_get_faq( $_GET['fid'] );
+                $faq = psource_support_get_faq( $_GET['fid'] );
                 if ( $faq )
-                    incsub_support_delete_faq( $faq->faq_id );
+                    psource_support_delete_faq( $faq->faq_id );
             }
 
         }
@@ -234,15 +234,15 @@ class Incsub_Support_FAQS_Table extends WP_List_Table {
         /**
          * Filters the query arguments for the FAQs table
          * 
-         * @param Array $args Query Arguments that will be passed to incsub_support_get_faqs function
+         * @param Array $args Query Arguments that will be passed to psource_support_get_faqs function
          */
         $args = apply_filters( 'support_system_faqs_table_query_args', array(
             'per_page' => $per_page,
             'page' => $current_page
         ) );
 
-        $this->items = incsub_support_get_faqs( $args );
-        $total_items = incsub_support_get_faqs_count( $args );
+        $this->items = psource_support_get_faqs( $args );
+        $total_items = psource_support_get_faqs_count( $args );
 
         $this->set_pagination_args( array(
             'total_items' => $total_items,                

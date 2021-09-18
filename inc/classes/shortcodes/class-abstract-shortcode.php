@@ -1,6 +1,6 @@
 <?php
 
-abstract class Incsub_Support_Shortcode {
+abstract class PSource_Support_Shortcode {
 	public abstract function render( $atts );
 
 	public function end() {

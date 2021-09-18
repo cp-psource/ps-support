@@ -1,6 +1,6 @@
 <?php
 
-class Incsub_Support_Admin_Ajax {
+class PSource_Support_Admin_Ajax {
 	public function __construct() {
 		add_action( 'wp_ajax_vote_faq_question', array( &$this, 'vote_faq_question' ) );
 	}
@@ -17,10 +17,10 @@ class Incsub_Support_Admin_Ajax {
 
 			$vote = 'yes' == $_POST['vote'] ? true : false;
 
-			incsub_support_vote_faq( $faq_id, $vote );
+			psource_support_vote_faq( $faq_id, $vote );
 		}
 		die();
 	}
 }
 
-new Incsub_Support_Admin_Ajax();
+new PSource_Support_Admin_Ajax();

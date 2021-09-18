@@ -21,14 +21,14 @@
 
 <div id="faq-categories" class="metabox-holder">
 	<div class="postbox">
-		<h3 class="hndle"><span><?php _e( 'FAQ-Kategorien', INCSUB_SUPPORT_LANG_DOMAIN ); ?></span></h3>
+		<h3 class="hndle"><span><?php _e( 'FAQ-Kategorien', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></span></h3>
 		<div class="inside">
 			<div class="faq-categories-column">
-				<h4><?php _e( 'Suche', INCSUB_SUPPORT_LANG_DOMAIN ); ?></h4>
+				<h4><?php _e( 'Suche', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h4>
 				<form method="post">
 					<input type="text" name="faq-s" value="<?php echo isset( $_POST['faq-s'] ) ? esc_attr( stripslashes_deep( $_POST['faq-s'] ) ) : ''; ?>">
 					<?php wp_nonce_field( 'faq_search' ); ?>
-					<?php submit_button( __( 'Suche', INCSUB_SUPPORT_LANG_DOMAIN ), 'secondary', 'submit-faq-search' ); ?>
+					<?php submit_button( __( 'Suche', PSOURCE_SUPPORT_LANG_DOMAIN ), 'secondary', 'submit-faq-search' ); ?>
 				</form>
 			</div>
 			<div class="faq-categories-column">
@@ -73,8 +73,8 @@
 						<div id="faq-answer-<?php echo $faq->faq_id; ?>">
 							<?php echo ( $answer ); ?>
 							<p class="submit" data-faq-id="<?php echo $faq->faq_id; ?>">
-								<h4><u><?php _e( 'War diese Lösung hilfreich?', INCSUB_SUPPORT_LANG_DOMAIN ); ?></u></h4>
-								<?php echo '<button class="button-primary vote-button" data-faq-id="' . $faq->faq_id . '" data-vote="yes"> ' . __( 'Ja', INCSUB_SUPPORT_LANG_DOMAIN ) . '</button> <button href="#" class="button vote-button" data-faq-id="' . $faq->faq_id . '" data-vote="no"> ' . __( 'Nein', INCSUB_SUPPORT_LANG_DOMAIN ) . '</button>'; ?>
+								<h4><u><?php _e( 'War diese Lösung hilfreich?', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></u></h4>
+								<?php echo '<button class="button-primary vote-button" data-faq-id="' . $faq->faq_id . '" data-vote="yes"> ' . __( 'Ja', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</button> <button href="#" class="button vote-button" data-faq-id="' . $faq->faq_id . '" data-vote="no"> ' . __( 'Nein', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</button>'; ?>
 								<span class="spinner support-system-spinner"></span>
 							</p>
 						</div>						

@@ -7,27 +7,27 @@
  * 
  * @since 1.9
  */
-function incsub_support_group_settings_upgrade() {
-	$saved_version = get_site_option( 'incsub_support_version', false );
+function psource_support_group_settings_upgrade() {
+	$saved_version = get_site_option( 'psource_support_version', false );
 	if ( ! $saved_version || version_compare( $saved_version, '1.9' ) < 0 ) {
 		// We're going to group all settings into one option
-		$default_settings = incsub_support()->settings->get_default_settings();
+		$default_settings = psource_support()->settings->get_default_settings();
 		$old_settings = array(
-			'incsub_support_menu_name' => get_site_option( 'incsub_support_menu_name', $default_settings['incsub_support_menu_name'] ),
-			'incsub_support_from_name' => get_site_option( 'incsub_support_from_name', $default_settings['incsub_support_from_name'] ),
-			'incsub_support_from_mail' => get_site_option( 'incsub_support_from_mail', $default_settings['incsub_support_from_mail'] ),
-			'incsub_support_fetch_imap' => get_site_option('incsub_support_fetch_imap', $default_settings['incsub_support_fetch_imap'] ),
-			'incsub_support_imap_frequency' => get_site_option('incsub_support_imap_frequency', $default_settings['incsub_support_imap_frequency'] ),
-			'incsub_allow_only_pro_sites' => get_site_option( 'incsub_allow_only_pro_sites', $default_settings['incsub_allow_only_pro_sites'] ),
-			'incsub_pro_sites_level' => get_site_option( 'incsub_pro_sites_level', $default_settings['incsub_pro_sites_level'] ),
-			'incsub_allow_only_pro_sites_faq' => get_site_option( 'incsub_allow_only_pro_sites_faq', $default_settings['incsub_allow_only_pro_sites_faq'] ),
-			'incsub_pro_sites_faq_level' => get_site_option( 'incsub_pro_sites_faq_level', $default_settings['incsub_pro_sites_faq_level'] ),
-			'incsub_ticket_privacy' => get_site_option( 'incsub_ticket_privacy', $default_settings['incsub_ticket_privacy'] ),
-			'incsub_support_faq_enabled' => get_site_option( 'incsub_support_faq_enabled', false ),
-			'incsub_support_tickets_role' => get_site_option( 'incsub_support_tickets_role', $default_settings['incsub_support_tickets_role'] ),
-			'incsub_support_faqs_role' => get_site_option( 'incsub_support_faqs_role', $default_settings['incsub_support_faqs_role'] )
+			'psource_support_menu_name' => get_site_option( 'psource_support_menu_name', $default_settings['psource_support_menu_name'] ),
+			'psource_support_from_name' => get_site_option( 'psource_support_from_name', $default_settings['psource_support_from_name'] ),
+			'psource_support_from_mail' => get_site_option( 'psource_support_from_mail', $default_settings['psource_support_from_mail'] ),
+			'psource_support_fetch_imap' => get_site_option('psource_support_fetch_imap', $default_settings['psource_support_fetch_imap'] ),
+			'psource_support_imap_frequency' => get_site_option('psource_support_imap_frequency', $default_settings['psource_support_imap_frequency'] ),
+			'psource_allow_only_pro_sites' => get_site_option( 'psource_allow_only_pro_sites', $default_settings['psource_allow_only_pro_sites'] ),
+			'psource_pro_sites_level' => get_site_option( 'psource_pro_sites_level', $default_settings['psource_pro_sites_level'] ),
+			'psource_allow_only_pro_sites_faq' => get_site_option( 'psource_allow_only_pro_sites_faq', $default_settings['psource_allow_only_pro_sites_faq'] ),
+			'psource_pro_sites_faq_level' => get_site_option( 'psource_pro_sites_faq_level', $default_settings['psource_pro_sites_faq_level'] ),
+			'psource_ticket_privacy' => get_site_option( 'psource_ticket_privacy', $default_settings['psource_ticket_privacy'] ),
+			'psource_support_faq_enabled' => get_site_option( 'psource_support_faq_enabled', false ),
+			'psource_support_tickets_role' => get_site_option( 'psource_support_tickets_role', $default_settings['psource_support_tickets_role'] ),
+			'psource_support_faqs_role' => get_site_option( 'psource_support_faqs_role', $default_settings['psource_support_faqs_role'] )
 		);
-		update_site_option( 'incsub_support_settings', $old_settings );
+		update_site_option( 'psource_support_settings', $old_settings );
 
 		foreach ( $old_settings as $key => $value ) {
 			delete_site_option( $key );
@@ -42,15 +42,15 @@ function incsub_support_group_settings_upgrade() {
  * @since 1.8
  * 
  */
-function incsub_support_check_for_upgrades() {
+function psource_support_check_for_upgrades() {
 
-	$saved_version = get_site_option( 'incsub_support_version', false );
+	$saved_version = get_site_option( 'psource_support_version', false );
 
 	if ( $saved_version === false ) {
-		incsub_support()->activate();
+		psource_support()->activate();
 	}
 
-	if ( ! $saved_version || version_compare( $saved_version, INCSUB_SUPPORT_PLUGIN_VERSION ) < 0 ) {
+	if ( ! $saved_version || version_compare( $saved_version, PSOURCE_SUPPORT_PLUGIN_VERSION ) < 0 ) {
 
 		$model = MU_Support_System_Model::get_instance();
 
@@ -64,7 +64,7 @@ function incsub_support_check_for_upgrades() {
 			$model->upgrade_181();
 
 		if ( version_compare( $saved_version, '1.9.1' ) < 0 ) {
-			incsub_support_set_new_roles();
+			psource_support_set_new_roles();
 		}
 
 		if ( version_compare( $saved_version, '1.9.6' ) < 0 ) {
@@ -80,27 +80,27 @@ function incsub_support_check_for_upgrades() {
 		}
 
 		if ( version_compare( $saved_version, '2.0beta4' ) < 0 ) {
-			incsub_support_upgrade_20beta4();
+			psource_support_upgrade_20beta4();
 		}
 
 		if ( version_compare( $saved_version, '2.1' ) < 0 ) {
-			incsub_support()->model->create_tables();
+			psource_support()->model->create_tables();
 		}
 
 		if ( version_compare( $saved_version, '2.1.8' ) < 0 ) {
-			incsub_support()->model->create_tables();
+			psource_support()->model->create_tables();
 		}
 
-		update_site_option( 'incsub_support_version', INCSUB_SUPPORT_PLUGIN_VERSION );
+		update_site_option( 'psource_support_version', PSOURCE_SUPPORT_PLUGIN_VERSION );
 
-		set_transient( 'incsub_support_welcome', true );		
+		set_transient( 'psource_support_welcome', true );		
 	}
 
 }
 
-function incsub_support_upgrade_20beta4() {
-	$settings = incsub_support_get_settings();
-	$super_admin = $settings['incsub_support_main_super_admin'];
+function psource_support_upgrade_20beta4() {
+	$settings = psource_support_get_settings();
+	$super_admin = $settings['psource_support_main_super_admin'];
 
 	if ( ! is_numeric( $super_admin ) ) {
 		$user = get_user_by( 'login', $super_admin );
@@ -114,16 +114,16 @@ function incsub_support_upgrade_20beta4() {
 			}
 
 			if ( $found !== false ) {
-				$settings['incsub_support_main_super_admin'] = $found;	
+				$settings['psource_support_main_super_admin'] = $found;	
 			}
 			
 		}
 		else {
-			$settings['incsub_support_main_super_admin'] = key( $super_admins );
+			$settings['psource_support_main_super_admin'] = key( $super_admins );
 		}
 	}
 
-	incsub_support_update_settings( $settings );
+	psource_support_update_settings( $settings );
 }
 
 
@@ -132,31 +132,31 @@ function incsub_support_upgrade_20beta4() {
  * 
  * @since 1.9.1
  */
-function incsub_support_set_new_roles() {
+function psource_support_set_new_roles() {
 	global $wp_roles;
 
 	$roles_settings = array( 
-		'incsub_support_tickets_role' => incsub_support_get_setting( 'incsub_support_tickets_role' ), 
-		'incsub_support_faqs_role' => incsub_support_get_setting( 'incsub_support_faqs_role' ) 
+		'psource_support_tickets_role' => psource_support_get_setting( 'psource_support_tickets_role' ), 
+		'psource_support_faqs_role' => psource_support_get_setting( 'psource_support_faqs_role' ) 
 	);
 
 	/**
 	foreach ( $roles_settings as $key => $value ) {
 		switch ( $value ) {
 			case 'manage_options':
-				incsub_support_get_setting(  $key  ) = array( 'administrator' );
+				psource_support_get_setting(  $key  ) = array( 'administrator' );
 				break;
 			case 'publish_pages':
-				incsub_support_get_setting(  $key  ) = array( 'administrator', 'editor' );
+				psource_support_get_setting(  $key  ) = array( 'administrator', 'editor' );
 				break;
 			case 'publish_posts':
-				incsub_support_get_setting(  $key  ) = array( 'administrator', 'editor', 'author' );
+				psource_support_get_setting(  $key  ) = array( 'administrator', 'editor', 'author' );
 				break;
 			case 'edit_posts':
-				incsub_support_get_setting(  $key  ) = array( 'administrator', 'editor', 'author', 'contributor' );
+				psource_support_get_setting(  $key  ) = array( 'administrator', 'editor', 'author', 'contributor' );
 				break;
 			case 'read':
-				incsub_support_get_setting(  $key  ) = array( 'administrator', 'editor', 'author', 'contributor', 'subscriber' );
+				psource_support_get_setting(  $key  ) = array( 'administrator', 'editor', 'author', 'contributor', 'subscriber' );
 				break;
 		}
 	}

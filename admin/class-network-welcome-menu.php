@@ -1,9 +1,9 @@
 <?php
 
-class Incsub_Support_Welcome_Menu extends Incsub_Support_Admin_Menu {
+class PSource_Support_Welcome_Menu extends PSource_Support_Admin_Menu {
 
 	public function add_menu() {		
-		$this->menu_title = sprintf( __( 'Willkommen beim Support System %s', INCSUB_SUPPORT_LANG_DOMAIN ), incsub_support_get_version() );
+		$this->menu_title = sprintf( __( 'Willkommen beim Support System %s', PSOURCE_SUPPORT_LANG_DOMAIN ), psource_support_get_version() );
 		$this->page_id = add_dashboard_page( 
 			$this->menu_title,
 			$this->menu_title,
@@ -25,7 +25,7 @@ class Incsub_Support_Welcome_Menu extends Incsub_Support_Admin_Menu {
 
 		$file .= '.css';
 
-		wp_enqueue_style( 'support-system-welcome-custom', INCSUB_SUPPORT_PLUGIN_URL . 'admin/assets/css/support-welcome.css');
+		wp_enqueue_style( 'support-system-welcome-custom', PSOURCE_SUPPORT_PLUGIN_URL . 'admin/assets/css/support-welcome.css');
 	}
 
 
@@ -47,7 +47,7 @@ class Incsub_Support_Welcome_Menu extends Incsub_Support_Admin_Menu {
 	}
 
 	public function redirect_to_here() {
-	    if ( ! get_transient( 'incsub_support_welcome' ) ) {
+	    if ( ! get_transient( 'psource_support_welcome' ) ) {
 			return;
 	    }
 
@@ -56,7 +56,7 @@ class Incsub_Support_Welcome_Menu extends Incsub_Support_Admin_Menu {
 	    elseif ( ! is_multisite() && ! current_user_can( 'manage_options' ) )
 	    	return;
 
-		delete_transient( 'incsub_support_welcome' );
+		delete_transient( 'psource_support_welcome' );
 
 		$url = is_multisite() ? network_admin_url( 'index.php?page=' . $this->slug ) : admin_url( 'index.php?page=' . $this->slug );
 		wp_redirect( $url );

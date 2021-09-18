@@ -94,7 +94,7 @@ if ( ! class_exists( 'MU_Support_Menu' ) ) {
 		public function render_page() {
 
 			if ( ! current_user_can( $this->capability ) )
-				wp_die( __( 'Du darfst diese Seite nicht anzeigen.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Du darfst diese Seite nicht anzeigen.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 
 			?>
 				<div class="wrap">

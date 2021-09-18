@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Sanitize the Incsub_Support_Ticket properties
+ * Sanitize the PSource_Support_Ticket properties
  * @param  Object $ticket The ticket Object
  * @return Object the sanitized object
  */
-function incsub_support_sanitize_ticket_fields( $ticket ) {
+function psource_support_sanitize_ticket_fields( $ticket ) {
 	$int_fields = array( 'ticket_id', 'site_id', 'blog_id', 'cat_id', 'user_id', 'admin_id', 
 		'last_reply_id', 'ticket_type', 'ticket_priority', 'ticket_status', 'num_replies' );
 
@@ -35,7 +35,7 @@ function incsub_support_sanitize_ticket_fields( $ticket ) {
  * @param  int $status_id
  * @return string
  */
-function incsub_support_get_ticket_status_name( $status_id ) {
+function psource_support_get_ticket_status_name( $status_id ) {
 	return MU_Support_System::$ticket_status[ $status_id ];
 }
 
@@ -45,7 +45,7 @@ function incsub_support_get_ticket_status_name( $status_id ) {
  * @param  int $priority
  * @return string
  */
-function incsub_support_get_ticket_priority_name( $priority_id ) {
+function psource_support_get_ticket_priority_name( $priority_id ) {
 	return MU_Support_System::$ticket_priority[ $priority_id ];
 }
 
@@ -56,7 +56,7 @@ function incsub_support_get_ticket_priority_name( $priority_id ) {
  * @param  array  $args
  * @return array
  */
-function incsub_support_get_tickets( $args = array() ) {
+function psource_support_get_tickets( $args = array() ) {
 	global $wpdb, $current_site;
 
 	$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
@@ -116,7 +116,7 @@ function incsub_support_get_tickets( $args = array() ) {
 	else
 		$where[] = $wpdb->prepare( "t.site_id = %d", $current_site_id );
 
-	$tickets_table = incsub_support()->model->tickets_table;
+	$tickets_table = psource_support()->model->tickets_table;
 
 	$allowed_orderby = array( 'ticket_updated', 'title', 'cat_id', 'admin_id', 'blog_id', 'num_replies', 'ticket_priority', 'ticket_status' );
 	$allowed_order = array( 'DESC', 'ASC' );
@@ -136,7 +136,7 @@ function incsub_support_get_tickets( $args = array() ) {
 
 	$join = '';
 	if ( $s ) {
-		$tickets_messages_table = incsub_support()->model->tickets_messages_table;
+		$tickets_messages_table = psource_support()->model->tickets_messages_table;
 		$join = "LEFT JOIN $tickets_messages_table tm ON t.ticket_id = tm.ticket_id";
 	}
 
@@ -158,7 +158,7 @@ function incsub_support_get_tickets( $args = array() ) {
 	else {
 		$query = "SELECT t.* FROM $tickets_table t $join $where $group $order_query $limit";
 		$results = $wpdb->get_results( $query );
-		$tickets = array_map( 'incsub_support_get_ticket', $results );
+		$tickets = array_map( 'psource_support_get_ticket', $results );
 	}
 
 	$tickets = apply_filters( 'support_system_get_tickets', $tickets, $args );
@@ -170,22 +170,22 @@ function incsub_support_get_tickets( $args = array() ) {
 /**
  * Get a single ticket
  * 
- * @param  int|Object $ticket The ticket ID or a Incsub_Support_Ticket class object
- * @return Object Incsub_Support_Ticket class object
+ * @param  int|Object $ticket The ticket ID or a PSource_Support_Ticket class object
+ * @return Object PSource_Support_Ticket class object
  */
-function incsub_support_get_ticket( $ticket ) {
-	$ticket = Incsub_Support_Ticket::get_instance( $ticket );
+function psource_support_get_ticket( $ticket ) {
+	$ticket = PSource_Support_Ticket::get_instance( $ticket );
 
 	$ticket = apply_filters( 'support_system_get_ticket', $ticket );
 
 	return $ticket;
 }
 
-function incsub_support_get_tickets_count( $args = array() ) {
+function psource_support_get_tickets_count( $args = array() ) {
 	$args['count'] = true;
 	$args['per_page'] = -1;
 
-	$count = incsub_support_get_tickets( $args );
+	$count = psource_support_get_tickets( $args );
 
 	return $count;
 }
@@ -198,8 +198,8 @@ function incsub_support_get_tickets_count( $args = array() ) {
  * @param  int $ticket_id
  * @return boolean
  */
-function incsub_support_close_ticket( $ticket_id ) {
-	$ticket = incsub_support_get_ticket( $ticket_id );
+function psource_support_close_ticket( $ticket_id ) {
+	$ticket = psource_support_get_ticket( $ticket_id );
 	if ( ! $ticket )
 		return false;
 
@@ -207,7 +207,7 @@ function incsub_support_close_ticket( $ticket_id ) {
 	if ( 5 == $ticket->ticket_status )
 		return true;
 
-	$result = incsub_support_ticket_transition_status( $ticket_id, 5 );
+	$result = psource_support_ticket_transition_status( $ticket_id, 5 );
 
 	do_action( 'support_system_close_ticket', $ticket_id );
 
@@ -222,8 +222,8 @@ function incsub_support_close_ticket( $ticket_id ) {
  * @param  int $ticket_id
  * @return boolean
  */
-function incsub_support_open_ticket( $ticket_id ) {
-	$ticket = incsub_support_get_ticket( $ticket_id );
+function psource_support_open_ticket( $ticket_id ) {
+	$ticket = psource_support_get_ticket( $ticket_id );
 	if ( ! $ticket )
 		return false;
 
@@ -233,20 +233,20 @@ function incsub_support_open_ticket( $ticket_id ) {
 
 	$previous_status = $ticket->ticket_status;
 
-	$result = incsub_support_ticket_transition_status( $ticket_id, 0 );
-	incsub_support_update_ticket_meta( $ticket_id, 'previous_status', $previous_status );
+	$result = psource_support_ticket_transition_status( $ticket_id, 0 );
+	psource_support_update_ticket_meta( $ticket_id, 'previous_status', $previous_status );
 
 	return $result;
 }
 
-function incsub_support_ticket_transition_status( $ticket_id, $status ) {
-	$plugin = incsub_support();
+function psource_support_ticket_transition_status( $ticket_id, $status ) {
+	$plugin = psource_support();
 	$all_status = array_keys( $plugin::$ticket_status );
 
 	if ( ! in_array( $status, $all_status ) )
 		return false;
 
-	$ticket = incsub_support_get_ticket( $ticket_id );
+	$ticket = psource_support_get_ticket( $ticket_id );
 	if ( ! $ticket )
 		return false;
 	
@@ -254,25 +254,25 @@ function incsub_support_ticket_transition_status( $ticket_id, $status ) {
 	if ( $previous_status == $status )
 		return false;
 	
-	incsub_support_update_ticket( $ticket_id, array( 'ticket_status' => $status ) );
-	incsub_support_update_ticket_meta( $ticket_id, 'previous_status', $previous_status );
+	psource_support_update_ticket( $ticket_id, array( 'ticket_status' => $status ) );
+	psource_support_update_ticket_meta( $ticket_id, 'previous_status', $previous_status );
 
 	do_action( 'support_system_ticket_transition_status', $status, $previous_status, $ticket_id );
 
 	return true;
 }
 
-function incsub_support_restore_ticket_previous_status( $ticket_id ) {
-	$ticket = incsub_support_get_ticket( $ticket_id );
+function psource_support_restore_ticket_previous_status( $ticket_id ) {
+	$ticket = psource_support_get_ticket( $ticket_id );
 	if ( ! $ticket )
 		return;
 
-	$previous_status = incsub_support_get_ticket_meta( $ticket_id, 'previous_status', true );
+	$previous_status = psource_support_get_ticket_meta( $ticket_id, 'previous_status', true );
 	if ( $previous_status === false ) {
-		incsub_support_open_ticket( $ticket_id );
+		psource_support_open_ticket( $ticket_id );
 	}
 	else {
-		incsub_support_ticket_transition_status( $ticket_id, $previous_status );	
+		psource_support_ticket_transition_status( $ticket_id, $previous_status );	
 	}
 
 	
@@ -284,15 +284,15 @@ function incsub_support_restore_ticket_previous_status( $ticket_id ) {
  * @param  int $ticket_id
  * @return Boolean
  */
-function incsub_support_delete_ticket( $ticket_id ) {
+function psource_support_delete_ticket( $ticket_id ) {
 	global $wpdb;
 
-	$ticket = incsub_support_get_ticket( $ticket_id );
+	$ticket = psource_support_get_ticket( $ticket_id );
 
 	if ( ! $ticket )
 		return false;
 
-	$plugin = incsub_support();
+	$plugin = psource_support();
 	$tickets_table = $plugin->model->tickets_table;
 	$tickets_messages_table = $plugin->model->tickets_messages_table;
 
@@ -316,8 +316,8 @@ function incsub_support_delete_ticket( $ticket_id ) {
 
 	do_action( 'support_system_delete_ticket', $ticket_id, $old_ticket );
 
-	incsub_support_clean_ticket_cache( $ticket_id );
-	incsub_support_clean_ticket_category_cache( $ticket->cat_id );
+	psource_support_clean_ticket_cache( $ticket_id );
+	psource_support_clean_ticket_category_cache( $ticket->cat_id );
 
 	return true;
 }
@@ -329,10 +329,10 @@ function incsub_support_delete_ticket( $ticket_id ) {
  * @param  args $args
  * @return boolean
  */
-function incsub_support_update_ticket( $ticket_id, $args ) {
+function psource_support_update_ticket( $ticket_id, $args ) {
 	global $wpdb;
 
-	$ticket = incsub_support_get_ticket( $ticket_id );
+	$ticket = psource_support_get_ticket( $ticket_id );
 	if ( ! $ticket )
 		return false;
 
@@ -351,7 +351,7 @@ function incsub_support_update_ticket( $ticket_id, $args ) {
 	if ( empty( $update ) )
 		return false;
 	
-	$tickets_table = incsub_support()->model->tickets_table;
+	$tickets_table = psource_support()->model->tickets_table;
 
 	$update['ticket_updated'] = current_time( 'mysql', true );
 	$update_wildcards[] = '%s';
@@ -367,11 +367,11 @@ function incsub_support_update_ticket( $ticket_id, $args ) {
 	if ( ! $result )
 		return false;
 
-	incsub_support_clean_ticket_cache( $ticket_id );
+	psource_support_clean_ticket_cache( $ticket_id );
 	if ( array_key_exists( 'cat_id', $update ) ) {
 		// Clean the old and new ctaegories cache
-		incsub_support_clean_ticket_category_cache( $update['cat_id'] );
-		incsub_support_clean_ticket_category_cache( $ticket->cat_id );
+		psource_support_clean_ticket_category_cache( $update['cat_id'] );
+		psource_support_clean_ticket_category_cache( $ticket->cat_id );
 	}
 
 	$old_ticket = $ticket;
@@ -400,12 +400,12 @@ function incsub_support_update_ticket( $ticket_id, $args ) {
  * }
  * @return mixed the new ticket ID, WP_Error otherwise
  */
-function incsub_support_insert_ticket( $args = array() ) {
+function psource_support_insert_ticket( $args = array() ) {
 	global $wpdb, $current_site;
 
 	$current_site_id = ! empty ( $current_site ) ? $current_site->id : 1;
 
-	$default_category = incsub_support_get_default_ticket_category();
+	$default_category = psource_support_get_default_ticket_category();
 	$defaults = array(
 		'ticket_priority' => 0,
 		'cat_id' => $default_category->cat_id,
@@ -458,7 +458,7 @@ function incsub_support_insert_ticket( $args = array() ) {
 		$insert['admin_id'] = absint( $args['admin_id'] );
 
 	// CATEGORY
-	$category = incsub_support_get_ticket_category( absint( $args['cat_id'] ) );
+	$category = psource_support_get_ticket_category( absint( $args['cat_id'] ) );
 	if ( ! $category ) {
 		$insert['cat_id'] = $default_category->cat_id;
 	}
@@ -493,7 +493,7 @@ function incsub_support_insert_ticket( $args = array() ) {
 
 	// TITLE
 	if ( empty( $args['title'] ) )
-		return new WP_Error( 'empty_title', __( 'Ticket Titel darf nicht leer sein.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_title', __( 'Ticket Titel darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 	$insert['title'] = wp_unslash( strip_tags( $args['title'] ) ); 
 
 	// VIEW BY SUPERADMIN
@@ -507,7 +507,7 @@ function incsub_support_insert_ticket( $args = array() ) {
 	wp_unslash( $insert );
 	
 	// Insert the ticket	
-	$table = incsub_support()->model->tickets_table;
+	$table = psource_support()->model->tickets_table;
 	$wpdb->insert(
 		$table,
 		$insert
@@ -516,11 +516,11 @@ function incsub_support_insert_ticket( $args = array() ) {
 	$ticket_id = $wpdb->insert_id;
 
 	if ( ! $ticket_id )
-		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 
 	// MESSAGE
 	if ( empty( $args['message'] ) )
-		return new WP_Error( 'empty_message', __( 'Nachricht darf nicht leer sein.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_message', __( 'Nachricht darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 	$message = $args['message'];
 
 	// ATTACHMENTS
@@ -538,14 +538,14 @@ function incsub_support_insert_ticket( $args = array() ) {
 		'poster_id' => $args['user_id']
 	);
 
-	$result = incsub_support_insert_ticket_reply( $ticket_id, $reply_args );
+	$result = psource_support_insert_ticket_reply( $ticket_id, $reply_args );
 
 	if ( ! $result ) {
-		incsub_support_delete_ticket( $ticket_id );
-		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', INCSUB_SUPPORT_LANG_DOMAIN ) );
+		psource_support_delete_ticket( $ticket_id );
+		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
 	}
 
-	incsub_support_clean_ticket_category_cache( $category );
+	psource_support_clean_ticket_category_cache( $category );
 
 	do_action( 'support_system_insert_ticket', $ticket_id, $args );
 
@@ -558,12 +558,12 @@ function incsub_support_insert_ticket( $args = array() ) {
  * 
  * @param  int $ticket_id
  */
-function incsub_support_recount_ticket_replies( $ticket_id ) {
+function psource_support_recount_ticket_replies( $ticket_id ) {
 	global $wpdb;
 	
-	$table = incsub_support()->model->tickets_table;
+	$table = psource_support()->model->tickets_table;
 	
-	$ticket = incsub_support_get_ticket( $ticket_id );
+	$ticket = psource_support_get_ticket( $ticket_id );
 
 	if ( ! $ticket )
 		return;
@@ -575,11 +575,11 @@ function incsub_support_recount_ticket_replies( $ticket_id ) {
 	$last_reply = end( $replies );
 	$last_reply_id = $last_reply->is_main_reply ? 0 : $last_reply->message_id;
 	
-	incsub_support_update_ticket( $ticket_id, array( 'num_replies' => $num_replies, 'last_reply_id' => $last_reply_id ) );
+	psource_support_update_ticket( $ticket_id, array( 'num_replies' => $num_replies, 'last_reply_id' => $last_reply_id ) );
 
 }
 
-function incsub_support_upload_ticket_attachments( $attachments ) {
+function psource_support_upload_ticket_attachments( $attachments ) {
 	global $current_user;
 
 	$files_keys = array_keys( $attachments['name'] );
@@ -589,7 +589,7 @@ function incsub_support_upload_ticket_attachments( $attachments ) {
 	$upload_cap = $current_user->allcaps['unfiltered_upload'];
 	$current_user->allcaps['unfiltered_upload'] = true;
 
-	$allowed_file_types = incsub_support_get_allowed_mime_types();
+	$allowed_file_types = psource_support_get_allowed_mime_types();
 
 	$errors = array();
 
@@ -608,7 +608,7 @@ function incsub_support_upload_ticket_attachments( $attachments ) {
 		if ( ! isset( $uploaded['error'] ) )
 			$files_uploaded[] = $uploaded;
 		else
-			$errors[] = sprintf( __( 'Fehler beim hochladen <strong>%s</strong> Datei: %s', INCSUB_SUPPORT_LANG_DOMAIN ), $attachments['name'][ $key ], $uploaded['error'] );
+			$errors[] = sprintf( __( 'Fehler beim hochladen <strong>%s</strong> Datei: %s', PSOURCE_SUPPORT_LANG_DOMAIN ), $attachments['name'][ $key ], $uploaded['error'] );
 	}
 
 	$current_user->allcaps['unfiltered_upload'] = $upload_cap;
@@ -628,8 +628,8 @@ function incsub_support_upload_ticket_attachments( $attachments ) {
 	return array( 'error' => false, 'result' => $files_uploaded );
 }
 
-function incsub_support_get_allowed_mime_types() {
-	return apply_filters( 'incsub_support_allowed_mime_types', array(
+function psource_support_get_allowed_mime_types() {
+	return apply_filters( 'psource_support_allowed_mime_types', array(
 		'jpg' =>'image/jpg',
 		'jpeg' =>'image/jpeg', 
 		'gif' => 'image/gif', 
@@ -643,9 +643,9 @@ function incsub_support_get_allowed_mime_types() {
 }
 
 
-function incsub_support_get_edit_ticket_admin_url( $ticket_id ) {
+function psource_support_get_edit_ticket_admin_url( $ticket_id ) {
 
-	if ( ! incsub_support_get_ticket( $ticket_id ) )
+	if ( ! psource_support_get_ticket( $ticket_id ) )
 		return '';
 
 	if ( is_multisite() )
@@ -664,24 +664,24 @@ function incsub_support_get_edit_ticket_admin_url( $ticket_id ) {
 }
 
 
-function incsub_support_get_ticket_meta( $ticket_id, $key = '', $single = false) {
+function psource_support_get_ticket_meta( $ticket_id, $key = '', $single = false) {
 	return get_metadata( 'support_ticket', $ticket_id, $key, $single );
 }
 
-function incsub_support_add_ticket_meta( $ticket_id, $meta_key, $meta_value, $unique = false ) {
+function psource_support_add_ticket_meta( $ticket_id, $meta_key, $meta_value, $unique = false ) {
 	return add_metadata( 'support_ticket', $ticket_id, $meta_key, $meta_value, $unique );
 }
 
-function incsub_support_update_ticket_meta( $ticket_id, $meta_key, $meta_value, $prev_value = '' ) {
+function psource_support_update_ticket_meta( $ticket_id, $meta_key, $meta_value, $prev_value = '' ) {
 	return update_metadata( 'support_ticket', $ticket_id, $meta_key, $meta_value, $prev_value );
 }
 
-function incsub_support_delete_ticket_meta( $ticket_id, $meta_key, $meta_value = '' ) {
+function psource_support_delete_ticket_meta( $ticket_id, $meta_key, $meta_value = '' ) {
 	return delete_metadata( 'support_ticket', $ticket_id, $meta_key, $meta_value );
 }
 
-function incsub_support_clean_ticket_cache( $ticket ) {
-	$ticket = incsub_support_get_ticket( $ticket );
+function psource_support_clean_ticket_cache( $ticket ) {
+	$ticket = psource_support_get_ticket( $ticket );
 	if ( ! $ticket )
 		return;
 
@@ -700,37 +700,37 @@ function incsub_support_clean_ticket_cache( $ticket ) {
  * @param  Mixed $user_id   User ID/default false
  * @return String             Ticket URL
  */
-function incsub_support_get_user_ticket_url( $ticket_id, $user_id = false ) {
+function psource_support_get_user_ticket_url( $ticket_id, $user_id = false ) {
 	if ( ! $user_id )
 		$user_id = get_current_user_id();
 
-	$ticket = incsub_support_get_ticket( $ticket_id );
+	$ticket = psource_support_get_ticket( $ticket_id );
 	if ( ! $ticket )
 		return false;
 
-	$settings = incsub_support_get_settings();
+	$settings = psource_support_get_settings();
 
 	$support_blog_id = get_current_blog_id();
 	if ( is_multisite() ) {
-		$support_blog_id = $settings['incsub_support_blog_id'];
+		$support_blog_id = $settings['psource_support_blog_id'];
 		switch_to_blog( $support_blog_id );
-		$support_page = get_post( incsub_support_get_support_page_id() );
+		$support_page = get_post( psource_support_get_support_page_id() );
 		restore_current_blog();
 	}
 	else {
-		$support_page = get_post( incsub_support_get_support_page_id() );
+		$support_page = get_post( psource_support_get_support_page_id() );
 	}
 
 	// Check the user role
-	$user_can = incsub_support_user_can( $user_id, 'read_ticket' );
+	$user_can = psource_support_user_can( $user_id, 'read_ticket' );
 	if ( ! $user_can )
 		return false;
 
 	$url  = false;
 
-	if ( incsub_support_get_support_page_id() && $support_page ) {
+	if ( psource_support_get_support_page_id() && $support_page ) {
 		// The tickets are in the frontend
-		$url = incsub_support_get_the_ticket_permalink( $ticket_id );
+		$url = psource_support_get_the_ticket_permalink( $ticket_id );
 	}
 	else {
 		// The tickets are in the admin side
@@ -749,17 +749,17 @@ function incsub_support_get_user_ticket_url( $ticket_id, $user_id = false ) {
 	return $url;
 }
 
-function incsub_support_get_the_ticket_permalink( $ticket_id = false ) {
+function psource_support_get_the_ticket_permalink( $ticket_id = false ) {
 	if ( $ticket_id ) {
-		$ticket = incsub_support_get_ticket( $ticket_id );
+		$ticket = psource_support_get_ticket( $ticket_id );
 		if ( ! $ticket )
 			return '';
 
-		$blog_id = incsub_support_get_setting( 'incsub_support_blog_id' );
+		$blog_id = psource_support_get_setting( 'psource_support_blog_id' );
 		if ( is_multisite() )
 			switch_to_blog( $blog_id );
 
-		$support_page_id = incsub_support_get_support_page_id();
+		$support_page_id = psource_support_get_support_page_id();
 		$url = get_permalink( $support_page_id );
 
 		if ( is_multisite() )
@@ -771,7 +771,7 @@ function incsub_support_get_the_ticket_permalink( $ticket_id = false ) {
 		return add_query_arg( 'tid', $ticket->ticket_id, $url );
 	}
 	
-	$ticket = incsub_support()->query->ticket;	
+	$ticket = psource_support()->query->ticket;	
 	$url = add_query_arg( 'tid', $ticket->ticket_id );
 	return $url;
 }

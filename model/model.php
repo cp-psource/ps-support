@@ -410,7 +410,7 @@ if ( ! class_exists( 'MU_Support_System_Model' ) ) {
 				WHERE defcat = 2"
 			);
 			if ( empty( $default_cat ) ) {
-				$default_cat_name = __( 'Allgemeine Fragen', INCSUB_SUPPORT_LANG_DOMAIN );
+				$default_cat_name = __( 'Allgemeine Fragen', PSOURCE_SUPPORT_LANG_DOMAIN );
 				$wpdb->query(
 					$wpdb->prepare(
 						"INSERT INTO $this->faq_cats_table (site_id, cat_name, defcat) 
@@ -441,7 +441,7 @@ if ( ! class_exists( 'MU_Support_System_Model' ) ) {
 			);
 
 			if ( empty( $default_cat ) ) {
-				$default_cat_name = __( 'Allgemein', INCSUB_SUPPORT_LANG_DOMAIN );
+				$default_cat_name = __( 'Allgemein', PSOURCE_SUPPORT_LANG_DOMAIN );
 				$wpdb->query(
 					$wpdb->prepare(
 						"INSERT INTO $this->tickets_cats_table (site_id, cat_name, defcat) 

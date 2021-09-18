@@ -1,6 +1,6 @@
 <?php
 
-class Incsub_Support_Ticket_Reply {
+class PSource_Support_Ticket_Reply {
 
 	public $message_id = 0;
 
@@ -32,7 +32,7 @@ class Incsub_Support_Ticket_Reply {
 		if ( ! $ticket_reply_id )
 			return false;
 		
-		$tickets_replies_table = incsub_support()->model->tickets_messages_table;
+		$tickets_replies_table = psource_support()->model->tickets_messages_table;
 
 		$_reply = $wpdb->get_row( 
 			$wpdb->prepare( 

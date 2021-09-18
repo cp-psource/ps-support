@@ -1,16 +1,16 @@
 <?php
 
-function incsub_support_current_user_can( $cap = '' ) {
+function psource_support_current_user_can( $cap = '' ) {
 	$user_id = get_current_user_id();
 
 	$args = array_merge( array( $user_id ), func_get_args() );
-	return call_user_func_array( 'incsub_support_user_can', $args );
+	return call_user_func_array( 'psource_support_user_can', $args );
 
 }
 
-function incsub_support_user_can( $user_id, $cap = '' ) {
+function psource_support_user_can( $user_id, $cap = '' ) {
 
-	$settings = incsub_support_get_settings();
+	$settings = psource_support_get_settings();
 
 	$user_can = false;
 	if ( ( is_multisite() && is_super_admin( $user_id ) ) || ( ! is_multisite() && user_can( $user_id, 'manage_options' ) ) ) {
@@ -58,7 +58,7 @@ function incsub_support_user_can( $user_id, $cap = '' ) {
 			case 'insert_ticket':
 			case 'read_ticket':
 			case 'insert_reply': { 
-				if ( in_array( $user_role, $settings['incsub_support_tickets_role'] ) )
+				if ( in_array( $user_role, $settings['psource_support_tickets_role'] ) )
 					$user_can = true;
 				break; 
 			}
@@ -73,7 +73,7 @@ function incsub_support_user_can( $user_id, $cap = '' ) {
 			}
 
 			case 'read_faq': { 
-				if ( in_array( $user_role, $settings['incsub_support_faqs_role'] ) )
+				if ( in_array( $user_role, $settings['psource_support_faqs_role'] ) )
 					$user_can = true;
 				break; 
 			}
@@ -89,7 +89,7 @@ function incsub_support_user_can( $user_id, $cap = '' ) {
 
 				$args = array_slice( func_get_args(), 2 );
 				if ( isset( $args[0] ) ) {
-					$ticket = incsub_support_get_ticket( $args[0] );
+					$ticket = psource_support_get_ticket( $args[0] );
 					if ( $ticket ) {
 						$user_can = ( $ticket->user_id === $user_id || $ticket->admin_id === $user_id ) ? true : false;
 					}
@@ -121,13 +121,13 @@ function incsub_support_user_can( $user_id, $cap = '' ) {
 
 }
 
-function incsub_support_is_staff( $user_id = false ) {
+function psource_support_is_staff( $user_id = false ) {
 	if ( $user_id === false )
 		$user_id = get_current_user_id();
 
 	$is_staff = false;
 	
-	if ( incsub_support_user_can( $user_id, 'manage_options' ) )		
+	if ( psource_support_user_can( $user_id, 'manage_options' ) )		
 		$is_staff = true;
 
 	$is_staff = apply_filters( 'support_system_is_staff', $is_staff, $user_id );
@@ -136,7 +136,7 @@ function incsub_support_is_staff( $user_id = false ) {
 
 }
 
-function incsub_support_get_capabilities() {
+function psource_support_get_capabilities() {
 	return array(
 		'insert_ticket',
 		'delete_ticket',

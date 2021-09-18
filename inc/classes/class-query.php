@@ -1,6 +1,6 @@
 <?php
 
-class Incsub_Support_Query {
+class PSource_Support_Query {
 
 	/**
 	 * Template tags
@@ -45,9 +45,9 @@ class Incsub_Support_Query {
 
 	public function __construct() {
 		// Create an empty object in case there are no results
-		$this->ticket = new Incsub_Support_Ticket( new stdClass() );
+		$this->ticket = new PSource_Support_Ticket( new stdClass() );
 
-		$this->faq = new Incsub_Support_FAQ( new stdClass() );
+		$this->faq = new PSource_Support_FAQ( new stdClass() );
 		add_filter( 'wp_title', array( $this, 'set_wp_title' ), 10, 2 );
 		add_action( 'template_redirect', array( $this, 'query' ) );
 	}
@@ -62,12 +62,12 @@ class Incsub_Support_Query {
 		 * Filters the number of tickets per page to be displayed in the front
 		 * 
 		 * @param Integer $tickets_per_page Tickets per page number. Default is posts_per_page option in wp_options table
-		 * @param Object $this Current Incsub_Support_Query Object
+		 * @param Object $this Current PSource_Support_Query Object
 		 */
 		$per_page = apply_filters( 'support_system_query_per_page', get_option( 'posts_per_page' ), $this );
 
 		if ( $this->is_single_ticket() ) {
-			$ticket = incsub_support_get_ticket( $this->ticket_id );
+			$ticket = psource_support_get_ticket( $this->ticket_id );
 			if ( $ticket ) {
 				$this->found_tickets = 1;
 				$this->tickets = array( $ticket );
@@ -92,13 +92,13 @@ class Incsub_Support_Query {
 			/**
 			 * Filters the Tickets query Query arguments in the frontend
 			 * 
-			 * @param Array $args Query arguments that will be passed to incsub_support_get_tickets function
-			 * @param Object $this Current Incsub_Support_Query Object
+			 * @param Array $args Query arguments that will be passed to psource_support_get_tickets function
+			 * @param Object $this Current PSource_Support_Query Object
 			 */
 			$args = apply_filters( 'support_system_query_get_tickets_args', $args, $this );
 			
-			$this->tickets = incsub_support_get_tickets( $args );
-			$this->found_tickets = incsub_support_get_tickets_count( $args );
+			$this->tickets = psource_support_get_tickets( $args );
+			$this->found_tickets = psource_support_get_tickets_count( $args );
 			$this->total_pages = ceil( $this->found_tickets / $per_page );
 
 			$this->remaining_tickets = count( $this->tickets );
@@ -118,12 +118,12 @@ class Incsub_Support_Query {
 			/**
 			 * Filters the FAQs query Query arguments in the frontend
 			 * 
-			 * @param Array $args Query arguments that will be passed to incsub_support_get_faqs function
-			 * @param Object $this Current Incsub_Support_Query Object
+			 * @param Array $args Query arguments that will be passed to psource_support_get_faqs function
+			 * @param Object $this Current PSource_Support_Query Object
 			 */
 			$args = apply_filters( 'support_system_query_get_faqs_args', $args, $this );
-			$this->faqs = incsub_support_get_faqs( $args ); 
-			$this->found_faqs = incsub_support_get_faqs_count( $args );
+			$this->faqs = psource_support_get_faqs( $args ); 
+			$this->found_faqs = psource_support_get_faqs_count( $args );
 			$this->total_pages = ceil( $this->found_faqs / $per_page );
 
 			$this->remaining_faqs = count( $this->faqs );
@@ -133,23 +133,23 @@ class Incsub_Support_Query {
 
 
 	public function parse() {
-		$settings = incsub_support_get_settings();
+		$settings = psource_support_get_settings();
 
-		if ( is_multisite() && get_current_blog_id() != $settings['incsub_support_blog_id'] )
+		if ( is_multisite() && get_current_blog_id() != $settings['psource_support_blog_id'] )
 			return;
 
 		$post_id = get_the_ID();
 		
 		$ticket_id = $this->get_query_var( 'tid' );
 
-		if ( $ticket_id && incsub_support_get_support_page_id() ) {
+		if ( $ticket_id && psource_support_get_support_page_id() ) {
 			// Single ticket page
 			$this->ticket_id = absint( $ticket_id );
 			$this->is_single_ticket = true;
 			$this->is_support_system = true;
 			
 		}
-		elseif ( $post_id == incsub_support_get_support_page_id() ) {
+		elseif ( $post_id == psource_support_get_support_page_id() ) {
 			// Tickets index page
 			$this->is_tickets_index = true;
 			$this->is_support_system = true;
@@ -168,7 +168,7 @@ class Incsub_Support_Query {
 			
 		}
 		
-		if ( $post_id == incsub_support_get_faqs_page_id() && ! $this->is_single_ticket() ) {
+		if ( $post_id == psource_support_get_faqs_page_id() && ! $this->is_single_ticket() ) {
 			// FAQs Page
 			$this->is_faqs_index = true;
 			$this->is_support_system = true;
@@ -184,7 +184,7 @@ class Incsub_Support_Query {
 			
 		}
 
-		if ( $post_id == incsub_support_get_new_ticket_page_id() ) {
+		if ( $post_id == psource_support_get_new_ticket_page_id() ) {
 			// Ticket form Page
 			$this->is_submit_ticket_page = true;
 			$this->is_support_system = true;				
@@ -263,61 +263,61 @@ class Incsub_Support_Query {
 }
 
 function is_support_system() {
-	return incsub_support()->query->is_support_system();
+	return psource_support()->query->is_support_system();
 }
 
-function incsub_support_is_tickets_page() {
-	return incsub_support()->query->is_tickets_page();
+function psource_support_is_tickets_page() {
+	return psource_support()->query->is_tickets_page();
 }
 
-function incsub_support_is_faqs_page() {
-	return incsub_support()->query->is_faqs_page();
+function psource_support_is_faqs_page() {
+	return psource_support()->query->is_faqs_page();
 }
 
-function incsub_support_is_new_ticket_page() {
-	return incsub_support()->query->is_new_ticket_page();
+function psource_support_is_new_ticket_page() {
+	return psource_support()->query->is_new_ticket_page();
 }
 
-function incsub_support_is_single_ticket() {
-	return incsub_support()->query->is_single_ticket();
+function psource_support_is_single_ticket() {
+	return psource_support()->query->is_single_ticket();
 }
 
-function incsub_support_the_ticket() {
-	incsub_support()->query->the_ticket();
+function psource_support_the_ticket() {
+	psource_support()->query->the_ticket();
 }
 
-function incsub_support_is_ticket_closed( $ticket_id = false ) {
+function psource_support_is_ticket_closed( $ticket_id = false ) {
 	if ( $ticket_id ) {
-		$ticket = incsub_support_get_ticket( $ticket_id );
+		$ticket = psource_support_get_ticket( $ticket_id );
 		if ( $ticket )
 			return $ticket->is_closed();
 
 		return false;
 	}
 
-	return incsub_support()->query->ticket->is_closed();
+	return psource_support()->query->ticket->is_closed();
 }
 
-function incsub_support_has_tickets() {
-	if ( incsub_support()->query->current_ticket === -1 ) {
+function psource_support_has_tickets() {
+	if ( psource_support()->query->current_ticket === -1 ) {
 		// The loop hasn't started yet
-		return (bool)incsub_support()->query->found_tickets;
+		return (bool)psource_support()->query->found_tickets;
 	}
 	else {
-		return (bool)incsub_support()->query->remaining_tickets;
+		return (bool)psource_support()->query->remaining_tickets;
 	}
 }
 
-function incsub_support_the_tickets_number() {
-	return incsub_support()->query->found_tickets;
+function psource_support_the_tickets_number() {
+	return psource_support()->query->found_tickets;
 }
 
-function incsub_support_get_the_ticket_id() {
-	return incsub_support()->query->ticket->ticket_id;
+function psource_support_get_the_ticket_id() {
+	return psource_support()->query->ticket->ticket_id;
 }
 
-function incsub_support_get_the_ticket_class() {
-	$ticket = incsub_support()->query->ticket;
+function psource_support_get_the_ticket_class() {
+	$ticket = psource_support()->query->ticket;
 
 	$class = array();
 	$class[] = "support-system-ticket-priority-" . $ticket->ticket_priority;
@@ -333,28 +333,28 @@ function incsub_support_get_the_ticket_class() {
 	return apply_filters( 'support_system_the_ticket_class', implode( ' ', $class ) );
 }
 
-function incsub_support_get_the_tickets_search_query() {
-	return empty( incsub_support()->query->tickets_search ) ? '' : incsub_support()->query->tickets_search;
+function psource_support_get_the_tickets_search_query() {
+	return empty( psource_support()->query->tickets_search ) ? '' : psource_support()->query->tickets_search;
 }
 
 
-function incsub_support_get_queried_ticket_category_id() {
-	return incsub_support()->query->ticket_category_id;
+function psource_support_get_queried_ticket_category_id() {
+	return psource_support()->query->ticket_category_id;
 }
 
 
-function incsub_support_get_the_ticket_title() {
-	return incsub_support()->query->ticket->title;
+function psource_support_get_the_ticket_title() {
+	return psource_support()->query->ticket->title;
 }
 
-function incsub_support_get_the_ticket_replies_number() {
-	return absint( incsub_support()->query->ticket->num_replies );
+function psource_support_get_the_ticket_replies_number() {
+	return absint( psource_support()->query->ticket->num_replies );
 }
 
-function incsub_support_get_the_last_ticket_reply_url() {
-	$ticket = incsub_support()->query->ticket;
+function psource_support_get_the_last_ticket_reply_url() {
+	$ticket = psource_support()->query->ticket;
 
-	$url = incsub_support_get_the_ticket_permalink();
+	$url = psource_support_get_the_ticket_permalink();
 	$replies = $ticket->get_replies();
 	$last_reply = end( $replies );
 	$last_reply_id = $last_reply->message_id;
@@ -365,65 +365,65 @@ function incsub_support_get_the_last_ticket_reply_url() {
 	return $url;
 }
 
-function incsub_support_get_the_ticket_updated_date() {
-	$ticket = incsub_support()->query->ticket;
-	return incsub_support_get_translated_date( $ticket->ticket_updated, true );
+function psource_support_get_the_ticket_updated_date() {
+	$ticket = psource_support()->query->ticket;
+	return psource_support_get_translated_date( $ticket->ticket_updated, true );
 }
 
-function incsub_support_get_the_ticket_date() {
-	$ticket = incsub_support()->query->ticket;
+function psource_support_get_the_ticket_date() {
+	$ticket = psource_support()->query->ticket;
 
 	$human_read = false;
-	$date = incsub_support_get_translated_date( $ticket->ticket_opened, $human_read );
+	$date = psource_support_get_translated_date( $ticket->ticket_opened, $human_read );
 
 	/**
 	 * Filters the current ticket date in the front end
 	 * 
 	 * @param String $date Ticket date
-	 * @param Object $ticket Current Incsub_Support_Ticket Object
+	 * @param Object $ticket Current PSource_Support_Ticket Object
 	 * @param Object $human_read If the date is human readable
 	 */
 	return apply_filters( 'support_system_the_ticket_date', $date, $ticket, $human_read );
 }
 
-function incsub_support_get_the_author_id() {
-	return incsub_support()->query->ticket->user_id;
+function psource_support_get_the_author_id() {
+	return psource_support()->query->ticket->user_id;
 }
 
-function incsub_support_get_the_author() {
-	$user = get_userdata( incsub_support_get_the_author_id() );
+function psource_support_get_the_author() {
+	$user = get_userdata( psource_support_get_the_author_id() );
 	if ( ! $user )
-		return __( 'Unknown user', INCSUB_SUPPORT_LANG_DOMAIN );
+		return __( 'Unknown user', PSOURCE_SUPPORT_LANG_DOMAIN );
 
 	return $user->data->display_name;
 }
 
-function incsub_support_get_the_ticket_message() {
-	return incsub_support()->query->ticket->message;
+function psource_support_get_the_ticket_message() {
+	return psource_support()->query->ticket->message;
 }
 
-function incsub_support_get_the_ticket_excerpt() {
-	$message = incsub_support_get_the_ticket_message();
+function psource_support_get_the_ticket_excerpt() {
+	$message = psource_support_get_the_ticket_message();
 	return wpautop( wp_trim_words( $message, 40, ' [...]' ) );
 	
 }
 
-function incsub_support_has_replies() {
-	return ( count( incsub_support()->query->ticket->get_replies() ) > 1 );
+function psource_support_has_replies() {
+	return ( count( psource_support()->query->ticket->get_replies() ) > 1 );
 }
 
-function incsub_support_get_the_ticket_category() {
-	$cat = incsub_support_get_ticket_category( incsub_support()->query->ticket->cat_id );
+function psource_support_get_the_ticket_category() {
+	$cat = psource_support_get_ticket_category( psource_support()->query->ticket->cat_id );
 	return $cat->cat_name;
 }
 
-function incsub_support_get_the_ticket_category_id() {
-	$cat = incsub_support_get_ticket_category( incsub_support()->query->ticket->cat_id );
+function psource_support_get_the_ticket_category_id() {
+	$cat = psource_support_get_ticket_category( psource_support()->query->ticket->cat_id );
 	return $cat->cat_id;	
 }
 
-function incsub_support_get_the_ticket_category_link() {
-	$cat = incsub_support_get_ticket_category( incsub_support()->query->ticket->cat_id );
+function psource_support_get_the_ticket_category_link() {
+	$cat = psource_support_get_ticket_category( psource_support()->query->ticket->cat_id );
 	$url = add_query_arg( 'ticket-cat-id', $cat->cat_id );
 	$url = remove_query_arg( 'support-system-ticket-s', $url );
 	$url = remove_query_arg( 'support-sytem-page', $url );
@@ -432,29 +432,29 @@ function incsub_support_get_the_ticket_category_link() {
 }
 
 
-function incsub_support_get_the_ticket_priority() {
-	return incsub_support_get_ticket_priority_name( incsub_support()->query->ticket->ticket_priority );
+function psource_support_get_the_ticket_priority() {
+	return psource_support_get_ticket_priority_name( psource_support()->query->ticket->ticket_priority );
 }
 
-function incsub_support_get_the_ticket_priority_id() {
-	return incsub_support()->query->ticket->ticket_priority;
+function psource_support_get_the_ticket_priority_id() {
+	return psource_support()->query->ticket->ticket_priority;
 }
 
-function incsub_support_get_the_ticket_status() {
-	return incsub_support_get_ticket_status_name( incsub_support()->query->ticket->ticket_status );
+function psource_support_get_the_ticket_status() {
+	return psource_support_get_ticket_status_name( psource_support()->query->ticket->ticket_status );
 }
 
 function support_system_the_tickets_number() {
-	return incsub_support()->query->found_tickets;
+	return psource_support()->query->found_tickets;
 }
 
 
-function incsub_support_the_ticket_staff_name() {
-	return incsub_support()->query->ticket->get_staff_name();
+function psource_support_the_ticket_staff_name() {
+	return psource_support()->query->ticket->get_staff_name();
 }
 
-function incsub_support_the_ticket_staff_login() {
-	return incsub_support()->query->ticket->get_staff_login();
+function psource_support_the_ticket_staff_login() {
+	return psource_support()->query->ticket->get_staff_login();
 }
 
 
@@ -464,8 +464,8 @@ function incsub_support_the_ticket_staff_login() {
 
 /** FAQS **/
 
-function incsub_support_get_the_faq_class() {
-	$ticket = incsub_support()->query->faq;
+function psource_support_get_the_faq_class() {
+	$ticket = psource_support()->query->faq;
 
 	$class = array();
 	$class[] = "support-system-faq-category-" . $ticket->cat_id;
@@ -478,48 +478,48 @@ function incsub_support_get_the_faq_class() {
 	return apply_filters( 'support_system_the_faq_class', implode( ' ', $class ) );
 }
 
-function incsub_support_has_faqs() {
-	if ( incsub_support()->query->current_faq === -1 ) {
+function psource_support_has_faqs() {
+	if ( psource_support()->query->current_faq === -1 ) {
 		// The loop hasn't started yet
-		return (bool)incsub_support()->query->found_faqs;
+		return (bool)psource_support()->query->found_faqs;
 	}
 	else {
-		return (bool)incsub_support()->query->remaining_faqs;
+		return (bool)psource_support()->query->remaining_faqs;
 	}
 }
 
-function incsub_support_the_faq() {
-	incsub_support()->query->the_faq();
+function psource_support_the_faq() {
+	psource_support()->query->the_faq();
 }
 
-function incsub_support_the_faqs_number() {
-	return incsub_support()->query->found_faqs;
+function psource_support_the_faqs_number() {
+	return psource_support()->query->found_faqs;
 }
 
-function incsub_support_get_the_faq_id() {
-	return incsub_support()->query->faq->faq_id;
+function psource_support_get_the_faq_id() {
+	return psource_support()->query->faq->faq_id;
 }
 
-function incsub_support_get_the_faq_question() {
-	return incsub_support()->query->faq->question;
+function psource_support_get_the_faq_question() {
+	return psource_support()->query->faq->question;
 }
 
-function incsub_support_get_the_faq_answer() {
-	return do_shortcode( incsub_support()->query->faq->answer );
+function psource_support_get_the_faq_answer() {
+	return do_shortcode( psource_support()->query->faq->answer );
 }
 
-function incsub_support_get_the_faq_category_link() {
-	$cat = incsub_support_get_faq_category( incsub_support()->query->faq->cat_id );
+function psource_support_get_the_faq_category_link() {
+	$cat = psource_support_get_faq_category( psource_support()->query->faq->cat_id );
 	$url = add_query_arg( 'cat-id', $cat->cat_id );
 	$url = remove_query_arg( 'support-system-s', $url );
 
 	return '<a href="' . esc_url( $url ) . '">' . $cat->cat_name . '</a>';
 }
 
-function incsub_support_get_queried_faq_category_id() {
-	return incsub_support()->query->faq_category_id;
+function psource_support_get_queried_faq_category_id() {
+	return psource_support()->query->faq_category_id;
 }
 
-function incsub_support_get_the_faqs_search_query() {
-	return empty( incsub_support()->query->faqs_search ) ? '' : incsub_support()->query->faqs_search;	
+function psource_support_get_the_faqs_search_query() {
+	return empty( psource_support()->query->faqs_search ) ? '' : psource_support()->query->faqs_search;	
 }
