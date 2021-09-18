@@ -22,9 +22,16 @@ Voll funktionsfähiger Texteditor
 Gib den Benutzern die Tools, die sie benötigen, um ihre Anforderungen klar zu formulieren. 
 Der mitgelieferte Texteditor eignet sich perfekt für einfaches Styling und Dateifreigabe – ideal zum Einfügen von Screenshots.
 
+[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
+
+[Projektseite](https://n3rds.work/piestingtal_source/ps-support-system-plugin/)
+[Handbuch](https://n3rds.work/docs/ps-supportsystem-plugin-handbuch/)
+[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/ps-support-plugin-supportforum/)
+[GitHub](https://github.com/piestingtal-source/ps-support)
+
 == Screenshots ==
 
-1. Bringt Dir ein Support-System
+* 1. Bringt Dir ein Support-System
 
 == ChangeLog ==
 
