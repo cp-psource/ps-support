@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Pro Sites integration
+ * Bloghosting integration
  */
 
 class Support_System_Pro_Sites_Integration {

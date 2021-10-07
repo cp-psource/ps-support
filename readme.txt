@@ -35,6 +35,10 @@ Der mitgelieferte Texteditor eignet sich perfekt für einfaches Styling und Date
 
 == ChangeLog ==
 
+= 2.2.2 = DerN3rd =
+
+* PhP8 Fix Admindashboard
+
 = 2.2.1 = DerN3rd =
 
 * Overhauled von WPMUDEV

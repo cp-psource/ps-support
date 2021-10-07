@@ -24,7 +24,7 @@
 			<?php if ( is_multisite() ): ?>
 				<?php ob_start(); ?>
 					<input type="number" class="small-text" value="<?php echo $blog_id; ?>" name="support_blog_id" />
-					<span class="description"><?php _e( 'Mit dem Support-System können Tickets auf einer Deiner Websites im Front-End angezeigt werden...' ); ?></span>
+					<span class="description"><?php _e( 'Mit dem Support-System können Tickets auf einer Deiner Webseiten im Front-End angezeigt werden...' ); ?></span>
 				<?php $this->render_row( __( 'Blog ID', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() ); ?>
 			<?php endif; ?>
 

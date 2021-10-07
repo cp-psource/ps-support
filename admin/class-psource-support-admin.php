@@ -163,7 +163,9 @@ class PSource_Support_Admin {
 			if ( class_exists( $menu['class'] ) ) {
 				$args = array( 'slug' => $menu['slug'], 'is_network' => $network );
 	            $r = new ReflectionClass( $menu['class'] );
-	            $this->menus[ $key ] = $r->newInstanceArgs( $args );
+				/* php8 fix */
+	            //$this->menus[ $key ] = $r->newInstanceArgs( $args );
+				$this->menus[ $key ] = $r->newInstanceArgs(array_values( $args ) );
 			} 
 		}
 	}
