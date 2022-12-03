@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: multisite, support, helpdesk
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -40,6 +40,7 @@ Der mitgelieferte Texteditor eignet sich perfekt für einfaches Styling und Date
 * PhP8 Fix Admindashboard
 * Psource Updater aktualisiert
 * Textdomain angepasst
+* Getestet mit PhP8
 
 = 2.2.1 = DerN3rd =
 

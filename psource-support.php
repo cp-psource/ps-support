@@ -5,7 +5,7 @@ Plugin URI: https://n3rds.work/piestingtal_source/ps-support-system-plugin/
 Description: Richte auf jeder WordPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 Author: DerN3rd (WMS N@W)
 Network: true
-Version: 2.2.1
+Version: 2.2.2
 License: GPLv2
 Author URI: https://n3rds.work
 Text Domain: psource-support
@@ -38,7 +38,7 @@ $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'ps-support' 
 );
 
-define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.1' );
+define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.2' );
 
 if ( ! defined( 'PSOURCE_SUPPORT_LANG_DOMAIN' ) )
 	define('PSOURCE_SUPPORT_LANG_DOMAIN', 'psource-support');
