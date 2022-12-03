@@ -17,7 +17,7 @@ class PSource_Support_Tickets_Index_Shortcode extends PSource_Support_Shortcode 
 
 			$action = 'submit-ticket-details-' . $ticket_id; 
 			if ( ! wp_verify_nonce( $_POST['_wpnonce'], $action ) )
-				wp_die( __( 'Sicherheitsüberprüfungsfehler', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Sicherheitsüberprüfungsfehler', 'psource-support' ) );
 
 			$category = absint( $_POST['ticket-cat'] );
 			$priority = absint( $_POST['ticket-priority'] );
@@ -57,7 +57,7 @@ class PSource_Support_Tickets_Index_Shortcode extends PSource_Support_Shortcode 
 
 			$action = 'submit-close-ticket-' . $ticket_id; 
 			if ( ! wp_verify_nonce( $_POST['_wpnonce'], $action ) )
-				wp_die( __( 'Sicherheitsüberprüfungsfehler', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Sicherheitsüberprüfungsfehler', 'psource-support' ) );
 
 			if ( empty( $_POST['close-ticket'] ) )
 				psource_support_restore_ticket_previous_status( $ticket_id );
@@ -80,20 +80,20 @@ class PSource_Support_Tickets_Index_Shortcode extends PSource_Support_Shortcode 
 
 			$action = 'support-system-submit-reply-' . $ticket_id . '-' . $user_id . '-' . $blog_id;
 			if ( ! wp_verify_nonce( $_POST['_wpnonce'], $action ) )
-				wp_die( __( 'Sicherheitsüberprüfungsfehler', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Sicherheitsüberprüfungsfehler', 'psource-support' ) );
 
 			$message = $_POST['support-system-reply-message'];
 
 			if ( empty( $message ) )
-				wp_die( __( 'Die Antwortnachricht darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Die Antwortnachricht darf nicht leer sein', 'psource-support' ) );
 
 			$ticket = psource_support_get_ticket( $ticket_id );
 			
 			if ( ! $ticket )
-				wp_die( __( 'Das Ticket existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Das Ticket existiert nicht', 'psource-support' ) );
 
 			if ( $user_id != get_current_user_id() )
-				wp_die( __( 'Sicherheitsüberprüfungsfehler', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Sicherheitsüberprüfungsfehler', 'psource-support' ) );
 
 			$args = array(
 				'poster_id' => get_current_user_id(),
@@ -119,7 +119,7 @@ class PSource_Support_Tickets_Index_Shortcode extends PSource_Support_Shortcode 
 			$result = psource_support_insert_ticket_reply( $ticket_id, $args );
 
 			if ( ! $result )
-				wp_die( __( 'Bei der Bearbeitung des Formulars ist ein Fehler aufgetreten. Bitte versuche es später erneut', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Bei der Bearbeitung des Formulars ist ein Fehler aufgetreten. Bitte versuche es später erneut', 'psource-support' ) );
 
 			$ticket = psource_support_get_ticket( $ticket_id );
 
@@ -162,9 +162,9 @@ class PSource_Support_Tickets_Index_Shortcode extends PSource_Support_Shortcode 
 
 		if ( ! psource_support_current_user_can( 'read_ticket' ) ) {
 			if ( ! is_user_logged_in() )
-				$message = sprintf( __( 'Du musst <a href="%s">angemeldet</a> sein, um Support zu erhalten', PSOURCE_SUPPORT_LANG_DOMAIN ), wp_login_url( get_permalink() ) );
+				$message = sprintf( __( 'Du musst <a href="%s">angemeldet</a> sein, um Support zu erhalten', 'psource-support' ), wp_login_url( get_permalink() ) );
 			else
-				$message = __( 'Du hast nicht genügend Berechtigungen, um Unterstützung zu erhalten', PSOURCE_SUPPORT_LANG_DOMAIN );
+				$message = __( 'Du hast nicht genügend Berechtigungen, um Unterstützung zu erhalten', 'psource-support' );
 			
 			$message = apply_filters( 'support_system_not_allowed_tickets_list_message', $message, 'ticket-index' );
 			?>

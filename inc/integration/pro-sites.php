@@ -65,14 +65,14 @@ class Support_System_Pro_Sites_Integration {
                 if ( array_intersect( $settings['psource_support_tickets_role'], $user->roles ) ) {
                     // The role is allowed
 	                $admin_url = add_query_arg( 'page', 'ticket-manager', get_admin_url( $pro_blog_id, 'admin.php' ) );
-	                $message = sprintf( __( 'Hilfe benötigt? <a href="%s" title="%s">Klicke hier, um zu Deinem Dashboard zu gelangen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $admin_url, esc_attr( __( 'Gehe zum Support in Deinem Webseiten-Dashboard', PSOURCE_SUPPORT_LANG_DOMAIN ) ) );
+	                $message = sprintf( __( 'Hilfe benötigt? <a href="%s" title="%s">Klicke hier, um zu Deinem Dashboard zu gelangen</a>', 'psource-support' ), $admin_url, esc_attr( __( 'Gehe zum Support in Deinem Webseiten-Dashboard', 'psource-support' ) ) );
                 }
 			    restore_current_blog();
 			}
 			else {
 				$levels = (array) get_site_option( 'psts_levels' );
 				if ( isset( $levels[ $settings['psource_pro_sites_level'] ] ) ) {
-                    $message = sprintf( __( 'Wenn Du Unterstützung benötigst, aktualisiere bitte auf %s.', PSOURCE_SUPPORT_LANG_DOMAIN ), $levels[ $settings['psource_pro_sites_level'] ]['name'] );
+                    $message = sprintf( __( 'Wenn Du Unterstützung benötigst, aktualisiere bitte auf %s.', 'psource-support' ), $levels[ $settings['psource_pro_sites_level'] ]['name'] );
 				}
             }
 
@@ -100,7 +100,7 @@ class Support_System_Pro_Sites_Integration {
 				else	
 					$admin_url = add_query_arg( 'page', 'ticket-manager', get_admin_url( $blog_id, 'admin.php' ) );
 
-				$message = sprintf( __( 'Hilfe benötigt? <a href="%s" title="%s">Klicke hier, um zu Deinem Dashboard zu gelangen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $admin_url, esc_attr( __( 'Gehe zum Support in Deinem Webseiten-Dashboard', PSOURCE_SUPPORT_LANG_DOMAIN ) ) );
+				$message = sprintf( __( 'Hilfe benötigt? <a href="%s" title="%s">Klicke hier, um zu Deinem Dashboard zu gelangen</a>', 'psource-support' ), $admin_url, esc_attr( __( 'Gehe zum Support in Deinem Webseiten-Dashboard', 'psource-support' ) ) );
 			}
 			
 		}
@@ -120,41 +120,41 @@ class Support_System_Pro_Sites_Integration {
 
 		?>
 
-			<h3><?php _e( 'PS-Bloghosting Integration', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h3>
-			<p><?php _e( 'Lege eine PS-Bloghosting-Ebene für Admin-Menüs fest. Diese Optionen wirken sich nicht auf das Frontend aus.', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></p>
+			<h3><?php _e( 'PS-Bloghosting Integration', 'psource-support' ); ?></h3>
+			<p><?php _e( 'Lege eine PS-Bloghosting-Ebene für Admin-Menüs fest. Diese Optionen wirken sich nicht auf das Frontend aus.', 'psource-support' ); ?></p>
 			<table class="form-table">
 
 				<tr valign="top">
-					<th scope="row"><?php _e( 'Tickets', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></th>
+					<th scope="row"><?php _e( 'Tickets', 'psource-support' ); ?></th>
 					<td>
 				    	<p>
 				    		<label for="pro_sites">
 					    		<input type="checkbox" id="pro_sites" name="pro_sites" <?php checked( $allow_only_pro_sites ); ?>>
-					    		<span> <?php _e( 'Aktiviere und wähle eine PS-Bloghosting-Ebene aus, um <strong>Support-Tickets</strong> in einem Blog zuzulassen (wenn diese Option nicht aktiviert ist, ist der Support für jedes Blog verfügbar).', PSOURCE_SUPPORT_LANG_DOMAIN); ?></span>
+					    		<span> <?php _e( 'Aktiviere und wähle eine PS-Bloghosting-Ebene aus, um <strong>Support-Tickets</strong> in einem Blog zuzulassen (wenn diese Option nicht aktiviert ist, ist der Support für jedes Blog verfügbar).', 'psource-support'); ?></span>
 				    		</label>
 				    	</p>
 				    	<p>
 				    		<label for="pro_sites_levels">
 				    			<?php psts_levels_select( 'pro_sites_levels', $pro_sites_level ); ?> 
-				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></span>
+				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', 'psource-support' ); ?></span>
 				    		</label>
 				    	</p>
 
 				    </td>
 				</tr>
 				<tr valign="top">
-				    <th scope="row"><?php _e( 'FAQs', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></th>
+				    <th scope="row"><?php _e( 'FAQs', 'psource-support' ); ?></th>
 				    <td>
 				    	<p>
 				    		<label for="pro_sites_faq">
 				    			<input type="checkbox" id="pro_sites_faq" name="pro_sites_faq" <?php checked( $allow_only_pro_sites_faq ); ?>>
-				    			<span> <?php _e( 'Aktiviere und wähle eine Mindest-PS-Bloghosting-Ebene aus, um <strong>Support-FAQ</strong> in einem Blog zuzulassen (wenn diese Option deaktiviert ist, sind Support-FAQ für jeden Blog verfügbar.)', PSOURCE_SUPPORT_LANG_DOMAIN); ?></span>
+				    			<span> <?php _e( 'Aktiviere und wähle eine Mindest-PS-Bloghosting-Ebene aus, um <strong>Support-FAQ</strong> in einem Blog zuzulassen (wenn diese Option deaktiviert ist, sind Support-FAQ für jeden Blog verfügbar.)', 'psource-support'); ?></span>
 				    		</label>
 				    	</p>
 				    	<p>
 				    		<label for="pro_sites_faq_levels">
 				    			<?php psts_levels_select( 'pro_sites_faq_levels', $pro_sites_faq_level ); ?> 
-				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></span>
+				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', 'psource-support' ); ?></span>
 				    		</label>
 				    	</p>
 				    </td>
@@ -173,41 +173,41 @@ class Support_System_Pro_Sites_Integration {
 
 		?>
 
-			<h3><?php _e( 'Pro Benutzer Integration', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h3>
-			<p><?php _e( 'Lege eine PS-Bloghosting-Ebene für Benutzer fest. Ein Benutzer ist Profi, wenn er mindestens eine Pro-Seite mit der angegebenen Stufe hat.', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></p>
+			<h3><?php _e( 'Pro Benutzer Integration', 'psource-support' ); ?></h3>
+			<p><?php _e( 'Lege eine PS-Bloghosting-Ebene für Benutzer fest. Ein Benutzer ist Profi, wenn er mindestens eine Pro-Seite mit der angegebenen Stufe hat.', 'psource-support' ); ?></p>
 			<table class="form-table">
 
 		    	<tr valign="top">
-					<th scope="row"><?php _e( 'Tickets', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></th>
+					<th scope="row"><?php _e( 'Tickets', 'psource-support' ); ?></th>
 				    <td>
 				    	<p>
 				    		<label for="pro_users_tickets">
 				    			<input type="checkbox" id="pro_users_tickets" name="pro_users_tickets" <?php checked( $allow_only_pro_users_tickets ); ?>>
-				    			<span> <?php _e( 'Erlaube <strong>Support Tickets</strong> nur für Pro Benutzer', PSOURCE_SUPPORT_LANG_DOMAIN); ?></span>
+				    			<span> <?php _e( 'Erlaube <strong>Support Tickets</strong> nur für Pro Benutzer', 'psource-support'); ?></span>
 				    		</label>
 				    	</p>
 				    	<p>
 				    		<label for="pro_users_levels">
 				    			<?php psts_levels_select( 'pro_users_levels', $pro_users_level ); ?> 
-				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></span>
+				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', 'psource-support' ); ?></span>
 				    		</label>
 				    	</p>
 					</td>
 				</tr>
 
 				<tr valign="top">
-					<th scope="row"><?php _e( 'FAQs', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></th>
+					<th scope="row"><?php _e( 'FAQs', 'psource-support' ); ?></th>
 				    <td>
 				    	<p>
 				    		<label for="pro_users_faqs">
 				    			<input type="checkbox" id="pro_users_faqs" name="pro_users_faqs" <?php checked( $allow_only_pro_users_faqs ); ?>>
-				    			<span> <?php _e( 'Erlaube <strong>Support FAQs</strong> nur für Pro Benutzer', PSOURCE_SUPPORT_LANG_DOMAIN); ?></span>
+				    			<span> <?php _e( 'Erlaube <strong>Support FAQs</strong> nur für Pro Benutzer', 'psource-support'); ?></span>
 				    		</label>
 				    	</p>
 				    	<p>
 				    		<label for="pro_users_faq_levels">
 				    			<?php psts_levels_select( 'pro_users_faqs_levels', $pro_users_faqs_level ); ?> 
-				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></span>
+				    			<span class="description"><?php _e( 'Minimum PS-Bloghosting-Ebene', 'psource-support' ); ?></span>
 				    		</label>
 				    	</p>
 					</td>

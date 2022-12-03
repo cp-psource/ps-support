@@ -19,8 +19,8 @@ class PSource_Support_Admin_Support_Menu extends PSource_Support_Parent_Support_
 		if ( psource_support_current_user_can( 'insert_ticket' ) ) {
 			add_submenu_page( 
 				$this->slug, 
-				__( 'Neues Ticket erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ), 
-				__( 'Neues Ticket erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+				__( 'Neues Ticket erstellen', 'psource-support' ), 
+				__( 'Neues Ticket erstellen', 'psource-support' ), 
 				'read', 
 				"admin.php?page=$this->slug&action=add" 
 			);
@@ -47,11 +47,11 @@ class PSource_Support_Admin_Support_Menu extends PSource_Support_Parent_Support_
 		$settings = psource_support_get_settings();
 		$menu_title = esc_html( $settings['psource_support_menu_name'] );
 		$add_new_link = add_query_arg( 'action', 'add', $this->get_menu_url() );
-		return '<h2>'. $menu_title . ' <a href="' . esc_url( $add_new_link ) . '" class="add-new-h2">' . esc_html__( 'Neues Ticket erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a></h2>';
+		return '<h2>'. $menu_title . ' <a href="' . esc_url( $add_new_link ) . '" class="add-new-h2">' . esc_html__( 'Neues Ticket erstellen', 'psource-support' ) . '</a></h2>';
 	}
 
 	public function add_new_ticket_title( $title ) {
-		return '<h2>' . __( 'Neues Ticket erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</h2>';
+		return '<h2>' . __( 'Neues Ticket erstellen', 'psource-support' ) . '</h2>';
 	}
 
 	public function render_inner_page() {
@@ -117,19 +117,19 @@ class PSource_Support_Admin_Support_Menu extends PSource_Support_Parent_Support_
 			$args = array();
 
 			if ( empty( $_POST['message-text'] ) )
-				add_settings_error( 'support_system_submit_new_ticket', 'empty_message', __( 'Die Ticketnachricht darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_ticket', 'empty_message', __( 'Die Ticketnachricht darf nicht leer sein', 'psource-support' ) );
 			else
 				$args['message'] = wpautop( stripslashes_deep( $_POST['message-text'] ) );
 
 			$title = strip_tags( stripslashes_deep( $_POST['subject'] ) );
 			if ( empty( $title ) )
-				add_settings_error( 'support_system_submit_new_ticket', 'empty_subject', __( 'Der Betreff des Tickets darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_ticket', 'empty_subject', __( 'Der Betreff des Tickets darf nicht leer sein', 'psource-support' ) );
 			else
 				$args['title'] = $title;
 
 			$category = psource_support_get_ticket_category( absint( $_POST['ticket-cat'] ) );
 			if ( ! $category ) {
-				add_settings_error( 'support_system_submit_new_ticket', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_ticket', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', 'psource-support' ) );
 			}
 			else {
 				$args['cat_id'] = $category->cat_id;

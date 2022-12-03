@@ -12,9 +12,9 @@ class PSource_Support_FAQs_Shortcode extends PSource_Support_Shortcode {
 
 		if ( ! psource_support_current_user_can( 'read_faq' ) ) {
 			if ( ! is_user_logged_in() )
-				$message = sprintf( __( 'Du musst <a href="%s">angemeldet</a> sein, um Support zu erhalten', PSOURCE_SUPPORT_LANG_DOMAIN ), wp_login_url( get_permalink() ) );
+				$message = sprintf( __( 'Du musst <a href="%s">angemeldet</a> sein, um Support zu erhalten', 'psource-support' ), wp_login_url( get_permalink() ) );
 			else
-				$message = __( 'Du hast nicht genügend Berechtigungen, um Unterstützung zu erhalten', PSOURCE_SUPPORT_LANG_DOMAIN );
+				$message = __( 'Du hast nicht genügend Berechtigungen, um Unterstützung zu erhalten', 'psource-support' );
 			
 			$message = apply_filters( 'support_system_not_allowed_faqs_list_message', $message, 'faq-list' );
 			?>

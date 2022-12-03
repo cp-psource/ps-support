@@ -493,7 +493,7 @@ function psource_support_insert_ticket( $args = array() ) {
 
 	// TITLE
 	if ( empty( $args['title'] ) )
-		return new WP_Error( 'empty_title', __( 'Ticket Titel darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_title', __( 'Ticket Titel darf nicht leer sein.', 'psource-support' ) );
 	$insert['title'] = wp_unslash( strip_tags( $args['title'] ) ); 
 
 	// VIEW BY SUPERADMIN
@@ -516,11 +516,11 @@ function psource_support_insert_ticket( $args = array() ) {
 	$ticket_id = $wpdb->insert_id;
 
 	if ( ! $ticket_id )
-		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', 'psource-support' ) );
 
 	// MESSAGE
 	if ( empty( $args['message'] ) )
-		return new WP_Error( 'empty_message', __( 'Nachricht darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_message', __( 'Nachricht darf nicht leer sein.', 'psource-support' ) );
 	$message = $args['message'];
 
 	// ATTACHMENTS
@@ -542,7 +542,7 @@ function psource_support_insert_ticket( $args = array() ) {
 
 	if ( ! $result ) {
 		psource_support_delete_ticket( $ticket_id );
-		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des Tickets, versuche es später erneut.', 'psource-support' ) );
 	}
 
 	psource_support_clean_ticket_category_cache( $category );
@@ -608,7 +608,7 @@ function psource_support_upload_ticket_attachments( $attachments ) {
 		if ( ! isset( $uploaded['error'] ) )
 			$files_uploaded[] = $uploaded;
 		else
-			$errors[] = sprintf( __( 'Fehler beim hochladen <strong>%s</strong> Datei: %s', PSOURCE_SUPPORT_LANG_DOMAIN ), $attachments['name'][ $key ], $uploaded['error'] );
+			$errors[] = sprintf( __( 'Fehler beim hochladen <strong>%s</strong> Datei: %s', 'psource-support' ), $attachments['name'][ $key ], $uploaded['error'] );
 	}
 
 	$current_user->allcaps['unfiltered_upload'] = $upload_cap;

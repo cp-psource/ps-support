@@ -11,8 +11,8 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
 
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => __( 'FAQ', PSOURCE_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'FAQs', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'FAQ', 'psource-support' ),  
+            'plural'    => __( 'FAQs', 'psource-support' ), 
             'ajax'      => false        
         ) );
         
@@ -53,8 +53,8 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
 
         
         $actions = array(
-            'edit'     => sprintf( __( '<a href="%s">FAQ bearbeiten</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $link ),
-            'delete'    => sprintf( __( '<a href="%s">FAQ löschen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $delete_link ),
+            'edit'     => sprintf( __( '<a href="%s">FAQ bearbeiten</a>', 'psource-support' ), $link ),
+            'delete'    => sprintf( __( '<a href="%s">FAQ löschen</a>', 'psource-support' ), $delete_link ),
         );
 
         /**
@@ -137,11 +137,11 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />',
-            'faq_id'            => __( 'Frage ID', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'question'      => __( 'Frage', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'category'      => __( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'helpful'       => __( 'Denken ist hilfreich', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'no_helpful'    => __( 'Denken ist nicht hilfreich', PSOURCE_SUPPORT_LANG_DOMAIN )
+            'faq_id'            => __( 'Frage ID', 'psource-support' ),
+            'question'      => __( 'Frage', 'psource-support' ),
+            'category'      => __( 'Kategorie', 'psource-support' ),
+            'helpful'       => __( 'Denken ist hilfreich', 'psource-support' ),
+            'no_helpful'    => __( 'Denken ist nicht hilfreich', 'psource-support' )
         );
         return $columns;
     }
@@ -150,7 +150,7 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
         if ( 'top' == $which) {
 
             $cat_filter_args = array(
-                'show_empty' => __( 'Alle Kategorien anzeigen', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                'show_empty' => __( 'Alle Kategorien anzeigen', 'psource-support' ),
                 'selected' => isset( $_GET['category'] ) ? absint( $_GET['category'] ) : false
             );
 
@@ -158,7 +158,7 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
             ?>
                 <div class="alignleft actions">
                     <?php psource_support_faq_categories_dropdown( $cat_filter_args ); ?>
-                    <input type="submit" name="filter_action" id="faq-query-submit" class="button" value="<?php echo esc_attr( 'Filter', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>">     
+                    <input type="submit" name="filter_action" id="faq-query-submit" class="button" value="<?php echo esc_attr( 'Filter', 'psource-support' ); ?>">     
                 </div>
         <?php
            
@@ -169,7 +169,7 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
 
     function get_bulk_actions() {
         $actions = array(
-            'delete'    => __( 'Löschen', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'delete'    => __( 'Löschen', 'psource-support' ),
         );
 
         if ( ! psource_support_current_user_can( 'delete_faq' ) ) {

@@ -67,9 +67,9 @@ if ( !class_exists('Puc_v4p10_Vcs_PluginUpdateChecker') ):
 					'puc_api_error',
 					new WP_Error(
 						'puc-no-update-source',
-						'Could not retrieve version information from the repository. '
-						. 'This usually means that the update checker either can\'t connect '
-						. 'to the repository or it\'s configured incorrectly.'
+						'Versionsinformationen konnten nicht aus dem Repository abgerufen werden. '
+						. 'Dies bedeutet normalerweise, dass der Update-Checker entweder keine Verbindung herstellen kann '
+						. 'in das Repository oder es ist falsch konfiguriert.'
 					),
 					null, null, $this->slug
 				);
@@ -95,7 +95,7 @@ if ( !class_exists('Puc_v4p10_Vcs_PluginUpdateChecker') ):
 			if ( empty($info->sections['changelog']) ) {
 				$info->sections['changelog'] = $api->getRemoteChangelog($ref, $this->package->getAbsoluteDirectoryPath());
 				if ( empty($info->sections['changelog']) ) {
-					$info->sections['changelog'] = __('There is no changelog available.', 'plugin-update-checker');
+					$info->sections['changelog'] = __('Es ist kein Änderungsprotokoll verfügbar.', 'psource-support');
 				}
 			}
 

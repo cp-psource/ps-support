@@ -15,8 +15,8 @@ class PSource_Support_Network_FAQ_Menu extends PSource_Support_Admin_Menu {
 	public function add_menu() {		
 		parent::add_submenu_page(
 			'ticket-manager',
-			__( 'FAQ Manager', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			__( 'FAQ Manager', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+			__( 'FAQ Manager', 'psource-support' ),
+			__( 'FAQ Manager', 'psource-support' ), 
 			is_multisite() ? 'manage_network' : 'manage_options'
 		);
 
@@ -47,12 +47,12 @@ class PSource_Support_Network_FAQ_Menu extends PSource_Support_Admin_Menu {
 	}
 
 	public function add_new_faq_title( $title ) {
-		return '<h2>' . esc_html( __( 'Neue FAQ hinzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ) ) . '</h2>';
+		return '<h2>' . esc_html( __( 'Neue FAQ hinzufügen', 'psource-support' ) ) . '</h2>';
 	}
 
 	public function add_new_faq_link( $title ) {
 		$add_new_link = add_query_arg( 'action', 'add', $this->get_menu_url() );
-		return '<h2>'. $this->get_menu_title() . ' <a href="' . esc_url( $add_new_link ) . '" class="add-new-h2">' . esc_html__( 'Neue FAQ hinzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a></h2>';
+		return '<h2>'. $this->get_menu_title() . ' <a href="' . esc_url( $add_new_link ) . '" class="add-new-h2">' . esc_html__( 'Neue FAQ hinzufügen', 'psource-support' ) . '</a></h2>';
 	}
 
 	public function save_screen_options( $status, $option, $value ) {
@@ -69,7 +69,7 @@ class PSource_Support_Network_FAQ_Menu extends PSource_Support_Admin_Menu {
 		if ( 'edit' == $action && isset( $_GET['fid'] ) ) {
 			$faq = psource_support_get_faq( $_GET['fid'] );
 			if ( ! $faq )
-				wp_die( __( 'Die FAQ existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Die FAQ existiert nicht', 'psource-support' ) );
 			
 			if ( isset( $_POST['category'] ) && $selected_category = psource_support_get_faq_category( absint( $_POST['category'] ) ) )
 				$category = $selected_category;
@@ -159,7 +159,7 @@ class PSource_Support_Network_FAQ_Menu extends PSource_Support_Admin_Menu {
 
 	public function on_load() {
 		// Add screen options
-		add_screen_option( 'per_page', array( 'label' => __( 'FAQs pro Seite', PSOURCE_SUPPORT_LANG_DOMAIN ), 'default' => 20, 'option' => 'psource_support_faqs_per_page' ) );
+		add_screen_option( 'per_page', array( 'label' => __( 'FAQs pro Seite', 'psource-support' ), 'default' => 20, 'option' => 'psource_support_faqs_per_page' ) );
 
 		// Check filtering
 		if ( isset( $_POST['filter_action'] ) || ! empty( $_POST['s'] ) ) {
@@ -198,19 +198,19 @@ class PSource_Support_Network_FAQ_Menu extends PSource_Support_Admin_Menu {
 			$args = array();
 
 			if ( empty( $_POST['answer'] ) )
-				add_settings_error( 'support_system_submit_new_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', 'psource-support' ) );
 			else
 				$args['answer'] = wpautop( stripslashes_deep( $_POST['answer'] ) );
 
 			$question = strip_tags( stripslashes_deep( $_POST['question'] ) );
 			if ( empty( $question ) )
-				add_settings_error( 'support_system_submit_new_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', 'psource-support' ) );
 			else
 				$args['question'] = $question;
 
 			$category = psource_support_get_faq_category( absint( $_POST['category'] ) );
 			if ( ! $category ) {
-				add_settings_error( 'support_system_submit_new_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_new_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', 'psource-support' ) );
 			}
 			else {
 				$args['cat_id'] = $category->cat_id;
@@ -235,19 +235,19 @@ class PSource_Support_Network_FAQ_Menu extends PSource_Support_Admin_Menu {
 			$args = array();
 
 			if ( empty( $_POST['answer'] ) )
-				add_settings_error( 'support_system_submit_edit_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_edit_faq', 'empty_message', __( 'Die FAQ-Antwort darf nicht leer sein', 'psource-support' ) );
 			else
 				$args['answer'] = wpautop( stripslashes_deep( $_POST['answer'] ) );
 
 			$question = strip_tags( stripslashes_deep( $_POST['question'] ) );
 			if ( empty( $question ) )
-				add_settings_error( 'support_system_submit_edit_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_edit_faq', 'empty_question', __( 'FAQ-Frage darf nicht leer sein', 'psource-support' ) );
 			else
 				$args['question'] = $question;
 
 			$category = psource_support_get_faq_category( absint( $_POST['category'] ) );
 			if ( ! $category ) {
-				add_settings_error( 'support_system_submit_edit_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_edit_faq', 'wrong_category', __( 'Die ausgewählte Kategorie ist nicht gültig', 'psource-support' ) );
 			}
 			else {
 				$args['cat_id'] = $category->cat_id;

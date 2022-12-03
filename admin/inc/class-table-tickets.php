@@ -11,8 +11,8 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
 
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => __( 'Ticket', PSOURCE_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'Tickets', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'Ticket', 'psource-support' ),  
+            'plural'    => __( 'Tickets', 'psource-support' ), 
             'ajax'      => false        
         ) );
 
@@ -61,12 +61,12 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
 
         $plugin = psource_support();
         $plugin::$ticket_status = array(
-                0   =>  __( 'Neu', PSOURCE_SUPPORT_LANG_DOMAIN ),
-                1   =>  __( 'In Bearbeitung', PSOURCE_SUPPORT_LANG_DOMAIN ),
-                2   =>  __( 'Warten auf die Antwort des Benutzers', PSOURCE_SUPPORT_LANG_DOMAIN ),
-                3   =>  __( 'Warten auf Antwort des Admin', PSOURCE_SUPPORT_LANG_DOMAIN ),
-                4   =>  __( 'Stockt', PSOURCE_SUPPORT_LANG_DOMAIN ),
-                5   =>  __( 'Geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN )
+                0   =>  __( 'Neu', 'psource-support' ),
+                1   =>  __( 'In Bearbeitung', 'psource-support' ),
+                2   =>  __( 'Warten auf die Antwort des Benutzers', 'psource-support' ),
+                3   =>  __( 'Warten auf Antwort des Admin', 'psource-support' ),
+                4   =>  __( 'Stockt', 'psource-support' ),
+                5   =>  __( 'Geschlossen', 'psource-support' )
             );
 
 
@@ -108,15 +108,15 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
         );
 
         $actions = array(
-            'edit'    => sprintf( __( '<a href="%s">Bearbeiten</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $link ),
-            'delete'    => sprintf( __( '<a href="%s">Ticket löschen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $delete_link )
+            'edit'    => sprintf( __( '<a href="%s">Bearbeiten</a>', 'psource-support' ), $link ),
+            'delete'    => sprintf( __( '<a href="%s">Ticket löschen</a>', 'psource-support' ), $delete_link )
         );
 
         if ( psource_support_current_user_can( 'open_ticket', $item->ticket_id ) )
-            $actions['open'] = sprintf( __( '<a href="%s" class="open-ticket">Öffne Ticket</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $open_link );
+            $actions['open'] = sprintf( __( '<a href="%s" class="open-ticket">Öffne Ticket</a>', 'psource-support' ), $open_link );
 
         if ( psource_support_current_user_can( 'close_ticket', $item->ticket_id ) )
-            $actions['close'] = sprintf( __( '<a href="%s" class="close-ticket">Ticket schließen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $close_link );
+            $actions['close'] = sprintf( __( '<a href="%s" class="close-ticket">Ticket schließen</a>', 'psource-support' ), $close_link );
 
         $status = $this->_args['status'];
 
@@ -145,7 +145,7 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
 
     function column_submitted( $item ) {
 
-        $value = __( 'Unknown', PSOURCE_SUPPORT_LANG_DOMAIN );
+        $value = __( 'Unknown', 'psource-support' );
 
         if ( is_multisite() ) {
             $blog_details = get_blog_details( array( 'blog_id' => (int)$item->blog_id ) );
@@ -174,15 +174,15 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />',
-            'id'        => __( 'Ticket ID', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'subject'   => __( 'Betreff', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'status'    => __( 'Status', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'priority'  => __( 'Priorität', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'category'  => __( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'staff'     => __( 'Mitarbeiter', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'submitted' => __( 'Eingereicht von', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'replies' => __( 'Antwort Nr.', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'updated'   => __( 'Letzte Aktualisierung (GMT)', PSOURCE_SUPPORT_LANG_DOMAIN )
+            'id'        => __( 'Ticket ID', 'psource-support' ),
+            'subject'   => __( 'Betreff', 'psource-support' ),
+            'status'    => __( 'Status', 'psource-support' ),
+            'priority'  => __( 'Priorität', 'psource-support' ),
+            'category'  => __( 'Kategorie', 'psource-support' ),
+            'staff'     => __( 'Mitarbeiter', 'psource-support' ),
+            'submitted' => __( 'Eingereicht von', 'psource-support' ),
+            'replies' => __( 'Antwort Nr.', 'psource-support' ),
+            'updated'   => __( 'Letzte Aktualisierung (GMT)', 'psource-support' )
         );
 
         if ( ! $this->get_bulk_actions() )
@@ -208,12 +208,12 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
         if ( 'top' == $which) {
 
             $cat_filter_args = array(
-                'show_empty' => __( 'Alle Kategorien anzeigen', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                'show_empty' => __( 'Alle Kategorien anzeigen', 'psource-support' ),
                 'selected' => isset( $_GET['category'] ) ? absint( $_GET['category'] ) : false
             );
 
             $priority_filter_args = array(
-                'show_empty' => __( 'Alle Prioritäten', PSOURCE_SUPPORT_LANG_DOMAIN ),
+                'show_empty' => __( 'Alle Prioritäten', 'psource-support' ),
                 'selected' => isset( $_GET['priority'] ) ? absint( $_GET['priority'] ) : null
             );
 
@@ -221,7 +221,7 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
                 <div class="alignleft actions">
                     <?php psource_support_ticket_categories_dropdown( $cat_filter_args ); ?>
                     <?php psource_support_priority_dropdown( $priority_filter_args ); ?>
-                    <input type="submit" name="filter_action" id="ticket-query-submit" class="button" value="<?php echo esc_attr( 'Filter', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>">     
+                    <input type="submit" name="filter_action" id="ticket-query-submit" class="button" value="<?php echo esc_attr( 'Filter', 'psource-support' ); ?>">     
                 </div>
         <?php
            
@@ -234,13 +234,13 @@ class PSource_Support_Tickets_Table extends WP_List_Table {
         $actions = array();
 
         if ( psource_support_current_user_can( 'delete_ticket' ) )
-            $actions['delete'] = __( 'Löschen', PSOURCE_SUPPORT_LANG_DOMAIN );
+            $actions['delete'] = __( 'Löschen', 'psource-support' );
 
         if ( psource_support_current_user_can( 'open_ticket' ) )
-            $actions['open'] = __( 'Öffnen', PSOURCE_SUPPORT_LANG_DOMAIN );
+            $actions['open'] = __( 'Öffnen', 'psource-support' );
 
         if ( psource_support_current_user_can( 'close_ticket' ) )
-            $actions['close'] = __( 'Schließen', PSOURCE_SUPPORT_LANG_DOMAIN );
+            $actions['close'] = __( 'Schließen', 'psource-support' );
 
         if ( 'archive' == $this->_args['status'] ) {
             unset( $actions['close'] );

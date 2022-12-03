@@ -35,20 +35,20 @@ if ( !class_exists('Puc_v4p10_DebugBar_Panel', false) && class_exists('Debug_Bar
 		}
 
 		private function displayConfiguration() {
-			echo '<h3>Configuration</h3>';
+			echo '<h3>Konfiguration</h3>';
 			echo '<table class="puc-debug-data">';
 			$this->displayConfigHeader();
 			$this->row('Slug', htmlentities($this->updateChecker->slug));
-			$this->row('DB option', htmlentities($this->updateChecker->optionName));
+			$this->row('DB-Option', htmlentities($this->updateChecker->optionName));
 
 			$requestInfoButton = $this->getMetadataButton();
 			$this->row('Metadata URL', htmlentities($this->updateChecker->metadataUrl) . ' ' . $requestInfoButton . $this->responseBox);
 
 			$scheduler = $this->updateChecker->scheduler;
 			if ( $scheduler->checkPeriod > 0 ) {
-				$this->row('Automatic checks', 'Every ' . $scheduler->checkPeriod . ' hours');
+				$this->row('Automatische Prüfungen', 'Alle ' . $scheduler->checkPeriod . ' hours');
 			} else {
-				$this->row('Automatic checks', 'Disabled');
+				$this->row('Automatische Prüfungen', 'Disabled');
 			}
 
 			if ( isset($scheduler->throttleRedundantChecks) ) {
@@ -56,7 +56,7 @@ if ( !class_exists('Puc_v4p10_DebugBar_Panel', false) && class_exists('Debug_Bar
 					$this->row(
 						'Throttling',
 						sprintf(
-							'Enabled. If an update is already available, check for updates every %1$d hours instead of every %2$d hours.',
+							'Aktiviert. Wenn bereits ein Update verfügbar ist, suchst Du alle %1$d Stunden nach Updates statt alle %2$d Stunden.',
 							$scheduler->throttledCheckPeriod,
 							$scheduler->checkPeriod
 						)
@@ -86,7 +86,7 @@ if ( !class_exists('Puc_v4p10_DebugBar_Panel', false) && class_exists('Debug_Bar
 			$checkNowButton = '';
 			if ( function_exists('get_submit_button')  ) {
 				$checkNowButton = get_submit_button(
-					'Check Now',
+					'Auf neue Version prüfen',
 					'secondary',
 					'puc-check-now-button',
 					false,
@@ -95,26 +95,26 @@ if ( !class_exists('Puc_v4p10_DebugBar_Panel', false) && class_exists('Debug_Bar
 			}
 
 			if ( $state->getLastCheck() > 0 ) {
-				$this->row('Last check', $this->formatTimeWithDelta($state->getLastCheck()) . ' ' . $checkNowButton . $this->responseBox);
+				$this->row('Letzte Überprüfung', $this->formatTimeWithDelta($state->getLastCheck()) . ' ' . $checkNowButton . $this->responseBox);
 			} else {
-				$this->row('Last check', 'Never');
+				$this->row('Letzte Überprüfung', 'Never');
 			}
 
 			$nextCheck = wp_next_scheduled($this->updateChecker->scheduler->getCronHookName());
-			$this->row('Next automatic check', $this->formatTimeWithDelta($nextCheck));
+			$this->row('Nächste automatische Prüfung', $this->formatTimeWithDelta($nextCheck));
 
 			if ( $state->getCheckedVersion() !== '' ) {
-				$this->row('Checked version', htmlentities($state->getCheckedVersion()));
-				$this->row('Cached update', $state->getUpdate());
+				$this->row('Geprüfte Version', htmlentities($state->getCheckedVersion()));
+				$this->row('Zwischengespeichertes Update', $state->getUpdate());
 			}
-			$this->row('Update checker class', htmlentities(get_class($this->updateChecker)));
+			$this->row('Updater-Klasse aktualisieren', htmlentities(get_class($this->updateChecker)));
 			echo '</table>';
 		}
 
 		private function displayCurrentUpdate() {
 			$update = $this->updateChecker->getUpdate();
 			if ( $update !== null ) {
-				echo '<h3>An Update Is Available</h3>';
+				echo '<h3>Eine Aktualisierung ist auf dem PSource Server verfügbar</h3>';
 				echo '<table class="puc-debug-data">';
 				$fields = $this->getUpdateFields();
 				foreach($fields as $field) {
@@ -124,7 +124,7 @@ if ( !class_exists('Puc_v4p10_DebugBar_Panel', false) && class_exists('Debug_Bar
 				}
 				echo '</table>';
 			} else {
-				echo '<h3>No updates currently available</h3>';
+				echo '<h3>Derzeit keine Updates auf dem PSource Server verfügbar</h3>';
 			}
 		}
 
@@ -134,7 +134,7 @@ if ( !class_exists('Puc_v4p10_DebugBar_Panel', false) && class_exists('Debug_Bar
 
 		private function formatTimeWithDelta($unixTime) {
 			if ( empty($unixTime) ) {
-				return 'Never';
+				return 'Noch nie';
 			}
 
 			$delta = time() - $unixTime;

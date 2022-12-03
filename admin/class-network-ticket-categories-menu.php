@@ -5,8 +5,8 @@ class PSource_Support_Network_Ticket_Categories extends PSource_Support_Admin_Me
 	public function add_menu() {
 		parent::add_submenu_page(
 			'ticket-manager',
-			__( 'Ticketkategorien', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			__( 'Ticketkategorien', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+			__( 'Ticketkategorien', 'psource-support' ),
+			__( 'Ticketkategorien', 'psource-support' ), 
 			is_multisite() ? 'manage_network' : 'manage_options'
 		);
 
@@ -19,7 +19,7 @@ class PSource_Support_Network_Ticket_Categories extends PSource_Support_Admin_Me
 
 	public function set_edit_category_page_title( $title ) {
 		$ticket_category = psource_support_get_ticket_category( absint( $_GET['category'] ) );
-		return '<h2>' . sprintf( _x( 'Bearbeite %s', 'Bearbeite den Titel des Ticketkategorie-Menüs', PSOURCE_SUPPORT_LANG_DOMAIN ), $ticket_category->cat_name ) . '</h2>';
+		return '<h2>' . sprintf( _x( 'Bearbeite %s', 'Bearbeite den Titel des Ticketkategorie-Menüs', 'psource-support' ), $ticket_category->cat_name ) . '</h2>';
 	}
 
 	public function on_load() {
@@ -52,7 +52,7 @@ class PSource_Support_Network_Ticket_Categories extends PSource_Support_Admin_Me
 
 			$cat_name = trim( $_POST['cat_name'] );
 			if ( empty(  $cat_name ) )
-				add_settings_error( 'support_system_submit_category', 'empty-category-name', __( 'Der Kategoriename darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_category', 'empty-category-name', __( 'Der Kategoriename darf nicht leer sein', 'psource-support' ) );
 			else
 				$category_name = $_POST['cat_name'];
 
@@ -88,7 +88,7 @@ class PSource_Support_Network_Ticket_Categories extends PSource_Support_Admin_Me
 		if ( isset( $_GET['category'] ) && $_GET['action'] == 'edit' ) {
 			$ticket_category = psource_support_get_ticket_category( absint( $_GET['category'] ) );
 			if ( ! $ticket_category )
-				wp_die( __( 'Die Kategorie existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Die Kategorie existiert nicht', 'psource-support' ) );
 
 			$category_name = $ticket_category->cat_name;
 			if ( ! empty( $_POST['cat_name'] ) && trim( $_POST['cat_name'] ) )
@@ -104,7 +104,7 @@ class PSource_Support_Network_Ticket_Categories extends PSource_Support_Admin_Me
 
 			$super_admins_dropdown = psource_support_super_admins_dropdown( 
 				array( 
-					'show_empty' => __( 'Keine', PSOURCE_SUPPORT_LANG_DOMAIN ) ,
+					'show_empty' => __( 'Keine', 'psource-support' ) ,
 					'echo' => false,
 					'selected' => $user
 				) 
@@ -130,7 +130,7 @@ class PSource_Support_Network_Ticket_Categories extends PSource_Support_Admin_Me
 
 			$super_admins_dropdown = psource_support_super_admins_dropdown( 
 				array( 
-					'show_empty' => __( 'Keine', PSOURCE_SUPPORT_LANG_DOMAIN ) ,
+					'show_empty' => __( 'Keine', 'psource-support' ) ,
 					'echo' => false,
 					'selected' => $user
 				) 

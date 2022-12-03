@@ -7,7 +7,7 @@
 	jQuery(document).ready(function($) {
 		$( 'span.delete > a' )
 			.click( function(e) {
-				return confirm( '<?php _e( "Möchtest Du dieses Ticket wirklich löschen?", PSOURCE_SUPPORT_LANG_DOMAIN ); ?>');
+				return confirm( '<?php _e( "Möchtest Du dieses Ticket wirklich löschen?", 'psource-support' ); ?>');
 			})
 	});
 </script>

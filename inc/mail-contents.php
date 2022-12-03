@@ -54,7 +54,7 @@ function psource_support_send_user_new_ticket_mail( $ticket_id ) {
 	);
 	$mail_content = psource_support_user_get_new_ticket_mail_content( $args );
 
-	wp_mail( $ticket_creator->data->user_email, __( "Ticket eingereicht: ", PSOURCE_SUPPORT_LANG_DOMAIN ) . $ticket->title, $mail_content, $headers );
+	wp_mail( $ticket_creator->data->user_email, __( "Ticket eingereicht: ", 'psource-support' ) . $ticket->title, $mail_content, $headers );
 }
 
 /**
@@ -107,7 +107,7 @@ function psource_support_send_admin_new_ticket_mail( $ticket_id ) {
 
 	$poster = get_userdata( $ticket->user_id );
 	if ( ! $poster )
-		$poster_name = __( 'Unbekannter Benutzer', PSOURCE_SUPPORT_LANG_DOMAIN );
+		$poster_name = __( 'Unbekannter Benutzer', 'psource-support' );
 	else
 		$poster_name = $poster->display_name;
 
@@ -124,7 +124,7 @@ function psource_support_send_admin_new_ticket_mail( $ticket_id ) {
 
 	$mail_content = psource_support_admin_get_new_ticket_mail_content( $args );
 
-	wp_mail( $user->user_email, __( "Neues Support Ticket: ", PSOURCE_SUPPORT_LANG_DOMAIN ) . $ticket->title, $mail_content, $headers );
+	wp_mail( $user->user_email, __( "Neues Support Ticket: ", 'psource-support' ) . $ticket->title, $mail_content, $headers );
 }
 
 
@@ -220,7 +220,7 @@ function psource_support_send_user_reply_mail( $ticket, $reply ) {
 
 	$mail_content = psource_support_user_get_reply_ticket_mail_content( $args );
 
-	wp_mail( $ticket_creator->user_email, __( "Benachrichtigung über Ticketantwort: ", PSOURCE_SUPPORT_LANG_DOMAIN ) . $reply->subject, $mail_content, $headers );
+	wp_mail( $ticket_creator->user_email, __( "Benachrichtigung über Ticketantwort: ", 'psource-support' ) . $reply->subject, $mail_content, $headers );
 }
 
 /**
@@ -267,7 +267,7 @@ function psource_support_send_admin_reply_mail( $admin_user, $ticket, $reply ) {
 
 	$mail_content = psource_support_admin_get_reply_ticket_mail_content( $args );
 
-	wp_mail( $admin_user->user_email, __( "Benachrichtigung über Ticketantwort: ", PSOURCE_SUPPORT_LANG_DOMAIN ) . $reply->subject, $mail_content, $headers );
+	wp_mail( $admin_user->user_email, __( "Benachrichtigung über Ticketantwort: ", 'psource-support' ) . $reply->subject, $mail_content, $headers );
 }
 
 
@@ -306,15 +306,15 @@ function psource_support_send_user_closed_mail( $ticket_id ) {
 	);
 	$mail_content = psource_get_closed_ticket_mail_content( $args );
 
-	wp_mail( $creator->user_email, __( "Benachrichtigung über geschlossenes Ticket: ", PSOURCE_SUPPORT_LANG_DOMAIN ) . $ticket->title, $mail_content, $headers );
+	wp_mail( $creator->user_email, __( "Benachrichtigung über geschlossenes Ticket: ", 'psource-support' ) . $ticket->title, $mail_content, $headers );
 }
 
 
 function psource_support_get_support_fetch_imap_message() {
 	if ( get_site_option( 'psource_support_fetch_imap', 'disabled' ) == 'enabled' )
-		$support_fetch_imap = __( "***  NICHT UNTERHALB DIESER LINIE SCHREIBEN  ***", PSOURCE_SUPPORT_LANG_DOMAIN );
+		$support_fetch_imap = __( "***  NICHT UNTERHALB DIESER LINIE SCHREIBEN  ***", 'psource-support' );
 	else
-		$support_fetch_imap = __("***  ANTWORTE NICHT AUF DIESE E-MAIL  ***", PSOURCE_SUPPORT_LANG_DOMAIN );
+		$support_fetch_imap = __("***  ANTWORTE NICHT AUF DIESE E-MAIL  ***", 'psource-support' );
 
 	return $support_fetch_imap;
 }
@@ -334,7 +334,7 @@ Besuche: SUPPORT_LINK
 um zu antworten oder das neue Ticket anzuzeigen.
 
 Danke,
-SUPPORT_SITE_NAME", PSOURCE_SUPPORT_LANG_DOMAIN );
+SUPPORT_SITE_NAME", 'psource-support' );
 
 	$content = str_replace( 'SUPPORT_FETCH_IMAP', $args['support_fetch_imap'], $content );
 	$content = str_replace( 'SUPPORT_SUBJECT', $args['title'], $content );
@@ -370,7 +370,7 @@ SUPPORT_MESSAGE
 
 ==============================================================
       Ticketnachricht beendet
-==============================================================", PSOURCE_SUPPORT_LANG_DOMAIN );
+==============================================================", 'psource-support' );
 
 	$content = str_replace( 'SUPPORT_FETCH_IMAP', $args['support_fetch_imap'], $content );
 	$content = str_replace( 'SUPPORT_SUBJECT', $args['title'], $content );
@@ -410,7 +410,7 @@ SUPPORT_MESSAGE
 ==============================================================
 
 Danke,
-SUPPORT_SITE_NAME", PSOURCE_SUPPORT_LANG_DOMAIN );
+SUPPORT_SITE_NAME", 'psource-support' );
 
 	$content = str_replace( 'SUPPORT_SUBJECT', $args['title'], $content );
 	$content = str_replace( 'SUPPORT_STATUS', $args['ticket_status'], $content );
@@ -450,7 +450,7 @@ SUPPORT_MESSAGE
       Ticketnachricht beendet
 ==============================================================
 
-Danke", PSOURCE_SUPPORT_LANG_DOMAIN );
+Danke", 'psource-support' );
 
 	$content = str_replace( 'SUPPORT_SUBJECT', $args['title'], $content );
 	$content = str_replace( 'SUPPORT_STATUS', $args['ticket_status'], $content );
@@ -476,7 +476,7 @@ Priorität: SUPPORT_PRIORITY
 Das Ticket wurde geschlossen.
 
 Ticket URL:
-	SUPPORT_TICKET_URL", PSOURCE_SUPPORT_LANG_DOMAIN );
+	SUPPORT_TICKET_URL", 'psource-support' );
 
 	$content = str_replace( 'SUPPORT_FETCH_IMAP', $args['support_fetch_imap'], $content );
 	$content = str_replace( 'SUPPORT_SUBJECT', $args['title'], $content );

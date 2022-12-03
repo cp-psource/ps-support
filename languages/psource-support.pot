@@ -1,0 +1,1451 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PS Support System\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-03 22:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.3; wp-6.1.1\n"
+"X-Domain: psource-support"
+
+#: inc/mail-contents.php:388
+msgid ""
+"\n"
+"\n"
+"***  ANTWORTE NICHT AUF DIESE E-MAIL  ***\n"
+"\n"
+"Betreff: SUPPORT_SUBJECT\n"
+"Status: SUPPORT_STATUS\n"
+"Priorität: SUPPORT_PRIORITY\n"
+"\n"
+"Bitte melde Dich auf Deiner Website an und besuche die Support-Seite, um bei "
+"Bedarf auf dieses Ticket zu antworten.\n"
+"\n"
+"Besuche: SUPPORT_LINK\n"
+"\n"
+"==============================================================\n"
+"     Ticketnachricht starten\n"
+"==============================================================\n"
+"\n"
+"SUPPORT_RESPONSE_USER_NAME sagt:\n"
+"\n"
+"SUPPORT_MESSAGE\n"
+"\n"
+"==============================================================\n"
+"      Ticketnachricht beendet\n"
+"==============================================================\n"
+"\n"
+"Danke,\n"
+"SUPPORT_SITE_NAME"
+msgstr ""
+
+#: inc/mail-contents.php:429
+msgid ""
+"\n"
+"\n"
+"***  ANTWORTE NICHT AUF DIESE E-MAIL  ***\n"
+"\n"
+"Betreff: SUPPORT_SUBJECT\n"
+"Status: SUPPORT_STATUS\n"
+"Priorität: SUPPORT_PRIORITY\n"
+"\n"
+"Bitte melde Dich beim Netzwerkadministrator an und besuche die Support-Seite,"
+" um bei Bedarf auf dieses Ticket zu antworten.\n"
+"\n"
+"Besuche: SUPPORT_LINK\n"
+"\n"
+"==============================================================\n"
+"     Ticketnachricht starten\n"
+"==============================================================\n"
+"\n"
+"SUPPORT_RESPONSE_USER_NAME sagt:\n"
+"\n"
+"SUPPORT_MESSAGE\n"
+"\n"
+"==============================================================\n"
+"      Ticketnachricht beendet\n"
+"==============================================================\n"
+"\n"
+"Danke"
+msgstr ""
+
+#: inc/mail-contents.php:469
+msgid ""
+"\n"
+"\n"
+"SUPPORT_FETCH_IMAP\n"
+"\n"
+"Betreff: SUPPORT_SUBJECT\n"
+"Priorität: SUPPORT_PRIORITY\n"
+"\n"
+"Das Ticket wurde geschlossen.\n"
+"\n"
+"Ticket URL:\n"
+"\tSUPPORT_TICKET_URL"
+msgstr ""
+
+#: inc/mail-contents.php:323
+msgid ""
+"\n"
+"SUPPORT_FETCH_IMAP\n"
+"\n"
+"Betreff: SUPPORT_SUBJECT\n"
+"Status: SUPPORT_STATUS\n"
+"Priorität: SUPPORT_PRIORITY\n"
+"\n"
+"Dein Ticket wurde eingereicht\n"
+"\n"
+"Besuche: SUPPORT_LINK\n"
+"\n"
+"um zu antworten oder das neue Ticket anzuzeigen.\n"
+"\n"
+"Danke,\n"
+"SUPPORT_SITE_NAME"
+msgstr ""
+
+#: inc/mail-contents.php:350
+msgid ""
+"\n"
+"SUPPORT_FETCH_IMAP\n"
+"\n"
+"Betreff: SUPPORT_SUBJECT\n"
+"Status: SUPPORT_STATUS\n"
+"Priorität: SUPPORT_PRIORITY\n"
+"\n"
+"Ein neues Ticket wurde eingereicht\n"
+"\n"
+"Besuche: SUPPORT_LINK\n"
+"\n"
+"um zu antworten oder das neue Ticket anzuzeigen.\n"
+"\n"
+"==============================================================\n"
+"\tTicketnachricht starten\n"
+"==============================================================\n"
+"\n"
+"SUPPORT_USER_NAME sagt:\n"
+"\n"
+"SUPPORT_MESSAGE\n"
+"\n"
+"==============================================================\n"
+"      Ticketnachricht beendet\n"
+"=============================================================="
+msgstr ""
+
+#: inc/templates/faqs-nav.php:15
+#, php-format
+msgid "%d FAQs"
+msgstr ""
+
+#: admin/class-network-support-menu.php:19
+#, php-format
+msgid "%d nicht angesehene Tickets"
+msgstr ""
+
+#: inc/templates/tickets-nav.php:18
+#, php-format
+msgid "%d Tickets"
+msgstr ""
+
+#: inc/helpers/template.php:238
+msgid "&laquo; Bisherige"
+msgstr ""
+
+#: admin/views/add-new-ticket.php:8
+msgid "(max: 100 Zeichen)"
+msgstr ""
+
+#: admin/views/add-new-ticket.php:5
+msgid "* alle Felder sind erforderlich."
+msgstr ""
+
+#: inc/mail-contents.php:317
+msgid "***  ANTWORTE NICHT AUF DIESE E-MAIL  ***"
+msgstr ""
+
+#: inc/mail-contents.php:315
+msgid "***  NICHT UNTERHALB DIESER LINIE SCHREIBEN  ***"
+msgstr ""
+
+#: inc/helpers/general.php:37
+msgid "-- Priorität wählen --"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:68
+#: admin/class-network-settings-menu.php:77
+#: admin/class-network-settings-menu.php:86
+msgid "-- Seite auswählen --"
+msgstr ""
+
+#: inc/helpers/template.php:390
+msgid "-- Standardseite --"
+msgstr ""
+
+#: inc/helpers/ticket-category.php:94
+msgid "-- Wähle eine Kategorie --"
+msgstr ""
+
+#: inc/helpers/template.php:333
+#, php-format
+msgid "1 Antwort"
+msgid_plural "%s Antworten"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/inc/class-table-tickets.php:119
+#, php-format
+msgid "<a href=\"%s\" class=\"close-ticket\">Ticket schließen</a>"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:116
+#, php-format
+msgid "<a href=\"%s\" class=\"open-ticket\">Öffne Ticket</a>"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:99
+#: admin/inc/class-table-ticket-categories.php:96
+#, php-format
+msgid "<a href=\"%s\">Als Standard einstellen</a>"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:90
+#: admin/inc/class-table-ticket-categories.php:87
+#: admin/inc/class-table-tickets.php:111
+#, php-format
+msgid "<a href=\"%s\">Bearbeiten</a>"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:98
+#, php-format
+msgid "<a href=\"%s\">DLöschen</a>"
+msgstr ""
+
+#: admin/inc/class-table-faqs.php:56
+#, php-format
+msgid "<a href=\"%s\">FAQ bearbeiten</a>"
+msgstr ""
+
+#: admin/inc/class-table-faqs.php:57
+#, php-format
+msgid "<a href=\"%s\">FAQ löschen</a>"
+msgstr ""
+
+#: admin/inc/class-table-ticket-categories.php:95
+#, php-format
+msgid "<a href=\"%s\">Löschen</a>"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:112
+#, php-format
+msgid "<a href=\"%s\">Ticket löschen</a>"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:94
+#: admin/inc/class-table-ticket-categories.php:91
+msgid "[Standardkategorie]"
+msgstr ""
+
+#: admin/views/network-settings-front.php:14
+msgid "Aktiviere Front-End"
+msgstr ""
+
+#: inc/integration/pro-sites.php:151
+msgid ""
+"Aktiviere und wähle eine Mindest-PS-Bloghosting-Ebene aus, um <strong>"
+"Support-FAQ</strong> in einem Blog zuzulassen (wenn diese Option deaktiviert "
+"ist, sind Support-FAQ für jeden Blog verfügbar.)"
+msgstr ""
+
+#: inc/integration/pro-sites.php:133
+msgid ""
+"Aktiviere und wähle eine PS-Bloghosting-Ebene aus, um <strong>Support-"
+"Tickets</strong> in einem Blog zuzulassen (wenn diese Option nicht aktiviert "
+"ist, ist der Support für jedes Blog verfügbar)."
+msgstr ""
+
+#: admin/class-parent-support-menu.php:357
+msgid "Aktueller Status"
+msgstr ""
+
+#: admin/views/ticket-status-links.php:2
+msgid "Alle"
+msgstr ""
+
+#: admin/inc/class-table-faqs.php:153 admin/inc/class-table-tickets.php:211
+msgid "Alle Kategorien anzeigen"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:216
+msgid "Alle Prioritäten"
+msgstr ""
+
+#: psource-support.php:163
+msgid "Allen Benutzern erlauben, alle Tickets zu sehen"
+msgstr ""
+
+#: model/model.php:444
+msgid "Allgemein"
+msgstr ""
+
+#: model/model.php:413
+msgid "Allgemeine Fragen"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:104
+#: admin/views/add-new-ticket.php:25 admin/views/edit-ticket-history.php:24
+#: inc/templates/single-ticket.php:28 inc/templates/ticket-reply.php:23
+msgid "Anhänge"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:97
+#, php-format
+msgctxt "Antwort am Datum gesendet"
+msgid "Gesendet am %s"
+msgstr ""
+
+#: inc/helpers/template.php:85
+msgid "Antwort einreichen"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:61 inc/templates/ticket-replies.php:16
+msgid "Antwort hinzufügen"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:184
+msgid "Antwort Nr."
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:128
+msgid "Auf Updates prüfen"
+msgstr ""
+
+#: admin/inc/tinymce-shortcodes-i18n.php:10
+msgid "Auswahlfeld für Kategorie anzeigen"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:37
+msgid "Autor"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:370
+msgid "Basiseinstellungen"
+msgstr ""
+
+#: admin/class-network-faq-categories-menu.php:22
+#, php-format
+msgctxt "Bearbeite den Titel des FAQ-Kategorie-Menüs"
+msgid "Bearbeite %s"
+msgstr ""
+
+#: admin/class-network-ticket-categories-menu.php:22
+#, php-format
+msgctxt "Bearbeite den Titel des Ticketkategorie-Menüs"
+msgid "Bearbeite %s"
+msgstr ""
+
+#: inc/templates/single-ticket.php:61
+msgid "Bearbeite Ticket Details"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:39
+msgid "Behalte den aktuellen Administrator bei und hilf mit einer Antwort"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:33
+msgid "Behalte die Verantwortung für dieses Ticket"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:122
+msgid ""
+"Bei der Bearbeitung des Formulars ist ein Fehler aufgetreten. Bitte versuche "
+"es später erneut"
+msgstr ""
+
+#: inc/mail-contents.php:309
+msgid "Benachrichtigung über geschlossenes Ticket: "
+msgstr ""
+
+#: inc/mail-contents.php:223 inc/mail-contents.php:270
+msgid "Benachrichtigung über Ticketantwort: "
+msgstr ""
+
+#: inc/classes/class-ticket.php:169
+msgid "Benutzer nicht gefunden"
+msgstr ""
+
+#: admin/inc/class-table-ticket-categories.php:34
+msgid "Benutzer zugewiesen"
+msgstr ""
+
+#: admin/views/network-settings-general.php:61
+msgid ""
+"Benutzerrollen, die die FAQs anzeigen können<span class=\"description\">"
+"(Deaktiviere alle, um diese Funktion zu deaktivieren)</span>"
+msgstr ""
+
+#: admin/views/network-settings-general.php:51
+msgid "Benutzerrollen, die Tickets öffnen/anzeigen können."
+msgstr ""
+
+#: admin/views/network-settings-general.php:40
+msgid "Berechtigungseinstellungen"
+msgstr ""
+
+#: psource-support.php:384
+msgid "Besucher"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:178 admin/views/add-new-ticket.php:9
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:117
+msgid "Betreff"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:28
+msgid "Bitte füge eine Nachricht für das Ticket ein"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:24
+msgid "Bitte gib einen Betreff für das Ticket ein"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:13
+msgid ""
+"Bitte gib so viele Informationen wie möglich an, damit der Benutzer die "
+"Lösung/Anfrage verstehen kann."
+msgstr ""
+
+#: admin/views/network-settings-front.php:28
+msgid "Blog ID"
+msgstr ""
+
+#: admin/views/welcome.php:51
+msgid ""
+"Das Cache-System wurde überprüft. Das Support-System stellt jetzt weniger "
+"Abfragen und verhält sich schneller als je zuvor!"
+msgstr ""
+
+#: admin/views/welcome.php:28
+msgid ""
+"Das FAQ-System verfügt über eine <strong>PS-Bloghoster</strong> -Integration,"
+" mit der jeder Pro-Benutzer mit einer zugewiesenen Ebene Deine FAQs anzeigen "
+"kann!"
+msgstr ""
+
+#: admin/views/welcome.php:26
+#, php-format
+msgid ""
+"Das Support-System bietet jetzt Optionen zum Anzeigen von FAQs auf Deiner "
+"Website. Wie bei Tickets werden FAQs mit <a href=\"%s\">Foundation 5</a>  "
+"gerendert."
+msgstr ""
+
+#: admin/class-parent-support-menu.php:87
+#: admin/class-parent-support-menu.php:145
+#: admin/class-parent-support-menu.php:455
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:93
+msgid "Das Ticket existiert nicht"
+msgstr ""
+
+#: admin/views/add-new-ticket.php:45 admin/views/add-new-ticket.php:47
+#: admin/views/edit-ticket-history.php:75
+#: admin/views/edit-ticket-history.php:77 inc/classes/class-shortcodes.php:75
+#: inc/classes/class-shortcodes.php:76
+msgid "Datei löschen"
+msgstr ""
+
+#: admin/views/add-new-ticket.php:43 admin/views/edit-ticket-history.php:73
+#: inc/classes/class-shortcodes.php:74
+msgid "Dateien hinzufügen..."
+msgstr ""
+
+#: admin/views/edit-ticket-category.php:10
+#: admin/views/network-ticket-categories.php:28
+msgid "Dem Benutzer zuweisen"
+msgstr ""
+
+#: admin/inc/class-table-faqs.php:143
+msgid "Denken ist hilfreich"
+msgstr ""
+
+#: admin/inc/class-table-faqs.php:144
+msgid "Denken ist nicht hilfreich"
+msgstr ""
+
+#: admin/class-admin-support-menu.php:126
+msgid "Der Betreff des Tickets darf nicht leer sein"
+msgstr ""
+
+#: inc/helpers/faq.php:162
+msgid "Der FAQ-Titel darf nicht leer sein."
+msgstr ""
+
+#: admin/class-network-faq-categories-menu.php:56
+#: admin/class-network-ticket-categories-menu.php:55
+msgid "Der Kategoriename darf nicht leer sein"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:216
+msgid "Der Menüname darf nicht leer sein"
+msgstr ""
+
+#: admin/views/network-faq-categories.php:27
+msgid ""
+"Der Name wird verwendet, um die Kategorie zu identifizieren, auf die sich "
+"FAQs beziehen"
+msgstr ""
+
+#: admin/views/network-ticket-categories.php:25
+msgid ""
+"Der Name wird verwendet, um die Kategorie zu identifizieren, auf die sich "
+"Tickets beziehen"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:225
+msgid "Der Seiten-Name darf nicht leer sein"
+msgstr ""
+
+#. Author of the plugin
+msgid "DerN3rd (WMS N@W)"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:88
+msgid "Die Antwortnachricht darf nicht leer sein"
+msgstr ""
+
+#: admin/class-admin-support-menu.php:132 admin/class-network-faqs-menu.php:213
+#: admin/class-network-faqs-menu.php:250
+msgid "Die ausgewählte Kategorie ist nicht gültig"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:324
+msgid "Die Blog-ID existiert nicht"
+msgstr ""
+
+#: admin/class-network-faqs-menu.php:72
+msgid "Die FAQ existiert nicht"
+msgstr ""
+
+#: admin/class-network-faqs-menu.php:201 admin/class-network-faqs-menu.php:238
+msgid "Die FAQ-Antwort darf nicht leer sein"
+msgstr ""
+
+#: inc/helpers/faq.php:170
+msgid "Die FAQ-Antwort darf nicht leer sein."
+msgstr ""
+
+#: admin/class-network-faq-categories-menu.php:86
+#: admin/class-network-ticket-categories-menu.php:91
+msgid "Die Kategorie existiert nicht"
+msgstr ""
+
+#: inc/helpers/faq.php:155
+msgid "Die Kategorie existiert nicht."
+msgstr ""
+
+#: admin/class-admin-support-menu.php:120
+msgid "Die Ticketnachricht darf nicht leer sein"
+msgstr ""
+
+#: inc/templates/single-ticket.php:9
+msgid "Dieses Ticket ist geschlossen"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:315
+msgid "Dieses Ticket wurde geschlossen"
+msgstr ""
+
+#: inc/templates/single-ticket.php:31
+#, php-format
+msgid "Download %s Anhang"
+msgstr ""
+
+#: inc/templates/ticket-reply.php:26
+#, php-format
+msgid "Download %s Datei"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:107
+msgid "Download Datei"
+msgstr ""
+
+#: psource-support.php:152
+msgid "Dringend"
+msgstr ""
+
+#: inc/support-menu.php:97
+msgid "Du darfst diese Seite nicht anzeigen."
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:90
+msgid "Du hast nicht genügend Berechtigungen, um ein neues Ticket einzureichen"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-faqs.php:17
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:167
+msgid "Du hast nicht genügend Berechtigungen, um Unterstützung zu erhalten"
+msgstr ""
+
+#: admin/views/welcome.php:27
+msgid ""
+"Du kannst Deine FAQs wie gewohnt vom Administrator aus verwalten. Benutzer "
+"haben weiterhin über ein Administratormenü Zugriff auf häufig gestellte "
+"Fragen (FAQs), es sei denn, Du möchtest dieses Menü in den Einstellungen "
+"deaktivieren."
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:88
+#, php-format
+msgid ""
+"Du musst <a href=\"%s\">angemeldet</a> sein, um ein neues Ticket zu erstellen"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-faqs.php:15
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:165
+#, php-format
+msgid "Du musst <a href=\"%s\">angemeldet</a> sein, um Support zu erhalten"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:234
+msgid "E-Mail muss eine gültige E-Mail sein"
+msgstr ""
+
+#: psource-support.php:151
+msgid "Eilt"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:377
+#: admin/inc/class-table-tickets.php:183
+msgid "Eingereicht von"
+msgstr ""
+
+#: psource-support.php:143
+msgid "Eingestellt"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:8 admin/views/welcome.php:11
+msgid "Einstellungen"
+msgstr ""
+
+#: admin/views/network-settings-tabs.php:9
+msgid "Einstellungen aktualisiert"
+msgstr ""
+
+#: inc/integration/pro-sites.php:204
+msgid "Erlaube <strong>Support FAQs</strong> nur für Pro Benutzer"
+msgstr ""
+
+#: inc/integration/pro-sites.php:186
+msgid "Erlaube <strong>Support Tickets</strong> nur für Pro Benutzer"
+msgstr ""
+
+#: psource-support.php:163
+msgid "Erlaube allen Benutzern, alle Tickets auf einer Seite zu sehen"
+msgstr ""
+
+#: psource-support.php:164
+msgid "Erlaube nur Ticketerstellern, ihre eigenen Tickets zu sehen"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:87
+msgid "Erstelle aus dieser Antwort eine FAQ"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:88
+msgid "Erstelle eine FAQ"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:361
+msgid "Erstellt am (GMT)"
+msgstr ""
+
+#: inc/templates/ticket-replies.php:11
+msgid "Es gibt noch keine Antworten"
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v4p10/Vcs/PluginUpdateChecker.php:98
+msgid "Es ist kein Änderungsprotokoll verfügbar."
+msgstr ""
+
+#: admin/class-admin-faqs-menu.php:10 admin/inc/class-table-faqs.php:14
+msgid "FAQ"
+msgstr ""
+
+#: admin/views/edit-faq.php:20
+msgid "FAQ aktualisieren"
+msgstr ""
+
+#: admin/views/add-new-faq.php:9 admin/views/edit-faq.php:9
+msgid "FAQ Kategorie"
+msgstr ""
+
+#: admin/class-network-faqs-menu.php:18 admin/class-network-faqs-menu.php:19
+msgid "FAQ Manager"
+msgstr ""
+
+#: admin/class-network-faqs-menu.php:207 admin/class-network-faqs-menu.php:244
+msgid "FAQ-Frage darf nicht leer sein"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:94
+#: admin/inc/class-table-faq-categories.php:102
+msgid "FAQ-Kategorie bearbeiten"
+msgstr ""
+
+#: admin/class-network-faq-categories-menu.php:8
+#: admin/class-network-faq-categories-menu.php:9 admin/views/admin-faq.php:24
+msgid "FAQ-Kategorien"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:34
+#: admin/inc/class-table-faqs.php:15 inc/integration/pro-sites.php:146
+#: inc/integration/pro-sites.php:199
+msgid "FAQs"
+msgstr ""
+
+#: admin/views/welcome.php:18
+msgid "FAQs im Frontend sind endlich da!"
+msgstr ""
+
+#: admin/class-network-faqs-menu.php:162
+msgid "FAQs pro Seite"
+msgstr ""
+
+#: admin/views/network-settings-front.php:34
+msgid "FAQs Seite"
+msgstr ""
+
+#: admin/views/network-faqs.php:2
+msgid "FAQs suchen"
+msgstr ""
+
+#: inc/helpers/faq.php:185
+msgid "Fehler beim Einfügen des FAQ-Elements. Bitte versuche es später erneut."
+msgstr ""
+
+#: inc/helpers/ticket.php:519 inc/helpers/ticket.php:545
+msgid "Fehler beim Einfügen des Tickets, versuche es später erneut."
+msgstr ""
+
+#: inc/helpers/ticket.php:611
+#, php-format
+msgid "Fehler beim hochladen <strong>%s</strong> Datei: %s"
+msgstr ""
+
+#: admin/inc/class-table-faqs.php:141
+msgid "Frage"
+msgstr ""
+
+#: admin/inc/class-table-faqs.php:140
+msgid "Frage ID"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:371
+msgid "Front-End Einstellungen"
+msgstr ""
+
+#: admin/views/welcome.php:59
+msgid "Gehe zu den Einstellungen"
+msgstr ""
+
+#: inc/integration/pro-sites.php:68 inc/integration/pro-sites.php:103
+msgid "Gehe zum Support in Deinem Webseiten-Dashboard"
+msgstr ""
+
+#: psource-support.php:144 admin/inc/class-table-tickets.php:69
+#: admin/views/ticket-status-links.php:4
+msgid "Geschlossen"
+msgstr ""
+
+#: admin/views/ticket-status-links.php:3
+msgid "Geöffnet"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:34
+msgid ""
+"Gib die Verantwortung auf, damit ein anderer Administrator sie akzeptieren "
+"kann"
+msgstr ""
+
+#: admin/views/network-settings-general.php:37
+msgid "Hauptadministrator"
+msgstr ""
+
+#: inc/integration/pro-sites.php:68 inc/integration/pro-sites.php:103
+#, php-format
+msgid ""
+"Hilfe benötigt? <a href=\"%s\" title=\"%s\">Klicke hier, um zu Deinem "
+"Dashboard zu gelangen</a>"
+msgstr ""
+
+#: psource-support.php:150
+msgid "Hoch"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://n3rds.work"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://n3rds.work/piestingtal_source/ps-support-system-plugin/"
+msgstr ""
+
+#: admin/class-admin-faqs-menu.php:11
+msgid "Häufig gestellte Fragen"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:32
+#: admin/inc/class-table-ticket-categories.php:32
+msgid "ID"
+msgstr ""
+
+#: psource-support.php:140 admin/inc/class-table-tickets.php:65
+msgid "In Bearbeitung"
+msgstr ""
+
+#: inc/helpers/template.php:545
+msgid "JA"
+msgstr ""
+
+#: admin/views/admin-faq.php:77
+msgid "Ja"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:51
+msgid "Ja, schließe dieses Ticket."
+msgstr ""
+
+#: admin/views/network-ticket-categories.php:30
+msgid ""
+"Jedes neu eröffnete Ticket mit dieser Kategorie wird diesem Benutzer "
+"zugewiesen"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:435
+#: admin/inc/class-table-faq-categories.php:12
+#: admin/inc/class-table-faqs.php:142
+#: admin/inc/class-table-ticket-categories.php:12
+#: admin/inc/class-table-tickets.php:181 admin/views/add-new-ticket.php:11
+#: admin/views/edit-ticket-history.php:25 inc/helpers/template.php:454
+msgid "Kategorie"
+msgstr ""
+
+#: admin/views/edit-faq-category.php:2 admin/views/edit-ticket-category.php:2
+#: admin/views/network-faq-categories.php:4
+msgid "Kategorie aktualisiert"
+msgstr ""
+
+#: admin/views/network-faq-categories.php:2
+#: admin/views/network-ticket-categories.php:2
+msgid "Kategorie hinzugefügt"
+msgstr ""
+
+#: inc/helpers/template.php:488
+msgid "Kategorie:"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:13
+#: admin/inc/class-table-ticket-categories.php:13
+msgid "Kategorien"
+msgstr ""
+
+#: admin/views/edit-faq-category.php:9 admin/views/edit-ticket-category.php:9
+#: admin/views/network-faq-categories.php:25
+#: admin/views/network-ticket-categories.php:23
+msgid "Kategoriename"
+msgstr ""
+
+#: admin/class-network-ticket-categories-menu.php:107
+#: admin/class-network-ticket-categories-menu.php:133
+msgid "Keine"
+msgstr ""
+
+#: admin/inc/class-table-ticket-categories.php:104
+msgid "Keinem"
+msgstr ""
+
+#: inc/integration/pro-sites.php:124
+msgid ""
+"Lege eine PS-Bloghosting-Ebene für Admin-Menüs fest. Diese Optionen wirken "
+"sich nicht auf das Frontend aus."
+msgstr ""
+
+#: inc/integration/pro-sites.php:177
+msgid ""
+"Lege eine PS-Bloghosting-Ebene für Benutzer fest. Ein Benutzer ist Profi, "
+"wenn er mindestens eine Pro-Seite mit der angegebenen Stufe hat."
+msgstr ""
+
+#: admin/class-parent-support-menu.php:373
+#: admin/inc/class-table-tickets.php:185
+msgid "Letzte Aktualisierung (GMT)"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:369
+msgid "Letzte Antwort von"
+msgstr ""
+
+#: inc/templates/index-tickets.php:38
+#, php-format
+msgid "Letzte Antwort: <a href=\"%s\">%s vor</a>"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:109
+#: admin/inc/class-table-faqs.php:172
+#: admin/inc/class-table-ticket-categories.php:118
+#: admin/inc/class-table-tickets.php:237
+msgid "Löschen"
+msgstr ""
+
+#: admin/views/welcome.php:50
+msgid "Mehr Geschwindigkeit!"
+msgstr ""
+
+#: admin/views/welcome.php:12
+msgid "Mehr Info"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:365
+msgid "Meldender Benutzer"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:131
+msgid "Meldest Du ein Ticket für eine bestimmte Site?"
+msgstr ""
+
+#: inc/integration/pro-sites.php:139 inc/integration/pro-sites.php:157
+#: inc/integration/pro-sites.php:192 inc/integration/pro-sites.php:210
+msgid "Minimum PS-Bloghosting-Ebene"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:182 inc/templates/ticket-reply.php:10
+msgid "Mitarbeiter"
+msgstr ""
+
+#: admin/views/network-tickets.php:10
+msgid "Möchtest Du dieses Ticket wirklich löschen?"
+msgstr ""
+
+#: inc/helpers/ticket.php:523
+msgid "Nachricht darf nicht leer sein."
+msgstr ""
+
+#: admin/class-parent-support-menu.php:151
+msgid "Nachricht kann nicht leer sein"
+msgstr ""
+
+#: admin/inc/class-table-faq-categories.php:33
+#: admin/inc/class-table-ticket-categories.php:33
+msgid "Name"
+msgstr ""
+
+#: admin/views/network-settings-general.php:17
+msgid "Name des Support-Menüs"
+msgstr ""
+
+#: inc/helpers/template.php:546
+msgid "NEIN"
+msgstr ""
+
+#: admin/views/admin-faq.php:77
+msgid "Nein"
+msgstr ""
+
+#: psource-support.php:139 admin/inc/class-table-tickets.php:64
+msgid "Neu"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:11
+msgid "Neue Antwort einfügen"
+msgstr ""
+
+#: admin/class-network-faqs-menu.php:50 admin/class-network-faqs-menu.php:55
+msgid "Neue FAQ hinzufügen"
+msgstr ""
+
+#: admin/views/network-faq-categories.php:21
+#: admin/views/network-faq-categories.php:29
+#: admin/views/network-ticket-categories.php:19
+msgid "Neue Kategorie hinzufügen"
+msgstr ""
+
+#: admin/views/network-ticket-categories.php:32
+msgid "neue Kategorie hinzufügen"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:137
+#: admin/class-network-settings-menu.php:141
+#: admin/class-network-settings-menu.php:145
+msgid "Neue Seite erstellen"
+msgstr ""
+
+#: inc/mail-contents.php:127
+msgid "Neues Support Ticket: "
+msgstr ""
+
+#: admin/views/add-new-ticket.php:33 inc/helpers/template.php:529
+#: inc/helpers/template.php:529
+msgid "Neues Ticket einreichen"
+msgstr ""
+
+#: admin/class-admin-support-menu.php:22 admin/class-admin-support-menu.php:23
+#: admin/class-admin-support-menu.php:50 admin/class-admin-support-menu.php:54
+msgid "Neues Ticket erstellen"
+msgstr ""
+
+#: psource-support.php:148
+msgid "Niedrig"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:394
+#: admin/class-parent-support-menu.php:419 inc/classes/class-ticket.php:150
+#: inc/classes/class-ticket.php:159 inc/helpers/template.php:465
+msgid "Noch nicht zugewiesen"
+msgstr ""
+
+#: psource-support.php:149
+msgid "Normal"
+msgstr ""
+
+#: inc/helpers/template.php:239
+msgid "Nächstes &raquo;"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:427
+msgid "Personalvertreter"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:431
+#: admin/inc/class-table-tickets.php:180 admin/views/add-new-ticket.php:12
+#: admin/views/edit-ticket-history.php:26 inc/helpers/template.php:458
+msgid "Priorität"
+msgstr ""
+
+#: inc/helpers/template.php:489
+msgid "Priorität:"
+msgstr ""
+
+#: admin/inc/tinymce-shortcodes-i18n.php:11
+msgid "Prioritätsauswahlfeld anzeigen"
+msgstr ""
+
+#: admin/views/network-settings-general.php:74
+msgid "Privatsphäre"
+msgstr ""
+
+#: admin/views/network-settings-general.php:66
+msgid "Privatsphäreeinstellungen"
+msgstr ""
+
+#: inc/integration/pro-sites.php:176
+msgid "Pro Benutzer Integration"
+msgstr ""
+
+#: admin/views/add-new-ticket.php:21
+msgid "Problem Beschreibung"
+msgstr ""
+
+#. Name of the plugin
+msgid "PS Support System"
+msgstr ""
+
+#: inc/integration/pro-sites.php:123
+msgid "PS-Bloghosting Integration"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Richte auf jeder WordPress-Seite ein fantastisches Support-Ticket-System mit "
+"häufig gestellten Fragen ein."
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:243
+msgid "Schließen"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:138
+#: admin/class-network-settings-menu.php:142
+#: admin/class-network-settings-menu.php:146
+msgid "Seite anzeigen"
+msgstr ""
+
+#: admin/inc/tinymce-shortcodes-i18n.php:9
+msgid "Seiten-Auswahlfeld anzeigen"
+msgstr ""
+
+#: inc/helpers/template.php:309
+msgid "Seitennummerierung"
+msgstr ""
+
+#: inc/helpers/general.php:74
+msgid "Select a staff"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:114
+msgid "Sende ein neues Ticket"
+msgstr ""
+
+#: admin/views/add-new-faq.php:19
+msgid "Sende neue FAQ"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:20
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:20
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:60
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:83
+#: inc/classes/shortcodes/class-shortcode-tickets-index.php:96
+msgid "Sicherheitsüberprüfungsfehler"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:53
+msgid ""
+"Sobald ein Ticket geschlossen ist, können Benutzer nicht mehr darauf "
+"antworten (oder es aktualisieren)."
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:179
+msgid "Status"
+msgstr ""
+
+#: inc/helpers/template.php:473 inc/helpers/template.php:490
+msgid "Status:"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:68
+msgid "Stockt"
+msgstr ""
+
+#: admin/views/admin-faq.php:27 admin/views/admin-faq.php:31
+#: inc/helpers/template.php:200 inc/templates/faqs-nav.php:12
+#: inc/templates/tickets-nav.php:15
+msgid "Suche"
+msgstr ""
+
+#: inc/templates/faqs-nav.php:9
+msgid "Suche FAQs"
+msgstr ""
+
+#: inc/templates/tickets-nav.php:12
+msgid "Suche Tickets"
+msgstr ""
+
+#: admin/class-network-support-menu.php:17 inc/classes/class-settings.php:43
+msgid "Support"
+msgstr ""
+
+#: admin/views/network-settings-general.php:22
+msgid "Support Mail von Namen."
+msgstr ""
+
+#: admin/views/network-settings-front.php:32
+msgid "Support Seite"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:9
+msgid "Support System Einstellungen"
+msgstr ""
+
+#: admin/class-network-support-menu.php:23
+msgid "Support Ticket Management System"
+msgstr ""
+
+#: admin/views/network-settings-general.php:31
+msgid "Support von E-Mail"
+msgstr ""
+
+#: admin/views/network-settings-general.php:24
+msgid "Support von Namen"
+msgstr ""
+
+#: admin/views/network-settings-general.php:29
+msgid "Support-Mail von Adresse."
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:213
+#, php-format
+msgctxt "the plugin title"
+msgid "Das %s-Plugin ist laut PSource Server auf dem neuesten Stand."
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:215
+#, php-format
+msgctxt "the plugin title"
+msgid "Eine neue Version des %s-Plugins ist auf dem PSource Server verfügbar."
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "Es konnte nicht festgestellt werden, ob Updates für %s verfügbar sind."
+msgstr ""
+
+#: admin/class-parent-support-menu.php:295
+msgid "The ticket does not exist"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:14
+msgid "Ticket"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:309
+msgid "Ticket aktualisieren"
+msgstr ""
+
+#: inc/classes/class-shortcodes.php:41
+msgid "Ticket bearbeiten"
+msgstr ""
+
+#: inc/templates/single-ticket.php:54
+msgid "Ticket Details"
+msgstr ""
+
+#: inc/mail-contents.php:57
+msgid "Ticket eingereicht: "
+msgstr ""
+
+#: admin/class-parent-support-menu.php:442
+msgid "Ticket geschlossen"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:177
+msgid "Ticket ID"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:38
+msgid "Ticket Nachricht/Antwort"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:37
+msgid "Ticket nicht zugewiesen lassen"
+msgstr ""
+
+#: inc/helpers/template.php:511
+msgid "Ticket schließen"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:54
+msgid "Ticket schließen?"
+msgstr ""
+
+#: inc/helpers/ticket.php:496
+msgid "Ticket Titel darf nicht leer sein."
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:14
+msgid "Ticket Verlauf"
+msgstr ""
+
+#: inc/classes/shortcodes/class-shortcode-submit-ticket-form.php:142
+msgid "Ticket übermitteln"
+msgstr ""
+
+#: admin/views/network-settings-front.php:33
+msgid "Ticket-Editor Seite"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:305
+msgid "Ticketdetails"
+msgstr ""
+
+#: admin/inc/tinymce-shortcodes-i18n.php:7
+#: admin/inc/tinymce-shortcodes-i18n.php:8
+msgid "Ticketformular einreichen"
+msgstr ""
+
+#: admin/inc/class-table-ticket-categories.php:91
+#: admin/inc/class-table-ticket-categories.php:99
+msgid "Ticketkategorie bearbeiten"
+msgstr ""
+
+#: admin/class-network-ticket-categories-menu.php:8
+#: admin/class-network-ticket-categories-menu.php:9
+msgid "Ticketkategorien"
+msgstr ""
+
+#: admin/inc/class-table-ticket-categories.php:35
+#: admin/inc/class-table-tickets.php:15 inc/integration/pro-sites.php:128
+#: inc/integration/pro-sites.php:181
+msgid "Tickets"
+msgstr ""
+
+#: admin/inc/tinymce-shortcodes-i18n.php:6
+msgid "Tickets Liste"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:44
+msgid "Tickets pro Seite"
+msgstr ""
+
+#: admin/views/tickets-table-form.php:2
+msgid "Tickets suchen"
+msgstr ""
+
+#: admin/inc/class-table-tickets-history.php:15
+msgid "Tickets Verläufe"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:43
+msgid "Ticketverantwortung"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:306
+msgid "Ticketverlauf"
+msgstr ""
+
+#: admin/class-parent-support-menu.php:340
+msgid "Unbekannt"
+msgstr ""
+
+#: inc/mail-contents.php:110 admin/inc/class-table-tickets-history.php:72
+#: inc/helpers/template.php:139
+msgid "Unbekannter Benutzer"
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:223
+#, php-format
+msgid "Unbekannter Update-Status \"%s\""
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:148
+msgid "Unknown"
+msgstr ""
+
+#: inc/classes/class-query.php:396
+msgid "Unknown user"
+msgstr ""
+
+#: inc/helpers/template.php:479 inc/helpers/template.php:515
+msgid "Update"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:147
+msgid ""
+"Vergiss nicht den <code>[support-system-faqs]</code> Shortcode in diese "
+"Seite einzufügen"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:143
+msgid ""
+"Vergiss nicht den <code>[support-system-submit-ticket-form]</code> Shortcode "
+"in diese Seite einzufügen"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:139
+msgid ""
+"Vergiss nicht den <code>[support-system-tickets-index]</code> Shortcode in "
+"diese Seite einzufügen"
+msgstr ""
+
+#: admin/views/welcome.php:8
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: admin/views/welcome.php:47
+msgid ""
+"Verwalte den Ticketstatus, die Kategorie, die Priorität und die "
+"Personalzuweisung vom Frontend aus. Support System Widgets ermöglichen die "
+"einfache Verwaltung von Tickets und machen alles schön. Sie sind noch keine "
+"WordPress-Widgets, aber das ist auf dem Weg."
+msgstr ""
+
+#: admin/views/network-settings-front.php:22
+msgid "Verwende Support-Systemstile"
+msgstr ""
+
+#: admin/views/welcome.php:5
+msgid "Vielen Dank für die Installation des Support-Systems!"
+msgstr ""
+
+#: inc/templates/index-tickets.php:36
+#, php-format
+msgid "von <strong>%s</strong>"
+msgstr ""
+
+#: admin/views/admin-faq.php:76 inc/helpers/template.php:544
+msgid "War diese Lösung hilfreich?"
+msgstr ""
+
+#: psource-support.php:142
+msgid "Warten auf Admin, um zu antworten"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:67
+msgid "Warten auf Antwort des Admin"
+msgstr ""
+
+#: psource-support.php:141 admin/inc/class-table-tickets.php:66
+msgid "Warten auf die Antwort des Benutzers"
+msgstr ""
+
+#: admin/views/network-settings-general.php:36
+msgid ""
+"Wenn das Ticket keinem Mitarbeiter zugewiesen ist, ist dies der "
+"Administrator, der alle E-Mails mit Aktualisierungen des Tickets erhält"
+msgstr ""
+
+#: inc/integration/pro-sites.php:75
+#, php-format
+msgid "Wenn Du Unterstützung benötigst, aktualisiere bitte auf %s."
+msgstr ""
+
+#: admin/views/welcome.php:45
+msgid "Widgets in Frontend-Tickets"
+msgstr ""
+
+#: admin/class-network-welcome-menu.php:6 admin/views/welcome.php:2
+#, php-format
+msgid "Willkommen beim Support System %s"
+msgstr ""
+
+#: admin/views/welcome.php:42
+msgid ""
+"Wir haben es wieder getan! Das Support-System 2.1 bietet viele kleine (und "
+"größere) Verbesserungen im Administrator. Wir haben den Bildschirm \"Ticket "
+"bearbeiten\" im Hinblick auf die Benutzerfreundlichkeit neu gestaltet. Jetzt "
+"kannst Du Deine Tickets auf einer einzigen Seite verwalten."
+msgstr ""
+
+#: inc/helpers/faq-category.php:102
+msgid "Wähle eine Kategorie"
+msgstr ""
+
+#: inc/classes/class-shortcodes.php:77
+#, php-format
+msgid "Zulässige Dateitypen: %s"
+msgstr ""
+
+#: admin/views/add-new-faq.php:20 admin/views/edit-faq.php:21
+msgid "Zurück zur FAQ-Liste"
+msgstr ""
+
+#: inc/helpers/template.php:462
+msgid "Zuweisen"
+msgstr ""
+
+#: admin/views/network-settings-general.php:15
+msgid "Ändere den Text des Menüelements <strong>Support</strong> nach Bedarf."
+msgstr ""
+
+#: admin/views/welcome.php:40
+msgid "Änderungen in den Admin-Stilen"
+msgstr ""
+
+#: admin/class-network-settings-menu.php:165
+#: admin/views/edit-ticket-update-metabox.php:16
+msgid "Änderungen speichern"
+msgstr ""
+
+#: admin/inc/class-table-tickets.php:240
+msgid "Öffnen"
+msgstr ""
+
+#: admin/views/edit-ticket-history.php:36
+msgid "Übernimm die Verantwortung für dieses Ticket"
+msgstr ""

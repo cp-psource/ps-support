@@ -34,7 +34,7 @@ function psource_support_priority_dropdown( $args = array() ) {
 	$defaults = array(
 		'name' => 'ticket-priority',
 		'id' => false,
-		'show_empty' => __( '-- Priorität wählen --', PSOURCE_SUPPORT_LANG_DOMAIN ),
+		'show_empty' => __( '-- Priorität wählen --', 'psource-support' ),
 		'selected' => null,
 		'echo' => true
 	);
@@ -71,7 +71,7 @@ function psource_support_super_admins_dropdown( $args = array() ) {
 	$defaults = array(
 		'name' => 'super-admins',
 		'id' => false,
-		'show_empty' => __( 'Select a staff', PSOURCE_SUPPORT_LANG_DOMAIN ),
+		'show_empty' => __( 'Select a staff', 'psource-support' ),
 		'selected' => null,
 		'echo' => true,
 		'value' => 'username' // Or integer

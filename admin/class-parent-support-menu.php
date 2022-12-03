@@ -84,7 +84,7 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 
 			$ticket = psource_support_get_ticket( $ticket_id );
 			if ( ! $ticket )
-				wp_die( __( 'Das Ticket existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Das Ticket existiert nicht', 'psource-support' ) );
 
 			$plugin = psource_support();
 			$args = array();
@@ -142,13 +142,13 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 			$plugin = psource_support();
 			$ticket = psource_support_get_ticket( $ticket_id );
 			if ( ! $ticket )
-				wp_die( __( 'Das Ticket existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Das Ticket existiert nicht', 'psource-support' ) );
 
 			$reply_args = array();
 
 			$message = isset( $_POST['message-text'] ) ? wpautop( stripslashes_deep( $_POST['message-text'] ) ) : '';
 			if ( empty( $message ) )
-				add_settings_error( 'support_system_submit_reply', 'empty-message', __( 'Nachricht kann nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_reply', 'empty-message', __( 'Nachricht kann nicht leer sein', 'psource-support' ) );
 			else
 				$reply_args['message'] = $message;
 
@@ -292,7 +292,7 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 	protected function render_inner_page_details() {
 		$ticket = psource_support_get_ticket( absint( $_GET['tid'] ) );
 		if ( ! $ticket )
-			wp_die( __( 'The ticket does not exist', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+			wp_die( __( 'The ticket does not exist', 'psource-support' ) );
 
 		if ( ! $ticket->view_by_super_admin && psource_support_current_user_can( 'update_ticket' ) )
 			psource_support_update_ticket( $ticket->ticket_id, array( 'view_by_superadmin' => 1 ) );
@@ -302,17 +302,17 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 		$user_can_close_ticket = psource_support_current_user_can( 'close_ticket', $ticket->ticket_id );
 
 		$screen = get_current_screen();
-		add_meta_box( 'support-system-ticket-details', __( 'Ticketdetails', PSOURCE_SUPPORT_LANG_DOMAIN ), array( $this, 'render_details_metabox' ), $screen->id, 'normal' );
-		add_meta_box( 'support-system-ticket-history', __( 'Ticketverlauf', PSOURCE_SUPPORT_LANG_DOMAIN ), array( $this, 'render_history_metabox' ), $screen->id, 'normal' );
+		add_meta_box( 'support-system-ticket-details', __( 'Ticketdetails', 'psource-support' ), array( $this, 'render_details_metabox' ), $screen->id, 'normal' );
+		add_meta_box( 'support-system-ticket-history', __( 'Ticketverlauf', 'psource-support' ), array( $this, 'render_history_metabox' ), $screen->id, 'normal' );
 		
 		if ( $user_can_update_ticket || $user_can_close_ticket )
-			add_meta_box( 'support-system-ticket-update', __( 'Ticket aktualisieren', PSOURCE_SUPPORT_LANG_DOMAIN ), array( $this, 'render_update_metabox' ), $screen->id, 'side' );
+			add_meta_box( 'support-system-ticket-update', __( 'Ticket aktualisieren', 'psource-support' ), array( $this, 'render_update_metabox' ), $screen->id, 'side' );
 
 		$columns = ( $user_can_update_ticket || $user_can_close_ticket ) ? 2 : 1;
 		?>
 			<h2><?php echo stripslashes_deep( $ticket->title ); ?></h2>
 			<?php if ( $ticket->is_closed() ): ?>
-				<div class="error"><p><?php _e( 'Dieses Ticket wurde geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></p></div>
+				<div class="error"><p><?php _e( 'Dieses Ticket wurde geschlossen', 'psource-support' ); ?></p></div>
 			<?php endif; ?>
 			<div id="poststuff">
 				<div id="post-body" class="metabox-holder columns-<?php echo $columns; ?>">
@@ -337,7 +337,7 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 			$last_reply_user_name = $last_reply_user->data->user_nicename;
 
 		// Submitted from
-		$submitted_blog_link = __( 'Unbekannt', PSOURCE_SUPPORT_LANG_DOMAIN );
+		$submitted_blog_link = __( 'Unbekannt', 'psource-support' );
 		if ( is_multisite() ) {
             $blog_details = get_blog_details( $ticket->blog_id );
             if ( ! empty( $blog_details ) ) {
@@ -354,27 +354,27 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 
 		$fields = array(
 			'ticket-status' => array( 
-				'label' => __( 'Aktueller Status', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				'label' => __( 'Aktueller Status', 'psource-support' ),
 				'content' => psource_support_get_ticket_status_name( $ticket->ticket_status )
 			),
 			'ticket-created' => array( 
-				'label' => __( 'Erstellt am (GMT)', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				'label' => __( 'Erstellt am (GMT)', 'psource-support' ),
 				'content' => psource_support_get_translated_date( $ticket->ticket_opened )
 			),
 			'ticket-user' => array( 
-				'label' => __( 'Meldender Benutzer', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				'label' => __( 'Meldender Benutzer', 'psource-support' ),
 				'content' => $ticket->get_user_name()
 			),
 			'ticket-last-reply-from' => array( 
-				'label' => __( 'Letzte Antwort von', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				'label' => __( 'Letzte Antwort von', 'psource-support' ),
 				'content' => $last_reply_user_name
 			),
 			'ticket-updated' => array( 
-				'label' => __( 'Letzte Aktualisierung (GMT)', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				'label' => __( 'Letzte Aktualisierung (GMT)', 'psource-support' ),
 				'content' => psource_support_get_translated_date( $ticket->ticket_updated )
 			),
 			'ticket-submitted-from' => array( 
-				'label' => __( 'Eingereicht von', PSOURCE_SUPPORT_LANG_DOMAIN ),
+				'label' => __( 'Eingereicht von', 'psource-support' ),
 				'content' =>  $submitted_blog_link
 			)
 		);
@@ -391,7 +391,7 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 	        // Super admins dropdown
 	        $super_admins_dropdown = psource_support_super_admins_dropdown( 
 				array( 
-					'show_empty' => __( 'Noch nicht zugewiesen', PSOURCE_SUPPORT_LANG_DOMAIN ) ,
+					'show_empty' => __( 'Noch nicht zugewiesen', 'psource-support' ) ,
 					'echo' => false,
 					'selected' => $ticket->get_staff_login()
 				) 
@@ -416,7 +416,7 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 			);
 		}
 		else {
-			$super_admins_dropdown = ! $ticket->get_staff_login() ? __( 'Noch nicht zugewiesen', PSOURCE_SUPPORT_LANG_DOMAIN ) : $ticket->get_staff_login();
+			$super_admins_dropdown = ! $ticket->get_staff_login() ? __( 'Noch nicht zugewiesen', 'psource-support' ) : $ticket->get_staff_login();
 			$priorities_dropdown = psource_support_get_ticket_priority_name( $ticket->ticket_priority );
 			$ticket_category = psource_support_get_ticket_category( $ticket->cat_id );
 			$categories_dropdown = $ticket_category->cat_name;
@@ -424,22 +424,22 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 
 		$fields = array(
  			'ticket-staff' => array( 
- 				'label' => '<label for="super-admins">' . __( 'Personalvertreter', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</label>',
+ 				'label' => '<label for="super-admins">' . __( 'Personalvertreter', 'psource-support' ) . '</label>',
  				'content' => $super_admins_dropdown
  			),
  			'ticket-priority' => array( 
- 				'label' => '<label for="ticket-priority">' . __( 'Priorität', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</label>',
+ 				'label' => '<label for="ticket-priority">' . __( 'Priorität', 'psource-support' ) . '</label>',
  				'content' => $priorities_dropdown
  			),
 			'ticket-category' => array( 
-				'label' => '<label for="ticket-cat">' . __( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</label>',
+				'label' => '<label for="ticket-cat">' . __( 'Kategorie', 'psource-support' ) . '</label>',
 				'content' => $categories_dropdown
 			)
 		);
 
 		if ( psource_support_current_user_can( 'close_ticket', $ticket->ticket_id ) ) {
 			$fields['ticket-closed'] = array(
-				'label' => '<label for="close-ticket-checkbox">' . __( 'Ticket geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</label>',
+				'label' => '<label for="close-ticket-checkbox">' . __( 'Ticket geschlossen', 'psource-support' ) . '</label>',
 				'content' => '<input name="close-ticket" id="close-ticket-checkbox" type="checkbox" ' . checked( $ticket->is_closed(), true, false ) . ' />'
 			);
 		}
@@ -452,7 +452,7 @@ class PSource_Support_Parent_Support_Menu extends PSource_Support_Admin_Menu {
 	public function render_history_metabox() {
 		$ticket = psource_support_get_ticket( absint( $_GET['tid'] ) );
 		if ( ! $ticket )
-			wp_die( __( 'Das Ticket existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+			wp_die( __( 'Das Ticket existiert nicht', 'psource-support' ) );
 
 		if ( ! $ticket->view_by_super_admin && psource_support_current_user_can( 'update_ticket' ) )
 			psource_support_update_ticket( $ticket->ticket_id, array( 'view_by_superadmin' => 1 ) );

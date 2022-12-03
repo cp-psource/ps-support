@@ -6,7 +6,7 @@
 
 				<?php if ( psource_support_is_ticket_closed( psource_support_get_the_ticket_id() ) ): ?>
 					<div data-alert class="alert-box alert">
-						<?php _e( 'Dieses Ticket ist geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>
+						<?php _e( 'Dieses Ticket ist geschlossen', 'psource-support' ); ?>
 					</div>
 				<?php endif; ?>
 				<ul class="row">
@@ -25,10 +25,10 @@
 						<?php $attachments = psource_support_get_the_ticket_attachments(); ?>
 						<?php if ( ! empty( $attachments ) ): ?>
 							<div class="row support-system-ticket-attachments">
-								<h5><?php _e( 'Anhänge', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h5>
+								<h5><?php _e( 'Anhänge', 'psource-support' ); ?></h5>
 								<ul>
 									<?php foreach ( $attachments as $attachment ): ?>
-										<li><a href="<?php echo esc_url( $attachment ); ?>" title="<?php printf( esc_attr__( 'Download %s Anhang', PSOURCE_SUPPORT_LANG_DOMAIN ), basename( $attachment ) ); ?>"><?php echo basename( $attachment ); ?></a></li>
+										<li><a href="<?php echo esc_url( $attachment ); ?>" title="<?php printf( esc_attr__( 'Download %s Anhang', 'psource-support' ), basename( $attachment ) ); ?>"><?php echo basename( $attachment ); ?></a></li>
 									<?php endforeach; ?>		
 								</ul>
 							</div>
@@ -51,14 +51,14 @@
 						
 						<?php 
 							echo psource_support_widget( 
-								array( 'class' => 'panel support-system-ticket-details large-12 columns', 'title' => __( 'Ticket Details', PSOURCE_SUPPORT_LANG_DOMAIN ) ),
+								array( 'class' => 'panel support-system-ticket-details large-12 columns', 'title' => __( 'Ticket Details', 'psource-support' ) ),
 								'psource_support_the_ticket_details_box'
 							); 
 						?>
 					<?php else: ?>
 						<?php 
 							echo psource_support_widget( 
-								array( 'class' => 'panel support-system-ticket-details support-system-staff-box large-12 columns', 'title' => __( 'Bearbeite Ticket Details', PSOURCE_SUPPORT_LANG_DOMAIN ) ),
+								array( 'class' => 'panel support-system-ticket-details support-system-staff-box large-12 columns', 'title' => __( 'Bearbeite Ticket Details', 'psource-support' ) ),
 								'psource_support_the_staff_box',
 								array( 'submit_class' => 'button expand' ) 
 							); 

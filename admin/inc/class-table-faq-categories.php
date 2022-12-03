@@ -9,8 +9,8 @@ class PSource_Support_FAQ_Categories_Table extends WP_List_Table {
 
 	function __construct(){
         parent::__construct( array(
-            'singular'  => __( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'Kategorien', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'Kategorie', 'psource-support' ),  
+            'plural'    => __( 'Kategorien', 'psource-support' ), 
             'ajax'      => false        
         ) );
         
@@ -29,9 +29,9 @@ class PSource_Support_FAQ_Categories_Table extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />',
-            'id'        => __( 'ID', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'name'      => __( 'Name', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'faqs'      => __( 'FAQs', PSOURCE_SUPPORT_LANG_DOMAIN )
+            'id'        => __( 'ID', 'psource-support' ),
+            'name'      => __( 'Name', 'psource-support' ),
+            'faqs'      => __( 'FAQs', 'psource-support' )
         );
         return $columns;
     }
@@ -87,26 +87,26 @@ class PSource_Support_FAQ_Categories_Table extends WP_List_Table {
         );
 
         $actions = array(
-            'edit' => sprintf( __( '<a href="%s">Bearbeiten</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $edit_link )   
+            'edit' => sprintf( __( '<a href="%s">Bearbeiten</a>', 'psource-support' ), $edit_link )   
         );
 
         if ( $item->defcat ) {
-            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', PSOURCE_SUPPORT_LANG_DOMAIN ) ) . '">' . $item->cat_name . '</a> <strong>' . __( '[Standardkategorie]', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</strong>'  . $this->row_actions($actions);
+            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', 'psource-support' ) ) . '">' . $item->cat_name . '</a> <strong>' . __( '[Standardkategorie]', 'psource-support' ) . '</strong>'  . $this->row_actions($actions);
         }
         else {
             $more_actions = array( 
-                'delete'    => sprintf( __( '<a href="%s">DLöschen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $delete_link ),
-                'set_default' => sprintf( __( '<a href="%s">Als Standard einstellen</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), $set_default_link )      
+                'delete'    => sprintf( __( '<a href="%s">DLöschen</a>', 'psource-support' ), $delete_link ),
+                'set_default' => sprintf( __( '<a href="%s">Als Standard einstellen</a>', 'psource-support' ), $set_default_link )      
             );
             $actions = array_merge( $actions, $more_actions );
-            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', PSOURCE_SUPPORT_LANG_DOMAIN ) ) . '">' . $item->cat_name . '</a>' . $this->row_actions($actions);
+            return '<a href="' . esc_url( $edit_link ) . '" title="' . esc_attr( __( 'FAQ-Kategorie bearbeiten', 'psource-support' ) ) . '">' . $item->cat_name . '</a>' . $this->row_actions($actions);
         }
     }
 
 
     function get_bulk_actions() {
         $actions = array(
-            'delete'    => __( 'Löschen', PSOURCE_SUPPORT_LANG_DOMAIN )
+            'delete'    => __( 'Löschen', 'psource-support' )
         );
         return $actions;
     }

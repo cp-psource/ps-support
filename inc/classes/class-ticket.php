@@ -147,7 +147,7 @@ class PSource_Support_Ticket {
 		$user = get_userdata( $this->admin_id );
 
 		if ( ! $user )
-			return __( 'Noch nicht zugewiesen', PSOURCE_SUPPORT_LANG_DOMAIN );
+			return __( 'Noch nicht zugewiesen', 'psource-support' );
 
 		return $user->display_name;
 	}
@@ -156,7 +156,7 @@ class PSource_Support_Ticket {
 		$user = get_userdata( $this->admin_id );		
 
 		if ( ! $user )
-			return __( 'Noch nicht zugewiesen', PSOURCE_SUPPORT_LANG_DOMAIN );
+			return __( 'Noch nicht zugewiesen', 'psource-support' );
 
 		return $user->user_login;
 	}
@@ -166,7 +166,7 @@ class PSource_Support_Ticket {
 		$user = get_userdata( $this->user_id );
 
 		if ( ! $user )
-			return __( 'Benutzer nicht gefunden', PSOURCE_SUPPORT_LANG_DOMAIN );
+			return __( 'Benutzer nicht gefunden', 'psource-support' );
 
 		return $user->display_name;
 	}

@@ -152,14 +152,14 @@ function psource_support_insert_faq( $args = array() ) {
 	// CATEGORY
 	$category = psource_support_get_faq_category( absint( $args['cat_id'] ) );
 	if ( ! $category )
-		return new WP_Error( 'wrong_category', __( 'Die Kategorie existiert nicht.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'wrong_category', __( 'Die Kategorie existiert nicht.', 'psource-support' ) );
 	$insert['cat_id'] = $category->cat_id;
 	$insert_wildcards[] = '%d'; 
 
 	// QUESTION
 	$question = strip_tags( wp_unslash( $args['question'] ) );
 	if ( empty( $question ) )
-		return new WP_Error( 'empty_question', __( 'Der FAQ-Titel darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_question', __( 'Der FAQ-Titel darf nicht leer sein.', 'psource-support' ) );
 
 	$insert['question'] = $question; 
 	$insert_wildcards[] = '%s'; 
@@ -167,7 +167,7 @@ function psource_support_insert_faq( $args = array() ) {
 	// ANSWER
 	$answer = wp_kses_post( wp_unslash( $args['answer'] ) );
 	if ( empty( $answer ) )
-		return new WP_Error( 'empty_answer', __( 'Die FAQ-Antwort darf nicht leer sein.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'empty_answer', __( 'Die FAQ-Antwort darf nicht leer sein.', 'psource-support' ) );
 
 	$insert['answer'] = $answer; 
 	$insert_wildcards[] = '%s'; 
@@ -182,7 +182,7 @@ function psource_support_insert_faq( $args = array() ) {
 	$faq_id = $wpdb->insert_id;
 
 	if ( ! $faq_id )
-		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des FAQ-Elements. Bitte versuche es später erneut.', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+		return new WP_Error( 'insert_error', __( 'Fehler beim Einfügen des FAQ-Elements. Bitte versuche es später erneut.', 'psource-support' ) );
 
 	psource_support_clean_faq_category_cache( $category );
 

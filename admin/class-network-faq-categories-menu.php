@@ -5,8 +5,8 @@ class PSource_Support_Network_FAQ_Categories extends PSource_Support_Admin_Menu 
 	public function add_menu() {
 		parent::add_submenu_page(
 			'ticket-manager',
-			__( 'FAQ-Kategorien', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			__( 'FAQ-Kategorien', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+			__( 'FAQ-Kategorien', 'psource-support' ),
+			__( 'FAQ-Kategorien', 'psource-support' ), 
 			is_multisite() ? 'manage_network' : 'manage_options'
 		);
 
@@ -19,7 +19,7 @@ class PSource_Support_Network_FAQ_Categories extends PSource_Support_Admin_Menu 
 
 	public function set_edit_category_page_title( $title ) {
 		$faq_category = psource_support_get_faq_category( absint( $_GET['category'] ) );
-		return '<h2>' . sprintf( _x( 'Bearbeite %s', 'Bearbeite den Titel des FAQ-Kategorie-Menüs', PSOURCE_SUPPORT_LANG_DOMAIN ), $faq_category->cat_name ) . '</h2>';
+		return '<h2>' . sprintf( _x( 'Bearbeite %s', 'Bearbeite den Titel des FAQ-Kategorie-Menüs', 'psource-support' ), $faq_category->cat_name ) . '</h2>';
 	}
 
 	public function on_load() {
@@ -53,7 +53,7 @@ class PSource_Support_Network_FAQ_Categories extends PSource_Support_Admin_Menu 
 
 			$cat_name = trim( $_POST['cat_name'] );
 			if ( empty( $cat_name ) )
-				add_settings_error( 'support_system_submit_category', 'empty-category-name', __( 'Der Kategoriename darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'support_system_submit_category', 'empty-category-name', __( 'Der Kategoriename darf nicht leer sein', 'psource-support' ) );
 			else
 				$category_name = $_POST['cat_name'];
 
@@ -83,7 +83,7 @@ class PSource_Support_Network_FAQ_Categories extends PSource_Support_Admin_Menu 
 		if ( isset( $_GET['category'] ) && $_GET['action'] == 'edit' ) {
 			$faq_category = psource_support_get_faq_category( absint( $_GET['category'] ) );
 			if ( ! $faq_category )
-				wp_die( __( 'Die Kategorie existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Die Kategorie existiert nicht', 'psource-support' ) );
 
 			$category_name = $faq_category->cat_name;
 			if ( ! empty( $_POST['cat_name'] ) && trim( $_POST['cat_name'] ) )

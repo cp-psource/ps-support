@@ -49,7 +49,7 @@ if ( !class_exists('Puc_v4p10_Plugin_UpdateChecker', false) ):
 			$slugUsedBy = apply_filters($slugCheckFilter, false);
 			if ( $slugUsedBy ) {
 				$this->triggerError(sprintf(
-					'Plugin slug "%s" is already in use by %s. Slugs must be unique.',
+					'Plugin-Slug "%s" wird bereits von %s verwendet. Slugs müssen einzigartig sein.',
 					htmlentities($slug),
 					htmlentities($slugUsedBy)
 				), E_USER_ERROR);
@@ -65,7 +65,7 @@ if ( !class_exists('Puc_v4p10_Plugin_UpdateChecker', false) ):
 			}
 
 			//To prevent a crash during plugin uninstallation, remove updater hooks when the user removes the plugin.
-			//Details: https://github.com/YahnisElsts/plugin-update-checker/issues/138#issuecomment-335590964
+			//Details: https://github.com/YahnisElsts/psource-plugin-updater/issues/138#issuecomment-335590964
 			add_action('uninstall_' . $this->pluginFile, array($this, 'removeHooks'));
 
 			$this->extraUi = new Puc_v4p10_Plugin_Ui($this);

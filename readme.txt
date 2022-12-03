@@ -38,6 +38,8 @@ Der mitgelieferte Texteditor eignet sich perfekt für einfaches Styling und Date
 = 2.2.2 = DerN3rd =
 
 * PhP8 Fix Admindashboard
+* Psource Updater aktualisiert
+* Textdomain angepasst
 
 = 2.2.1 = DerN3rd =
 

@@ -1,5 +1,5 @@
 <ul class="subsubsub">
-	<li class="all"><a href="<?php echo add_query_arg( 'status', 'all' ); ?>" <?php echo 'all' == $status ? 'class="current"' : ''; ?> ><?php echo __( 'Alle', PSOURCE_SUPPORT_LANG_DOMAIN ); ?> <span class="count">(<?php echo $all_tickets_count; ?>)</span></a> |</li>
-	<li class="active"><a href="<?php echo add_query_arg( 'status', 'active' ); ?>" <?php echo 'active' == $status ? 'class="current"' : ''; ?> ><?php echo __( 'Geöffnet', PSOURCE_SUPPORT_LANG_DOMAIN ); ?> <span class="count">(<?php echo $active_tickets_count; ?>)</span></a> |</li>
-	<li class="archived"><a href="<?php echo add_query_arg( 'status', 'archive' ); ?>" <?php echo 'archive' == $status ? 'class="current"' : ''; ?>><?php echo __( 'Geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?> <span class="count">(<?php echo $archived_tickets_count; ?>)</span></a></li>
+	<li class="all"><a href="<?php echo add_query_arg( 'status', 'all' ); ?>" <?php echo 'all' == $status ? 'class="current"' : ''; ?> ><?php echo __( 'Alle', 'psource-support' ); ?> <span class="count">(<?php echo $all_tickets_count; ?>)</span></a> |</li>
+	<li class="active"><a href="<?php echo add_query_arg( 'status', 'active' ); ?>" <?php echo 'active' == $status ? 'class="current"' : ''; ?> ><?php echo __( 'Geöffnet', 'psource-support' ); ?> <span class="count">(<?php echo $active_tickets_count; ?>)</span></a> |</li>
+	<li class="archived"><a href="<?php echo add_query_arg( 'status', 'archive' ); ?>" <?php echo 'archive' == $status ? 'class="current"' : ''; ?>><?php echo __( 'Geschlossen', 'psource-support' ); ?> <span class="count">(<?php echo $archived_tickets_count; ?>)</span></a></li>
 </ul>

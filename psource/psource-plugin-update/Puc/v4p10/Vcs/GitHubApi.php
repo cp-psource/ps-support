@@ -48,7 +48,7 @@ if ( !class_exists('Puc_v4p10_Vcs_GitHubApi', false) ):
 				$this->userName = $matches['username'];
 				$this->repositoryName = $matches['repository'];
 			} else {
-				throw new InvalidArgumentException('Invalid GitHub repository URL: "' . $repositoryUrl . '"');
+				throw new InvalidArgumentException('Ungültige GitHub-Repository-URL: "' . $repositoryUrl . '"');
 			}
 
 			parent::__construct($repositoryUrl, $accessToken);
@@ -226,7 +226,7 @@ if ( !class_exists('Puc_v4p10_Vcs_GitHubApi', false) ):
 
 			$error = new WP_Error(
 				'puc-github-http-error',
-				sprintf('GitHub API error. Base URL: "%s",  HTTP status code: %d.', $baseUrl, $code)
+				sprintf('GitHub-API-Fehler. Basis-URL: "%s",  HTTP-Statuscode: %d.', $baseUrl, $code)
 			);
 			do_action('puc_api_error', $error, $response, $url, $this->slug);
 
@@ -298,7 +298,7 @@ if ( !class_exists('Puc_v4p10_Vcs_GitHubApi', false) ):
 		 */
 		public function getTag($tagName) {
 			//The current GitHub update checker doesn't use getTag, so I didn't bother to implement it.
-			throw new LogicException('The ' . __METHOD__ . ' method is not implemented and should not be used.');
+			throw new LogicException('Die ' . __METHOD__ . ' Methode ist nicht implementiert und sollte nicht verwendet werden.');
 		}
 
 		public function setAuthentication($credentials) {

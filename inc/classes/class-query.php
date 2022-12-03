@@ -393,7 +393,7 @@ function psource_support_get_the_author_id() {
 function psource_support_get_the_author() {
 	$user = get_userdata( psource_support_get_the_author_id() );
 	if ( ! $user )
-		return __( 'Unknown user', PSOURCE_SUPPORT_LANG_DOMAIN );
+		return __( 'Unknown user', 'psource-support' );
 
 	return $user->data->display_name;
 }

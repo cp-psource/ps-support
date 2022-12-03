@@ -40,7 +40,7 @@ class PSource_Support_Settings {
 		$super_admins = call_user_func( array( $plugin, 'get_super_admins' ) );
 		$main_super_admin = ! empty( $super_admins ) ? key( $super_admins ) : false;
 		return apply_filters( 'support_system_default_settings', array(
-			'psource_support_menu_name' => __( 'Support', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			'psource_support_menu_name' => __( 'Support', 'psource-support' ),
 			'psource_support_from_name' => get_bloginfo( 'blogname' ),
 			'psource_support_from_mail' => get_bloginfo( 'admin_email' ),
 			'psource_support_fetch_imap' => 'disabled',

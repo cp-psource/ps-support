@@ -3,7 +3,7 @@
 class PSource_Support_Welcome_Menu extends PSource_Support_Admin_Menu {
 
 	public function add_menu() {		
-		$this->menu_title = sprintf( __( 'Willkommen beim Support System %s', PSOURCE_SUPPORT_LANG_DOMAIN ), psource_support_get_version() );
+		$this->menu_title = sprintf( __( 'Willkommen beim Support System %s', 'psource-support' ), psource_support_get_version() );
 		$this->page_id = add_dashboard_page( 
 			$this->menu_title,
 			$this->menu_title,

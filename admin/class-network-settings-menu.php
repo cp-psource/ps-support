@@ -5,8 +5,8 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 	public function add_menu() {		
 		parent::add_submenu_page(
 			'ticket-manager',
-			__( 'Einstellungen', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			__( 'Support System Einstellungen', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+			__( 'Einstellungen', 'psource-support' ),
+			__( 'Support System Einstellungen', 'psource-support' ), 
 			is_multisite() ? 'manage_network' : 'manage_options'
 		);
 
@@ -65,7 +65,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 
 		$support_pages_dropdown_args = array(
 			'selected' => psource_support_get_support_page_id(), 
-			'show_option_none' => __( '-- Seite auswählen --', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			'show_option_none' => __( '-- Seite auswählen --', 'psource-support' ),
 			'name' => 'support_page_id',
 			'echo' => false
 		);
@@ -74,7 +74,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 
 		$submit_ticket_pages_dropdown_args = array(
 			'selected' => psource_support_get_new_ticket_page_id(), 
-			'show_option_none' => __( '-- Seite auswählen --', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			'show_option_none' => __( '-- Seite auswählen --', 'psource-support' ),
 			'name' => 'create_new_ticket_page_id',
 			'echo' => false
 		);
@@ -83,7 +83,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 
 		$faqs_pages_dropdown_args = array(
 			'selected' => psource_support_get_faqs_page_id(), 
-			'show_option_none' => __( '-- Seite auswählen --', PSOURCE_SUPPORT_LANG_DOMAIN ),
+			'show_option_none' => __( '-- Seite auswählen --', 'psource-support' ),
 			'name' => 'faqs_page_id',
 			'echo' => false
 		);
@@ -134,17 +134,17 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 		}
 
 		if ( $pages_dropdowns ) {
-			$support_pages_dropdown .= '<a href="' . esc_url( $create_list_page_url ) . '" target="_blank" class="button-primary support-create-page">' . esc_html__( 'Neue Seite erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a>';
-			$support_pages_dropdown .= '<a href="' . esc_url( $view_list_page_url ) . '" target="_blank" class="button-secondary support-view-page">' . esc_html__( 'Seite anzeigen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a>';
-			$support_pages_dropdown .= '<br/><span class="description">' . __( 'Vergiss nicht den <code>[support-system-tickets-index]</code> Shortcode in diese Seite einzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</span>';
+			$support_pages_dropdown .= '<a href="' . esc_url( $create_list_page_url ) . '" target="_blank" class="button-primary support-create-page">' . esc_html__( 'Neue Seite erstellen', 'psource-support' ) . '</a>';
+			$support_pages_dropdown .= '<a href="' . esc_url( $view_list_page_url ) . '" target="_blank" class="button-secondary support-view-page">' . esc_html__( 'Seite anzeigen', 'psource-support' ) . '</a>';
+			$support_pages_dropdown .= '<br/><span class="description">' . __( 'Vergiss nicht den <code>[support-system-tickets-index]</code> Shortcode in diese Seite einzufügen', 'psource-support' ) . '</span>';
 
-			$submit_ticket_pages_dropdown .= '<a href="' . esc_url( $create_ticket_form_page_url ) . '" target="_blank" class="button-primary support-create-page">' . esc_html__( 'Neue Seite erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a>';
-			$submit_ticket_pages_dropdown .= '<a href="' . esc_url( $view_ticket_form_page_url ) . '" target="_blank" class="button-secondary support-view-page">' . esc_html__( 'Seite anzeigen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a>';
-			$submit_ticket_pages_dropdown .= '<br/><span class="description">' . __( 'Vergiss nicht den <code>[support-system-submit-ticket-form]</code> Shortcode in diese Seite einzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</span>';
+			$submit_ticket_pages_dropdown .= '<a href="' . esc_url( $create_ticket_form_page_url ) . '" target="_blank" class="button-primary support-create-page">' . esc_html__( 'Neue Seite erstellen', 'psource-support' ) . '</a>';
+			$submit_ticket_pages_dropdown .= '<a href="' . esc_url( $view_ticket_form_page_url ) . '" target="_blank" class="button-secondary support-view-page">' . esc_html__( 'Seite anzeigen', 'psource-support' ) . '</a>';
+			$submit_ticket_pages_dropdown .= '<br/><span class="description">' . __( 'Vergiss nicht den <code>[support-system-submit-ticket-form]</code> Shortcode in diese Seite einzufügen', 'psource-support' ) . '</span>';
 
-			$faqs_pages_dropdown .= '<a href="' . esc_url( $create_faqs_page_url ) . '" target="_blank" class="button-primary support-create-page">' . esc_html__( 'Neue Seite erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a>';
-			$faqs_pages_dropdown .= '<a href="' . esc_url( $view_faqs_page_url ) . '" target="_blank" class="button-secondary support-view-page">' . esc_html__( 'Seite anzeigen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a>';
-			$faqs_pages_dropdown .= '<br/><span class="description">' . __( 'Vergiss nicht den <code>[support-system-faqs]</code> Shortcode in diese Seite einzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</span>';
+			$faqs_pages_dropdown .= '<a href="' . esc_url( $create_faqs_page_url ) . '" target="_blank" class="button-primary support-create-page">' . esc_html__( 'Neue Seite erstellen', 'psource-support' ) . '</a>';
+			$faqs_pages_dropdown .= '<a href="' . esc_url( $view_faqs_page_url ) . '" target="_blank" class="button-secondary support-view-page">' . esc_html__( 'Seite anzeigen', 'psource-support' ) . '</a>';
+			$faqs_pages_dropdown .= '<br/><span class="description">' . __( 'Vergiss nicht den <code>[support-system-faqs]</code> Shortcode in diese Seite einzufügen', 'psource-support' ) . '</span>';
 
 			$support_pages_dropdown = '<div class="support-page-selector-wrap">' . $support_pages_dropdown . '</div>';
 			$submit_ticket_pages_dropdown = '<div class="support-page-selector-wrap">' . $submit_ticket_pages_dropdown . '</div>';
@@ -162,7 +162,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 		?>
 			<p class="submit">
 				<?php wp_nonce_field( 'do-support-settings-' . $tab ); ?>
-				<?php submit_button( __( 'Änderungen speichern', PSOURCE_SUPPORT_LANG_DOMAIN ), 'primary', 'submit-' . $tab, false ); ?>
+				<?php submit_button( __( 'Änderungen speichern', 'psource-support' ), 'primary', 'submit-' . $tab, false ); ?>
 			</p>
 		<?php
 	}
@@ -213,7 +213,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 		if ( isset( $input['menu_name'] ) ) {
 			$input['menu_name'] = sanitize_text_field( $input['menu_name'] );
 			if ( empty( $input['menu_name'] ) )
-				add_settings_error( 'psource-support-settings', 'menu-name', __( 'Der Menüname darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'psource-support-settings', 'menu-name', __( 'Der Menüname darf nicht leer sein', 'psource-support' ) );
 			else
 				$settings['psource_support_menu_name'] = $input['menu_name'];
 		}
@@ -222,7 +222,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 		if ( isset( $input['from_name'] ) ) {
 			$input['from_name'] = sanitize_text_field( $input['from_name'] );
 			if ( empty( $input['from_name'] ) )
-				add_settings_error( 'psource-support-settings', 'site-name', __( 'Der Seiten-Name darf nicht leer sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'psource-support-settings', 'site-name', __( 'Der Seiten-Name darf nicht leer sein', 'psource-support' ) );
 			else
 				$settings['psource_support_from_name'] = $input['from_name'];
 		}
@@ -231,7 +231,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 		if ( isset( $input['from_mail'] ) ) {
 			$input['from_mail'] = sanitize_email( $input['from_mail'] );
 			if ( ! is_email( $input['from_mail'] ) ) {
-				add_settings_error( 'psource-support-settings', 'site-mail', __( 'E-Mail muss eine gültige E-Mail sein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'psource-support-settings', 'site-mail', __( 'E-Mail muss eine gültige E-Mail sein', 'psource-support' ) );
 			}
 			else
 				$settings['psource_support_from_mail'] = $input['from_mail'];
@@ -321,7 +321,7 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 				}
 			}
 			else {
-				add_settings_error( 'psource-support-settings', 'wrong_blog_id', __( 'Die Blog-ID existiert nicht', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				add_settings_error( 'psource-support-settings', 'wrong_blog_id', __( 'Die Blog-ID existiert nicht', 'psource-support' ) );
 			}
 		}
 
@@ -367,8 +367,8 @@ class PSource_Support_Network_Settings_Menu extends PSource_Support_Admin_Menu {
 		 	)
 		 */
 		return apply_filters( 'support_system_settings_tabs', array(
-			'general' => __( 'Basiseinstellungen', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			'front' => __( 'Front-End Einstellungen', PSOURCE_SUPPORT_LANG_DOMAIN )
+			'general' => __( 'Basiseinstellungen', 'psource-support' ),
+			'front' => __( 'Front-End Einstellungen', 'psource-support' )
 		) );
 	}
 

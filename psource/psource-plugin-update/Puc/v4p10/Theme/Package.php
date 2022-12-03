@@ -49,15 +49,15 @@ if ( !class_exists('Puc_v4p10_Theme_Package', false) ):
 			return array(
 				'Name'        => 'Theme Name',
 				'ThemeURI'    => 'Theme URI',
-				'Description' => 'Description',
-				'Author'      => 'Author',
-				'AuthorURI'   => 'Author URI',
+				'Description' => 'Übersicht',
+				'Author'      => 'Autor',
+				'AuthorURI'   => 'Autor URI',
 				'Version'     => 'Version',
 				'Template'    => 'Template',
 				'Status'      => 'Status',
 				'Tags'        => 'Tags',
 				'TextDomain'  => 'Text Domain',
-				'DomainPath'  => 'Domain Path',
+				'DomainPath'  => 'Domain Pfad',
 			);
 		}
 	}

@@ -51,7 +51,7 @@ if ( !class_exists('Puc_v4p10_Plugin_Ui', false) ):
 		 */
 		public function addViewDetailsLink($pluginMeta, $pluginFile, $pluginData = array()) {
 			if ( $this->isMyPluginFile($pluginFile) && !isset($pluginData['slug']) ) {
-				$linkText = apply_filters($this->updateChecker->getUniqueName('view_details_link'), __('View details'));
+				$linkText = apply_filters($this->updateChecker->getUniqueName('view_details_link'), __('HELPDESK'));
 				if ( !empty($linkText) ) {
 					$viewDetailsLinkPosition = 'append';
 
@@ -74,7 +74,7 @@ if ( !class_exists('Puc_v4p10_Plugin_Ui', false) ):
 					$viewDetailsLink = sprintf('<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s" data-title="%s">%s</a>',
 						esc_url(network_admin_url('plugin-install.php?tab=plugin-information&plugin=' . urlencode($this->updateChecker->slug) .
 							'&TB_iframe=true&width=600&height=550')),
-						esc_attr(sprintf(__('More information about %s'), $pluginData['Name'])),
+						esc_attr(sprintf(__('Weitere Informationen zu %s'), $pluginData['Name'])),
 						esc_attr($pluginData['Name']),
 						$linkText
 					);
@@ -125,7 +125,7 @@ if ( !class_exists('Puc_v4p10_Plugin_Ui', false) ):
 
 				$linkText = apply_filters(
 					$this->updateChecker->getUniqueName('manual_check_link'),
-					__('Check for updates', 'plugin-update-checker')
+					__('Auf Updates prüfen', 'psource-support')
 				);
 				if ( !empty($linkText) ) {
 					/** @noinspection HtmlUnknownTarget */
@@ -210,17 +210,17 @@ if ( !class_exists('Puc_v4p10_Plugin_Ui', false) ):
 				$details = '';
 
 				if ( $status == 'no_update' ) {
-					$message = sprintf(_x('The %s plugin is up to date.', 'the plugin title', 'plugin-update-checker'), $title);
+					$message = sprintf(_x('Das %s-Plugin ist laut PSource Server auf dem neuesten Stand.', 'the plugin title', 'psource-support'), $title);
 				} else if ( $status == 'update_available' ) {
-					$message = sprintf(_x('A new version of the %s plugin is available.', 'the plugin title', 'plugin-update-checker'), $title);
+					$message = sprintf(_x('Eine neue Version des %s-Plugins ist auf dem PSource Server verfügbar.', 'the plugin title', 'psource-support'), $title);
 				} else if ( $status === 'error' ) {
-					$message = sprintf(_x('Could not determine if updates are available for %s.', 'the plugin title', 'plugin-update-checker'), $title);
+					$message = sprintf(_x('Es konnte nicht festgestellt werden, ob Updates für %s verfügbar sind.', 'the plugin title', 'psource-support'), $title);
 					$noticeClass = 'error notice-error';
 
 					$details = $this->formatManualCheckErrors(get_site_transient($this->manualCheckErrorTransient));
 					delete_site_transient($this->manualCheckErrorTransient);
 				} else {
-					$message = sprintf(__('Unknown update checker status "%s"', 'plugin-update-checker'), htmlentities($status));
+					$message = sprintf(__('Unbekannter Update-Status "%s"', 'psource-support'), htmlentities($status));
 					$noticeClass = 'error notice-error';
 				}
 				printf(

@@ -67,15 +67,15 @@ if ( !class_exists('Puc_v4p10_DebugBar_Extension', false) ):
 			$this->preAjaxRequest();
 			$update = $this->updateChecker->checkForUpdates();
 			if ( $update !== null ) {
-				echo "An update is available:";
+				echo "Eine Aktualisierung auf dem PSource Server ist verfügbar:";
 				echo '<pre>', htmlentities(print_r($update, true)), '</pre>';
 			} else {
-				echo 'No updates found.';
+				echo 'Keine Aktualisierung auf dem PSource Server gefunden.';
 			}
 
 			$errors = $this->updateChecker->getLastRequestApiErrors();
 			if ( !empty($errors) ) {
-				printf('<p>The update checker encountered %d API error%s.</p>', count($errors), (count($errors) > 1) ? 's' : '');
+				printf('<p>Der Update-Checker hat einen %d API-Fehler%s festgestellt.</p>', count($errors), (count($errors) > 1) ? 's' : '');
 
 				foreach (array_values($errors) as $num => $item) {
 					$wpError = $item['error'];
@@ -83,10 +83,10 @@ if ( !class_exists('Puc_v4p10_DebugBar_Extension', false) ):
 					printf('<h4>%d) %s</h4>', $num + 1, esc_html($wpError->get_error_message()));
 
 					echo '<dl>';
-					printf('<dt>Error code:</dt><dd><code>%s</code></dd>', esc_html($wpError->get_error_code()));
+					printf('<dt>Fehlercode:</dt><dd><code>%s</code></dd>', esc_html($wpError->get_error_code()));
 
 					if ( isset($item['url']) ) {
-						printf('<dt>Requested URL:</dt><dd><code>%s</code></dd>', esc_html($item['url']));
+						printf('<dt>Angeforderte URL:</dt><dd><code>%s</code></dd>', esc_html($item['url']));
 					}
 
 					if ( isset($item['httpResponse']) ) {
@@ -94,20 +94,20 @@ if ( !class_exists('Puc_v4p10_DebugBar_Extension', false) ):
 							$httpError = $item['httpResponse'];
 							/** @var WP_Error $httpError */
 							printf(
-								'<dt>WordPress HTTP API error:</dt><dd>%s (<code>%s</code>)</dd>',
+								'<dt>WordPress HTTP API-Fehler:</dt><dd>%s (<code>%s</code>)</dd>',
 								esc_html($httpError->get_error_message()),
 								esc_html($httpError->get_error_code())
 							);
 						} else {
 							//Status code.
 							printf(
-								'<dt>HTTP status:</dt><dd><code>%d %s</code></dd>',
+								'<dt>HTTP-Status:</dt><dd><code>%d %s</code></dd>',
 								wp_remote_retrieve_response_code($item['httpResponse']),
 								wp_remote_retrieve_response_message($item['httpResponse'])
 							);
 
 							//Headers.
-							echo '<dt>Response headers:</dt><dd><pre>';
+							echo '<dt>Antwortheader:</dt><dd><pre>';
 							foreach (wp_remote_retrieve_headers($item['httpResponse']) as $name => $value) {
 								printf("%s: %s\n", esc_html($name), esc_html($value));
 							}
@@ -116,14 +116,14 @@ if ( !class_exists('Puc_v4p10_DebugBar_Extension', false) ):
 							//Body.
 							$body = wp_remote_retrieve_body($item['httpResponse']);
 							if ( $body === '' ) {
-								$body = '(Empty response.)';
+								$body = '(Keine Antwort.)';
 							} else if ( strlen($body) > self::RESPONSE_BODY_LENGTH_LIMIT ) {
 								$length = strlen($body);
 								$body = substr($body, 0, self::RESPONSE_BODY_LENGTH_LIMIT)
-									. sprintf("\n(Long string truncated. Total length: %d bytes.)", $length);
+									. sprintf("\n(Lange Strings abgeschnitten. Gesamtlänge: %d Byte.)", $length);
 							}
 
-							printf('<dt>Response body:</dt><dd><pre>%s</pre></dd>', esc_html($body));
+							printf('<dt>Antworttext:</dt><dd><pre>%s</pre></dd>', esc_html($body));
 						}
 					}
 					echo '<dl>';
@@ -138,7 +138,7 @@ if ( !class_exists('Puc_v4p10_DebugBar_Extension', false) ):
 		 */
 		protected function preAjaxRequest() {
 			if ( !$this->updateChecker->userCanInstallUpdates() ) {
-				die('Access denied');
+				die('Zugriff abgelehnt');
 			}
 			check_ajax_referer('puc-ajax');
 

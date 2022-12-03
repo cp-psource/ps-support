@@ -33,9 +33,9 @@
 							<?php echo psource_support_get_the_ticket_excerpt(); ?>
 						</div>
 						<ul class="inline-list support-system-ticket-meta">
-							<li class="support-system-byauthor"><span><?php echo sprintf( __( 'von <strong>%s</strong>', PSOURCE_SUPPORT_LANG_DOMAIN ), psource_support_get_the_author() ); ?></span></li>
+							<li class="support-system-byauthor"><span><?php echo sprintf( __( 'von <strong>%s</strong>', 'psource-support' ), psource_support_get_the_author() ); ?></span></li>
 							<li class="support-system-lastreply">
-								<span><?php echo sprintf( __( 'Letzte Antwort: <a href="%s">%s vor</a>', PSOURCE_SUPPORT_LANG_DOMAIN ), esc_url( psource_support_get_the_last_ticket_reply_url() ), psource_support_get_the_ticket_updated_date() ); ?></span>
+								<span><?php echo sprintf( __( 'Letzte Antwort: <a href="%s">%s vor</a>', 'psource-support' ), esc_url( psource_support_get_the_last_ticket_reply_url() ), psource_support_get_the_ticket_updated_date() ); ?></span>
 							</li>
 							<li class="support-system-category"><span class="support-system-tag"><?php echo psource_support_get_the_ticket_category_link(); ?></span></li>
 						</ul>

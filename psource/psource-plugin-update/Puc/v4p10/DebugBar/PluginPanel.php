@@ -9,7 +9,7 @@ if ( !class_exists('Puc_v4p10_DebugBar_PluginPanel', false) ):
 		protected $updateChecker;
 
 		protected function displayConfigHeader() {
-			$this->row('Plugin file', htmlentities($this->updateChecker->pluginFile));
+			$this->row('Plugin-Datei', htmlentities($this->updateChecker->pluginFile));
 			parent::displayConfigHeader();
 		}
 
@@ -17,7 +17,7 @@ if ( !class_exists('Puc_v4p10_DebugBar_PluginPanel', false) ):
 			$requestInfoButton = '';
 			if ( function_exists('get_submit_button') ) {
 				$requestInfoButton = get_submit_button(
-					'Request Info',
+					'Plugin-Details abrufen',
 					'secondary',
 					'puc-request-info-button',
 					false,

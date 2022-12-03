@@ -21,10 +21,10 @@ if ( !class_exists('Puc_v4p10_DebugBar_PluginExtension', false) ):
 			$this->preAjaxRequest();
 			$info = $this->updateChecker->requestInfo();
 			if ( $info !== null ) {
-				echo 'Successfully retrieved plugin info from the metadata URL:';
+				echo 'Plugin-Informationen erfolgreich von der PSource Server Metadaten-URL abgerufen:';
 				echo '<pre>', htmlentities(print_r($info, true)), '</pre>';
 			} else {
-				echo 'Failed to retrieve plugin info from the metadata URL.';
+				echo 'Fehler beim Abrufen der Plug-in-Informationen von der PSource Sever Metadaten-URL.';
 			}
 			exit;
 		}

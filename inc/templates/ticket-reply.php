@@ -7,7 +7,7 @@
 					<h3>
 						<?php echo psource_support_get_the_poster_username(); ?> 
 						<?php if ( psource_support_is_staff( psource_support_get_the_poster_id() ) ): ?>
-							<span class="label"><?php _e( 'Mitarbeiter', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></span>
+							<span class="label"><?php _e( 'Mitarbeiter', 'psource-support' ); ?></span>
 						<?php endif; ?>
 					</h3>
 				</div>
@@ -20,10 +20,10 @@
 
 					<?php if ( psource_support_reply_has_attachments() ): ?>
 						<div class="support-system-reply-attachments">
-							<h5><?php _e( 'Anhänge', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h5>
+							<h5><?php _e( 'Anhänge', 'psource-support' ); ?></h5>
 							<ul>
 							<?php foreach ( psource_support_get_the_reply_attachments() as $attachment_url ): ?>
-								<li><a href="<?php echo esc_url( $attachment_url ); ?>" title="<?php printf( __( 'Download %s Datei', PSOURCE_SUPPORT_LANG_DOMAIN ), $attachment_url ); ?>" ><?php echo basename( $attachment_url ); ?></a></li>
+								<li><a href="<?php echo esc_url( $attachment_url ); ?>" title="<?php printf( __( 'Download %s Datei', 'psource-support' ), $attachment_url ); ?>" ><?php echo basename( $attachment_url ); ?></a></li>
 							<?php endforeach; ?>
 							</ul>
 						</div>

@@ -17,15 +17,15 @@ class PSource_Support_Submit_Ticket_Form_Shortcode extends PSource_Support_Short
 
 			$action = 'support-system-submit-ticket-' . $user_id . '-' . $blog_id;
 			if ( ! wp_verify_nonce( $_POST['_wpnonce'], $action ) )
-				wp_die( __( 'Sicherheitsüberprüfungsfehler', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Sicherheitsüberprüfungsfehler', 'psource-support' ) );
 
 			$subject = $_POST['support-system-ticket-subject'];
 			if ( empty( $subject ) )
-				wp_die( __( 'Bitte gib einen Betreff für das Ticket ein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Bitte gib einen Betreff für das Ticket ein', 'psource-support' ) );
 
 			$message = $_POST['support-system-ticket-message'];
 			if ( empty( $message ) )
-				wp_die( __( 'Bitte füge eine Nachricht für das Ticket ein', PSOURCE_SUPPORT_LANG_DOMAIN ) );
+				wp_die( __( 'Bitte füge eine Nachricht für das Ticket ein', 'psource-support' ) );
 
 			if ( isset(  $_POST['support-system-ticket-priority'] ) )
 				$priority = absint( $_POST['support-system-ticket-priority'] );
@@ -85,9 +85,9 @@ class PSource_Support_Submit_Ticket_Form_Shortcode extends PSource_Support_Short
 
 		if ( ! psource_support_current_user_can( 'insert_ticket' ) ) {
 			if ( ! is_user_logged_in() )
-				$message = sprintf( __( 'Du musst <a href="%s">angemeldet</a> sein, um ein neues Ticket zu erstellen', PSOURCE_SUPPORT_LANG_DOMAIN ), wp_login_url( get_permalink() ) );
+				$message = sprintf( __( 'Du musst <a href="%s">angemeldet</a> sein, um ein neues Ticket zu erstellen', 'psource-support' ), wp_login_url( get_permalink() ) );
 			else
-				$message = __( 'Du hast nicht genügend Berechtigungen, um ein neues Ticket einzureichen', PSOURCE_SUPPORT_LANG_DOMAIN );
+				$message = __( 'Du hast nicht genügend Berechtigungen, um ein neues Ticket einzureichen', 'psource-support' );
 			
 			$message = apply_filters( 'support_system_not_allowed_submit_ticket_form_message', $message, 'ticket-form' );
 			?>
@@ -111,10 +111,10 @@ class PSource_Support_Submit_Ticket_Form_Shortcode extends PSource_Support_Short
 
 		if ( ! psource_support()->query->is_single_ticket ) {
 			?>
-				<h2><?php _e( 'Sende ein neues Ticket', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h2>
+				<h2><?php _e( 'Sende ein neues Ticket', 'psource-support' ); ?></h2>
 				<form method="post" id="support-system-ticket-form" action="#support-system-ticket-form-wrap" enctype="multipart/form-data">
 					
-					<input type="text" name="support-system-ticket-subject" value="" placeholder="<?php esc_attr_e( 'Betreff', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>"/>
+					<input type="text" name="support-system-ticket-subject" value="" placeholder="<?php esc_attr_e( 'Betreff', 'psource-support' ); ?>"/>
 					<br/>
 
 					<?php if ( $priority_field ): ?>
@@ -128,7 +128,7 @@ class PSource_Support_Submit_Ticket_Form_Shortcode extends PSource_Support_Short
 					<br/>
 					<?php if ( $blog_field && is_multisite() ): ?>
 						<label for="support-system-ticket-blog">
-							<?php _e( 'Meldest Du ein Ticket für eine bestimmte Site?', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>
+							<?php _e( 'Meldest Du ein Ticket für eine bestimmte Site?', 'psource-support' ); ?>
 							<?php psource_support_user_sites_dropdown( array( 'name' => 'support-system-ticket-blog', 'echo' => true ) ); ?>
 						</label>
 					<?php endif; ?>
@@ -139,7 +139,7 @@ class PSource_Support_Submit_Ticket_Form_Shortcode extends PSource_Support_Short
 					<?php wp_nonce_field( 'support-system-submit-ticket-' . get_current_user_id() . '-' . get_current_blog_id() ); ?>
 					<br/>
 
-					<input type="submit" name="support-system-submit-ticket" class="button small" value="<?php esc_attr_e( 'Ticket übermitteln', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>" />
+					<input type="submit" name="support-system-submit-ticket" class="button small" value="<?php esc_attr_e( 'Ticket übermitteln', 'psource-support' ); ?>" />
 					
 				</form>
 				

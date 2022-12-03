@@ -7,8 +7,8 @@ class PSource_Support_Admin_FAQ_Menu extends PSource_Support_Admin_Menu {
 
 	public function add_menu() {
 
-		$menu_title = __( 'FAQ', PSOURCE_SUPPORT_LANG_DOMAIN );
-		$page_title = __( 'Häufig gestellte Fragen', PSOURCE_SUPPORT_LANG_DOMAIN );
+		$menu_title = __( 'FAQ', 'psource-support' );
+		$page_title = __( 'Häufig gestellte Fragen', 'psource-support' );
 		
 		/**
 		 * Filters the FAQ menu position

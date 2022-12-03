@@ -11,8 +11,8 @@ class PSource_Support_Tickets_History_Table extends WP_List_Table {
 	function __construct( $args = array() ){
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => __( 'Ticket Verlauf', PSOURCE_SUPPORT_LANG_DOMAIN ),  
-            'plural'    => __( 'Tickets Verläufe', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+            'singular'  => __( 'Ticket Verlauf', 'psource-support' ),  
+            'plural'    => __( 'Tickets Verläufe', 'psource-support' ), 
             'ajax'      => false        
         ) );
         
@@ -34,8 +34,8 @@ class PSource_Support_Tickets_History_Table extends WP_List_Table {
 
     function get_columns(){
         $columns = array(
-            'poster'        => __( 'Autor', PSOURCE_SUPPORT_LANG_DOMAIN ),
-            'message'       => __( 'Ticket Nachricht/Antwort', PSOURCE_SUPPORT_LANG_DOMAIN ),
+            'poster'        => __( 'Autor', 'psource-support' ),
+            'message'       => __( 'Ticket Nachricht/Antwort', 'psource-support' ),
         );
 
         if ( psource_support_current_user_can( 'insert_faq' ) ) {
@@ -69,7 +69,7 @@ class PSource_Support_Tickets_History_Table extends WP_List_Table {
     function column_poster( $item ) {
         $poster = get_userdata( $item->get_poster_id() );
         if ( ! $poster )
-            return __( 'Unbekannter Benutzer', PSOURCE_SUPPORT_LANG_DOMAIN );
+            return __( 'Unbekannter Benutzer', 'psource-support' );
 
         if ( function_exists( "get_avatar" ) )
             $avatar = get_avatar( $poster->ID, 32 );
@@ -84,8 +84,8 @@ class PSource_Support_Tickets_History_Table extends WP_List_Table {
         $link = add_query_arg( 'rid', absint( $item->message_id ), $link );
         $link = wp_nonce_url( $link, 'create-faq-from-ticket-' . $this->ticket_id . '-' . $item->message_id );
         ?>
-            <a title="<?php _e( 'Erstelle aus dieser Antwort eine FAQ', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>"
-                href="<?php echo $link; ?>"><?php _e( 'Erstelle eine FAQ', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></a>
+            <a title="<?php _e( 'Erstelle aus dieser Antwort eine FAQ', 'psource-support' ); ?>"
+                href="<?php echo $link; ?>"><?php _e( 'Erstelle eine FAQ', 'psource-support' ); ?></a>
 
         <?php
         return ob_get_clean();
@@ -94,17 +94,17 @@ class PSource_Support_Tickets_History_Table extends WP_List_Table {
     function column_message( $item ) {
         ob_start();
         ?>
-            <div class="submitted-on"><?php printf( _x( 'Gesendet am %s', 'Antwort am Datum gesendet', PSOURCE_SUPPORT_LANG_DOMAIN ), psource_support_get_translated_date( $item->message_date ) ); ?></div>
+            <div class="submitted-on"><?php printf( _x( 'Gesendet am %s', 'Antwort am Datum gesendet', 'psource-support' ), psource_support_get_translated_date( $item->message_date ) ); ?></div>
             <?php if ( $item->is_main_reply ): ?>
                 <h3 class="support-system-reply-subject"><?php echo $item->subject; ?></h3>
             <?php endif; ?>
             <p><?php echo $item->message; ?></p>
             <?php if ( ! empty( $item->attachments ) ): ?>
                 <div class="ticket-acttachments-wrap">
-                    <h4><?php _e( 'Anhänge', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h4>
+                    <h4><?php _e( 'Anhänge', 'psource-support' ); ?></h4>
                     <ul class="ticket-acttachments" >
                         <?php foreach ( $item->attachments as $attachment ): ?>
-                            <li class="ticket-attachment-item"><a href="<?php echo $attachment; ?>" title="<?php _e( 'Download Datei', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>"><?php echo basename( $attachment ); ?></a></li>
+                            <li class="ticket-attachment-item"><a href="<?php echo $attachment; ?>" title="<?php _e( 'Download Datei', 'psource-support' ); ?>"><?php echo basename( $attachment ); ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>

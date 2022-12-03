@@ -12,32 +12,32 @@
 			ob_start();
 		    ?>
 				<input type="text" class="regular-text" name="menu_name" value="<?php echo esc_attr( $menu_name ); ?>">
-				<span class="description"><?php _e("Ändere den Text des Menüelements <strong>Support</strong> nach Bedarf.", PSOURCE_SUPPORT_LANG_DOMAIN); ?></span>
+				<span class="description"><?php _e("Ändere den Text des Menüelements <strong>Support</strong> nach Bedarf.", 'psource-support'); ?></span>
 		    <?php
-		    $this->render_row( __( 'Name des Support-Menüs', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() );
+		    $this->render_row( __( 'Name des Support-Menüs', 'psource-support' ), ob_get_clean() );
 
 		    ob_start();
 		    ?>
 				<input type="text" class="regular-text" name="from_name" value="<?php echo esc_attr( $from_name ); ?>">
-				<span class="description"><?php _e("Support Mail von Namen.", PSOURCE_SUPPORT_LANG_DOMAIN); ?></span>
+				<span class="description"><?php _e("Support Mail von Namen.", 'psource-support'); ?></span>
 		    <?php
-		    $this->render_row( __( 'Support von Namen', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() );
+		    $this->render_row( __( 'Support von Namen', 'psource-support' ), ob_get_clean() );
 
 		    ob_start();
 		    ?>
 				<input type="text" class="regular-text" name="from_mail" value="<?php echo esc_attr( $from_email ); ?>">
-				<span class="description"><?php _e("Support-Mail von Adresse.", PSOURCE_SUPPORT_LANG_DOMAIN); ?></span>
+				<span class="description"><?php _e("Support-Mail von Adresse.", 'psource-support'); ?></span>
 		    <?php
-		    $this->render_row( __( 'Support von E-Mail', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() );
+		    $this->render_row( __( 'Support von E-Mail', 'psource-support' ), ob_get_clean() );
 
 		    ob_start(); 
 		    ?>
 		    	<?php echo $staff_dropdown; ?>
-		    	<span class="description"> <?php _e( 'Wenn das Ticket keinem Mitarbeiter zugewiesen ist, ist dies der Administrator, der alle E-Mails mit Aktualisierungen des Tickets erhält', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></span>
-		    <?php $this->render_row( __( 'Hauptadministrator', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() ); ?>
+		    	<span class="description"> <?php _e( 'Wenn das Ticket keinem Mitarbeiter zugewiesen ist, ist dies der Administrator, der alle E-Mails mit Aktualisierungen des Tickets erhält', 'psource-support' ); ?></span>
+		    <?php $this->render_row( __( 'Hauptadministrator', 'psource-support' ), ob_get_clean() ); ?>
 	</table>
 
-	<h3><?php _e( 'Berechtigungseinstellungen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h3>
+	<h3><?php _e( 'Berechtigungseinstellungen', 'psource-support' ); ?></h3>
 	<table class="form-table">
 	    
 	    <?php ob_start(); ?>
@@ -48,7 +48,7 @@
 	    		</label>
 	    	<?php endforeach; ?>
 
-	    <?php $this->render_row( __( 'Benutzerrollen, die Tickets öffnen/anzeigen können.', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() );
+	    <?php $this->render_row( __( 'Benutzerrollen, die Tickets öffnen/anzeigen können.', 'psource-support' ), ob_get_clean() );
 
 	    	ob_start();
 	    ?>
@@ -58,12 +58,12 @@
 	    		</label>
 	    	<?php endforeach; ?>
 
-	    <?php $this->render_row( __( 'Benutzerrollen, die die FAQs anzeigen können<span class="description">(Deaktiviere alle, um diese Funktion zu deaktivieren)</span>', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() ); ?>
+	    <?php $this->render_row( __( 'Benutzerrollen, die die FAQs anzeigen können<span class="description">(Deaktiviere alle, um diese Funktion zu deaktivieren)</span>', 'psource-support' ), ob_get_clean() ); ?>
 
 	</table>
 
 
-	<h3><?php _e( 'Privatsphäreeinstellungen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h3>
+	<h3><?php _e( 'Privatsphäreeinstellungen', 'psource-support' ); ?></h3>
 	<table class="form-table">
 		<?php ob_start(); ?>
 	    	<select name="privacy" id="privacy">
@@ -71,7 +71,7 @@
 	    			<option value="<?php echo $key; ?>" <?php selected( $ticket_privacy, $key ); ?>><?php echo $value; ?></option>
 	    		<?php endforeach; ?>
 	    	</select>
-	    <?php $this->render_row( __( 'Privatsphäre', PSOURCE_SUPPORT_LANG_DOMAIN ), ob_get_clean() ); ?>
+	    <?php $this->render_row( __( 'Privatsphäre', 'psource-support' ), ob_get_clean() ); ?>
 	</table>
 
 	<?php do_action( 'support_sytem_general_settings' ); ?>

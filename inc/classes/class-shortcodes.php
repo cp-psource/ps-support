@@ -38,7 +38,7 @@ class PSource_Support_Shortcodes {
 			$wp_admin_bar->add_menu(
 				array(
 					'id' => 'support-system-edit-ticket',
-					'title' => __( 'Ticket bearbeiten', PSOURCE_SUPPORT_LANG_DOMAIN ),
+					'title' => __( 'Ticket bearbeiten', 'psource-support' ),
 					'href' => psource_support_get_edit_ticket_admin_url( psource_support_get_the_ticket_id() )
 				)
 			);
@@ -71,10 +71,10 @@ class PSource_Support_Shortcodes {
 		$allowed_mimes = '*.' . implode( ', *.', $allowed_mimes );
 
 		$l10n = array(
-			'button_text' => __( 'Dateien hinzufügen...', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			'remove_file_title' => __( 'Datei löschen', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			'remove_link_text' => __( 'Datei löschen', PSOURCE_SUPPORT_LANG_DOMAIN ),
-			'desc' => '<p>(' . sprintf( __( 'Zulässige Dateitypen: %s', PSOURCE_SUPPORT_LANG_DOMAIN ), $allowed_mimes ) . ')</p>'
+			'button_text' => __( 'Dateien hinzufügen...', 'psource-support' ),
+			'remove_file_title' => __( 'Datei löschen', 'psource-support' ),
+			'remove_link_text' => __( 'Datei löschen', 'psource-support' ),
+			'desc' => '<p>(' . sprintf( __( 'Zulässige Dateitypen: %s', 'psource-support' ), $allowed_mimes ) . ')</p>'
 		);
 		
 		wp_localize_script( 'support-system-init', 'support_system_i18n', $l10n );

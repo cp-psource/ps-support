@@ -31,7 +31,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 Foundation 5 License: See license-foundation.txt
 */
 
-require 'psource/psource-plugin-update/plugin-update-checker.php';
+require 'psource/psource-plugin-update/psource-plugin-updater.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-support', 
 	__FILE__, 
@@ -136,20 +136,20 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 			// Setting properties
 			self::$ticket_status = array(
-				0	=>	__( 'Neu', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				1	=>	__( 'In Bearbeitung', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				2	=>	__( 'Warten auf die Antwort des Benutzers', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				3	=>	__( 'Warten auf Admin, um zu antworten', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				4	=>	__( 'Eingestellt', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				5	=>	__( 'Geschlossen', PSOURCE_SUPPORT_LANG_DOMAIN )
+				0	=>	__( 'Neu', 'psource-support' ),
+				1	=>	__( 'In Bearbeitung', 'psource-support' ),
+				2	=>	__( 'Warten auf die Antwort des Benutzers', 'psource-support' ),
+				3	=>	__( 'Warten auf Admin, um zu antworten', 'psource-support' ),
+				4	=>	__( 'Eingestellt', 'psource-support' ),
+				5	=>	__( 'Geschlossen', 'psource-support' )
 			);
 
 			self::$ticket_priority = array(
-				0	=>	__( 'Niedrig', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				1	=>	__( 'Normal', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				2	=>	__( 'Hoch', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				3	=>	__( 'Eilt', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				4	=>	__( 'Dringend', PSOURCE_SUPPORT_LANG_DOMAIN )
+				0	=>	__( 'Niedrig', 'psource-support' ),
+				1	=>	__( 'Normal', 'psource-support' ),
+				2	=>	__( 'Hoch', 'psource-support' ),
+				3	=>	__( 'Eilt', 'psource-support' ),
+				4	=>	__( 'Dringend', 'psource-support' )
 			);
 
 			self::$responsibilities = array(
@@ -160,8 +160,8 @@ if ( ! class_exists( 'MU_Support_System') ) {
 			);
 
 			self::$privacy = array(
-				'all' => is_multisite() ? __( 'Erlaube allen Benutzern, alle Tickets auf einer Seite zu sehen', PSOURCE_SUPPORT_LANG_DOMAIN ) : __( 'Allen Benutzern erlauben, alle Tickets zu sehen', PSOURCE_SUPPORT_LANG_DOMAIN ),
-				'requestor' => __( 'Erlaube nur Ticketerstellern, ihre eigenen Tickets zu sehen', PSOURCE_SUPPORT_LANG_DOMAIN )
+				'all' => is_multisite() ? __( 'Erlaube allen Benutzern, alle Tickets auf einer Seite zu sehen', 'psource-support' ) : __( 'Allen Benutzern erlauben, alle Tickets zu sehen', 'psource-support' ),
+				'requestor' => __( 'Erlaube nur Ticketerstellern, ihre eigenen Tickets zu sehen', 'psource-support' )
 			);
 
 
@@ -171,7 +171,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 
 		public function load_text_domain() {
 
-			$locale = apply_filters( 'plugin_locale', get_locale(), PSOURCE_SUPPORT_LANG_DOMAIN );
+			$locale = apply_filters( 'plugin_locale', get_locale(), 'psource-support' );
 
 			load_textdomain( PSOURCE_SUPPORT_LANG_DOMAIN, WP_LANG_DIR . '/' . PSOURCE_SUPPORT_LANG_DOMAIN . '/' . PSOURCE_SUPPORT_LANG_DOMAIN . '-' . $locale . '.mo' );
 			load_plugin_textdomain( PSOURCE_SUPPORT_LANG_DOMAIN, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -381,7 +381,7 @@ if ( ! class_exists( 'MU_Support_System') ) {
 			foreach ( $just_roles as $key => $role ) {
 				$support_roles[ $key ] = translate_user_role( $role['name'] );
 			}
-			$support_roles['support-guest'] = __( 'Besucher', PSOURCE_SUPPORT_LANG_DOMAIN );
+			$support_roles['support-guest'] = __( 'Besucher', 'psource-support' );
 			return $support_roles;
 
 		}

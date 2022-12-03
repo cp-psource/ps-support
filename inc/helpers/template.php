@@ -82,7 +82,7 @@ function psource_support_reply_form() {
 			<?php psource_support_editor( 'reply' ); ?>
 			<?php psource_support_reply_form_fields(); ?>
 			<br/>
-			<input type="submit" name="support-system-submit-reply" class="button small" value="<?php esc_attr_e( 'Antwort einreichen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>" />
+			<input type="submit" name="support-system-submit-reply" class="button small" value="<?php esc_attr_e( 'Antwort einreichen', 'psource-support' ); ?>" />
 		</form>
 	<?php
 
@@ -136,7 +136,7 @@ function psource_support_get_the_poster_username() {
 
 	$user = get_userdata( $ticket_reply->get_poster_id() );
 	if ( ! $user ) {
-		$username = __( 'Unbekannter Benutzer', PSOURCE_SUPPORT_LANG_DOMAIN );
+		$username = __( 'Unbekannter Benutzer', 'psource-support' );
 	}
 	else {
 		$username = $user->data->display_name;
@@ -197,7 +197,7 @@ function psource_support_the_faq_category_filter( $class = '' ) {
 function psource_support_the_search_input( $args = array() ) {
 	$defaults = array(
 		'class' => '',
-		'placeholder' => __( 'Suche', PSOURCE_SUPPORT_LANG_DOMAIN ),
+		'placeholder' => __( 'Suche', 'psource-support' ),
 		'type' => 'ticket'
 	);
 
@@ -235,8 +235,8 @@ function psource_support_paginate_links( $args = '' ) {
 		'disabled_class' => 'support-system-pag-disabled',
 		'arrow_class' => 'support-system-pag-arrow',
 		'current_class' => 'support-system-current',
-		'prev_text' => __( '&laquo; Bisherige', PSOURCE_SUPPORT_LANG_DOMAIN ),
-		'next_text' => __( 'Nächstes &raquo;', PSOURCE_SUPPORT_LANG_DOMAIN ),
+		'prev_text' => __( '&laquo; Bisherige', 'psource-support' ),
+		'next_text' => __( 'Nächstes &raquo;', 'psource-support' ),
 		'end_size' => 1,
 		'mid_size' => 2,
 		'type' => 'plain',
@@ -306,7 +306,7 @@ function psource_support_paginate_links( $args = '' ) {
 		$page_links[] = '<li class="support-system-next support-system-page-numbers"><a href="' . esc_url( $link ) . '">' . $next_text . '</a></li>';
 	}
 
-	$r .= "<ul class='" . $ul_class . "' role='menubar' aria-label='" .  esc_attr__( 'Seitennummerierung', PSOURCE_SUPPORT_LANG_DOMAIN ) . "'>" . join( $page_links ) . "</ul>";
+	$r .= "<ul class='" . $ul_class . "' role='menubar' aria-label='" .  esc_attr__( 'Seitennummerierung', 'psource-support' ) . "'>" . join( $page_links ) . "</ul>";
 
 	echo $r;
 }
@@ -330,7 +330,7 @@ function psource_support_the_ticket_badges( $args = array() ) {
 
 	// Replies number
 	$num_replies = number_format_i18n( $ticket->num_replies, 0 );
-	$badges[] = '<span class="' . esc_attr( $badge_base_class . ' ' . $replies_badge_class ) . '">' . esc_html( sprintf( _n( '1 Antwort', '%s Antworten', $num_replies , PSOURCE_SUPPORT_LANG_DOMAIN ), $num_replies ) ) . '</span>';
+	$badges[] = '<span class="' . esc_attr( $badge_base_class . ' ' . $replies_badge_class ) . '">' . esc_html( sprintf( _n( '1 Antwort', '%s Antworten', $num_replies , 'psource-support' ), $num_replies ) ) . '</span>';
 
 	$badges = implode( ' ', $badges );
 	echo $badges;
@@ -387,7 +387,7 @@ function psource_support_user_sites_dropdown( $args = array() ) {
 		$list = wp_list_pluck( get_blogs_of_user( $user_id ), 'blogname' );
 		?>
 			<select name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>">
-				<option value="" <?php selected( empty( $selected ) ); ?>><?php _e( '-- Standardseite --', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></option>
+				<option value="" <?php selected( empty( $selected ) ); ?>><?php _e( '-- Standardseite --', 'psource-support' ); ?></option>
 				<?php foreach ( $list as $blog_id => $blog_name ): ?>
 					<option value="<?php echo $blog_id; ?>" <?php selected( $selected == $blog_id ); ?>><?php echo $blog_name; ?></option>
 				<?php endforeach; ?>
@@ -451,18 +451,18 @@ function psource_support_the_staff_box( $args = array() ) {
 			<ul>
 				<li>
 					<label>
-						<?php _e( 'Kategorie', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>
+						<?php _e( 'Kategorie', 'psource-support' ); ?>
 						<?php psource_support_ticket_categories_dropdown( array( 'show_empty' => false, 'selected' => psource_support_get_the_ticket_category_id() ) ); ?>
 					</label>
 					<label>
-						<?php _e( 'Priorität', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>
+						<?php _e( 'Priorität', 'psource-support' ); ?>
 						<?php psource_support_priority_dropdown( array( 'show_empty' => false, 'selected' => psource_support_get_the_ticket_priority_id() ) ); ?>
 					</label>
 					<label>
-						<?php _e( 'Zuweisen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>
+						<?php _e( 'Zuweisen', 'psource-support' ); ?>
 						<?php psource_support_super_admins_dropdown( 
 							array( 
-								'show_empty' => __( 'Noch nicht zugewiesen', PSOURCE_SUPPORT_LANG_DOMAIN ), 
+								'show_empty' => __( 'Noch nicht zugewiesen', 'psource-support' ), 
 								'name' => 'ticket-staff' ,
 								'selected' => psource_support_the_ticket_staff_login()
 							) 
@@ -470,13 +470,13 @@ function psource_support_the_staff_box( $args = array() ) {
 					</label>
 				</li>
 				<li>
-					<?php echo '<strong>' . __( 'Status:', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</strong> ' . psource_support_get_the_ticket_status(); ?>
+					<?php echo '<strong>' . __( 'Status:', 'psource-support' ) . '</strong> ' . psource_support_get_the_ticket_status(); ?>
 				</li>
 			</ul>
 			<p class="support-system-staff-box-submit-wrap">
 				<?php wp_nonce_field( 'submit-ticket-details-' . psource_support_get_the_ticket_id() ); ?>
 				<input type="hidden" name="ticket_id" value="<?php echo psource_support_get_the_ticket_id(); ?>" />
-				<input type="submit" class="<?php echo esc_attr( $submit_class ); ?>" name="submit-ticket-details" value="<?php esc_attr_e( 'Update', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>" />
+				<input type="submit" class="<?php echo esc_attr( $submit_class ); ?>" name="submit-ticket-details" value="<?php esc_attr_e( 'Update', 'psource-support' ); ?>" />
 			</p>
 		</form>
 	<?php
@@ -485,9 +485,9 @@ function psource_support_the_staff_box( $args = array() ) {
 function psource_support_the_ticket_details_box( $args = array() ) {
 	?>
 		<ul>
-			<li><?php echo '<strong>' . __( 'Kategorie:', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</strong> ' . psource_support_get_the_ticket_category(); ?></li>
-			<li><?php echo '<strong>' . __( 'Priorität:', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</strong> ' . psource_support_get_the_ticket_priority(); ?></li>
-			<li><?php echo '<strong>' . __( 'Status:', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</strong> ' . psource_support_get_the_ticket_status(); ?></li>
+			<li><?php echo '<strong>' . __( 'Kategorie:', 'psource-support' ) . '</strong> ' . psource_support_get_the_ticket_category(); ?></li>
+			<li><?php echo '<strong>' . __( 'Priorität:', 'psource-support' ) . '</strong> ' . psource_support_get_the_ticket_priority(); ?></li>
+			<li><?php echo '<strong>' . __( 'Status:', 'psource-support' ) . '</strong> ' . psource_support_get_the_ticket_status(); ?></li>
 		</ul>
 	<?php
 }
@@ -508,11 +508,11 @@ function psource_support_the_open_close_box( $args = array() ) {
 	<form action="" method="post">
 		<p>
 			<input type="checkbox" id="close-ticket" name="close-ticket" <?php checked( psource_support_is_ticket_closed( $ticket->ticket_id ) ); ?> />
-			<label for="close-ticket"><strong><?php _e( 'Ticket schließen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></strong></label>
+			<label for="close-ticket"><strong><?php _e( 'Ticket schließen', 'psource-support' ); ?></strong></label>
 			
 			<?php wp_nonce_field( 'submit-close-ticket-' . psource_support_get_the_ticket_id() ); ?>
 			<input type="hidden" name="ticket_id" value="<?php echo psource_support_get_the_ticket_id(); ?>" />
-			<input type="submit" class="<?php echo esc_attr( $submit_class ); ?>" name="submit-close-ticket" value="<?php esc_attr_e( 'Update', PSOURCE_SUPPORT_LANG_DOMAIN ); ?>" />
+			<input type="submit" class="<?php echo esc_attr( $submit_class ); ?>" name="submit-close-ticket" value="<?php esc_attr_e( 'Update', 'psource-support' ); ?>" />
 		</p>
 	</form>
 	<?php
@@ -526,7 +526,7 @@ function psource_support_new_ticket_form_link( $class = '' ) {
 
 	$permalink = get_permalink( $new_ticket_page );
 	if ( $permalink ) {
-		return '<a class="' . esc_attr( $class ) . '" href="' . esc_url( $permalink ) . '" title="' . esc_attr__( 'Neues Ticket einreichen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '">' . __( 'Neues Ticket einreichen', PSOURCE_SUPPORT_LANG_DOMAIN ) . '</a>';
+		return '<a class="' . esc_attr( $class ) . '" href="' . esc_url( $permalink ) . '" title="' . esc_attr__( 'Neues Ticket einreichen', 'psource-support' ) . '">' . __( 'Neues Ticket einreichen', 'psource-support' ) . '</a>';
 	}
 
 	return '';
@@ -541,9 +541,9 @@ function psource_support_the_faq_vote_box( $faq_id = false ) {
  
 	?>
 	<div class="support-system-faq-vote-wrap">
-		<h4><?php _e( 'War diese Lösung hilfreich?', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h4>
-		<button class="support-system-faq-vote vote-button button tiny success" data-faq-id="<?php echo psource_support_get_the_faq_id(); ?>" data-vote="yes"><?php _e( 'JA', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></button>
-		<button class="support-system-faq-vote vote-button button tiny alert" data-faq-id="<?php echo psource_support_get_the_faq_id(); ?>" data-vote="no"><?php _e( 'NEIN', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></button>
+		<h4><?php _e( 'War diese Lösung hilfreich?', 'psource-support' ); ?></h4>
+		<button class="support-system-faq-vote vote-button button tiny success" data-faq-id="<?php echo psource_support_get_the_faq_id(); ?>" data-vote="yes"><?php _e( 'JA', 'psource-support' ); ?></button>
+		<button class="support-system-faq-vote vote-button button tiny alert" data-faq-id="<?php echo psource_support_get_the_faq_id(); ?>" data-vote="no"><?php _e( 'NEIN', 'psource-support' ); ?></button>
 		<span class="support-system-spinner"></span>
 	</div>
 	<?php

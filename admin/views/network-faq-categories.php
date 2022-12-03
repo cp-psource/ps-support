@@ -1,7 +1,7 @@
 <?php if ( $added ): ?>
-	<div class="updated"><p><?php _e( 'Kategorie hinzugefügt', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></p></div>
+	<div class="updated"><p><?php _e( 'Kategorie hinzugefügt', 'psource-support' ); ?></p></div>
 <?php elseif ( $updated ): ?>
-	<div class="updated"><p><?php _e( 'Kategorie aktualisiert', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></p></div>
+	<div class="updated"><p><?php _e( 'Kategorie aktualisiert', 'psource-support' ); ?></p></div>
 <?php endif; ?>
 
 <br class="clear">
@@ -18,15 +18,15 @@
 	<div id="col-left">
 		<div class="col-wrap">
 			<div class="form-wrap">
-				<h3><?php _e( 'Neue Kategorie hinzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></h3>
+				<h3><?php _e( 'Neue Kategorie hinzufügen', 'psource-support' ); ?></h3>
 				<form id="categories-table-form" action="" method="post">
 					<?php wp_nonce_field( 'add-faq-category' ); ?>
 					<div class="form-field">
-						<label for="cat_name"><?php _e( 'Kategoriename', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></label>
+						<label for="cat_name"><?php _e( 'Kategoriename', 'psource-support' ); ?></label>
 						<input name="cat_name" id="cat_name" type="text" value="<?php echo $category_name; ?>" size="40" aria-required="true"><br/>
-						<p><?php _e('Der Name wird verwendet, um die Kategorie zu identifizieren, auf die sich FAQs beziehen', PSOURCE_SUPPORT_LANG_DOMAIN ); ?></p>
+						<p><?php _e('Der Name wird verwendet, um die Kategorie zu identifizieren, auf die sich FAQs beziehen', 'psource-support' ); ?></p>
 					</div>
-					<?php submit_button( __( 'Neue Kategorie hinzufügen', PSOURCE_SUPPORT_LANG_DOMAIN ), 'primary', 'submit-new-faq-category' ); ?>
+					<?php submit_button( __( 'Neue Kategorie hinzufügen', 'psource-support' ), 'primary', 'submit-new-faq-category' ); ?>
 				</form>
 			</div>
 		</div>

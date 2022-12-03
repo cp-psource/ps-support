@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Update Checker Library 4.10
- * http://w-shadow.com/
+ * PSource Plugin Updater Library 1.10
+ * https://n3rds.work/
  *
- * Copyright 2020 Janis Elsts
+ * Copyright 2022 DerN3rd
  * Released under the MIT license. See license.txt for details.
  */
 
