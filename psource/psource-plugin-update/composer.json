@@ -1,21 +1,23 @@
 {
-    "name": "psource-plugin-update/psource-plugin-updater",
-    "type": "library",
-    "description": "Ein benutzerdefinierter Update-Checker für WordPress-Plugins und -Designs. Nützlich, wenn Du Dein Plugin nicht im offiziellen WP-Repository hosten kannst, aber dennoch automatische Updates unterstützen möchtest.",
-    "keywords": ["wordpress", "classicpress", "plugin updates", "automatic updates", "theme updates"],
-    "homepage": "https://github.com/Dernerd/psource-plugin-update",
-    "license": "MIT",
-    "authors": [{
-        "name": "DerN3rd",
-        "email": "webmaster@n3rds.work",
-        "homepage": "https://n3rds.work/",
-        "role": "Webmaster"
-    }],
-    "require": {
-        "php": ">=5.2.0",
-        "ext-json": "*"
-    },
-    "autoload": {
-        "files": ["load-v4p10.php"]
-    }
+	"name": "yahnis-elsts/plugin-update-checker",
+	"type": "library",
+	"description": "A custom update checker for ClassicPress plugins and themes. Useful if you can't host your plugin in the official WP repository but still want it to support automatic updates.",
+	"keywords": ["classicpress", "plugin updates", "automatic updates", "theme updates"],
+	"homepage": "https://github.com/Psource/plugin-update-checker/",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Yahnis Elsts",
+			"email": "whiteshadow@w-shadow.com",
+			"homepage": "https://w-shadow.com/",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.6.20",
+		"ext-json": "*"
+	},
+	"autoload": {
+		"files": ["load-v5p0.php"]
+	}
 }

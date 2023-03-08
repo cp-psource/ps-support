@@ -95,7 +95,7 @@ class PSource_Support_FAQ_Categories_Table extends WP_List_Table {
         }
         else {
             $more_actions = array( 
-                'delete'    => sprintf( __( '<a href="%s">DLöschen</a>', 'psource-support' ), $delete_link ),
+                'delete'    => sprintf( __( '<a href="%s">Löschen</a>', 'psource-support' ), $delete_link ),
                 'set_default' => sprintf( __( '<a href="%s">Als Standard einstellen</a>', 'psource-support' ), $set_default_link )      
             );
             $actions = array_merge( $actions, $more_actions );

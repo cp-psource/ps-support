@@ -1,8 +1,8 @@
-.puc-debug-bar-panel-v4 pre {
+.puc-debug-bar-panel-v5 pre {
 	margin-top: 0;
 }
 
-/* Style the debug data table to match "widefat" table style used by WordPress. */
+/* Style the debug data table to match "widefat" table style used by ClassicPress. */
 table.puc-debug-data {
     width: 100%;
     clear: both;

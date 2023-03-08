@@ -3,7 +3,7 @@
 if ( !class_exists('PucReadmeParser', false) ):
 
 /**
- * This is a slightly modified version of github.com/markjaquith/WordPress-Plugin-Readme-Parser
+ * This is a slightly modified version of github.com/markjaquith/ClassicPress-Plugin-Readme-Parser
  * It uses Parsedown instead of the "Markdown Extra" parser.
  */
 
@@ -40,20 +40,20 @@ class PucReadmeParser {
 
 
 		// Requires at least: 1.5
-		if ( preg_match('|Erfordert mindestens:(.*)|i', $file_contents, $_requires_at_least) )
+		if ( preg_match('|Requires at least:(.*)|i', $file_contents, $_requires_at_least) )
 			$requires_at_least = $this->sanitize_text($_requires_at_least[1]);
 		else
 			$requires_at_least = NULL;
 
 
 		// Tested up to: 2.1
-		if ( preg_match('|Getestet bis:(.*)|i', $file_contents, $_tested_up_to) )
+		if ( preg_match('|Tested up to:(.*)|i', $file_contents, $_tested_up_to) )
 			$tested_up_to = $this->sanitize_text( $_tested_up_to[1] );
 		else
 			$tested_up_to = NULL;
 
 		// Requires PHP: 5.2.4
-		if ( preg_match('|Benötigt PHP:(.*)|i', $file_contents, $_requires_php) ) {
+		if ( preg_match('|Requires PHP:(.*)|i', $file_contents, $_requires_php) ) {
 			$requires_php = $this->sanitize_text( $_requires_php[1] );
 		} else {
 			$requires_php = null;
@@ -78,7 +78,7 @@ class PucReadmeParser {
 
 		// Contributors: markjaquith, mdawaffe, zefrank
 		$contributors = array();
-		if ( preg_match('|Mitwirkende:(.*)|i', $file_contents, $_contributors) ) {
+		if ( preg_match('|Contributors:(.*)|i', $file_contents, $_contributors) ) {
 			$temp_contributors = preg_split('|,[\s]*|', trim($_contributors[1]));
 			foreach ( array_keys($temp_contributors) as $c ) {
 				$tmp_sanitized = $this->user_sanitize( $temp_contributors[$c] );
@@ -90,7 +90,7 @@ class PucReadmeParser {
 
 
 		// Donate Link: URL
-		if ( preg_match('|Spendenlink:(.*)|i', $file_contents, $_donate_link) )
+		if ( preg_match('|Donate link:(.*)|i', $file_contents, $_donate_link) )
 			$donate_link = esc_url( $_donate_link[1] );
 		else
 			$donate_link = NULL;

@@ -44,7 +44,7 @@
 			<div>
 				<h4><?php esc_html_e( 'Widgets in Frontend-Tickets', 'psource-support' ); ?></h4>
 				<img src="<?php echo PSOURCE_SUPPORT_PLUGIN_URL . 'admin/assets/images/support-welcome-2.png'; ?>">
-				<p><?php _e( 'Verwalte den Ticketstatus, die Kategorie, die Priorität und die Personalzuweisung vom Frontend aus. Support System Widgets ermöglichen die einfache Verwaltung von Tickets und machen alles schön. Sie sind noch keine WordPress-Widgets, aber das ist auf dem Weg.', 'psource-support' ); ?></p>
+				<p><?php _e( 'Verwalte den Ticketstatus, die Kategorie, die Priorität und die Personalzuweisung vom Frontend aus. Support System Widgets ermöglichen die einfache Verwaltung von Tickets und machen alles schön. Sie sind noch keine ClassicPress-Widgets, aber das ist auf dem Weg.', 'psource-support' ); ?></p>
 			</div>
 			<div class="last-feature">
 				<h4><?php esc_html_e( 'Mehr Geschwindigkeit!', 'psource-support' ); ?></h4>

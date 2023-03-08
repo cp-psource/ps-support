@@ -9,7 +9,7 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Richte auf jeder WordPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
+Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 
 == Description ==
 

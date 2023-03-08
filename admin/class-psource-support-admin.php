@@ -54,7 +54,7 @@ class PSource_Support_Admin {
 				 	array(
 				 		[menu_key] => array(
 							[class] => 'PHP Class name',
-							[slug] => 'WordPress Admin Menu Slug'
+							[slug] => 'ClassicPress Admin Menu Slug'
 				 		),
 				 		...
 				 	)
@@ -96,7 +96,7 @@ class PSource_Support_Admin {
 				 	array(
 				 		[menu_key] => array(
 							[class] => 'PHP Class name',
-							[slug] => 'WordPress Admin Menu Slug'
+							[slug] => 'ClassicPress Admin Menu Slug'
 				 		),
 				 		...
 				 	)
@@ -122,7 +122,7 @@ class PSource_Support_Admin {
 			 	array(
 			 		[menu_key] => array(
 						[class] => 'PHP Class name',
-						[slug] => 'WordPress Admin Menu Slug'
+						[slug] => 'ClassicPress Admin Menu Slug'
 			 		),
 			 		...
 			 	)

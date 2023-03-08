@@ -2,17 +2,18 @@
 /*
 Plugin Name: PS Support System
 Plugin URI: https://n3rds.work/piestingtal_source/ps-support-system-plugin/
-Description: Richte auf jeder WordPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
+Description: Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 Author: DerN3rd (WMS N@W)
 Network: true
 Version: 2.2.2
 License: GPLv2
 Author URI: https://n3rds.work
+Domain Path: languages
 Text Domain: psource-support
 */
 
 /*
-Copyright 2018-2021 WMS N3rds@Work (https://n3rds.work)
+Copyright 2018-2023 WMS N3rds@Work (https://n3rds.work)
 Author DerN3rd
 
 This program is free software; you can redistribute it and/or modify
@@ -30,9 +31,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 Foundation 5 License: See license-foundation.txt
 */
-
 require 'psource/psource-plugin-update/psource-plugin-updater.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+use Psource\PluginUpdateChecker\v5\PucFactory;
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-support', 
 	__FILE__, 
 	'ps-support' 
