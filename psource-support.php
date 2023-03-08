@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: PS Support System
-Plugin URI: https://n3rds.work/piestingtal_source/ps-support-system-plugin/
+Plugin URI: https://n3rds.work/cp_psource/ps-support-system-plugin/
 Description: Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 Author: DerN3rd (WMS N@W)
 Network: true
-Version: 2.2.2
+Version: 2.2.3
 License: GPLv2
 Author URI: https://n3rds.work
 Domain Path: languages

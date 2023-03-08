@@ -897,8 +897,8 @@ msgid "https://n3rds.work"
 msgstr "https://n3rds.work"
 
 #. URI of the plugin
-msgid "https://n3rds.work/piestingtal_source/ps-support-system-plugin/"
-msgstr "https://n3rds.work/piestingtal_source/ps-support-system-plugin/"
+msgid "https://n3rds.work/cp_psource/ps-support-system-plugin/"
+msgstr "https://n3rds.work/cp_psource/ps-support-system-plugin/"
 
 #: admin/class-admin-faqs-menu.php:11
 msgid "Häufig gestellte Fragen"
