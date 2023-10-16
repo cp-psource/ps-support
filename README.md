@@ -59,41 +59,39 @@ Nach der Installation und Aktivierung siehst Du in Deiner Admin-Seitenleiste ein
 
 ![i](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-menu.png)
 
-Das Menü ist sowohl für Einzelstandorte als auch für Multistandortinstallationen gleich, wo es im Netzwerkadministrator angezeigt wird. Als erstes müssen wir die Einstellungen des Plugins konfigurieren. Wenn Sie das Support-System auf einer Multisite installiert haben, gehen Sie in Ihrem Netzwerkadministrator zu **Support > Einstellungen**. Gehen Sie bei einer Einzelstandortinstallation in Ihrem Adminbereich zu **Support > Einstellungen**. Auf dem Einstellungsbildschirm können Sie Ihre grundlegenden Informationen eingeben, Zugriffsberechtigungen und die Datenschutzstufe festlegen. Hier ist einiges los, also gehen wir es in Abschnitten an, beginnend mit den Optionen unter der Registerkarte „Allgemein“.
+Das Menü ist sowohl für Einzelstandorte als auch für Multistandortinstallationen gleich, wo es im Netzwerkadministrator angezeigt wird. Als erstes müssen wir die Einstellungen des Plugins konfigurieren. Wenn Du das Support-System auf einer Multisite installiert hast, gehe in Deinem Netzwerkadministrator zu **Support > Einstellungen**. Gehe bei einer Einzelstandortinstallation in Deinem Adminbereich zu **Support > Einstellungen**. Auf dem Einstellungsbildschirm kannst Du Deine grundlegenden Informationen eingeben, Zugriffsberechtigungen und die Datenschutzstufe festlegen. Hier ist einiges los, also gehen wir es in Abschnitten an, beginnend mit den Optionen unter der Registerkarte „Allgemein“.
 
 ##### Das Allgemeine zuerst
 
 ![Support-Systemeinstellungen Allgemein](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-settings-general-1-700x321.png)
 
-  1\. Geben Sie den Namen ein, den Sie für das Support-System auf Ihrer Site verwenden möchten.
-2\. Geben Sie den Namen des Absenders der Support-E-Mail ein.
-3\. Geben Sie die E-Mail-Adresse für alle Support-E-Mails ein.
-4\. Wählen Sie den Standard-Supportadministrator aus.
+  1\. Gib den Namen ein, den Du für das Support-System auf Deiner Webseite verwenden möchtest.
+2\. Gib den Namen des Absenders der Support-E-Mail ein.
+3\. Gib die E-Mail-Adresse für alle Support-E-Mails ein.
+4\. Wähle den Standard-Supportadministrator aus.
 
-  1\. Der _Name des Support-Menüs_, den Sie hier eingeben, wird im Admin-Menü Ihrer Website angezeigt. Wenn Sie das Plugin in einer Multisite installiert haben, erscheint dies im Admin aller Sites im Netzwerk. 2\. Der Name „Support von Name“ erscheint in der Kopfzeile aller E-Mails, die beim Einreichen von Tickets gesendet werden. 3\. _Support per E-Mail_ ist die Adresse, von der die E-Mails stammen. 4\. Der Hauptadministrator ist der Benutzer auf Ihrer Website, der als Mitarbeiter für die Bearbeitung von Support-Tickets bestimmt ist.
-
-* Bitte beachten Sie, dass diese Funktion bei Multisite-Installationen derzeit nur die Zuweisung des Netzwerkadministrators zulässt. Im nächsten Update wird es erweitert, sodass Sie einen anderen Benutzer zuweisen können.
+  1\. Der _Name des Support-Menüs_, den Du hier eingibst, wird im Admin-Menü Deiner Webseite angezeigt. Wenn Du das Plugin in einer Multisite installiert hast, erscheint dies im Admin aller Webseiten im Netzwerk. 2\. Der Name „Support von Name“ erscheint in der Kopfzeile aller E-Mails, die beim Einreichen von Tickets gesendet werden. 3\. _Support per E-Mail_ ist die Adresse, von der die E-Mails stammen. 4\. Der Hauptadministrator ist der Benutzer auf Deiner Webseite, der als Mitarbeiter für die Bearbeitung von Support-Tickets bestimmt ist.
 
 ##### Berechtigungen und Datenschutz
 
 ![Support-Systemeinstellungen Allgemein](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-settings-general-2-700x634.png)
 
-  1\. Wählen Sie aus, welche Benutzerrollen Tickets öffnen/sehen können.
-2\. Wählen Sie die Benutzerrollen aus, die FAQs sehen können.
-3\. Legen Sie Ihre bevorzugte Datenschutzstufe fest.
+  1\. Wähle aus, welche Benutzerrollen Tickets öffnen/sehen können.
+2\. Wähle die Benutzerrollen aus, die FAQs sehen können.
+3\. Lege Deine bevorzugte Datenschutzstufe fest.
 
-  1\. Wählen Sie die _Benutzerrollen aus, die Tickets öffnen/sehen können_. Beachten Sie, dass hier alle verfügbaren Benutzerrollen angezeigt werden, einschließlich der von Ihnen erstellten benutzerdefinierten und der von anderen Plugins erstellten. 2\. Wählen Sie die _Benutzerrollen aus, die die FAQs sehen können_. Auch hier werden wieder alle Rollen angezeigt. Wenn Sie kein FAQ-System auf Ihrer Website wünschen, deaktivieren Sie hier alle Kontrollkästchen. 3\. Mit der Option „Privacy“ können Sie das Plugin so einstellen, dass alle Benutzer alle Tickets sehen können oder dass Benutzer nur ihre eigenen Tickets sehen können.
+  1\. Wähle die _Benutzerrollen aus, die Tickets öffnen/sehen können_. Beachte, dass hier alle verfügbaren Benutzerrollen angezeigt werden, einschließlich der von Dir erstellten benutzerdefinierten und der von anderen Plugins erstellten. 2\. Wähle die _Benutzerrollen aus, die die FAQs sehen können_. Auch hier werden wieder alle Rollen angezeigt. Wenn Du kein FAQ-System auf Deiner Webseite wünschst, deaktiviere hier alle Kontrollkästchen. 3\. Mit der Option „Privacy“ kannst Du das Plugin so einstellen, dass alle Benutzer alle Tickets sehen können oder dass Benutzer nur ihre eigenen Tickets sehen können.
 
-##### Pro Sites-Integration
+##### PS Bloghosting-Integration
 
-Dieser Abschnitt der Einstellungen wird nur angezeigt, wenn Sie unser [Pro Sites](https://premium.wpmudev.org/project/pro-sites/ „Pro Sites“)-Plugin in Ihrem Netzwerk installiert haben.
+Dieser Abschnitt der Einstellungen wird nur angezeigt, wenn Du unser [PS Bloghosting](https://n3rds.work/piestingtal_source/ps-bloghosting-multisite-next-level-plugin/ „PS Bloghosting“)-Plugin in Deinem Netzwerk installiert hast.
 
 ![Support-Systemeinstellungen Allgemein](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-settings-general-3-700x263.png)
 
-  1\. Wählen Sie die Mindeststufe der Pro Site aus, die für den Zugriff auf Tickets erforderlich ist.
-2\. Wählen Sie die Mindeststufe aus, um auf FAQs zuzugreifen
+  1\. Wähle die Mindeststufe der Pro Site aus, die für den Zugriff auf Tickets erforderlich ist.
+2\. Wähle die Mindeststufe aus, um auf FAQs zuzugreifen
 
-  1\. Wählen Sie hier die Mindeststufe für Pro Sites aus, die erforderlich ist, um Support-_Tickets_ anzuzeigen und einzureichen. 2\. Wählen Sie die Mindeststufe aus, die erforderlich ist, um Ihren _FAQs_-Bereich anzuzeigen. Beachten Sie, dass diese Einstellung überhaupt keine Auswirkungen auf Ihre Website hat, wenn Sie die FAQs deaktiviert haben, indem Sie alle oben genannten Benutzerrollen deaktiviert haben. Kommen wir nun zu den Optionen, die Sie auf der Registerkarte „Frontend“ finden.
+  1\. Wähle hier die Mindeststufe für PS Bloghosting aus, die erforderlich ist, um Support-_Tickets_ anzuzeigen und einzureichen. 2\. Wähle die Mindeststufe aus, die erforderlich ist, um Deinen _FAQs_-Bereich anzuzeigen. Beachte, dass diese Einstellung überhaupt keine Auswirkungen auf Deine Webseite hat, wenn Du die FAQs deaktiviert hast, indem Du alle oben genannten Benutzerrollen deaktiviert hast. Kommen wir nun zu den Optionen, die Du auf der Registerkarte „Frontend“ findest.
 
 ##### Front-End-Optionen
 
