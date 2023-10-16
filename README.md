@@ -48,8 +48,8 @@ In einem überfüllten E-Mail-Posteingang verliert man leicht den Überblick üb
 
 ### Installieren:
 
-* Bei regulären WordPress-Installationen – besuche **Plugins** und **aktiviere** das Plugin.
-* Für WordPress-Multisite-Installationen besuche **Netzwerkadministration » Plugins** und **Netzwerk aktiviere** das Plugin.
+* Bei regulären ClassicPress-Installationen – besuche **Plugins** und **aktiviere** das Plugin.
+* Für ClassicPress-Multisite-Installationen besuche **Netzwerkadministration » Plugins** und **Netzwerk aktiviere** das Plugin.
 
 #### Einstellungen
 
@@ -95,7 +95,7 @@ Dieser Abschnitt der Einstellungen wird nur angezeigt, wenn Du unser [PS Bloghos
 
 ##### Front-End-Optionen
 
-Wenn Sie möchten, dass Ihre Benutzer über das Frontend Ihrer Website auf Ihr Support-System zugreifen können, aktivieren Sie zunächst das Kontrollkästchen _Frontend aktivieren_. Beachten Sie, dass dies den Zugriff auf das Frontend Ihrer Site sowie den Administrator jeder Site ermöglicht (die Supportfunktionen in den Admin-Bereichen aller Sites werden dadurch nicht deaktiviert).
+Wenn Du möchtest, dass Deine Benutzer über das Frontend Ihrer Webseite auf Dein Support-System zugreifen können, aktiviere zunächst das Kontrollkästchen _Frontend aktivieren_. Beachte, dass dies den Zugriff auf das Frontend Deiner Webseite sowie den Administrator jeder Site ermöglicht (die Supportfunktionen in den Admin-Bereichen aller Webseiten werden dadurch nicht deaktiviert).
 
 ![Support-Systemeinstellungen-Frontend](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-settings-front-1-700x381.png)
 
@@ -103,20 +103,20 @@ Anschließend werden zwei neue Optionen angezeigt:
 
 ![Support-Systemeinstellungen-Frontend](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-settings-front-2-700x500.png)
 
-  1\. Aktivieren Sie „Unterstützungssystemstile verwenden“, um die integrierten Stile zu verwenden.
-2\. Wählen Sie die ID des Blogs aus, in dem Sie die Front-End-Funktionen wünschen.
+  1\. Aktiviere „Unterstützungssystemstile verwenden“, um die integrierten Stile zu verwenden.
+2\. Wähle die ID des Blogs aus, in dem Du die Front-End-Funktionen wünschst.
 
-  1\. Aktivieren Sie _Unterstützungssystemstile verwenden_, wenn Sie die integrierten Stile verwenden möchten. Lassen Sie dieses Kontrollkästchen deaktiviert, wenn Sie Ihre Theme-Stile verwenden oder die Frontend-Ausgabe selbst gestalten möchten. 2\. Mit der Einstellung „Blog-ID“ können Sie die ID der Site in Ihrem Netzwerk auswählen, auf der Sie die Frontend-Funktionen aktivieren möchten. Dies kann der Hauptstandort oder ein beliebiger anderer Standort in Ihrem Netzwerk sein. Sobald Sie diese beiden Optionen festgelegt haben, klicken Sie unten auf dem Bildschirm auf die Schaltfläche „Änderungen speichern“, um weitere Optionen anzuzeigen.
+  1\. Aktiviere _Unterstützungssystemstile verwenden_, wenn Du die integrierten Stile verwenden möchtest. Lasse dieses Kontrollkästchen deaktiviert, wenn Du Deine Theme-Stile verwenden oder die Frontend-Ausgabe selbst gestalten möchtest. 2\. Mit der Einstellung „Blog-ID“ kannst Du die ID der Webseite in Deinem Netzwerk auswählen, auf der Du die Frontend-Funktionen aktivieren möchtest. Dies kann der Hauptstandort oder ein beliebiger anderer Standort in Deinem Netzwerk sein. Sobald Du diese beiden Optionen festgelegt hast, klicke unten auf dem Bildschirm auf die Schaltfläche „Änderungen speichern“, um weitere Optionen anzuzeigen.
 
 ![Support Systemeinstellungen FrontendSupport Systemeinstellungen Frontend](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-settings-front-700x800.png)
 
-Sie können nun die Seite(n) auf der von Ihnen gewählten Website auswählen, auf der die Support-Tickets angezeigt und eingereicht werden können, sowie Ihre FAQ-Seite. Wenn Sie möchten, können Sie dieselbe Seite für alle Funktionen verwenden. Achten Sie jedoch darauf, den erforderlichen Shortcode für jede Funktion zu kopieren/einzufügen.
+Du kannst nun die Seite(n) auf der von Dir gewählten Webseite auswählen, auf der die Support-Tickets angezeigt und eingereicht werden können, sowie Deine FAQ-Seite. Wenn Du möchtest, kannst Du dieselbe Seite für alle Funktionen verwenden. Achte jedoch darauf, den erforderlichen Shortcode für jede Funktion zu kopieren/einzufügen.
 
 * Zur Anzeige der Support-Tickets ist der folgende Shortcode erforderlich: „[support-system-tickets-index]“.
 * Dieser Shortcode ist erforderlich, um das Frontend-Ticket-Einreichungsformular anzuzeigen: „[support-system-submit-ticket-form]“.
 * Dieser wird benötigt, um die FAQs anzuzeigen: „[support-system-faqs]“.
 
-Mit der letzten Option auf der Registerkarte „Frontend“ können Sie die erforderliche Pro-Site-Mindeststufe angeben, um Tickets über das Frontend anzuzeigen und einzureichen oder die FAQs anzuzeigen. Auch diese Option wird nur angezeigt, wenn Pro Sites in Ihrem Netzwerk installiert ist. Nachdem wir uns nun um die Einstellungen gekümmert haben, beginnen wir mit der Erstellung Ihres Support-Systems. Dieser Vorgang ist für Single-Site- und Multisite-Installationen identisch.
+Mit der letzten Option auf der Registerkarte „Frontend“ kannst Du die erforderliche PS Bloghosting-Mindeststufe angeben, um Tickets über das Frontend anzuzeigen und einzureichen oder die FAQs anzuzeigen. Auch diese Option wird nur angezeigt, wenn PS Bloghosting in Deinem Netzwerk installiert ist. Nachdem wir uns nun um die Einstellungen gekümmert haben, beginnen wir mit der Erstellung Ihres Support-Systems. Dieser Vorgang ist für Single-Site- und Multisite-Installationen identisch.
 
 #### Erstellen von Support- und FAQ-Kategorien
 
@@ -140,7 +140,7 @@ Ok, unsere Ticketkategorien sind alle eingerichtet! Machen wir nun dasselbe für
 
 #### FAQ-Fragen hinzufügen
 
-Bevor wir mit der eigentlichen Erstellung von Support-Tickets durch Ihre Benutzer beginnen, schauen wir uns an, wie Sie im FAQ-Manager manuell FAQ-Fragen hinzufügen können. Gehen Sie zu Support > FAQ-Manager und klicken Sie oben auf dem Bildschirm auf „Neue FAQ hinzufügen“. Sie werden sehen, dass Sie mit dem bekannten WordPress-Editor manuell neue FAQs hinzufügen können. Außerdem wird ein Dropdown-Menü angezeigt, in dem Sie aus den soeben erstellten FAQ-Kategorien auswählen können.
+Bevor wir mit der eigentlichen Erstellung von Support-Tickets durch Ihre Benutzer beginnen, schauen wir uns an, wie Sie im FAQ-Manager manuell FAQ-Fragen hinzufügen können. Gehen Sie zu Support > FAQ-Manager und klicken Sie oben auf dem Bildschirm auf „Neue FAQ hinzufügen“. Sie werden sehen, dass Sie mit dem bekannten ClassicPress-Editor manuell neue FAQs hinzufügen können. Außerdem wird ein Dropdown-Menü angezeigt, in dem Sie aus den soeben erstellten FAQ-Kategorien auswählen können.
 
 ![Support System FAQ Manager Neu hinzufügen](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-faq-manager-add-700x468.png)
 
@@ -158,7 +158,7 @@ Jetzt ist es an der Zeit, zu sehen, wie Ihre Benutzer ihre Supportfragen einreic
 
 ![Support System Tickets Benutzeransicht](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-tickets-userview-700x343.png)
 
-Klicken Sie oben auf dem Bildschirm auf den Link „Neues Ticket hinzufügen“. Auch hier sehen Sie den sehr vertrauten WordPress-Post-Editor, den Ihre Benutzer zum Einreichen ihrer Support-Tickets verwenden. Kinderleicht. Lassen Sie uns jetzt loslegen und ein Ticket erstellen.
+Klicken Sie oben auf dem Bildschirm auf den Link „Neues Ticket hinzufügen“. Auch hier sehen Sie den sehr vertrauten ClassicPress-Post-Editor, den Ihre Benutzer zum Einreichen ihrer Support-Tickets verwenden. Kinderleicht. Lassen Sie uns jetzt loslegen und ein Ticket erstellen.
 
 ![Support-System Neues Ticket hinzufügen](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-add-new-ticket-700x601.png)
 
