@@ -24,6 +24,8 @@ class PSource_Support_Query {
 	public $remaining_tickets = 0; 
 	public $ticket_category_id = 0;
 	public $tickets_search = false;
+	public $total_pages = 0; // Neue deklarierte Eigenschaft für die Gesamtanzahl der Seiten
+    public $tickets = array(); // Neue deklarierte Eigenschaft für die Tickets
 
 	/**
 	 * Pagination

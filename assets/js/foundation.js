@@ -342,18 +342,12 @@
         }
       }
 
-      S(window).load(function () {
-        S(window)
-          .trigger('resize.fndtn.clearing')
-          .trigger('resize.fndtn.dropdown')
-          .trigger('resize.fndtn.equalizer')
-          .trigger('resize.fndtn.interchange')
-          .trigger('resize.fndtn.joyride')
-          .trigger('resize.fndtn.magellan')
-          .trigger('resize.fndtn.topbar')
-          .trigger('resize.fndtn.slider');
+      S(window).on('load', function () {
+        ['clearing', 'dropdown', 'equalizer', 'interchange', 'joyride', 'magellan', 'topbar', 'slider'].forEach(function(event) {
+          S(window).trigger('resize.fndtn.' + event);
+        });
       });
-
+      
       return scope;
     },
 
@@ -2841,9 +2835,9 @@
       return output;
     },
 
-    reflow : function () {
-      this.load('images', true);
-      this.load('nodes', true);
+    reflow: function () {
+      this.trigger('resizeme.zf.trigger', ['images', true]);
+      this.trigger('resizeme.zf.trigger', ['nodes', true]);
     }
 
   };

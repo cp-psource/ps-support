@@ -105,31 +105,30 @@
 
       		var current_slot = settings.first_slot;		
 
-			return container.each( function() {
-				var button = $( '<button/>', {
+			  return container.each(function() {
+				var button = $('<button/>', {
 					text: settings.button_text,
 					class: settings.button_class
 				});
-
-				button.data( 'settings', settings );
-				button.data( 'current_slot', current_slot );
-
-				button.click( function( e ) {
+			
+				button.data('settings', settings);
+				button.data('current_slot', current_slot);
+			
+				button.on('click', function(e) {
 					e.preventDefault();
-					self.addFileSlot( $(this), self );
+					self.addFileSlot($(this), self);
 				});
-
-				var list = $( '<ul/>', {
+			
+				var list = $('<ul/>', {
 					id: 'support-attachments-list'
 				});
-
-				button.data( 'list', $(list) );
-
+			
+				button.data('list', $(list));
+			
 				$(this)
-					.append( list )
-					.append( button )
-					.append( settings.description );
-					
+					.append(list)
+					.append(button)
+					.append(settings.description);
 			});
 	      	
 	    },
@@ -155,7 +154,7 @@
 				title: settings.remove_file_title
 			});
 
-			remove_file_link.click( function( e ) {
+			remove_file_link.on('click', function(e) {
 				e.preventDefault();
 				self.removeFileSlot( $(this).data('remove-file'), $this );
 			});
@@ -195,26 +194,26 @@
 
 	    	var settings = this.settings;
 
-			$( '.vote-button' ).click( function(e) {
+			$(document).on('click', '.vote-button', function(e) {
 				e.preventDefault();
 				var vote = $(this).data('vote');
 				var faq_id = $(this).data('faq-id');
 				var parent = $(this).parent();
 				parent.find('button').attr( 'disabled', 'true' );
-
+			
 				var loader = parent.find('img');
 				loader.show();
-
+			
 				var spinner = $(this).siblings('.' + settings.spinner_class);
 				spinner.css('display','inline-block');
-
+			
 				var data = {
 					vote: vote,
 					faq_id: faq_id,
 					action: 'vote_faq_question'
 				};
-
-				$.post( support_system_strings.ajaxurl, data, function(response) {
+			
+				$.post(support_system_strings.ajaxurl, data, function(response) {
 					loader.hide();
 					spinner.hide();
 				});
@@ -225,31 +224,29 @@
 			$( '.faq-category-question' ).hide();
 			
 
-			$( '.faq-category' ).click( function( e ) {
+			$(document).on('click', '.faq-category', function(e) {
 				e.preventDefault();
-
-                $( '.faq-category').attr( 'disabled', false );
-                $(this).attr( 'disabled', true );
+			
+				$( '.faq-category').attr( 'disabled', false );
+				$(this).attr( 'disabled', true );
 				var cat_id = $(this).data('cat-id');
-
+			
 				$( '.faq-category-wrap' ).hide();
 				$( '#faq-category-' + cat_id ).fadeIn();
 			});
-
+			
 			$('.faq-category-answer').hide();
-			$('.faq-category-wrap .postbox .hndle').click( function(e) {
+			$('.faq-category-wrap .postbox .hndle').on('click', function(e) {
 				$('.faq-category-wrap .postbox').addClass('closed');
 				$(this).parent().animate().toggleClass( 'closed' );
-
+			
 				var faq_id = $(this).data('faq-id');
 				$('.faq-category-answer').slideUp();
-
+			
 				$( '#faq-answer-' + faq_id ).slideDown();
-
 			});
-
-
-            $( '.faq-category').first().trigger( 'click' );
+			
+			$( '.faq-category').first().trigger( 'click' );
 
 		}
 	};

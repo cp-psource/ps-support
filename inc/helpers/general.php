@@ -106,22 +106,24 @@ function psource_support_super_admins_dropdown( $args = array() ) {
 		return ob_get_clean();
 }
 
-function psource_support_get_errors( $setting ) {
-	global $support_system_errors;
+function psource_support_get_errors($setting = null) {
+    global $support_system_errors;
 
-	if ( ! count( $support_system_errors ) )
-		return array();
+    if (!is_array($support_system_errors) || empty($support_system_errors)) {
+        return array();
+    }
 
-	if ( $setting ) {
-		$setting_errors = array();
-		foreach ( (array) $support_system_errors as $key => $details ) {
-			if ( $setting == $details['setting'] )
-				$setting_errors[] = $support_system_errors[ $key ];
-		}
-		return $setting_errors;
-	}
+    if ($setting) {
+        $setting_errors = array();
+        foreach ($support_system_errors as $details) {
+            if (isset($details['setting']) && $setting === $details['setting']) {
+                $setting_errors[] = $details;
+            }
+        }
+        return $setting_errors;
+    }
 
-	return $support_system_errors;
+    return $support_system_errors;
 }
 
 function psource_support_add_error( $setting, $code, $message ) {

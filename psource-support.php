@@ -52,7 +52,6 @@ define( 'PSOURCE_SUPPORT_ASSETS_URL', PSOURCE_SUPPORT_PLUGIN_URL . 'assets/' );
 if ( ! class_exists( 'MU_Support_System') ) {
 
 	class MU_Support_System {
-
 		// Current version of the plugin
 		public static $version = PSOURCE_SUPPORT_PLUGIN_VERSION;
 
@@ -88,6 +87,9 @@ if ( ! class_exists( 'MU_Support_System') ) {
 		public $integrators = array();
 
 		private static $instance = null;
+
+		public $model;
+		public $query;
 
 		public static function get_instance() {
 			if ( ! self::$instance )
