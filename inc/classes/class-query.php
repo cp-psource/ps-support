@@ -43,10 +43,10 @@ class PSource_Support_Query {
 	public $remaining_faqs = 0; 
 	public $faq_category_id = 0;
 	public $faqs_search = false;
-
+	public $faqs = array();
 
 	public function __construct() {
-		// Create an empty object in case there are no results
+		// Erstellt ein leeres Objekt, falls keine Ergebnisse vorliegen
 		$this->ticket = new PSource_Support_Ticket( new stdClass() );
 
 		$this->faq = new PSource_Support_FAQ( new stdClass() );
@@ -60,11 +60,17 @@ class PSource_Support_Query {
 		if ( ! $this->is_support_system )
 			return;
 
+		// Deklariere und initialisiere die Eigenschaften
+		$this->tickets = array();
+		$this->faqs = array();
+		$this->found_tickets = 0;
+		$this->found_faqs = 0;
+
 		/**
-		 * Filters the number of tickets per page to be displayed in the front
+		 * Filtert die Anzahl der Tickets pro Seite, die im Frontend angezeigt werden sollen
 		 * 
-		 * @param Integer $tickets_per_page Tickets per page number. Default is posts_per_page option in wp_options table
-		 * @param Object $this Current PSource_Support_Query Object
+		 * @param Integer $tickets_per_page Tickets pro Seitenzahl. Standardmäßig ist die Option posts_per_page in der Tabelle wp_options
+		 * @param Object $this Aktuelles PSource_Support_Query-Objekt
 		 */
 		$per_page = apply_filters( 'support_system_query_per_page', get_option( 'posts_per_page' ), $this );
 
@@ -92,10 +98,10 @@ class PSource_Support_Query {
 				$args['s'] = stripslashes( $this->tickets_search );
 
 			/**
-			 * Filters the Tickets query Query arguments in the frontend
+			 * Filtert die Abfrageargumente der Tickets-Abfrage im Frontend
 			 * 
-			 * @param Array $args Query arguments that will be passed to psource_support_get_tickets function
-			 * @param Object $this Current PSource_Support_Query Object
+			 * @param Array $args Abfrageargumente, die an die Funktion psource_support_get_tickets übergeben werden
+			 * @param Object $this Aktuelles PSource_Support_Query-Objekt
 			 */
 			$args = apply_filters( 'support_system_query_get_tickets_args', $args, $this );
 			
@@ -118,10 +124,10 @@ class PSource_Support_Query {
 				$args['s'] = stripslashes( $this->faqs_search );
 
 			/**
-			 * Filters the FAQs query Query arguments in the frontend
+			 * Filtert die FAQs-Abfrage-Abfrageargumente im Frontend
 			 * 
-			 * @param Array $args Query arguments that will be passed to psource_support_get_faqs function
-			 * @param Object $this Current PSource_Support_Query Object
+			 * @param Array $args Abfrageargumente, die an die Funktion psource_support_get_faqs übergeben werden
+			 * @param Object $this Aktuelles PSource_Support_Query-Objekt
 			 */
 			$args = apply_filters( 'support_system_query_get_faqs_args', $args, $this );
 			$this->faqs = psource_support_get_faqs( $args ); 
