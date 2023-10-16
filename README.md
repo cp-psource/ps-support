@@ -84,7 +84,7 @@ Das Menü ist sowohl für Einzelstandorte als auch für Multistandortinstallatio
 
 ##### PS Bloghosting-Integration
 
-Dieser Abschnitt der Einstellungen wird nur angezeigt, wenn Du unser [PS Bloghosting](https://n3rds.work/piestingtal_source/ps-bloghosting-multisite-next-level-plugin/ „PS Bloghosting“)-Plugin in Deinem Netzwerk installiert hast.
+Dieser Abschnitt der Einstellungen wird nur angezeigt, wenn Du unser [PS Bloghosting](https://n3rds.work/piestingtal_source/ps-bloghosting-multisite-next-level-plugin/ "PS Bloghosting")-Plugin in Deinem Netzwerk installiert hast.
 
 ![Support-Systemeinstellungen Allgemein](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-settings-general-3-700x263.png)
 
