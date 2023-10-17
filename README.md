@@ -95,7 +95,7 @@ Dieser Abschnitt der Einstellungen wird nur angezeigt, wenn Du unser [PS Bloghos
 
 ##### Front-End-Optionen
 
-Wenn Du möchtest, dass Deine Benutzer über das Frontend Ihrer Webseite auf Dein Support-System zugreifen können, aktiviere zunächst das Kontrollkästchen _Frontend aktivieren_. Beachte, dass dies den Zugriff auf das Frontend Deiner Webseite sowie den Administrator jeder Site ermöglicht (die Supportfunktionen in den Admin-Bereichen aller Webseiten werden dadurch nicht deaktiviert).
+Wenn Du möchtest, dass Deine Benutzer über das Frontend Deinerr Webseite auf Dein Support-System zugreifen können, aktiviere zunächst das Kontrollkästchen _Frontend aktivieren_. Beachte, dass dies den Zugriff auf das Frontend Deiner Webseite sowie den Administrator jeder Site ermöglicht (die Supportfunktionen in den Admin-Bereichen aller Webseiten werden dadurch nicht deaktiviert).
 
 ![Support-Systemeinstellungen-Frontend](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2000-settings-front-1-700x381.png)
 
@@ -120,85 +120,85 @@ Mit der letzten Option auf der Registerkarte „Frontend“ kannst Du die erford
 
 #### Erstellen von Support- und FAQ-Kategorien
 
-Wenn Sie bei einer Neuinstallation dieses Plugins jetzt im Support-Menü auf die Menüpunkte „Support“ oder „FAQ-Manager“ klicken, werden Ihnen nur die Seitenkopfzeilen ohne Tickets angezeigt. Das liegt daran, dass noch keine Tickets zur Anzeige vorhanden sind. (Wenn Sie von einer früheren Installation aktualisiert haben, sollten Ihre eingereichten Tickets und FAQs auf diesen Seiten sichtbar sein.) Als Erstes möchten wir die Kategorien einrichten, die Ihre Benutzer zum Einreichen ihrer Support-Tickets verwenden. Gehen Sie zu Support > Ticketkategorien. Sie werden feststellen, dass bereits eine Standardkategorie namens „Allgemeine Fragen“ enthalten ist. (Diese Kategorie kann nicht gelöscht werden und ist eine großartige Ergänzung für jede Website, da Sie möglicherweise Benutzer haben, die möglicherweise nicht glauben, dass ihre Fragen in eine bestimmte Kategorie fallen.)
+Wenn Du bei einer Neuinstallation dieses Plugins jetzt im Support-Menü auf die Menüpunkte „Support“ oder „FAQ-Manager“ klickst, werden Dir nur die Seitenkopfzeilen ohne Tickets angezeigt. Das liegt daran, dass noch keine Tickets zur Anzeige vorhanden sind. (Wenn Du von einer früheren Installation aktualisiert hast, sollten Deine eingereichten Tickets und FAQs auf diesen Seiten sichtbar sein.) Als Erstes möchten wir die Kategorien einrichten, die Deine Benutzer zum Einreichen ihrer Support-Tickets verwenden. Gehe zu Support > Ticketkategorien. Du wirst feststellen, dass bereits eine Standardkategorie namens „Allgemeine Fragen“ enthalten ist. (Diese Kategorie kann nicht gelöscht werden und ist eine großartige Ergänzung für jede Webseite, da Du möglicherweise Benutzer hast, die möglicherweise nicht glauben, dass ihre Fragen in eine bestimmte Kategorie fallen.)
 
 ![Support-System-Ticketkategorien](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-tickets-categories-700x376.png)
 
-Der Bildschirm „Ticketkategorie“ funktioniert genauso wie Ihr Beitragskategoriebildschirm und sollte daher recht vertraut sein. Bevor Sie sich jetzt so verrückt machen, Kategorien hinzuzufügen, sollten Sie sich eine Minute Zeit nehmen und darüber nachdenken, welche Kategorien für Ihre Benutzer am besten geeignet sind. Wenn Sie beispielsweise eine Multisite betreiben, die MarketPress-Shops bereitstellt, möchten Sie möglicherweise Supportkategorien wie „Warenkorb“ oder „Versand“ einschließen. Stellen Sie sicher, dass Sie breite Kategorien verwenden, um Ihren Benutzern die Arbeit zu erleichtern. Zu viele detaillierte Kategorien können verwirrend sein. Die folgenden Elemente sind beispielsweise alle problemlos in einer umfassenderen Kategorie „Produkte hinzufügen“ enthalten:
+Der Bildschirm „Ticketkategorie“ funktioniert genauso wie Dein Beitragskategoriebildschirm und sollte daher recht vertraut sein. Bevor Du Dich verrückt machst, Kategorien hinzuzufügen, solltest Du Dir eine Minute Zeit nehmen und darüber nachdenken, welche Kategorien für Deine Benutzer am besten geeignet sind. Wenn Du beispielsweise eine Multisite betreibst, die PSeCommerce-Shops bereitstellt, möchtest Du möglicherweise Supportkategorien wie „Warenkorb“ oder „Versand“ einschließen. Stelle sicher, dass Du breite Kategorien verwendest, um Deinenn Benutzern die Arbeit zu erleichtern. Zu viele detaillierte Kategorien können verwirrend sein. Die folgenden Elemente sind beispielsweise alle problemlos in einer umfassenderen Kategorie „Produkte hinzufügen“ enthalten:
 
 * Produktbeschreibung hinzufügen
 * Produktbild hinzufügen
 * Produktvariationen
 
-Ich werde hier einige Kategorien für mein Multisite-Setup hinzufügen, das meinen Benutzern MarketPress-Sites bietet.
+Ich werde hier einige Kategorien für mein Multisite-Setup hinzufügen, das meinen Benutzern PSeCommerce-Webseiten bietet.
 
 ![Supportsystem Ticketkategorien hinzufügen](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-tickets-categories-add-700x579.png)
 
-Ok, unsere Ticketkategorien sind alle eingerichtet! Machen wir nun dasselbe für unsere FAQs. Gehen Sie zu Support > FAQ-Kategorien. Außerdem haben Sie hier, genau wie auf der Seite „Ticketkategorien“, eine Standardkategorie für allgemeine Fragen, die nicht gelöscht werden können. Dies ist ein großartiger Ort, um verschiedene Informationen oder Dinge zu platzieren, die keiner bestimmten Kategorie zugeordnet werden können oder nicht in eine neue Kategorie unterteilt werden können. Ich werde hier Kategorien hinzufügen, die meinen Support-Kategorien entsprechen. Auf diese Weise kann ich die am häufigsten gestellten Fragen ganz einfach und schnell hier ablegen, wenn ich sehe, dass etwas hinzugefügt werden muss.
+Ok, unsere Ticketkategorien sind alle eingerichtet! Machen wir nun dasselbe für unsere FAQs. Gehe zu Support > FAQ-Kategorien. Außerdem hast Du hier, genau wie auf der Seite „Ticketkategorien“, eine Standardkategorie für allgemeine Fragen, die nicht gelöscht werden können. Dies ist ein großartiger Ort, um verschiedene Informationen oder Dinge zu platzieren, die keiner bestimmten Kategorie zugeordnet werden können oder nicht in eine neue Kategorie unterteilt werden können. Ich werde hier Kategorien hinzufügen, die meinen Support-Kategorien entsprechen. Auf diese Weise kann ich die am häufigsten gestellten Fragen ganz einfach und schnell hier ablegen, wenn ich sehe, dass etwas hinzugefügt werden muss.
 
 ![Supportsystem FAQ-Kategorien hinzufügen](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-faq-categories-add-700x500.png)
 
 #### FAQ-Fragen hinzufügen
 
-Bevor wir mit der eigentlichen Erstellung von Support-Tickets durch Ihre Benutzer beginnen, schauen wir uns an, wie Sie im FAQ-Manager manuell FAQ-Fragen hinzufügen können. Gehen Sie zu Support > FAQ-Manager und klicken Sie oben auf dem Bildschirm auf „Neue FAQ hinzufügen“. Sie werden sehen, dass Sie mit dem bekannten ClassicPress-Editor manuell neue FAQs hinzufügen können. Außerdem wird ein Dropdown-Menü angezeigt, in dem Sie aus den soeben erstellten FAQ-Kategorien auswählen können.
+Bevor wir mit der eigentlichen Erstellung von Support-Tickets durch Deine Benutzer beginnen, schauen wir uns an, wie Du im FAQ-Manager manuell FAQ-Fragen hinzufügen kannst. Gehe zu Support > FAQ-Manager und klicke oben auf dem Bildschirm auf „Neue FAQ hinzufügen“. Du wirst sehen, dass Du mit dem bekannten ClassicPress-Editor manuell neue FAQs hinzufügen kannst. Außerdem wird ein Dropdown-Menü angezeigt, in dem Du aus den soeben erstellten FAQ-Kategorien auswählen kannst.
 
 ![Support System FAQ Manager Neu hinzufügen](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-faq-manager-add-700x468.png)
 
-Sie können Ihrer eigenen Installation einige Fragen hinzufügen, um die Dinge auszuprobieren. So sieht der FAQ-Manager mit einigen hinzugefügten Fragen aus. (Wenn Sie Ihre Testfragen löschen oder bearbeiten möchten, bewegen Sie einfach Ihren Mauszeiger über den Titel, um die Links anzuzeigen.)
+Du kannstn Deiner eigenen Installation einige Fragen hinzufügen, um die Dinge auszuprobieren. So sieht der FAQ-Manager mit einigen hinzugefügten Fragen aus. (Wenn Du Deine Testfragen löschen oder bearbeiten möchtest, bewege einfach Ihren Mauszeiger über den Titel, um die Links anzuzeigen.)
 
 ![Fragen zum Support-System-FAQ-Manager](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-faq-manager-questions1-700x363.png)
 
-Sind Ihnen die Spaltenbezeichnungen „Denk ist hilfreich“ und „Denk ist nicht hilfreich“ aufgefallen? Dort werden die Statistiken zu den Benutzerstimmen angezeigt, sodass Sie wissen, welche Ihrer FAQ-Elemente beliebt und hilfreich sind und welche verbessert werden müssen oder eine Ausarbeitung benötigen. Bei einer Multisite-Installation stimmen Benutzer über die FAQs auf ihren eigenen Sites ab. So sieht der FAQ-Bereich aus:
+Sind Dir die Spaltenbezeichnungen „Denk ist hilfreich“ und „Denk ist nicht hilfreich“ aufgefallen? Dort werden die Statistiken zu den Benutzerstimmen angezeigt, sodass Du weist, welche Deiner FAQ-Elemente beliebt und hilfreich sind und welche verbessert werden müssen oder eine Ausarbeitung benötigen. Bei einer Multisite-Installation stimmen Benutzer über die FAQs auf ihren eigenen Sites ab. So sieht der FAQ-Bereich aus:
 
 ![Support System FAQ Manager Fragen Benutzeransicht](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-faq-manager-questions-userview-700x595.png)
 
 #### Wie Benutzer Supportfragen einreichen
 
-Jetzt ist es an der Zeit, zu sehen, wie Ihre Benutzer ihre Supportfragen einreichen und Ihre FAQs anzeigen können. Beachten Sie, dass Benutzer bei einer Multisite-Installation nur Supporttickets von Sites einreichen können, bei denen sie eine Rolle haben, die mindestens der in Ihren Netzwerkeinstellungen festgelegten Rolle entspricht. Wenn Sie sich auf einer Multisite-Installation befinden, gehen Sie zum wp-admin einer beliebigen Test-Site, die in Ihrem Netzwerk aktiv ist und auf der Sie Administrator sind (wenn Sie noch keine Test-Site eingerichtet haben, wäre jetzt ein guter Zeitpunkt dafür). erstelle einen!). Wenn Sie eine Einzelstandortinstallation durchführen, melden Sie sich in einem anderen Browser (oder einem anderen Computer) als Benutzer mit der entsprechenden Rolle bei Ihrem wp-admin an. Sobald Sie sich im wp-admin Ihrer Testseite befinden (oder als Testbenutzer auf einer einzelnen Seite), gehen Sie zu „Support“ > „FAQ“. Dort sehen Sie eine Ansicht, die dem vorherigen Bild ähnelt. Klicken Sie auf eine Ihrer Test-FAQs, um die Antwort zu öffnen. Jedes Mal, wenn Sie neue FAQs hinzufügen, werden diese auf diesem Bildschirm jeder Site in Ihrem Netzwerk angezeigt. Klicken Sie nun auf den Menüpunkt Support > Support. Das sollten Sie und Ihre Benutzer sehen:
+Jetzt ist es an der Zeit, zu sehen, wie Deine Benutzer ihre Supportfragen einreichen und Ihre FAQs anzeigen können. Beachte, dass Benutzer bei einer Multisite-Installation nur Supporttickets von Webseiten einreichen können, bei denen sie eine Rolle haben, die mindestens der in Deinen Netzwerkeinstellungen festgelegten Rolle entspricht. Wenn Du Dich auf einer Multisite-Installation befindest, gehe zum wp-admin einer beliebigen Test-Webseite, die in Deinem Netzwerk aktiv ist und auf der Du Administrator bist (wenn Du noch keine Test-Webseite eingerichtet hast, wäre jetzt ein guter Zeitpunkt dafür). erstelle eine!). Wenn Du eine Einzelstandortinstallation durchführst, melde Dich in einem anderen Browser (oder einem anderen Computer) als Benutzer mit der entsprechenden Rolle bei Deinem wp-admin an. Sobald Du Dich im wp-admin Deiner Testseite befindest (oder als Testbenutzer auf einer einzelnen Seite), gehe zu „Support“ > „FAQ“. Dort siehst Du eine Ansicht, die dem vorherigen Bild ähnelt. Klicke auf eine Deiner Test-FAQs, um die Antwort zu öffnen. Jedes Mal, wenn Du neue FAQs hinzufügst, werden diese auf diesem Bildschirm jeder Webseite in Deinem Netzwerk angezeigt. Klicke nun auf den Menüpunkt Support > Support. Das solltest Du und Deine Benutzer sehen:
 
 ![Support System Tickets Benutzeransicht](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-tickets-userview-700x343.png)
 
-Klicken Sie oben auf dem Bildschirm auf den Link „Neues Ticket hinzufügen“. Auch hier sehen Sie den sehr vertrauten ClassicPress-Post-Editor, den Ihre Benutzer zum Einreichen ihrer Support-Tickets verwenden. Kinderleicht. Lassen Sie uns jetzt loslegen und ein Ticket erstellen.
+Klicke oben auf dem Bildschirm auf den Link „Neues Ticket hinzufügen“. Auch hier siehst Du den sehr vertrauten ClassicPress-Post-Editor, den Deine Benutzer zum Einreichen ihrer Support-Tickets verwenden. Kinderleicht. Lasse uns jetzt loslegen und ein Ticket erstellen.
 
 ![Support-System Neues Ticket hinzufügen](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-add-new-ticket-700x601.png)
 
-Sie werden feststellen, dass die Kategorie aus den zuvor erstellten Kategorien ausgewählt werden kann. Außerdem können Benutzer, wie bei jedem Support-System, auch die Priorität festlegen, die ihr Ticket ihrer Meinung nach haben sollte. Wenn Sie alles für Ihr Testticket eingegeben haben, klicken Sie auf „Neues Ticket absenden“. Ihr Bildschirm wird aktualisiert und Sie sehen Ihr neues Ticket.
+Du wirst feststellen, dass die Kategorie aus den zuvor erstellten Kategorien ausgewählt werden kann. Außerdem können Benutzer, wie bei jedem Support-System, auch die Priorität festlegen, die ihr Ticket ihrer Meinung nach haben sollte. Wenn Du alles für Ihr Testticket eingegeben hast, klicke auf „Neues Ticket absenden“. Dein Bildschirm wird aktualisiert und Du siehst Dein neues Ticket.
 
 ![Supportsystem Neues Ticket hinzugefügt](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-new-ticket-added-700x565.png)
 
-#### Wie alles für den Site-Administrator zusammenhängt
+#### Wie alles für den Webseiten-Administrator zusammenhängt
 
 Das neue Ticket wird nun im Adminbereich unter „Support“ angezeigt. TaDa!
 
 ![Supportsystem Alle Tickets](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-all-tickets-700x418.png)
 
-Bei Multisite-Installationen erscheint es natürlich im Netzwerkadministrator unter Support. Sie werden feststellen, dass es auf dem Netzwerk-Support-Bildschirm eine zusätzliche Spalte gibt, die angibt, von welcher Website aus das Ticket eingereicht wurde.
+Bei Multisite-Installationen erscheint es natürlich im Netzwerkadministrator unter Support. Du wirst feststellen, dass es auf dem Netzwerk-Support-Bildschirm eine zusätzliche Spalte gibt, die angibt, von welcher Webseite aus das Ticket eingereicht wurde.
 
-![Supportsystem All Tickets Network](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-all-tickets-network-700x460.png)
+![Supportsystem Alle Tickets Netzwerk](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-all-tickets-network-700x460.png)
 
-Und Sie erhalten eine nette E-Mail in Ihrem Posteingang, die Sie darüber informiert, dass ein Ticket eingereicht wurde!
+Und Du erhältst eine nette E-Mail in Deinem Posteingang, die Dich darüber informiert, dass ein Ticket eingereicht wurde!
 
-* Diese E-Mail wird nur an die Administrator-E-Mail-Adresse gesendet, die Sie im Administrator-Dashboard unter „Support“ > „Einstellungen“ eingegeben haben
+* Diese E-Mail wird nur an die Administrator-E-Mail-Adresse gesendet, die Du im Administrator-Dashboard unter „Support“ > „Einstellungen“ eingegeben hast
 * Es gilt nicht für alle Super-Admin-Benutzer bei einer Multisite-Installation.
 
-Bei dieser E-Mail handelt es sich lediglich um eine Ticketbenachrichtigungs-E-Mail. Sie können nicht auf die E-Mail antworten und müssen direkt über den Support-Ticket-Manager-Bildschirm antworten. Sie erhalten auch E-Mails, wenn Tickets aktualisiert und beantwortet werden! Klicken Sie im Support-Bereich auf den Betrefftitel, um alle Details des Tickets anzuzeigen und eine Antwort hinzuzufügen. Hier können Sie das Ticket auch einem Mitarbeiter Ihres Supports zuweisen und bei Bedarf seine Priorität ändern.
+Bei dieser E-Mail handelt es sich lediglich um eine Ticketbenachrichtigungs-E-Mail. Du kannst nicht auf die E-Mail antworten und musst direkt über den Support-Ticket-Manager-Bildschirm antworten. Du erhältst auch E-Mails, wenn Tickets aktualisiert und beantwortet werden! Klicke im Support-Bereich auf den Betrefftitel, um alle Details des Tickets anzuzeigen und eine Antwort hinzuzufügen. Hier kannst Du das Ticket auch einem Mitarbeiter Deines Supports zuweisen und bei Bedarf seine Priorität ändern.
 
 ![Support System New Ticket Added Network](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-new-ticket-added-network-700x769.png)
 
-Möglicherweise ist Ihnen ganz rechts neben jedem Eintrag auf diesem Bildschirm ein Link mit der Aufschrift „FAQ erstellen“ aufgefallen. Wenn Sie auf diesen Link klicken, wird genau das ausgeführt, was er verspricht. Der Editor unter FAQ-Manager > Neue Frage hinzufügen wird automatisch mit der Ticketfrage, -antwort und -kategorie gefüllt. Wenn Sie möchten, können Sie dies alles bearbeiten, bevor Sie auf die Schaltfläche „Senden“ klicken.
+Möglicherweise ist Dir ganz rechts neben jedem Eintrag auf diesem Bildschirm ein Link mit der Aufschrift „FAQ erstellen“ aufgefallen. Wenn Du auf diesen Link klickst, wird genau das ausgeführt, was er verspricht. Der Editor unter FAQ-Manager > Neue Frage hinzufügen wird automatisch mit der Ticketfrage, -antwort und -kategorie gefüllt. Wenn Du möchtest, kannst Du dies alles bearbeiten, bevor Du auf die Schaltfläche „Senden“ klickst.
 
 #### Wie alles im Frontend aussieht
 
-Auf der Seite, die Sie zuvor als Ihre Haupt-Supportseite festgelegt hatten, werden nun alle Tickets auf Ihrer Website oder Ihrem Netzwerk angezeigt.
+Auf der Seite, die Du zuvor als Deine Haupt-Supportseite festgelegt hast, werden nun alle Tickets auf Deiner Webseite oder Deinem Netzwerk angezeigt.
 
 ![Support-System-Frontend](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-frontend-700x403.png)
 
-Wenn Sie auf den Titel eines Tickets klicken, wird der Ticketeditor geöffnet, in dem Sie auf das Ticket antworten und alle Details bearbeiten können, genau wie in Ihrem Admin-Bereich.
+Wenn Du auf den Titel eines Tickets klickst, wird der Ticketeditor geöffnet, in dem Du auf das Ticket antworten und alle Details bearbeiten kannst, genau wie in Deinem Admin-Bereich.
 
 ![Support System Frontend Edit](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-frontend-edit-700x845.png)
 
-Auf der Seite, die Sie zuvor als FAQ-Seite festgelegt haben, werden jetzt alle Ihre FAQs in einem schönen Akkordeon-Stil angezeigt. Sie sehen auch die Abstimmungsschaltflächen, mit denen Ihre Benutzer die Antworten bewerten können, die sie am hilfreichsten finden.
+Auf der Seite, die Du zuvor als FAQ-Seite festgelegt hast, werden jetzt alle Deine FAQs in einem schönen Akkordeon-Stil angezeigt. Du siehst auch die Abstimmungsschaltflächen, mit denen Deine Benutzer die Antworten bewerten können, die sie am hilfreichsten finden.
 
 ![FAQ zum Supportsystem-Frontend](https://premium.wpmudev.org/wp-content/uploads/2008/09/support-system-2100-frontend-faq-700x602.png)
 
-Nachdem Sie sich nun mit der Ticketverwaltung im Support-System-Plugin gut auskennen, sind Sie bereit, den FANTASTISCHSTEN Netzwerk-Support zu bieten, den es gibt! Gute Arbeit! Wenn Sie auf Probleme stoßen, gehen Sie einfach zu den Community-Foren (https://premium.wpmudev.org/forums/tags/support-system#question). Unser hervorragendes Support-Team (und unsere Mitglieder!) stehen bereit, um Ihnen dabei zu helfen, alles reibungslos zum Laufen zu bringen.
+Nachdem Du Dich nun mit der Ticketverwaltung im Support-System-Plugin gut auskennst, bist Du bereit, den FANTASTISCHSTEN Netzwerk-Support zu bieten, den es gibt! Gute Arbeit! Wenn Du auf Probleme stoßt, unser hervorragendes Support-Team steht bereit, um Dir dabei zu helfen, alles reibungslos zum Laufen zu bringen.
