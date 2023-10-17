@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: multisite, support, helpdesk, classicpress-plugin
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -40,7 +40,6 @@ The included text editor is perfect for easy styling and file sharing - great fo
 [POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/cp-powersource/)
 
 [Projektseite](https://n3rds.work/cp_psource/ps-support-system-plugin/)
-[Supportforum](https://n3rds.work/forum/ps-support-system-supportforum/)
 [GitHub](https://github.com/cp-psource/ps-support)
 
 == Screenshots ==
@@ -48,6 +47,12 @@ The included text editor is perfect for easy styling and file sharing - great fo
 * 1. Bringt Dir ein Support-System
 
 == ChangeLog ==
+
+= 2.2.4 =
+
+* Viele PhP8 Fixes
+* jQuery Fixes
+* ClassicPress 2.0 getestet
 
 = 2.2.3 =
 

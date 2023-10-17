@@ -5,7 +5,7 @@ Plugin URI: https://n3rds.work/cp_psource/ps-support-system-plugin/
 Description: Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 Author: DerN3rd (WMS N@W)
 Network: true
-Version: 2.2.3
+Version: 2.2.4
 License: GPLv2
 Author URI: https://n3rds.work
 Domain Path: languages
@@ -39,7 +39,7 @@ $MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'ps-support' 
 );
 
-define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.2' );
+define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.4' );
 
 if ( ! defined( 'PSOURCE_SUPPORT_LANG_DOMAIN' ) )
 	define('PSOURCE_SUPPORT_LANG_DOMAIN', 'psource-support');
