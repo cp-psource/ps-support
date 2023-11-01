@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    $('#fetch_imap').change(function() {
+    $('#fetch_imap').on('change', function() {
         if ($(this).val() == 'enabled')
             $('.imap-settings').attr('disabled', false);
         else
