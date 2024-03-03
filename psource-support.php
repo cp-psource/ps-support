@@ -3,7 +3,7 @@
 Plugin Name: PS Support System
 Plugin URI: https://cp-psource.github.io/ps-support/
 Description: Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
-Author: DerN3rd (WMS N@W)
+Author: PSOURCE
 Network: true
 Version: 2.2.5
 License: GPLv2
@@ -13,7 +13,7 @@ Text Domain: psource-support
 */
 
 /*
-Copyright 2018-2024 WMS N3rds@Work (https://github.com/cp-psource/)
+Copyright 2018-2024 PSOURCE (https://github.com/cp-psource/)
 Author DerN3rd
 
 This program is free software; you can redistribute it and/or modify

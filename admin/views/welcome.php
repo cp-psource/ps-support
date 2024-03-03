@@ -9,7 +9,7 @@
 
 	<p>
 		<a href="<?php echo $settings_url; ?>" class="button button-primary"><?php _e( 'Einstellungen', 'psource-support' ); ?></a>
-		<a href="https://n3rds.work/piestingtal-source-project/ps-support-system/" class="docs button button-secondary"><?php _e( 'Mehr Info', 'psource-support' ); ?></a>
+		<a href="https://cp-psource.github.io/ps-support/" class="docs button button-secondary"><?php _e( 'Mehr Info', 'psource-support' ); ?></a>
 	</p>
 	
 	<div class="changelog">
@@ -23,7 +23,7 @@
 	<div class="changelog">
 		<div class="feature-section col two-col">
 			<div class="col-1">
-				<p><?php printf( __( 'Das Support-System bietet jetzt Optionen zum Anzeigen von FAQs auf Deiner Website. Wie bei Tickets werden FAQs mit <a href="%s">Foundation 5</a>  gerendert.', 'psource-support' ), 'http://foundation.zurb.com/' ); ?></p>
+				<p><?php printf( __( 'Das Support-System bietet jetzt Optionen zum Anzeigen von FAQs auf Deiner Webseite.', 'psource-support' )); ?></p>
 				<p><?php _e( 'Du kannst Deine FAQs wie gewohnt vom Administrator aus verwalten. Benutzer haben weiterhin über ein Administratormenü Zugriff auf häufig gestellte Fragen (FAQs), es sei denn, Du möchtest dieses Menü in den Einstellungen deaktivieren.', 'psource-support' ); ?></p>
 				<p><?php _e( 'Das FAQ-System verfügt über eine <strong>PS-Bloghoster</strong> -Integration, mit der jeder Pro-Benutzer mit einer zugewiesenen Ebene Deine FAQs anzeigen kann!', 'psource-support' ); ?></p>
 			</div>
