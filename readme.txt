@@ -10,11 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 
-Set up an awesome support ticket system with FAQs on every ClassicPress page.
-
 == Description ==
-
-= Deutsch =
 
 Problemloses Support-Ticket-System
 Benutzer können bequem Tickets einreichen und Antworten sowohl vom Front- als auch vom Back-End verfolgen. 
@@ -24,17 +20,6 @@ Weise Mitarbeiter anhand der Ticketkategorie zu und stelle sicher, dass die Frag
 Voll funktionsfähiger Texteditor
 Gib den Benutzern die Tools, die sie benötigen, um ihre Anforderungen klar zu formulieren. 
 Der mitgelieferte Texteditor eignet sich perfekt für einfaches Styling und Dateifreigabe – ideal zum Einfügen von Screenshots.
-
-= English =
-
-Hassle-free support ticket system
-Users can conveniently submit tickets and track responses from both the front and back end.
-The Ticket Support System comes with specific categories for powerful searchability.
-Assign agents based on ticket category and ensure questions are answered quickly by the right member of your team.
-
-Fully functional text editor
-Give users the tools they need to clearly articulate their requirements.
-The included text editor is perfect for easy styling and file sharing - great for inserting screenshots.
 
 [POWERED BY PSOURCE](https://github.com/cp-psource/)
 
