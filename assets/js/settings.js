@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(function() {
     $('#fetch_imap').on('change', function() {
         if ($(this).val() == 'enabled')
             $('.imap-settings').attr('disabled', false);
@@ -8,13 +8,13 @@ jQuery(document).ready(function($) {
 
     var pro_sites_check = $('#pro_sites');
     psource_support_toggle_level_select(pro_sites_check);
-    pro_sites_check.change(function() {
+    pro_sites_check.on('change',function() {
         psource_support_toggle_level_select($(this));
     });
 
     var pro_sites_check_faq = $('#pro_sites_faq');
     psource_support_toggle_level_select(pro_sites_check_faq);
-    pro_sites_check_faq.change(function() {
+    pro_sites_check_faq.on('change',function() {
         psource_support_toggle_level_select($(this));
     });
 

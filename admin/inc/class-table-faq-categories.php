@@ -103,7 +103,6 @@ class PSource_Support_FAQ_Categories_Table extends WP_List_Table {
         }
     }
 
-
     function get_bulk_actions() {
         $actions = array(
             'delete'    => __( 'Löschen', 'psource-support' )
@@ -126,8 +125,6 @@ class PSource_Support_FAQ_Categories_Table extends WP_List_Table {
             psource_support_set_default_faq_category( absint( $_GET['category'] ) );
         }
     }
-
- 
 
     function prepare_items() {
 

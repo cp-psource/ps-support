@@ -2836,9 +2836,9 @@
     },
 
     reflow: function () {
-      this.trigger('resizeme.zf.trigger', ['images', true]);
-      this.trigger('resizeme.zf.trigger', ['nodes', true]);
-    }
+      $(this).trigger('resizeme.zf.trigger', ['images', true]);
+      $(this).trigger('resizeme.zf.trigger', ['nodes', true]);
+  }
 
   };
 

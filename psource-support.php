@@ -1,19 +1,19 @@
 <?php
 /*
 Plugin Name: PS Support System
-Plugin URI: https://n3rds.work/cp_psource/ps-support-system-plugin/
+Plugin URI: https://cp-psource.github.io/ps-support/
 Description: Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 Author: DerN3rd (WMS N@W)
 Network: true
 Version: 2.2.4
 License: GPLv2
-Author URI: https://n3rds.work
+Author URI: https://github.com/cp-psource/
 Domain Path: languages
 Text Domain: psource-support
 */
 
 /*
-Copyright 2018-2023 WMS N3rds@Work (https://n3rds.work)
+Copyright 2018-2024 WMS N3rds@Work (https://github.com/cp-psource/)
 Author DerN3rd
 
 This program is free software; you can redistribute it and/or modify
@@ -28,16 +28,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-
-Foundation 5 License: See license-foundation.txt
 */
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use Psource\PluginUpdateChecker\v5\PucFactory;
-$MyUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-support', 
-	__FILE__, 
-	'ps-support' 
+/**
+ * @@@@@@@@@@@@@@@@@ PS UPDATER 1.3 @@@@@@@@@@@
+ **/
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+ 
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/ps-support',
+	__FILE__,
+	'ps-support'
 );
+ 
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+
+/**
+ * @@@@@@@@@@@@@@@@@ ENDE PS UPDATER 1.3 @@@@@@@@@@@
+ **/
 
 define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.4' );
 

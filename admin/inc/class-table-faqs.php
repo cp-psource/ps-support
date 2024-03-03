@@ -4,7 +4,6 @@ if(!class_exists('WP_List_Table')){
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-
 class PSource_Support_FAQS_Table extends WP_List_Table {
 
     function __construct( $args = array() ){
@@ -17,7 +16,6 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
         ) );
         
     }
-
 
     function column_default( $item, $column_name ) {
         return $item->$column_name;
@@ -50,7 +48,6 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
                 'fid' => (int)$item->faq_id 
             )
         );
-
         
         $actions = array(
             'edit'     => sprintf( __( '<a href="%s">FAQ bearbeiten</a>', 'psource-support' ), $link ),
@@ -65,9 +62,7 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
          */
         $actions = apply_filters( 'support_system_faqs_actions', $actions, $item );        
 
-        return '<a href="' . $link . '">' . $item->question . '</a>' . $this->row_actions($actions); 
-
-
+        return '<a href="' . $link . '">' . $item->question . '</a>' . $this->row_actions($actions);
     }
 
     function column_cb($item){
@@ -103,8 +98,7 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
             <?php endif; ?>
         </div>
         <?php
-        return ob_get_clean();
-        
+        return ob_get_clean();        
     }
 
     function column_no_helpful( $item ) {
@@ -133,7 +127,6 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
         <?php return ob_get_clean();
     }
 
-
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />',
@@ -160,11 +153,8 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
                     <?php psource_support_faq_categories_dropdown( $cat_filter_args ); ?>
                     <input type="submit" name="filter_action" id="faq-query-submit" class="button" value="<?php echo esc_attr( 'Filter', 'psource-support' ); ?>">     
                 </div>
-        <?php
-           
-                
-        }
-        
+        <?php                
+        }        
     }
 
     function get_bulk_actions() {
@@ -183,10 +173,7 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
          */
         $actions = apply_filters( 'support_system_faqs_bulk_actions', $actions );
 
-        return $actions;
-
-        
-        
+        return $actions;        
     }
 
     function process_bulk_action() {
@@ -200,13 +187,10 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
             elseif ( isset( $_GET['fid'] ) && is_numeric( $_GET['fid'] ) ) {
                 $faq = psource_support_get_faq( $_GET['fid'] );
                 if ( $faq )
-                    psource_support_delete_faq( $faq->faq_id );
+                psource_support_delete_faq( $faq->faq_id );
             }
-
         }
-
     }
-
 
     function prepare_items() {
 
@@ -249,8 +233,6 @@ class PSource_Support_FAQS_Table extends WP_List_Table {
             'per_page'    => $per_page,                   
             'total_pages' => ceil($total_items/$per_page) 
         ) );
-
     }
-
 }
 ?>

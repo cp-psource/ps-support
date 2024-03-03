@@ -1,6 +1,5 @@
 === PS Support System ===
-Contributors: DerN3rd (WMS N@W)
-Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
+Contributors: DerN3rd (PSOURCE)
 Tags: multisite, support, helpdesk, classicpress-plugin
 Requires at least: 4.9
 Tested up to: 5.6
@@ -37,9 +36,9 @@ Fully functional text editor
 Give users the tools they need to clearly articulate their requirements.
 The included text editor is perfect for easy styling and file sharing - great for inserting screenshots.
 
-[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/cp-powersource/)
+[POWERED BY PSOURCE](https://github.com/cp-psource/)
 
-[Projektseite](https://n3rds.work/cp_psource/ps-support-system-plugin/)
+[Projektseite](https://cp-psource.github.io/ps-support/)
 [GitHub](https://github.com/cp-psource/ps-support)
 
 == Screenshots ==

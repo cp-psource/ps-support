@@ -2,7 +2,7 @@
 	margin-top: 0;
 }
 
-/* Style the debug data table to match "widefat" table style used by ClassicPress. */
+/* Style the debug data table to match "widefat" table style used by WordPress. */
 table.puc-debug-data {
     width: 100%;
     clear: both;

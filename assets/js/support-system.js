@@ -64,7 +64,7 @@
 			if ( ! filter_form.length || ! categories_dropdown.length || ! filter_button.length )
 				return function() {};
 			
-			categories_dropdown.change( function(e) {
+			categories_dropdown.on('Support System Filter', function(e) {
 				e.preventDefault();
 				$this = $(this);
 				$this.closest( 'form' ).submit();
