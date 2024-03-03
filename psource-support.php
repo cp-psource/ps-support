@@ -5,7 +5,7 @@ Plugin URI: https://cp-psource.github.io/ps-support/
 Description: Richte auf jeder ClassicPress-Seite ein fantastisches Support-Ticket-System mit häufig gestellten Fragen ein.
 Author: DerN3rd (WMS N@W)
 Network: true
-Version: 2.2.4
+Version: 2.2.5
 License: GPLv2
 Author URI: https://github.com/cp-psource/
 Domain Path: languages
@@ -48,7 +48,7 @@ $myUpdateChecker->setBranch('master');
  * @@@@@@@@@@@@@@@@@ ENDE PS UPDATER 1.3 @@@@@@@@@@@
  **/
 
-define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.4' );
+define( 'PSOURCE_SUPPORT_PLUGIN_VERSION', '2.2.5' );
 
 if ( ! defined( 'PSOURCE_SUPPORT_LANG_DOMAIN' ) )
 	define('PSOURCE_SUPPORT_LANG_DOMAIN', 'psource-support');

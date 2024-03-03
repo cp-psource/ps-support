@@ -3,7 +3,7 @@ Contributors: DerN3rd (PSOURCE)
 Tags: multisite, support, helpdesk, classicpress-plugin
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,13 @@ The included text editor is perfect for easy styling and file sharing - great fo
 * 1. Bringt Dir ein Support-System
 
 == ChangeLog ==
+
+= 2.2.5 =
+
+* Updater 1.3
+* Veraltetes jQuery modernisiert
+* Links aktualisiert
+* Docs hinzugefügt
 
 = 2.2.4 =
 
