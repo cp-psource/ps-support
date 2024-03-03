@@ -73,7 +73,7 @@
 						<div id="faq-answer-<?php echo $faq->faq_id; ?>">
 							<?php echo ( $answer ); ?>
 							<p class="submit" data-faq-id="<?php echo $faq->faq_id; ?>">
-								<h4><u><?php _e( 'War diese Lösung hilfreich?', 'psource-support' ); ?></u></h4>
+								<h4><u><?php _e( 'War dieses FAQ hilfreich?', 'psource-support' ); ?></u></h4>
 								<?php echo '<button class="button-primary vote-button" data-faq-id="' . $faq->faq_id . '" data-vote="yes"> ' . __( 'Ja', 'psource-support' ) . '</button> <button href="#" class="button vote-button" data-faq-id="' . $faq->faq_id . '" data-vote="no"> ' . __( 'Nein', 'psource-support' ) . '</button>'; ?>
 								<span class="spinner support-system-spinner"></span>
 							</p>

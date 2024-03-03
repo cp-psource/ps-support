@@ -1468,7 +1468,7 @@ msgid "von <strong>%s</strong>"
 msgstr "from <strong>%s</strong>"
 
 #: admin/views/admin-faq.php:76 inc/helpers/template.php:544
-msgid "War diese Lösung hilfreich?"
+msgid "War dieses FAQ hilfreich?"
 msgstr "Was this solution helpful?"
 
 #: psource-support.php:143

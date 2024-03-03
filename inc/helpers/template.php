@@ -541,7 +541,7 @@ function psource_support_the_faq_vote_box( $faq_id = false ) {
  
 	?>
 	<div class="support-system-faq-vote-wrap">
-		<h4><?php _e( 'War diese Lösung hilfreich?', 'psource-support' ); ?></h4>
+		<h4><?php _e( 'War dieses FAQ hilfreich?', 'psource-support' ); ?></h4>
 		<button class="support-system-faq-vote vote-button button tiny success" data-faq-id="<?php echo psource_support_get_the_faq_id(); ?>" data-vote="yes"><?php _e( 'JA', 'psource-support' ); ?></button>
 		<button class="support-system-faq-vote vote-button button tiny alert" data-faq-id="<?php echo psource_support_get_the_faq_id(); ?>" data-vote="no"><?php _e( 'NEIN', 'psource-support' ); ?></button>
 		<span class="support-system-spinner"></span>
