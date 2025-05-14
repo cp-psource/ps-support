@@ -2,7 +2,7 @@
 Contributors: DerN3rd (PSOURCE)
 Tags: multisite, support, helpdesk, classicpress-plugin
 Requires at least: 4.9
-Tested up to: 5.6
+Tested up to: 6.8.1
 Stable tag: 2.2.5
 Requires PHP: 7.0
 License: GPLv2 or later

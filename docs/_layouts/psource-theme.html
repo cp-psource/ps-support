@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <div class="site-container">
+    <header class="site-header">
+      <nav class="main-nav">
+        <a href="{{ "/" | relative_url }}">🏠 Home</a>
+        <a href="{{ "/about" | relative_url }}">ℹ️ About</a>
+      </nav>
+    </header>
+
+    <div class="content-wrapper" style="display: flex; gap: 2rem;">
+      <main style="flex: 2;">
+        {{ content }}
+      </main>
+
+      <aside class="sidebar" style="flex: 1;">
+        <section class="widget">
+          <h3>🔗 Nützliche Links</h3>
+          <ul>
+            <li><a href="https://github.com/cp-psource">PSOURCE</a></li>
+            <li><a href="https://github.com/orgs/cp-psource/discussions">Forum</a></li>
+          </ul>
+        </section>
+
+        <section class="widget">
+          <h3>📰 Neuigkeiten</h3>
+          <p>Letztes Update: 7. Mai 2025 Version 1.0.0</p>
+        </section>
+
+        <section class="widget">
+          <h3>📰 Getestet</h3>
+          <p>WordPress: 6.8.1</p>
+          <p>WordPress: 2.4.1</p>
+          <p>PhP: 8.2.0</p>
+        </section>
+      </aside>
+    </div>
+  </div>
+  <div>
+    <footer class="site-footer">
+      <p>
+        ❤️ Entwickelt mit Liebe von <a href="https://github.com/cp-psource" target="_blank">PSOURCE</a><br>
+        © 2025 – Alle Rechte vorbehalten
+      </p>
+    </footer>
+  </div>
+</body>
